@@ -1,0 +1,114 @@
+@use "variables" as *;
+@use "mixins" as *;
+
+.otp-container {
+    position: relative;
+    display: grid;
+    gap: 24px;
+    padding: 20px 24px 32px 24px;
+    border-radius: 24px;
+
+    &__otp-sent {
+        place-self: 'center center';
+        @include font(14px, 400, var(--sub-text), $font-default);
+
+        span {
+            @include font(14px, 400, $primary, $font-default);
+        }
+    }
+
+    &__error {
+        @include font(12px, 400, $error, $font-default);
+        margin-top: -2px
+    }
+
+    &__time-left-otp-resend {
+        @include flex-center;
+        @include font(14px, 400, var(--label), $font-default);
+        margin-top: 60px;
+        gap: 10px;
+        pointer-events: none;
+    }
+
+    &__otp-resend {
+        opacity: 1;
+        pointer-events: auto;
+        cursor: pointer;
+    }
+
+    &__reload-icon {
+        @include iconFrame(22px, 22px);
+        background-image: var(--reload);
+    }
+
+    &__otp-time-value {
+        color: var(--black-white);
+    }
+}
+
+
+:host ::ng-deep {
+
+    .ng-otp-input-wrapper {
+        flex-wrap: nowrap;
+        white-space: nowrap;
+
+        .otp-input {
+            background-color: transparent;
+            width: 72px;
+            height: 72px;
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            outline: none;
+            stroke: none;
+            font-size: 16px;
+            @include font(16px, 400, var(--black-white), $font-default);
+
+            &::placeholder {
+                opacity: 0;
+            }
+        }
+
+        .otp-input:not(:last-child) {
+            margin-right: 15px !important;
+        }
+
+        :focus {
+            outline: none;
+        }
+    }
+
+    .ng-otp-input-wrapper input.has-dash {
+        background: linear-gradient($gray13, $gray13) center / 5px 1px no-repeat;
+    }
+
+    ng-otp-input.otp-error .otp-input {
+        border: 1px solid $error !important;
+        color: $error;
+    }
+
+
+
+
+    @media (max-width: 395px) {
+        .ng-otp-input-wrapper {
+            .otp-input {
+                width: 62px;
+                height: 62px;
+            }
+        }
+    }
+
+    @media (max-width: 375px) {
+        .ng-otp-input-wrapper {
+            .otp-input {
+                width: 52px;
+                height: 52px;
+            }
+
+            .otp-input:not(:last-child) {
+                margin-right: 10px !important;
+            }
+        }
+    }
+}

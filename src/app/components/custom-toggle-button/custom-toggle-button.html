@@ -1,0 +1,14 @@
+<div class="wrapper">
+   <form [formGroup]="form">
+
+      <div class="wrapper__inner">
+         @for (btn of getFormArrayControls; track $index) {
+         <a class="wrapper__btns" (click)="onSelectBtn(btn.value)" [ngClass]="btn.value.cssClass">
+            <input type="text" readonly [value]="btn.value.name" />
+         </a>
+         }
+      </div>
+      <div>
+      </div>
+   </form>
+</div>

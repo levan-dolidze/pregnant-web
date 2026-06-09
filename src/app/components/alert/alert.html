@@ -1,0 +1,13 @@
+<div class="snackbar-container">
+    <span 
+    [ngClass]="{
+      'snackbar-container__error': data.messageType === 'error',
+      'snackbar-container__success': data.messageType === 'success'
+    }"
+
+    >{{ data.message }}</span>
+    @if (data.showClose) {
+      <img class="snackbar-container__close" (click)="onClose()" src="../../../assets/images/svgs/_close-light.svg" alt="Close"
+      onKeyPress>
+    }
+  </div>

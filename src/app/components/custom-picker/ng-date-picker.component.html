@@ -1,0 +1,73 @@
+<div class="date-picker-main" cdkOverlayOrigin #trigger>
+
+  <div class="date-picker-main__inputs">
+    <form [formGroup]="form">
+      <lib-date-picker #inputElementFrom [placeholder]="'From'" formControlName="from" (changeDate)="form.get('from')?.setValue($event);
+                 oninsuredTriggerChanged($event)" [type]="'tel'" [isRequired]="true" [isDoubleCalendarView]="true"
+        [isReadonly]="true" [control]="controlStart" (openCalendarEmit)="toggleDateOptionSelectionList($event)">
+      </lib-date-picker>
+
+      <lib-date-picker #inputElementTo [placeholder]="'To'" formControlName="to" (changeDate)="form.get('to')?.setValue($event);
+                      oninsuredTriggerChanged($event)" [type]="'tel'" [isRequired]="true" [control]="controlEnd"
+        [isDoubleCalendarView]="true" [isDoubleCalendarView]="true" [isReadonly]="true"
+        (openCalendarEmit)="toggleDateOptionSelectionList($event)">
+      </lib-date-picker>
+    </form>
+  </div>
+
+
+  <ng-template cdkConnectedOverlay [cdkConnectedOverlayHasBackdrop]="false" [cdkConnectedOverlayOrigin]="trigger"
+    [cdkConnectedOverlayOpen]="isCustomRange" [cdkConnectedOverlayPush]="cdkConnectedOverlayPush"
+    [cdkConnectedOverlayPositions]="cdkConnectedOverlayPositions"
+    [cdkConnectedOverlayOffsetX]="cdkConnectedOverlayOffsetX" [cdkConnectedOverlayOffsetY]="cdkConnectedOverlayOffsetY"
+    (overlayOutsideClick)="toggleCustomDateRangeView()">
+    <div class="custom-ckd-container custom-calendar-container" [class]="{'without-default-opt':hideDefaultOptions}">
+      <div class="row-1">
+
+        <div class="mt-2 column-2"><filter-calendar [selectedDates]="selectedDates" #calendar [minDate]="minDate"
+            (selectedDatesChange)="updateCustomRange(dateInput,calendar.selectedDates)"
+            [maxDate]="maxDate"></filter-calendar></div>
+      </div>
+      <!-- <div class="row-2 br-top"
+      style="display: flex; gap: 5px;">
+        @for (btns of actionBtnsState(); track $index) {
+        @if (defaultFilterActions&&defaultFilterActions.includes(btns.index)) {
+        <div>
+          <lib-button 
+            [className]="btns.index === activeBtnIndex ? 'mini-vh-32-100-r-active' : btns.className"
+            (btnClick)="onModeSelect(btns)"
+            [text]="btns.text">
+          </lib-button>
+        </div>
+      }
+    }
+
+      <ng-container *transloco="let t">
+        <div class="text-end my-2 w-full">
+          <div class="footer-content">
+            <span id="range-label-text">
+            </span>
+            <div class="buttons">
+              <div>
+                <lib-button 
+                (btnClick)="isCustomRange=false;clearSelection()"
+                [className]="'mini-vh-32 mini-light-gray'"
+                [text]="t('Clear')"></lib-button>
+              </div>
+
+              <div>
+               <lib-button 
+                (btnClick)="updateCustomRange(dateInput,calendar.selectedDates)"
+                [className]="'mini-vh-32'"
+                [isDisabled]="!(calendar?.selectedDates?.start && calendar?.selectedDates?.end)"
+                [text]="t('To_filter')">
+                </lib-button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </ng-container>
+      </div> -->
+    </div>
+  </ng-template>
+</div>

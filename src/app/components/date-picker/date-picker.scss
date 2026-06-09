@@ -1,0 +1,27 @@
+@use "variables" as *;
+@use "mixins" as *;
+
+.calendar-icon {
+  width: 20px;
+  height: 20px;
+
+  div {
+    @include iconFrame(26px, 24px);
+    background-image: var(--picker);
+  }
+}
+
+.disabled {
+  cursor: initial !important;
+}
+
+.disabled-value {
+  color: $gray-4 !important;
+}
+
+
+:host ::ng-deep {
+  .mat-mdc-text-field-wrapper .mat-mdc-form-field-flex .mat-mdc-floating-label {
+    top: calc(var(--mat-form-field-container-height, 56px)/2.2) !important;
+  }
+}

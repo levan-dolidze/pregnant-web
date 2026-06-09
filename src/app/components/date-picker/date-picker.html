@@ -1,0 +1,46 @@
+<ng-container *transloco="let t">
+
+  <form [formGroup]="form" #profileForm="ngForm">
+    <mat-form-field (click)="!isDoubleCalendarView?openPicker():null" class="date-picker-input"
+      [class.enable-line]="removeDisableColor" [ngClass]="{
+         'open': isOpen, 
+         'close': !isOpen,
+         'form-invalid-control':control?.dirty&&control?.invalid,
+         'disabled':isDisabled
+        }" onKeyPress>
+      <mat-label [ngClass]="{'disabled-value':isDisabled}">{{t(placeholder) }}
+        @if(isRequired){
+        <strong>*</strong>
+        }
+      </mat-label>
+      <input class="input" [min]="min" [max]="max" [type]="type || 'text'" matInput formControlName="date"
+        [ngClass]="{'disabled-value':isDisabled}" [matDatepicker]="picker" [disabled]="isDisabled"
+        [readonly]="isReadonly" (focus)="onFocus()" (blur)="onBlur()" (dateInput)="onInputChange($event)"
+        appAutoFormatDate #inputElement 
+        inputmode="numeric"
+        />
+
+      @if (isDoubleCalendarView) {
+      <mat-datepicker-toggle matSuffix [disabled]="!isEditable" (click)="isEditable && onToggleClick()">
+        <div matDatepickerToggleIcon class="calendar-icon" [style.opacity]="isDisabled ? '0.5' : '1'">
+          @if (isPickerIcon) {
+          <div>
+          </div>
+          }
+        </div>
+      </mat-datepicker-toggle>
+      }
+      @else {
+      <mat-datepicker-toggle matSuffix [for]="picker" [disabled]="!isEditable">
+        <div matDatepickerToggleIcon class="calendar-icon" [style.opacity]="isDisabled ? '0.5' : '1'">
+          <div></div>
+        </div>
+      </mat-datepicker-toggle>
+      }
+      <mat-datepicker [panelClass]="'custom-date-picker'" xPosition="end" #picker (opened)="datepickerOpened()"
+        (closed)="datepickerClosed()" [calendarHeaderComponent]="customCalendarHeader">
+      </mat-datepicker>
+
+    </mat-form-field>
+  </form>
+</ng-container>

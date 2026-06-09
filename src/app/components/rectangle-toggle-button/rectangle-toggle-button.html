@@ -1,0 +1,24 @@
+<div class="radio-container">
+
+  <mat-radio-group 
+    [(ngModel)]="value"
+    (change)="updateModel()">
+    
+    @for (item of groupList(); track $index) {
+      <mat-radio-button
+        class="radio-card"
+        labelPosition="before"
+        [disabled]="item.isDisabled!" 
+        [value]="item.value">
+        <div class="radio-card__content">
+          <div class="radio-card__text">
+            <div class="name">{{ item.displayName }}</div>
+            @if ( item.subDisplayName) {
+            <div class="sub-name"  [ngClass]="{'primary':item.primary}" [innerHTML]="item.subDisplayName" ></div>
+            }
+          </div>
+        </div>
+      </mat-radio-button>
+    }
+  </mat-radio-group>
+</div>

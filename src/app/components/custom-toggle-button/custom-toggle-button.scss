@@ -1,0 +1,46 @@
+@use 'variables' as *;
+@use 'mixins' as *;
+
+
+.wrapper {
+    &__inner {
+        display: flex;
+        gap: 8px;
+    }
+
+    &__btns {
+        background-color: var(--toggle);
+        color: var(--label);
+        border-radius: 100px;
+        transition: transform 0.20s ease-in,
+            background-color 0.20s ease;
+
+        input[type="text"] {
+            @include font(12px, 400, var(--label), $font-medium);
+            border: none;
+            background: transparent;
+            outline: none;
+            width: auto;
+            text-align: center;
+            cursor: pointer;
+            border-radius: 1000px;
+            transition: background-color 0.25s ease;
+            width: fit-content;
+            min-width: 1ch;
+            padding: 11px 0px;
+        }
+    }
+
+
+    .active {
+        background-color: $primary;
+        transform: translateX(0);
+        transition: transform 0.20s ease-out,
+            background-color 0.20s ease;
+
+        input[type="text"] {
+            background-color: $primary;
+            color: $white;
+        }
+    }
+}

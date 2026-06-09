@@ -1,0 +1,45 @@
+<form [formGroup]="form"
+(click)="open(picker)"
+onKeyPress>
+  <mat-form-field
+    class="custom-range-picker-form-field"
+    [ngClass]="{
+      'calendar-active': isPickerOpened,
+      'form-invalid-control': (startControl?.invalid&&startControl?.dirty)||
+                              (endControl?.invalid&&endControl?.dirty)
+    }"
+  >
+    <mat-label>{{ placeholderStart }} -</mat-label>
+    <mat-label > {{ placeholderEnd }}</mat-label>
+    <mat-date-range-input [rangePicker]="picker" 
+                          [min]="min" 
+                          [max]="max"
+                          class="{{ className }}">
+      <input 
+      matStartDate
+      formControlName="date"
+      [readOnly]="isReadonly"
+      (dateChange)="dateChanged()"
+    />
+    <input
+      matEndDate
+      formControlName="dateEnd"
+      [readOnly]="isReadonly"
+      (dateChange)="dateChanged()"
+    />
+    </mat-date-range-input>
+
+    <mat-datepicker-toggle matIconSuffix [for]="picker">
+      <div matDatepickerToggleIcon class="calendar-icon"></div>
+    </mat-datepicker-toggle>
+    <mat-date-range-picker
+      (opened)="isPickerOpened = true"
+      (closed)="isPickerOpened = false"
+      [panelClass]="'custom-range-picker'"
+      #picker
+      [calendarHeaderComponent]="customCalendarHeader"
+      xPosition="end"
+      >
+    </mat-date-range-picker>
+  </mat-form-field>
+</form>

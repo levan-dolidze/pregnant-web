@@ -1,0 +1,14 @@
+<ng-container *transloco="let t">
+
+  <div class="check-box-cont" [ngClass]="isDisabled ? 'disabled' : ''">
+
+    <mat-checkbox color="primary" [(ngModel)]="value" (change)="updateModel()" [disabled]="isDisabled">
+      <p [ngClass]="{'invalid':isInvalid}">
+        {{t(label)}}<span>
+          <a (click)="onLinkOpen(address)" class="check-box-cont__link" [target]="'_blank'" [href]="address"><span>{{t(addressTxt)}}</span></a>
+           </span></p>
+    </mat-checkbox>
+
+  </div>
+
+</ng-container>

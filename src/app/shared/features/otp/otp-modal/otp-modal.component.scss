@@ -1,0 +1,37 @@
+@use "mixins" as *;
+@use "variables" as *;
+
+.modal {
+    background-color: var(--bg200);
+    &__handle {
+        width: 52px;
+        height: 4px;
+        background-color: var(--dash);
+        border-radius: 16px;
+        margin: 6px auto 5px auto;
+    }
+
+    &__wrapper {
+        display: grid;
+        grid-template-columns: 1fr auto 1fr;
+        align-items: center;
+        width: 100%;
+        padding: 10px 20px 10px 20px;
+    }
+
+    &__title {
+        // grid-column: 2;
+        // justify-self: center;
+        @include font(14px, 700, var(--black-white), $font-bold);
+    }
+
+    &__close {
+        @include iconFrame(24px, 24px);
+        background-image: var(--close);
+        cursor: pointer;
+        place-self: center start;
+    }
+    // &__otp{
+    //     padding: 15px;
+    // }
+}

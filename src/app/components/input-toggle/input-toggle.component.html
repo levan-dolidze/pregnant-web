@@ -1,0 +1,21 @@
+<div class="wrapper">
+    <form [formGroup]="form">
+        <div class="wrapper__inner">
+            <div class="wrapper__left">
+                <div>
+                    {{activeitemState()?.currencySymbol}} {{form.get('limit')?.value}}
+                </div>
+            </div>
+
+            <div class="wrapper__right">
+                @for (btn of getFormArrayControls; track $index) {
+        <a class="wrapper__right__btns" (click)="onSelectBtn(btn.value)" [ngClass]="btn.value.cssClass"
+            [attr.data-value]="btn.value.name"> <input type="text" readonly [value]="btn.value.name" />
+        </a>
+                }
+            </div>
+        </div>
+        <div>
+        </div>
+    </form>
+</div>

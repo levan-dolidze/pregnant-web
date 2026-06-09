@@ -1,0 +1,88 @@
+@use 'variables' as *;
+@use 'mixins' as *;
+
+.example-header {
+  @include flex-center-between;
+  padding: 32px;
+
+  div {
+    display: flex;
+    align-items: center;
+  }
+
+  .nav-arrow {
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+    @include iconFrame(20px, 20px);
+
+    &.prev {
+      background-image: var(--picker-arrow-left);
+    }
+
+    &.next {
+      background-image: var(--picker-arrow-right);
+    }
+
+    &.prev-year {
+      background-image: var(--picker-arrow-left-w);
+    }
+
+    &.next-year {
+      background-image: var(--picker-arrow-right-w);
+    }
+
+    &.disabled {
+      cursor: not-allowed;
+      opacity: 0.4;
+    }
+  }
+
+  .custom-period-button {
+    width: 150px;
+    text-wrap: nowrap;
+    padding: 0;
+    background: transparent;
+    outline: none;
+    border: none;
+
+    .example-header-label {
+      text-align: center;
+      @include font(14px, 400, var(--black-white), $font-medium);
+      text-transform: lowercase;
+    }
+  }
+}
+
+
+::ng-deep {
+  .mat-calendar-content {
+    padding: 0 22px 22px 22px;
+  }
+
+  .mat-calendar-body-today {
+    border: none !important;
+    color: $primary !important;
+
+  }
+
+  .mat-calendar-body-label {
+    visibility: hidden;
+    padding-top: 0px !important;
+  }
+
+  .mat-calendar-body-cell-content {
+    @include font(13px, 500, var(--black-white), $font-medium);
+
+  }
+
+  .mat-calendar-table-header th {
+    @include font(14px, 400, var(--black-white), $font-default);
+
+  }
+
+    .mat-calendar-body-in-range::before {
+      background: $primary-01 !important;
+    }
+
+}

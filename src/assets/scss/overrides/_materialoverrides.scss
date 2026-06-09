@@ -1,0 +1,37 @@
+// .light-theme {
+@import "./buttons";
+@import "./form";
+@import "./checkbox";
+@import "./radio";
+@import "./input";
+@import "./date-picker";
+@import "./snackbar";
+@import "./custom-select";
+@import "./slide-toggle";
+@import "./dialog";
+
+
+
+.topbar {
+  background-color: $white;
+}
+
+// }
+
+.mat-badge-warn {
+  --mat-badge-background-color: $error;
+  --mat-badge-text-color: $white;
+}
+
+.mat-mdc-snack-bar-container .mdc-snackbar__surface {
+  border-radius: 12px !important;
+}
+
+
+
+.mat-mdc-icon-button .mat-mdc-button-persistent-ripple {
+  visibility: hidden;
+}
+
+
+

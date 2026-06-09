@@ -1,0 +1,15 @@
+export const regExp = {
+  timeInt: /^((\d+h)?\s{0,2}?(\d+m)?\s{0,2}?|\d+$)$/,
+  timeFloat: /^(\d+[,\/\.]\d{0,2}h|[,\/\.]\d{0,2}h|\d+[,\/\.]\d+$)$/,
+  dateTime: /^\d{1,2}\/\w{3}\/\d{1,2}\s\d{1,2}:\d{1,2}\s[AP]{1}[M]{1}$/i,
+  date: /^(0[1-9]|[12][0-9]|3[01])\/(0[1-9]|1[0-2])\/\d{4}$/,
+  email: /^[a-zA-Z0-9._+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,
+  onlyNumbers: '[0-9+]*',
+  onlyLatins: '[a-zA-Z\\s]+-?[a-zA-Z\\s]*',
+  onlyGEO: '[ა-ჰ\\s]+-?[ა-ჰ\\s]*',
+  onlyNumbersAndLatinLetters: '[-0-9a-zA-Z]*',
+  onlyFiveLatin: '^[a-zA-Z]{1,5}$',
+  personalID: '^[0-9]{11,11}$',
+  dummyPromoCode: '^(98654798)$',
+  mobileGe:'^[5][0-9]{8}$'
+};

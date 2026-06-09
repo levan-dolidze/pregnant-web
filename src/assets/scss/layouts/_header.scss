@@ -1,0 +1,109 @@
+﻿@use "mixins" as *;
+
+
+html .topbar {
+  position: sticky;
+  top: 0;
+  height: 75px;
+  max-height: 75px;
+  min-height: 0;
+  width: calc(100% - 2rem);
+  z-index: 100;
+  margin-top: 1rem;
+  margin-inline: 1rem;
+  transition: background-color 0.3s,
+    box-shadow 0.3s,
+    top 0.3s,
+    border-radius 0.3s,
+    -webkit-box-shadow 0.3s;
+  border-radius: 20px;
+  animation: topbar-stuck linear both;
+  animation-timeline: scroll(nearest);
+  animation-range: 0px 80px;
+  box-shadow: 0 0 20px 3px hsla(212, 7%, 43%, .1);
+
+  &__menu {
+    @include flex-center;
+    @include font(14px, 400, $gray-2, $font-default);
+    gap: 10px;
+  }
+
+  &__navs {
+    a {
+      text-decoration: none;
+      @include font(14px, 400, $black, $font-medium);
+
+      &.topbar__navs--active {
+        font-weight: 700;
+      }
+    }
+  }
+
+  &__burger {
+    display: none;
+  }
+}
+
+.topbar__mobile-menu {
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  top: 75px;
+  left: 0;
+  right: 0;
+  z-index: 99;
+
+  padding: 1rem 0;
+  animation: mobile-menu-in .25s ease-out;
+}
+
+.topbar__mobile-link {
+  text-decoration: none;
+  padding: 0.875rem 1.5rem;
+  @include font(15px, 500, $black, $font-medium);
+  transition: background-color .2s ease, color .2s ease;
+
+  &:hover {
+    background-color: hsla(0, 0%, 0%, .04);
+  }
+
+  &--active {
+    font-weight: 700;
+    color: var(--primary);
+  }
+}
+
+@keyframes topbar-stuck {
+  to {
+    border-radius: 0 0 20px 20px;
+  }
+}
+
+@keyframes mobile-menu-in {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media screen and (max-width: 768px) {
+  html .topbar {
+    width: 100%;
+    margin-top: 0;
+    margin-inline: 0;
+    border-radius: 0;
+    animation: none;
+
+    &__menu {
+      display: none;
+    }
+
+    &__burger {
+      display: flex;
+    }
+  }
+}

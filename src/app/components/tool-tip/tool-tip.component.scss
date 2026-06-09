@@ -1,0 +1,17 @@
+@mixin iconFrame {
+  width: 24px;
+  height: 24px;
+  background-size: contain;
+}
+.tool-tip-cont {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 30px;
+  mat-icon {
+    div {
+      @include iconFrame;
+      background-image: var(--tool-tip);
+    }
+  }
+}

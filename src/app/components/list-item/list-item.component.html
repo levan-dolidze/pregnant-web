@@ -1,0 +1,27 @@
+<ng-container *transloco="let t">
+
+    <div class="list-item">
+        @for (item of listItem; track $index) {
+
+        <div class="list-item__content" onKeyPress (click)="onItemClick(item)">
+
+            <img [ngSrc]="'assets/icons/'+modeState()+item.icon" width="56" height="56" alt="Icon"/>
+
+            <div class="list-item__info">
+                <div class="list-item__title">
+                    {{item.name}}
+                </div>
+                <div class="list-item__subtitle">
+                    {{item.subName}}
+                </div>
+            </div>
+
+            <div class="list-item__arrow">
+
+            </div>
+        </div>
+        }
+
+    </div>
+
+</ng-container>

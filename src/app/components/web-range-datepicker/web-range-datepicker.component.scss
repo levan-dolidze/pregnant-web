@@ -1,0 +1,7 @@
+@use "mixins" as *;
+
+  .calendar-icon {
+    background: var(--picker);
+    @include iconFrame(24px, 24px);
+    
+  }

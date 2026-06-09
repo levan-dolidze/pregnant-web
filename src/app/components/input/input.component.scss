@@ -1,0 +1,30 @@
+
+@use 'variables' as *;
+
+.text-input-cont {
+  width: 100%;
+}
+
+mat-form-field {
+  .icon {
+    position: absolute;
+    z-index: 1;
+    cursor: pointer;
+    width: 24px;
+    height: 24px;
+    top: 18px;
+    img {
+      width: 100%;
+      height: 100%;
+    }
+  }
+}
+
+
+:host ::ng-deep {
+  .custom-invalid-input {
+    .mdc-text-field--filled {
+      border-color: $error !important;
+    }
+  }
+}

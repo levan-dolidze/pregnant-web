@@ -1,0 +1,54 @@
+.mat-mdc-slide-toggle {
+  --mdc-switch-track-height: 20px;
+  --mdc-switch-track-width: 48px;
+  --mdc-switch-state-layer-size: 0;
+
+  .mdc-switch {
+    width: 48px !important;
+    height: 30px !important;
+    padding: 0 !important;
+
+    .mdc-switch__track,
+    .mdc-switch__track::before,
+    .mdc-switch__track::after {
+      border: none !important;
+      border-radius: 1000px !important;
+      height: 100% !important;
+    }
+
+    &.mdc-switch--unselected:enabled .mdc-switch__track::before {
+      background: var(--dash) !important;
+    }
+
+    &.mdc-switch--selected:enabled .mdc-switch__track::after {
+      background: $primary !important;
+    }
+  }
+
+  .mdc-switch__handle {
+    width: 26px !important;
+    height: 26px !important;
+
+    &::before,
+    &::after {
+      display: none !important; 
+    }
+
+    background-color: $white !important;
+    border-radius: 50% !important;
+  }
+
+  .mdc-switch--unselected .mdc-switch__handle-track {
+    transform: translateX(2px) !important;
+  }
+
+  .mdc-switch__ripple,.mdc-switch__icon {
+    display: none;
+  }
+
+  .mdc-switch--selected .mdc-switch__handle-track {
+    transform: translateX(20px) !important;
+  }
+
+ 
+}

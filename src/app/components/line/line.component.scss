@@ -1,0 +1,12 @@
+@use 'variables' as *;
+@use 'mixins' as *;
+
+.line {
+    background-color: red;
+    margin: 0 auto;
+}
+
+
+.grayBG {
+    background-color: red;
+}

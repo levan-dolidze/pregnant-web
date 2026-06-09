@@ -1,0 +1,132 @@
+@use "../../../assets/scss/variables" as *;
+@use "../../../assets/scss/mixins" as *;
+
+@mixin buttonBase {
+  @include flex-center;
+  @include noWrap;
+  @include font(16px, 400, $white, $font-bold);
+  height: 60px;
+  border: 0px;
+  border-radius: 72px;
+  position: relative;
+  outline: none;
+}
+
+
+.btn {
+  @include buttonBase();
+
+  mat-spinner {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+
+  background-color: $primary;
+  color: $white;
+  cursor: pointer;
+  border: 1px solid var(--primary-01);
+
+  .content {
+    @include flex-center;
+    gap: 20px;
+  }
+
+  a {
+    display: flex;
+
+  }
+}
+
+.stroked {
+  background-color: $white;
+  color: $gray-1;
+  border: 1px solid $gray300;
+}
+
+.stroked-fill {
+  background-color: $grayFill;
+  color: $primary;
+  border: none;
+}
+
+.h-40 {
+  height: 40px !important;
+}
+
+.stroked-mini {
+  @include buttonBase();
+  color: var(--black-white);
+  border: 1px solid var(--gray-04);
+  background-color: transparent;
+  padding-left: 16.75px;
+  padding-right: 16.75px;
+    .content {
+        gap: 8px
+      }
+}
+
+.stroked-mini:hover {
+  opacity: 0.5
+}
+
+.uppercase {
+  @include font(16px, 400, $white, $font-default);
+}
+
+
+
+
+.transparent {
+  background-color: transparent;
+  color: $primary;
+}
+
+
+.medium {
+  height: 42px;
+  font-size: 12px;
+}
+
+.black {
+  background-color: var(--black-white) !important;
+  @include font(14px, 700, var(--black-white-1), $font-bold);
+  border: none;
+}
+
+.mini-vh-32 {
+  height: 32px;
+}
+
+button:disabled,
+button[disabled] {
+  border: 1px solid var(--label);
+  background-color: $gray901;
+  opacity: 0.5;
+  color: $inputLable;
+  cursor: initial;
+  pointer-events: none;
+}
+
+button:disabled img,
+button[disabled] img {
+  opacity: 0.5;
+  pointer-events: none;
+  filter: grayscale(100%) brightness(0.7);
+}
+
+
+:host::ng-deep {
+  .mat-spinner circle {
+    stroke: $white;
+  }
+}
+
+@media screen and (max-width: 360px) {
+  .btn {
+    .content {
+      gap: 1px;
+    }
+  }
+
+}

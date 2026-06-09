@@ -1,0 +1,29 @@
+    <ng-container *transloco="let t">
+    <div class="otp-container">
+    <ng-otp-input
+        #ngOtpInput
+        (onInputChange)="onOtpChange($event)"
+        [config]="configState()"
+        [formCtrl]="otpf.otp"
+        [class.otp-error]="otpf.otp.invalid && otpf.otp.dirty">
+    </ng-otp-input>
+                  {{ otpFocusFirstValue(ngOtpInput) }}
+
+    <p class="otp-container__otp-sent">{{t('OTP_sent')}} <span>{{clientNumber()}}</span> </p>
+    @if (verifyUtpLoadingState().error) {
+     <p class="otp-container__error">{{verifyUtpLoadingState().error}}</p>
+     }
+    
+
+    <div (click)="resendOtp()" class="otp-container__time-left-otp-resend"
+         [class.otp-container__otp-resend]="!timeLeftToEnterOtpState()"
+         onKeyPress>
+    <div class="otp-container__reload-icon"></div>
+    <p>{{t('OTP_resend')}} 
+      <!-- @if(timeLeftToEnterOtpState()){ -->
+        <span class="otp-container__otp-time-value">{{timeLeftToEnterOtpState()}} {{t('In_Second')}}</span>
+      <!-- } -->
+    </p>
+    </div>
+    </div>
+    </ng-container>

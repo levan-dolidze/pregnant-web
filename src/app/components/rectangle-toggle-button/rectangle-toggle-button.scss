@@ -1,0 +1,83 @@
+@use "variables" as *;
+@use "mixins" as *;
+
+
+
+.radio-container {
+  @include flex-init;
+  @include noWrap;  
+  margin: auto;
+  width: auto;
+  mat-radio-group {
+    display: flex;
+    width: 100%;
+    gap: 12px;
+
+    @include flex-init;
+
+    .radio-card {
+      flex: 1;
+      box-sizing: border-box;
+      max-width: none;
+      min-width: 0;
+
+      border-radius: 16px;
+      padding: 8px 23px;
+      margin: 0;
+      transition: all 0.2s ease;
+      cursor: pointer;
+      background-color: var(--gray-bg);
+      border: 1px solid var(--gray-bg);
+      text-align: center;
+
+      &.mat-mdc-radio-checked {
+        background-color: $primary !important;
+        border: 1px solid $primary-02;
+
+        .name,
+        .sub-name,
+        .primary {
+          color: $white !important;
+        }
+      }
+
+      ::ng-deep .mdc-radio {
+        display: none;
+      }
+
+      &__text {
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+        align-items: center;
+
+        .name {
+          @include font(14px, 500, var(--label), $font-medium);
+        }
+
+        .sub-name {
+          @include font(14px, 400, var(--label), $font-default);
+        }
+      }
+
+    }
+  }
+}
+
+@media screen and (max-width: 360px) {
+
+  mat-radio-group {
+    @include flex-init;
+    width: 100%;
+    gap: 12px;
+
+    .radio-card {
+      padding: 6px 12px !important;
+
+      &__text {
+        gap: 2px;
+      }
+    }
+  }
+
+}

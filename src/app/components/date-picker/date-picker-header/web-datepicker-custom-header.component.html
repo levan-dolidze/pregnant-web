@@ -1,0 +1,19 @@
+<div class="example-header">
+  <div class="nav-arrow prev-year" (click)="previousClicked('year')">
+  </div>
+  <div class="nav-arrow prev" (click)="previousClicked('month')">
+  </div>
+
+  <div class="example-double-arrow-buttons">
+    <button mat-icon-button type="button" class="custom-period-button" (click)="periodChange()">
+      <span class="example-header-label caps-regular">
+        {{ periodLabel }}
+      </span>
+    </button>
+  </div>
+
+  <div class="nav-arrow next" (click)="nextClicked('month')">
+  </div>
+  <div class="nav-arrow next-year" (click)="nextClicked('year')">
+  </div>
+</div>

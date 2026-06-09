@@ -1,0 +1,23 @@
+
+
+<ng-container *transloco="let t">
+    
+
+<div class="modal">
+     <div class="modal__handle"></div> 
+    <div class="modal__wrapper">
+     <!-- <div class="modal__close"
+     (click)="onClose()"></div> -->
+     <p class="modal__title">{{data.otpDialogModel().title}}</p>
+    </div>
+    <div class="modal__otp">
+        <app-otp
+(confirmOtpEmit)="confirmOtp($event)"
+[clientNumber]="data.otpDialogModel().mobileNumber">
+</app-otp>
+    </div>
+</div>
+ 
+</ng-container>
+
+

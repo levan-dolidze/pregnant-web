@@ -1,0 +1,17 @@
+<ng-container *transloco="let t" >
+  
+  <div class="error-containner">
+    <div class="error-inner">
+      <div [ngClass]="'error'"> 
+      </div>
+      <div>
+      <h6 class="f-s-20 f-w-600 m-b-30">{{ t('Not_found')}}</h6>
+      </div>
+      <div>
+      <a mat-flat-button color="primary" [routerLink]="['']">{{t('Go_back')}}</a>
+      </div>
+    </div>
+  </div>
+
+</ng-container>
+

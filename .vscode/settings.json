@@ -1,0 +1,6 @@
+{
+    "sonarlint.connectedMode.project": {
+        "connectionId": "http://sonarcube.bds.ge",
+        "projectKey": "Insurance.Cargo_FrontEnd_8f7eb174-c25e-41a2-b292-2988d42a30e9"
+    }
+}

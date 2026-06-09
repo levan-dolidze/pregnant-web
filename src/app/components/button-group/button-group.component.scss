@@ -1,0 +1,47 @@
+@use "../../../assets/scss/variables" as *;
+@use "../../../assets/scss/mixins" as *;
+
+form {
+    display: flex;
+    gap: 6px;
+
+    .button-group {
+        display: inline-flex;
+
+        a {
+            display: inline-flex;
+            align-items: center;
+            padding: 12px;
+            border-radius: 999px;
+            cursor: pointer;
+
+            input[type="text"] {
+                @include font(11px, 400, $originBlack, $font-default);
+                border: none;
+                background: transparent;
+                outline: none;
+                width: auto;
+                text-align: center;
+                cursor: pointer;
+            }
+
+            &.active {
+                background-color: $pink;
+                color: $white;
+
+                input {
+                    color: $white;
+                }
+            }
+
+            &.inactive {
+                background-color: $gray50;
+                opacity: 0.5;
+
+                input {
+                    color: $originBlack;
+                }
+            }
+        }
+    }
+}

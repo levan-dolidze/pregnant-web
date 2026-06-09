@@ -1,0 +1,12 @@
+<form [formGroup]="form">
+
+    @for (btn of getFormArrayControls; track $index) {
+    <div class="button-group">
+        <a (click)="onSelectBtn(btn.value)" [ngClass]="btn.value.cssClass" tabindex="0">
+            <input type="text"  readonly [value]="btn.value.name"/>
+            <img  [src]="btn.value.icon" alt="Icon">
+        </a>
+    </div>
+    }
+
+</form>

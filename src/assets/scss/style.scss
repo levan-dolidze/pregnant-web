@@ -1,0 +1,31 @@
+@use "@angular/material" as mat;
+@include mat.elevation-classes();
+@include mat.app-background();
+
+
+@import "themecolors/default_theme";
+@include mat.all-component-themes($bluetheme);
+
+@import "variables";
+@import "mixins";
+@import "base/base";
+@import "base/fonts";
+@import "base/typography";
+@import "light/light";
+@import "dark/dark";
+@import "overrides/materialoverrides";
+
+@import "helpers/color";
+@import "helpers/icon-size";
+
+@import "container/container";
+@import "layouts/header";
+@import "layouts/layouts";
+@import "helpers/custom-flex";
+@import "helpers/index";
+@import "pages/custom-checkbox";
+
+
+
+
+

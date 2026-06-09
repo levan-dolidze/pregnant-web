@@ -1,0 +1,37 @@
+.mat-calendar {
+  min-width: 250px;
+}
+
+.calendar-container {
+  width: 100%;
+  display: flex;
+  float: left;
+  gap: 36px;
+
+  .first-view,
+  .second-view {
+    width: 50%;
+    display: block;
+    float: left;
+  }
+}
+
+/* Disabled days */
+::ng-deep.mat-calendar-body-disabled:hover {
+  // background-color: red!important;
+}
+
+
+
+
+
+@media (max-width: 768px) {
+  .calendar-container {
+    display: block;
+
+    .first-view,
+    .second-view {
+      width: 100%;
+    }
+  }
+}

@@ -1,0 +1,150 @@
+.custom-checkbox {
+  width: 100%;
+
+  &.disabled {
+    pointer-events: none;
+    cursor: default;
+
+    .custom-checkbox__text {
+      color: #0806174d;
+    }
+    .custom-checkbox__icon-wrap {
+      border-color: #0806171a;
+    }
+  }
+  &.readonly {
+    pointer-events: none;
+    cursor: default;
+  }
+
+  .sort-action & {
+    width: auto;
+  }
+
+  &__input {
+    display: none;
+  }
+
+  &__label {
+    width: 100%;
+    background-color: transparent;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-wrap: wrap;
+    font-weight: normal;
+    gap: 1rem;
+    cursor: pointer;
+
+    .sort-action & {
+      width: auto;
+    }
+
+    .custom-checkbox--xs & {
+      gap: 0.5rem;
+    }
+
+    .custom-checkbox-group & {
+      align-items: flex-start;
+    }
+
+    .medium-text {
+      font-size: 14px;
+    }
+  }
+
+  &__icon-wrap {
+    width: 20px;
+    height: 20px;
+    aspect-ratio: 1;
+    background-color: transparent;
+    border-radius: 4px;
+    border: 1px solid #DFE5EF;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.3s ease;
+    margin: 10px 0px 10px 0px;
+    &.new-checkbox-wrap {
+      border: 2px solid #DFE5EF;
+      width: 1.8rem;
+    }
+    .custom-checkbox--xs & {
+      width: 1.6rem;
+      border-color: #000000;
+    }
+  }
+
+  &__icon {
+    width: 16px;
+    height: 16px;
+    fill: #ffffff;
+    transform: scale(0);
+    transition: all 0.3s ease;
+  }
+
+  &__icon-new {
+    width: 16px;
+    height: 16px;
+    fill: #ffffff;
+    transform: scale(0);
+    transition: all 0.3s ease;
+  }
+
+  &__text {
+    width: calc(100% - 3rem);
+    font-size: 14px;
+    color: #2A3547;
+    transition: all 0.3s ease;
+
+    .custom-checkbox-group .custom-checkbox--xs & {
+      width: calc(100% - 2.1rem);
+    }
+
+    .custom-checkbox-group & {
+      transform: translateY(-2px);
+    }
+
+    .sort-action & {
+      width: auto;
+      font-size: 1.2rem;
+      line-height: 2rem;
+      color: #889ab5;
+    }
+
+    .unread & {
+      color: #5d87ff;
+    }
+
+    &.selected {
+      color: #080617 !important;
+    }
+  }
+
+  &__input:checked + &__label &__icon-wrap {
+    background-color: #5d87ff;
+    border-color: #5d87ff;
+
+    .custom-checkbox.disabled & {
+      background-color: #cecdd1;
+      border-color: #cecdd1;
+    }
+  }
+
+  &__input:checked + &__label &__icon {
+    transform: scale(1);
+  }
+
+  &__input:checked + &__label &__icon-new {
+    transform: scale(1.5);
+  }
+
+  &__input:checked + &__label &__text {
+    color: #5d87ff;
+
+    .custom-checkbox--xs & {
+      color: #000000;
+    }
+  }
+}
+

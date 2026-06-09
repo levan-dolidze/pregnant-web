@@ -1,0 +1,103 @@
+@use 'variables' as *;
+@use 'mixins' as *;
+
+
+.wrapper {
+    width: 100%;
+
+    &__inner {
+        @include flex-center-between;
+        @include noWrap;
+        width: 100%;
+        position: relative;
+        border: 1px solid var(--border);
+        border-radius: 20px;
+        padding: 14px 16px;
+        gap: 24px;
+    }
+
+    &__left {
+        >div:first-child {
+            letter-spacing: 0;
+            @include font(24px, 700, var(--black-white), $font-bold);
+        }
+    }
+
+    &__right {
+        display: flex;
+        gap: 8px;
+
+        &__btns {
+            background-color: var(--toggle);
+            border-radius: 1000px;
+            transition: transform 0.20s ease-in,
+                background-color 0.20s ease;
+            padding: 8px 16px;
+            display: inline-grid;
+            align-items: center;
+            justify-content: center;
+            width: max-content;
+
+            &::after {
+                content: attr(data-value);
+                visibility: hidden;
+                white-space: pre;
+                grid-area: 1/1;
+                @include font(14px, 500, var(--label), $font-medium);
+            }
+
+            input[type="text"] {
+                grid-area: 1/1;
+                width: 100%;
+                min-width: 0;
+                @include font(14px, 500, var(--label), $font-medium);
+                border: none;
+                background: transparent;
+                outline: none;
+                text-align: center;
+                cursor: pointer;
+                border-radius: 1000px;
+                transition: background-color 0.25s ease;
+                field-sizing: content;
+            }
+        }
+
+    }
+
+    .active {
+        background-color: $primary;
+        transform: translateX(0);
+        transition: transform 0.20s ease-out,
+            background-color 0.20s ease;
+
+        input[type="text"] {
+            background-color: $primary;
+            color: $white;
+        }
+    }
+}
+
+@media screen and (max-width: 400px) {
+    .wrapper {
+        &__inner {
+            gap: 2px;
+        }
+
+        &__right {
+            &__btns {
+                input[type="text"] {
+                    @include font(13px, 500, var(--label), $font-medium);
+                }
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 360px) {
+    .wrapper {
+        &__inner {
+            display: grid;
+            gap: 8px;
+        }
+    }
+}

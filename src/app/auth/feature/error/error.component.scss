@@ -1,0 +1,43 @@
+@use "../../../../assets/scss/mixins" as *;
+@use "../../../../assets/scss/variables" as *;
+
+
+.error-containner {
+    width: 100%;
+    height: calc(100vh - 90px);
+
+    .error-inner {
+        @include centerElement;
+        display: grid;
+        place-items: center;
+        text-align: center;
+        gap: 10px;
+        width: 100%;
+
+        .error {
+            @include iconFrame(40px, 40px);
+            background-image: url('../../../../assets/icons/Vector12.png');
+            background-size: 20px 15px;
+            background-color: $pink-1;
+        }
+
+        > :first-child {
+            color: $originBlack;
+        }
+
+        > :nth-child(2) {
+            margin-top: 10px;
+            @include font(24px, 500, $originBlack, $font-medium);
+        }
+
+        > :last-child {
+            @include font(14px, 400, $gray-2, $font-default);
+        }
+
+        @media (max-width: 768px) {
+            > :nth-child(2) {
+                @include font(20px, 500, $originBlack, $font-medium);
+            }
+        }
+    }
+}

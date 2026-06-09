@@ -1,0 +1,52 @@
+@use "../../../assets/scss/variables" as *;
+@use "../../../assets/scss/mixins" as *;
+
+
+.dialog {
+  display: grid;
+
+  &__header {
+    display: grid;
+    padding: 20px;
+  }
+
+  &__close {
+    place-self: end end;
+    display: grid;
+  }
+
+  &__content {
+    display: grid;
+    gap: 20px;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  &__icon {
+    place-self: center
+  }
+
+  &__title {
+    @include font(16px, 700, $gray-1, $font-medium);
+  }
+
+  &__message {
+    @include font(14px, 400, $gray-1, $font-default);
+    padding: 0px 22px;
+  }
+
+  &__actions {
+    display: grid;
+    gap: 16px;
+    padding: 24px;
+    width: 100%;
+  }
+}
+
+
+::ng-deep .mdc-dialog--open .mat-mdc-dialog-surface,
+.mdc-dialog--closing .mat-mdc-dialog-surface {
+  border-radius: 14px;
+  transform: none;
+  border: none;
+}

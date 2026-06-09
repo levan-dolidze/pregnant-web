@@ -1,0 +1,34 @@
+@use 'variables' as *;
+@use 'mixins' as *;
+
+.list-item {
+    display: grid;
+    gap: 12px;
+
+    &__content {
+        @include flex-center-between;
+        padding: 24px 16px;
+        border-radius: 16px;
+        background: var(--bg300);
+        gap: 16px;
+    }
+
+    &__info {
+        flex: 1;
+        display: grid;
+        gap: 8px
+    }
+
+    &__title {
+        @include font(14px, 700, var(--label), $font-default);
+    }
+
+    &__subtitle {
+        @include font(14px, 400, var(--label), $font-default);
+    }
+
+    &__arrow {
+        background: var(--arrow-right);
+        @include iconFrame(37px, 42px);
+    }
+}

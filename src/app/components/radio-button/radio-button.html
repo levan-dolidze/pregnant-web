@@ -1,0 +1,21 @@
+<ng-container *transloco="let t">
+
+<div class="radio-container"
+ [ngClass]="{'disabled': data?.isDisabled}">
+  <div class="radio-wrapper">
+    <mat-radio-button
+      [disabled]="data?.isDisabled"
+      [value]="value"
+      (change)="onSelect(data)"
+      [checked]="checked">
+      <div class="radio-wrapper__content">
+        <div class="radio-wrapper__text">
+          <div>{{ data?.displayName }}</div>
+          <div>{{ data?.displaySubName }}</div>
+        </div>
+      </div>
+    </mat-radio-button>
+  </div>
+</div>
+
+</ng-container>

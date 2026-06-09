@@ -1,0 +1,10 @@
+// @import "header";
+
+.root-container {
+    overflow-y: auto;
+    max-height: calc(100vh - 20px);
+
+    &__main {
+        padding: 0px 1rem;
+    }
+}

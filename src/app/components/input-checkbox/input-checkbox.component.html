@@ -1,0 +1,39 @@
+<ng-container *transloco="let t">
+
+    <div class="checkbox-wrapper">
+        @for (item of data; track $index) {
+
+        <div class="checkbox-wrapper__checkbox" [class.disabled]="isDisabled" [class.active]="item.value">
+            <mat-checkbox color="primary" 
+             [checked]="item.value"
+             [disabled]="isDisabled"
+             (change)="updateModel($event,item)"
+             >
+                <div class="checkbox-wrapper__display">
+                <div class="checkbox-wrapper__text">
+                    <div>
+                 {{ item.displayName }}
+                    </div>
+                    <div>
+                  {{ item.displaySubName }}
+                    </div>
+                </div>
+
+                <div class="checkbox-wrapper__actions">
+                    <div class="checkbox-wrapper__edit"
+                    onKeyPress
+                    (click)="onActionClick($event,'edit',item)">
+                    </div>
+                    <div class="checkbox-wrapper__delete"
+                    onKeyPress
+                    (click)="onActionClick($event,'delete',item)">
+                    </div>
+                </div>
+               </div>
+            </mat-checkbox>
+        </div>
+
+        }
+    </div>
+
+</ng-container>

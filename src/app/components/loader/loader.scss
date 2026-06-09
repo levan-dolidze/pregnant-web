@@ -1,0 +1,9 @@
+.loading-container {
+    display: grid;
+    
+    .blocker {
+        place-self: center center;
+        position: absolute;
+        top: 50%;
+    }
+}

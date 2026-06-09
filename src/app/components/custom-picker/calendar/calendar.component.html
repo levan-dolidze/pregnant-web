@@ -1,0 +1,19 @@
+
+<div class="calendar-container">
+  <div class="first-view">
+    <mat-calendar id="firstCalendarView" #firstCalendarView [startAt]="firstCalendarViewData.startDate"
+      [selected]="selectedDates" (selectedChange)="updateDateRangeSelection($event)"
+      (monthSelected)="monthSelected($event)" [minDate]="minDate" [maxDate]="maxDate"
+      [headerComponent]="customCalendarHeader"
+
+      ></mat-calendar>
+  </div>
+  <div class="second-view">
+    <mat-calendar 
+        [headerComponent]="customCalendarHeader"
+    id="secondCalendarView" #secondCalendarView [startAt]="secondCalendarViewData.startDate"
+      [minDate]="secondCalendarViewData.minDate" [maxDate]="maxDate" [selected]="selectedDates"
+      (selectedChange)="updateDateRangeSelection($event)"
+      (monthSelected)=" secondViewMonthSelected($event)"></mat-calendar>
+  </div>
+</div>

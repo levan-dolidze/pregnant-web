@@ -1,0 +1,33 @@
+::ng-deep {
+  .mat-mdc-form-field-subscript-wrapper,
+  .input-block .mat-mdc-select-arrow-wrapper {
+    display: none;
+  }
+}
+.isReadonly {
+  pointer-events: none;
+}
+.input-block {
+  position: relative;
+
+  .dropdown-icon {
+    width: 24px;
+    height: 24px;
+    position: absolute;
+    right: 2px;
+    transition: transform 0.3s ease;
+  }
+  .close-icon {
+    width: 16px;
+    height: 9px;
+    position: absolute;
+    right: 25px;
+    transition: transform 0.3s ease;
+  }
+
+  .open {
+    .dropdown-icon {
+      transform: rotate(180deg);
+    }
+  }
+}
