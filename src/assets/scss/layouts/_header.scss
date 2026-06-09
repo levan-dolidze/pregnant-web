@@ -26,6 +26,7 @@ html .topbar {
     @include flex-center;
     @include font(14px, 400, $gray-2, $font-default);
     gap: 10px;
+    margin-right: 50px;
   }
 
   &__navs {
@@ -38,6 +39,8 @@ html .topbar {
       }
     }
   }
+
+  &__logout {}
 
   &__burger {
     display: none;
@@ -73,6 +76,23 @@ html .topbar {
   }
 }
 
+.topbar__mobile-logout {
+  margin: 0.5rem 1.5rem;
+  padding: 0.625rem 1.25rem;
+  background: transparent;
+  border: 1px solid currentColor;
+  border-radius: 6px;
+  cursor: pointer;
+  @include font(15px, 500, $black, $font-medium);
+  text-align: center;
+  transition: background-color .2s ease, color .2s ease;
+  align-self: flex-start;
+
+  &:hover {
+    background-color: hsla(0, 0%, 0%, .04);
+  }
+}
+
 @keyframes topbar-stuck {
   to {
     border-radius: 0 0 20px 20px;
@@ -84,6 +104,7 @@ html .topbar {
     opacity: 0;
     transform: translateY(-8px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);
@@ -104,6 +125,10 @@ html .topbar {
 
     &__burger {
       display: flex;
+    }
+
+    &__logout {
+      display: none;
     }
   }
 }

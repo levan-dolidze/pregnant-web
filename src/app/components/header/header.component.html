@@ -72,16 +72,22 @@
       <mat-icon>{{ isMenuOpen() ? 'close' : 'menu' }}</mat-icon>
     </button>
 
+    <div class="topbar__logout">
+      <app-button 
+      [text]="t('LogIn')" 
+      (btnClick)="onLogIn()" 
+      className="stroked mini">
+      </app-button>
+    </div>
+
     <!-- <button mat-icon-button [matMenuTriggerFor]="profilemenu" aria-label="Notifications" id="al" aria-label="accou">
       <img src="/assets/images/svgs/icon-account.svg" class="rounded-circle object-cover icon-30 profile-dd" width="18"
         height="18" alt="account" />
     </button> -->
-    <mat-menu #profilemenu="matMenu" class="topbar-dd cardWithShadow">
-      <!-- p-y-16 -->
+    <!-- <mat-menu #profilemenu="matMenu" class="topbar-dd cardWithShadow">
       <div class="p-x-32">
         <div class="d-flex align-items-center p-b-24 b-b-1 m-t-16">
           <img src="/assets/images/svgs/icon-account.svg" class="rounded-circle" width="95" alt="account" />
-          <!-- @if (userProfile()) { -->
           <div class="m-l-16">
 
             <h6 class="f-s-14 f-w-600 m-0 mat-subtitle-1 caps-uppercase">{{'454587'}}</h6>
@@ -89,12 +95,11 @@
             <a class="profile-address caps-medium" routerLink="/profile-details">{{t('User_Profile')}}</a>
             <a class="profile-address caps-medium" routerLink="/provider-profile-details">{{t('User_Profile')}}</a>
           </div>
-          <!-- } -->
         </div>
       </div>
 
 
-    </mat-menu>
+    </mat-menu> -->
   </mat-toolbar>
 
   @if (isMenuOpen()) {
@@ -108,10 +113,12 @@
           {{ t(item.name) }}
         </a>
       }
+        <app-button 
+        [text]="t('LogOut')" 
+        (btnClick)="onLogOut()" className="stroked mini">
+        </app-button>
     </nav>
   }
 
-  <!-- <div>
-      <app-button [text]="t('LogOut')" (btnClick)="onLogOut()" className="stroked mini"></app-button>
-    </div> -->
+
 </ng-container>

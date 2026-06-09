@@ -2,6 +2,8 @@
   "Home": "Home",
   "About": "About",
   "Contact": "Contact",
+  "LogOut": "Logout",
+  "LogIn":"LogIn",
   "Traveller_details": "Traveller Details",
   "OTP_sent": "OTP has already send sent",
   "OTP_resend": "resend",

@@ -4,12 +4,13 @@
 @mixin buttonBase {
   @include flex-center;
   @include noWrap;
-  @include font(16px, 400, $white, $font-bold);
-  height: 60px;
+  @include font(14px, 400, $white, $font-medium);
+  height: 48px;
   border: 0px;
-  border-radius: 72px;
+  border-radius: 50px;
   position: relative;
   outline: none;
+  padding: 0px 18px
 }
 
 
@@ -41,7 +42,7 @@
 .stroked {
   background-color: $white;
   color: $gray-1;
-  border: 1px solid $gray300;
+  border: 1px solid $gray200;
 }
 
 .stroked-fill {

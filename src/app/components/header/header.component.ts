@@ -107,6 +107,11 @@ export class HeaderComponent implements OnInit {
 
 
 
+  onLogIn(){
+
+  }
+
+  
   onLogOut() {
 
   }
