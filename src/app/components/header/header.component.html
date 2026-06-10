@@ -63,12 +63,29 @@
       <mat-icon>{{ isMenuOpen() ? 'close' : 'menu' }}</mat-icon>
     </button>
 
-    <div class="topbar__logout">
-      <app-button
-        [text]="t('LogIn')"
-        (btnClick)="onLogIn()"
-        className="stroked mini">
-      </app-button>
+    <!-- Profile dropdown -->
+    <div class="topbar__profile">
+      <button class="topbar__profile-btn" [matMenuTriggerFor]="profileMenu" aria-label="Profile">
+        <mat-icon>person</mat-icon>
+      </button>
+
+      <mat-menu #profileMenu="matMenu" class="topbar__profile-panel" xPosition="before">
+        <div class="topbar__profile-hd">
+          <span class="topbar__profile-avatar">
+            <mat-icon>person</mat-icon>
+          </span>
+          <span class="topbar__profile-greeting">გამარჯობა</span>
+        </div>
+
+        <a mat-menu-item routerLink="/profile">{{ t('Profile') }}</a>
+        <a mat-menu-item routerLink="/my-products">{{ t('My_Products') }}</a>
+
+        <div class="topbar__profile-sep"></div>
+
+        <button mat-menu-item class="topbar__profile-logout-item" (click)="onLogOut()">
+          {{ t('LogOut') }}
+        </button>
+      </mat-menu>
     </div>
   </mat-toolbar>
 

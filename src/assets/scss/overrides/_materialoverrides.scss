@@ -1,5 +1,6 @@
 // .light-theme {
 @import "./buttons";
+@import "./header";
 @import "./form";
 @import "./checkbox";
 @import "./radio";
@@ -54,6 +55,69 @@
 
 .mat-mdc-icon-button .mat-mdc-button-persistent-ripple {
   visibility: hidden;
+}
+
+.topbar__profile-panel {
+  .topbar__profile-hd {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 16px 20px 14px;
+    border-bottom: 1px solid $gray5;
+    pointer-events: none;
+  }
+
+  .topbar__profile-avatar {
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    background: rgba($primary, .12);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: $primary;
+    flex-shrink: 0;
+
+    mat-icon { font-size: 20px; width: 20px; height: 20px; }
+  }
+
+  .topbar__profile-greeting {
+    font-family: $font-medium !important;
+    font-size: 14px !important;
+    font-weight: 600 !important;
+    color: $black !important;
+  }
+
+  .mat-mdc-menu-item,
+  .mat-mdc-menu-item .mat-mdc-menu-item-text,
+  .mat-mdc-menu-item .mdc-list-item__primary-text {
+    font-family: $font-medium !important;
+    font-size: 14px !important;
+    font-weight: 400 !important;
+    color: $black !important;
+    letter-spacing: normal !important;
+  }
+
+  .mat-mdc-menu-item:hover .mat-mdc-menu-item-text,
+  .mat-mdc-menu-item:hover .mdc-list-item__primary-text {
+    color: $primary !important;
+  }
+
+  .topbar__profile-sep {
+    height: 1px;
+    background: $gray5;
+    margin: 4px 0;
+    pointer-events: none;
+  }
+
+  .topbar__profile-logout-item .mat-mdc-menu-item-text,
+  .topbar__profile-logout-item .mdc-list-item__primary-text {
+    color: $red !important;
+  }
+
+  .topbar__profile-logout-item:hover {
+    background: rgba($red, .06) !important;
+  }
 }
 
 
