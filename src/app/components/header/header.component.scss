@@ -1,6 +1,6 @@
 @use 'variables' as *;
+@use 'mixins' as *;
 
-// ─── Trigger — matches the nav <a> exactly ───────────────────────
 .topbar__navs-trigger {
   display: inline-flex;
   align-items: center;
@@ -15,7 +15,9 @@
   color: $black;
   line-height: inherit;
 
-  &:hover { opacity: .75; }
+  &:hover {
+    opacity: .75;
+  }
 }
 
 .topbar__navs--child-active .topbar__navs-trigger {
@@ -33,13 +35,14 @@
   }
 }
 
-// ─── Material menu panel ─────────────────────────────────────────
 .topbar__dropdown-panel {
   .mat-mdc-menu-panel {
     border-radius: 14px !important;
     box-shadow: 0 8px 32px rgba(0, 0, 0, .1) !important;
     min-width: 180px;
     padding: 4px;
+    z-index: 1;
+
   }
 
   .mat-mdc-menu-item {
@@ -50,9 +53,14 @@
     color: $black;
     min-height: 40px;
 
-    .mat-mdc-menu-item-text { font-size: 14px; font-family: $font-medium; }
+    .mat-mdc-menu-item-text {
+      font-size: 14px;
+      font-family: $font-medium;
+    }
 
-    &:hover .mat-mdc-menu-item-text { color: $primary; }
+    &:hover .mat-mdc-menu-item-text {
+      color: $primary;
+    }
   }
 }
 
@@ -61,16 +69,11 @@
   color: $primary !important;
 }
 
-// ─── Mobile ──────────────────────────────────────────────────────
 .topbar__mobile-group {
   display: block;
-  font-size: 11px;
-  font-weight: 700;
-  letter-spacing: .08em;
+  @include font(12px, 700, $gray13, $font-medium);
   text-transform: uppercase;
-  color: $gray13;
   padding: 10px 1.5rem 4px;
-  font-family: $font-medium;
 }
 
 .topbar__mobile-link--child {

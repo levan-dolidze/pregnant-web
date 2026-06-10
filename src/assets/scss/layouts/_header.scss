@@ -55,7 +55,7 @@ html .topbar {
   left: 0;
   right: 0;
   z-index: 99;
-
+  background-color: $white;
   padding: 1rem 0;
   animation: mobile-menu-in .25s ease-out;
 }
@@ -63,7 +63,7 @@ html .topbar {
 .topbar__mobile-link {
   text-decoration: none;
   padding: 0.875rem 1.5rem;
-  @include font(15px, 500, $black, $font-medium);
+  @include font(14px, 500, $black, $font-medium);
   transition: background-color .2s ease, color .2s ease;
 
   &:hover {
