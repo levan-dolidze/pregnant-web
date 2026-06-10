@@ -67,17 +67,17 @@ export class HeaderComponent implements OnInit {
 
 
   menuConfig = [
-    { routerLink: '/home',  name: 'Home',         index: 0 },
-    { routerLink: '/about', name: 'Doctor',        index: 1 },
+    // { routerLink: '/home',  name: 'Home', index: 0 },
     {
-      name: 'For_Parents', index: 2,
+      name: 'For_Me', index: 1,
       children: [
         { name: 'Pregnant_School', routerLink: '/services' },
         { name: 'Shop',            routerLink: '/shop' }
       ]
     },
-    { name: 'For_Children', index: 3, children: [] },
-    { name: 'Other',        index: 4, children: [] },
+    { name: 'For_Children', index: 2, children: [] },
+    { name: 'More',         index: 3, children: [] },
+    { routerLink: '/about', name: 'Doctor',  index: 4 },
     { routerLink: '/blog',    name: 'Blog',    index: 5 },
     { routerLink: '/contact', name: 'Contact', index: 6 },
   ] as MenuConfig[]

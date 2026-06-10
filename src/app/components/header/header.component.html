@@ -32,7 +32,7 @@
       @for (item of menuConfig; track $index) {
         <nav class="topbar__navs" [class.topbar__navs--child-active]="isChildActive(item)" [attr.aria-label]="t(item.name)">
 
-          @if (item.children !== undefined) {
+          @if (item.children) {
             <button class="topbar__navs-trigger" [matMenuTriggerFor]="dropMenu">
               {{ t(item.name) }}
               <mat-icon class="topbar__navs-chevron">expand_more</mat-icon>
