@@ -81,7 +81,8 @@ export class HeaderComponent implements OnInit {
       name: 'Services',
       index: 2,
       children: [
-        { name: 'Pregnant_School', routerLink: '/services' }
+        { name: 'Pregnant_School', routerLink: '/services' },
+        { name: 'Shop', routerLink: '/shop' }
       ]
     },
     {
