@@ -1,5 +1,6 @@
 import { AfterViewInit, Component, ElementRef, inject, Input, OnDestroy, OnInit, signal, ViewChild } from '@angular/core';
 import { HeaderComponent } from '../header/header.component';
+import { FooterComponent } from '../footer/footer.component';
 import { RouterOutlet } from '@angular/router';
 import { AppSettings } from './utils/config';
 import { ScreenType } from './utils/models';
@@ -21,7 +22,7 @@ export class Query {
 
 @Component({
   selector: 'app-layout',
-  imports: [HeaderComponent, RouterOutlet],
+  imports: [HeaderComponent, FooterComponent, RouterOutlet],
   templateUrl: './layout.component.html',
 })
 export class LayoutComponent implements OnInit {
