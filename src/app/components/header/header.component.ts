@@ -74,7 +74,7 @@ export class HeaderComponent implements OnInit {
     },
     {
       routerLink: '/about',
-      name: 'About',
+      name: 'Doctor',
       index: 1
     },
     {
