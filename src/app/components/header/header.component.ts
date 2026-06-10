@@ -67,34 +67,19 @@ export class HeaderComponent implements OnInit {
 
 
   menuConfig = [
+    { routerLink: '/home',  name: 'Home',         index: 0 },
+    { routerLink: '/about', name: 'Doctor',        index: 1 },
     {
-      routerLink: '/home',
-      name: 'Home',
-      index: 0
-    },
-    {
-      routerLink: '/about',
-      name: 'Doctor',
-      index: 1
-    },
-    {
-      name: 'Services',
-      index: 2,
+      name: 'For_Parents', index: 2,
       children: [
         { name: 'Pregnant_School', routerLink: '/services' },
-        { name: 'Shop', routerLink: '/shop' }
+        { name: 'Shop',            routerLink: '/shop' }
       ]
     },
-    {
-      routerLink: '/blog',
-      name: 'Blog',
-      index: 3
-    },
-    {
-      routerLink: '/contact',
-      name: 'Contact',
-      index: 3
-    },
+    { name: 'For_Children', index: 3, children: [] },
+    { name: 'Other',        index: 4, children: [] },
+    { routerLink: '/blog',    name: 'Blog',    index: 5 },
+    { routerLink: '/contact', name: 'Contact', index: 6 },
   ] as MenuConfig[]
 
   isChildActive(item: MenuConfig): boolean {

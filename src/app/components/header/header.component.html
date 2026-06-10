@@ -32,7 +32,7 @@
       @for (item of menuConfig; track $index) {
         <nav class="topbar__navs" [class.topbar__navs--child-active]="isChildActive(item)" [attr.aria-label]="t(item.name)">
 
-          @if (item.children?.length) {
+          @if (item.children !== undefined) {
             <button class="topbar__navs-trigger" [matMenuTriggerFor]="dropMenu">
               {{ t(item.name) }}
               <mat-icon class="topbar__navs-chevron">expand_more</mat-icon>
@@ -76,7 +76,7 @@
   @if (isMenuOpen()) {
     <nav class="topbar__mobile-menu" aria-label="Mobile navigation">
       @for (item of menuConfig; track $index) {
-        @if (item.children?.length) {
+        @if (item.children !== undefined) {
           <span class="topbar__mobile-group">{{ t(item.name) }}</span>
           @for (child of item.children; track child.routerLink) {
             <a class="topbar__mobile-link topbar__mobile-link--child"
