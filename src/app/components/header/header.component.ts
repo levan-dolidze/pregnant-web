@@ -4,11 +4,9 @@ import { ActivatedRoute, NavigationEnd, Router, RouterLink, RouterLinkActive } f
 import { distinctUntilChanged, filter, map } from 'rxjs';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { TranslocoModule } from '@jsverse/transloco';
-import { createPostMessage } from 'src/app/shared/functions/postMessage';
 import { selectStep } from 'src/app/shared/state/step-state/step-selectors';
 import { Store } from '@ngrx/store';
 import { LoaderService } from '../loader/loader.service';
-import { DataLayerModel, initGmt, ProductIdDataLayers } from 'src/app/shared/functions/data-layer';
 import { MaterialModule } from 'src/app/shared/shared-module/material.module';
 import { SharedModule } from 'src/app/shared/shared-module/shared';
 import { MenuConfig } from './utils';
@@ -80,9 +78,14 @@ export class HeaderComponent implements OnInit {
       index: 1
     },
     {
+      routerLink: '/blog',
+      name: 'Blog',
+      index: 2
+    },
+    {
       routerLink: '/contact',
       name: 'Contact',
-      index: 2
+      index: 3
     },
   ] as MenuConfig[]
 

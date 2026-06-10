@@ -1,0 +1,38 @@
+<main class="blog">
+
+  <section class="blog-hero" aria-label="Blog hero">
+    <div class="blog-hero__inner">
+      <span class="badge badge--pink">
+        <span class="badge__dot" aria-hidden="true"></span>
+        ბლოგი
+      </span>
+      <h1 class="blog-hero__title">სტატიები &amp; სიახლეები</h1>
+      <p class="blog-hero__desc">ექსპერტული ინფორმაცია ორსულობის, ჯანმრთელობისა და დედობის შესახებ.</p>
+    </div>
+  </section>
+
+  <section class="blog-posts" aria-labelledby="posts-title">
+    <div class="blog-posts__inner">
+      <ul class="posts-grid">
+        @for (post of posts; track post.id) {
+          <li class="post-card">
+            <a class="post-card__img-wrap" href="#" [attr.aria-label]="post.title">
+              <img class="post-card__img" [src]="post.image" [alt]="post.title">
+            </a>
+            <div class="post-card__body">
+              <p class="post-card__meta">{{ post.author }} &bull; {{ post.date }}</p>
+              <h2 class="post-card__title">{{ post.title }}</h2>
+              <p class="post-card__excerpt">{{ post.excerpt }}</p>
+              <ul class="post-card__tags" aria-label="კატეგორიები">
+                @for (tag of post.tags; track tag) {
+                  <li class="post-card__tag">{{ tag }}</li>
+                }
+              </ul>
+            </div>
+          </li>
+        }
+      </ul>
+    </div>
+  </section>
+
+</main>

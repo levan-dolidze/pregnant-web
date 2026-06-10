@@ -62,6 +62,13 @@ export const routes: Routes = [
             (m) => m.ContactComponent
           ),
       },
+      {
+        path: 'blog',
+        loadComponent: () =>
+          import('./features/blog/blog.component').then(
+            (m) => m.BlogComponent
+          ),
+      },
     ],
   },
   { path: '**', redirectTo: '' },
