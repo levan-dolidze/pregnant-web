@@ -90,6 +90,8 @@
 
   &__content {
     min-width: 0;
+    width: 100%;
+    overflow: hidden;
     @media (max-width: 900px) { order: -1; }
   }
 
@@ -99,7 +101,8 @@
     color: $blue;
     line-height: 1.1;
     margin: 14px 0 16px;
-    overflow-wrap: break-word;
+    word-break: break-word;
+    overflow-wrap: anywhere;
   }
 
   &__title-accent { @include gradient-text(); font-style: normal; }
@@ -108,27 +111,24 @@
     font-size: clamp(14px, 2vw, 16px);
     color: $gray13;
     line-height: 1.65;
-    max-width: 480px;
+    max-width: 100%;
     margin: 0 0 28px;
-    overflow-wrap: break-word;
-
-    @media (max-width: 900px) { max-width: 100%; }
+    word-break: break-word;
+    overflow-wrap: anywhere;
   }
 
   &__stats {
     display: flex;
     align-items: center;
-    gap: 20px;
+    gap: 16px;
     margin-bottom: 32px;
     flex-wrap: wrap;
-
-    @media (max-width: 380px) { gap: 12px; }
   }
 
-  &__stat        { display: flex; flex-direction: column; }
-  &__stat-value  { @include gradient-text(); font-size: clamp(16px, 3vw, 24px); font-weight: 800; line-height: 1; }
+  &__stat        { display: flex; flex-direction: column; min-width: 0; }
+  &__stat-value  { @include gradient-text(); font-size: clamp(15px, 3vw, 24px); font-weight: 800; line-height: 1; }
   &__stat-label  { font-size: 11px; color: $gray13; margin-top: 4px; white-space: nowrap; }
-  &__stat-sep    { width: 1px; height: 32px; background: rgba($primary, .2); flex-shrink: 0; }
+  &__stat-sep    { width: 1px; height: 28px; background: rgba($primary, .2); flex-shrink: 0; }
 }
 
 // ─── Bio ───────────────────────────────────────────────────────
@@ -147,12 +147,14 @@
   }
 
   &__body {
+    min-width: 0;
     p {
       font-size: 15px;
       color: $gray700;
       line-height: 1.8;
       margin: 0 0 18px;
-      overflow-wrap: break-word;
+      word-break: break-word;
+      overflow-wrap: anywhere;
 
       &:last-child { margin-bottom: 0; }
       &:first-child { font-size: clamp(15px, 2vw, 17px); color: $blue; font-weight: 500; line-height: 1.7; }
