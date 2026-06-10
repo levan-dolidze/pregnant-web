@@ -106,7 +106,7 @@ $grad-hero: linear-gradient(140deg, #faf5ff 0%, #ede5ff 45%, #ffe4f2 100%);
   .badge { margin-bottom: 16px; }
 
   &__title {
-    font-size: clamp(26px, 4vw, 44px);
+    font-size: clamp(18px, 3vw, 24px);
     font-weight: 800;
     color: $blue;
     margin: 0 0 14px;
@@ -167,7 +167,7 @@ $grad-hero: linear-gradient(140deg, #faf5ff 0%, #ede5ff 45%, #ffe4f2 100%);
   }
 
   &__title {
-    font-size: clamp(28px, 4.5vw, 52px);
+    font-size: clamp(18px, 3.5vw, 24px);
     font-weight: 800;
     color: $white;
     margin: 0 0 16px;

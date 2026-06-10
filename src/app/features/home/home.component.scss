@@ -37,7 +37,7 @@
   }
 
   &__title {
-    font-size: clamp(36px, 5.8vw, 68px);
+    font-size: clamp(20px, 3.5vw, 24px);
     font-weight: 800;
     color: $blue;
     line-height: 1.08;
@@ -79,7 +79,7 @@
 
   &__stat-value {
     @include gradient-text();
-    font-size: clamp(22px, 3.5vw, 30px);
+    font-size: clamp(18px, 3vw, 24px);
     font-weight: 800;
     line-height: 1;
   }
@@ -227,7 +227,7 @@
     &::before { display: none; }
   }
 
-  &__icon  { font-size: 36px; display: block; margin-bottom: 20px; }
+  &__icon  { font-size: 24px; display: block; margin-bottom: 20px; }
   &__title { font-size: 17px; font-weight: 700; color: $blue; margin: 0 0 10px; }
   &__text  { font-size: 14px; color: $gray13; line-height: 1.65; margin: 0 0 20px; flex: 1; }
   &__link  { font-size: 13px; font-weight: 600; color: $primary; margin-top: auto; }
@@ -291,7 +291,7 @@
   &__info .badge { margin-bottom: 16px; }
 
   &__name {
-    font-size: clamp(26px, 3.5vw, 44px);
+    font-size: clamp(18px, 3vw, 24px);
     font-weight: 800;
     color: $blue;
     margin: 12px 0 6px;
@@ -398,7 +398,7 @@
       position: absolute;
       top: -28px;
       left: -4px;
-      font-size: 60px;
+      font-size: 24px;
       line-height: 1;
       @include gradient-text();
       pointer-events: none;
