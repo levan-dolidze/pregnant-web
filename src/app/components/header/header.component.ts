@@ -67,7 +67,6 @@ export class HeaderComponent implements OnInit {
 
 
   menuConfig = [
-    // { routerLink: '/home',  name: 'Home', index: 0 },
     {
       name: 'For_Me', index: 1,
       children: [
