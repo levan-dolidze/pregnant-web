@@ -3,7 +3,7 @@
 
 .blog-hero {
   background: $grad-hero;
-  padding: clamp(48px, 7vw, 80px) 0;
+  padding: clamp(36px, 7vw, 80px) 0;
   text-align: center;
 
   &__inner {
@@ -11,7 +11,8 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 16px;
+    gap: 14px;
+    padding-inline: 20px;
   }
 
   &__title {
@@ -23,7 +24,7 @@
   }
 
   &__desc {
-    font-size: 16px;
+    font-size: clamp(14px, 2vw, 16px);
     color: $gray13;
     max-width: 480px;
     line-height: 1.65;
@@ -34,7 +35,10 @@
 .blog-posts {
   @include section();
 
-  &__inner { @include inner(); }
+  &__inner {
+    @include inner();
+    padding-inline: clamp(16px, 4vw, 24px);
+  }
 }
 
 .posts-grid {
@@ -45,14 +49,27 @@
   grid-template-columns: repeat(3, 1fr);
   gap: 48px 32px;
 
-  @media (max-width: 900px) { grid-template-columns: repeat(2, 1fr); gap: 40px 24px; }
-  @media (max-width: 560px) { grid-template-columns: 1fr; gap: 40px; }
+  @media (max-width: 900px) {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 36px 20px;
+  }
+
+  @media (max-width: 560px) {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
 }
 
 .post-card {
   display: flex;
   flex-direction: column;
-  gap: 18px;
+  gap: 16px;
+
+  @media (max-width: 560px) {
+    flex-direction: row;
+    gap: 14px;
+    align-items: flex-start;
+  }
 
   &__img-wrap {
     display: block;
@@ -61,6 +78,12 @@
     aspect-ratio: 4 / 3;
     background: $grad-bg;
     flex-shrink: 0;
+
+    @media (max-width: 560px) {
+      width: 110px;
+      aspect-ratio: 1 / 1;
+      border-radius: 12px;
+    }
   }
 
   &__img {
@@ -76,17 +99,19 @@
   &__body {
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: 8px;
+    flex: 1;
+    min-width: 0;
   }
 
   &__meta {
-    font-size: 13px;
+    font-size: 12px;
     color: $gray13;
     margin: 0;
   }
 
   &__title {
-    font-size: 18px;
+    font-size: clamp(15px, 2vw, 18px);
     font-weight: 700;
     color: $blue;
     margin: 0;
@@ -102,6 +127,11 @@
     -webkit-line-clamp: 3;
     -webkit-box-orient: vertical;
     overflow: hidden;
+
+    @media (max-width: 560px) {
+      -webkit-line-clamp: 2;
+      font-size: 13px;
+    }
   }
 
   &__tags {
@@ -110,17 +140,20 @@
     margin: 4px 0 0;
     display: flex;
     flex-wrap: wrap;
-    gap: 8px;
+    gap: 6px;
+
+    @media (max-width: 560px) { margin-top: 2px; }
   }
 
   &__tag {
-    padding: 4px 12px;
+    padding: 3px 10px;
     border: 1.5px solid $gray5;
     border-radius: 50px;
-    font-size: 12px;
+    font-size: 11px;
     color: $gray13;
     font-weight: 500;
     transition: border-color $ease, color $ease;
+    white-space: nowrap;
 
     &:hover { border-color: $primary; color: $primary; }
   }
