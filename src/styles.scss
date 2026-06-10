@@ -1,3 +1,5 @@
+@use 'variables' as *;
+
 .root {
   background-color: var(--bg)
 }
@@ -6,13 +8,13 @@ html,
 body {
   overflow: hidden;
   height: 100%;
-  background-color:#FAFAFA;
+  background-color: $white100;
 }
 
 .customTooltip {
   position: fixed;
-  background-color: #202936;
-  color: #f9f9fa;
+  background-color: $tooltip-bg;
+  color: $tooltip-text;
   padding: 10px 10px;
   border-radius: 8px;
   font-size: 14px;

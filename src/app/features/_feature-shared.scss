@@ -8,7 +8,7 @@ $ease:      .25s ease;
 $r:         20px;
 $grad:      linear-gradient(135deg, $primary, $pink);
 $grad-bg:   linear-gradient(135deg, rgba($primary, .08), rgba($pink, .06));
-$grad-hero: linear-gradient(140deg, #faf5ff 0%, #ede5ff 45%, #ffe4f2 100%);
+$grad-hero: linear-gradient(140deg, $hero-grad-start 0%, $hero-grad-mid 45%, $hero-grad-end 100%);
 
 // ─── Mixins ──────────────────────────────────────────────────────
 @mixin inner {
