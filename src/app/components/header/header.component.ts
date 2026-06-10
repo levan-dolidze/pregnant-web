@@ -78,9 +78,16 @@ export class HeaderComponent implements OnInit {
       index: 1
     },
     {
+      name: 'Services',
+      index: 2,
+      children: [
+        { name: 'Pregnant_School', routerLink: '/services' }
+      ]
+    },
+    {
       routerLink: '/blog',
       name: 'Blog',
-      index: 2
+      index: 3
     },
     {
       routerLink: '/contact',
@@ -88,6 +95,10 @@ export class HeaderComponent implements OnInit {
       index: 3
     },
   ] as MenuConfig[]
+
+  isChildActive(item: MenuConfig): boolean {
+    return item.children?.some(c => this.router.url.startsWith(c.routerLink)) ?? false;
+  }
 
   onBack() {
     globalThis.history.back();

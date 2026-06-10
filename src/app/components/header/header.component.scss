@@ -1,0 +1,84 @@
+@use 'variables' as *;
+
+// ─── Trigger — matches the nav <a> exactly ───────────────────────
+.topbar__navs-trigger {
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  font-size: 14px;
+  font-weight: 400;
+  font-family: $font-medium;
+  color: $black;
+  line-height: inherit;
+
+  &:hover { opacity: .75; }
+}
+
+.topbar__navs--child-active .topbar__navs-trigger {
+  font-weight: 700;
+}
+
+.topbar__navs-chevron {
+  font-size: 16px;
+  width: 16px;
+  height: 16px;
+  transition: transform .2s ease;
+
+  .topbar__navs-trigger[aria-expanded="true"] & {
+    transform: rotate(180deg);
+  }
+}
+
+// ─── Material menu panel ─────────────────────────────────────────
+.topbar__dropdown-panel {
+  .mat-mdc-menu-panel {
+    border-radius: 14px !important;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, .1) !important;
+    min-width: 180px;
+    padding: 4px;
+  }
+
+  .mat-mdc-menu-item {
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 400;
+    font-family: $font-medium;
+    color: $black;
+    min-height: 40px;
+
+    .mat-mdc-menu-item-text { font-size: 14px; font-family: $font-medium; }
+
+    &:hover .mat-mdc-menu-item-text { color: $primary; }
+  }
+}
+
+.topbar__dropdown-item--active {
+  font-weight: 700 !important;
+  color: $primary !important;
+}
+
+// ─── Mobile ──────────────────────────────────────────────────────
+.topbar__mobile-group {
+  display: block;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: $gray13;
+  padding: 10px 1.5rem 4px;
+  font-family: $font-medium;
+}
+
+.topbar__mobile-link--child {
+  padding-left: 2.25rem;
+
+  &::before {
+    content: '›';
+    margin-right: 6px;
+    color: $primary;
+  }
+}
