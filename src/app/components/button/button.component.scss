@@ -5,9 +5,9 @@
   @include flex-center;
   @include noWrap;
   @include font(14px, 400, $white, $font-medium);
-  height: 48px;
+  height: 56px;
   border: 0px;
-  border-radius: 50px;
+  border-radius: 12px;
   position: relative;
   outline: none;
   padding: 0px 18px
@@ -40,7 +40,7 @@
 }
 
 .stroked {
-  background-color: $white;
+  background-color: $gray1;
   color: $gray-1;
   border: 1px solid $gray200;
 }
