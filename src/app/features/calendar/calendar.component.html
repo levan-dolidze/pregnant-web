@@ -1,0 +1,334 @@
+<div class="cal-wrap"
+  (click)="showCreateMenu.set(false); closeEventPopup()"
+  (keydown.escape)="showCreateMenu.set(false); closeEventPopup()">
+
+  <!-- ═══ Sidebar ════════════════════════════════════════════════════ -->
+  <aside class="cal-sidebar">
+
+    <!-- Create button -->
+    <div class="cal-create"
+      (click)="$event.stopPropagation()"
+      (keydown)="$event.stopPropagation()">
+      <button class="cal-create-btn" (click)="showCreateMenu.set(!showCreateMenu())">
+        <img src="assets/icons/_cal-plus.svg" width="16" height="16" aria-hidden="true" alt="">
+        <span>შექმნა</span>
+        <img src="assets/icons/_cal-chevron-down.svg" width="12" height="12" aria-hidden="true" alt="">
+      </button>
+      @if (showCreateMenu()) {
+        <div class="cal-create-menu">
+          <button (click)="openBookingModal()">
+            <span class="cal-create-menu__icon" aria-hidden="true">📅</span> ვიზიტი
+          </button>
+          <button (click)="openBookingModalWithMeet()">
+            <span class="cal-create-menu__icon" aria-hidden="true">📹</span> ვიდეო კონსულტაცია
+          </button>
+        </div>
+      }
+    </div>
+
+    <!-- Mini calendar -->
+    <mat-calendar
+      [selected]="cal.currentDate()"
+      [minDate]="cal.today"
+      (selectedChange)="onMiniCalSelect($event)">
+    </mat-calendar>
+
+    <!-- Search -->
+    <div class="cal-search">
+      <img src="assets/icons/_cal-search.svg" width="16" height="16" aria-hidden="true" alt="">
+      <input aria-label="ადამიანების ძიება" placeholder="ადამიანების ძიება" />
+    </div>
+
+    <!-- Booking pages -->
+    <div class="cal-section">
+      <button class="cal-section__head" (click)="showBookingPages.set(!showBookingPages())"
+        [attr.aria-expanded]="showBookingPages()">
+        <span>დაჯავშნვის გვერდები</span>
+        <img src="assets/icons/_cal-chevron-down.svg" width="14" height="14" aria-hidden="true" alt=""
+          [class.rotated]="!showBookingPages()">
+      </button>
+      @if (showBookingPages()) {
+        <div class="cal-section__item">
+          <img src="assets/icons/_cal-calendar.svg" width="14" height="14" aria-hidden="true" alt="">
+          ექ. სარეზერვო გვერდი
+        </div>
+      }
+    </div>
+
+    <!-- My calendars -->
+    <div class="cal-section">
+      <button class="cal-section__head" (click)="showMyCalendars.set(!showMyCalendars())"
+        [attr.aria-expanded]="showMyCalendars()">
+        <span>ჩემი კალენდრები</span>
+        <img src="assets/icons/_cal-chevron-down.svg" width="14" height="14" aria-hidden="true" alt=""
+          [class.rotated]="!showMyCalendars()">
+      </button>
+      @if (showMyCalendars()) {
+        <label class="cal-section__item cal-section__item--check">
+          <input type="checkbox" checked aria-label="დ-რ თამარას ვიზიტების კალენდარი" />
+          <span class="cal-dot" style="background:#039BE5" aria-hidden="true"></span>
+          დ-რ თამარა · ვიზიტები
+        </label>
+        <label class="cal-section__item cal-section__item--check">
+          <input type="checkbox" checked aria-label="შეხსენებების კალენდარი" />
+          <span class="cal-dot" style="background:#33B679" aria-hidden="true"></span>
+          შეხსენებები
+        </label>
+      }
+    </div>
+
+    <!-- Meet -->
+    <div class="cal-section">
+      <button class="cal-section__head" (click)="showMeetSection.set(!showMeetSection())"
+        [attr.aria-expanded]="showMeetSection()">
+        <span>Meet</span>
+        <img src="assets/icons/_cal-chevron-down.svg" width="14" height="14" aria-hidden="true" alt=""
+          [class.rotated]="!showMeetSection()">
+      </button>
+      @if (showMeetSection()) {
+        <button class="cal-meet-new-btn" (click)="openBookingModalWithMeet()">
+          <img src="assets/icons/_cal-meet-blue.svg" width="16" height="16" aria-hidden="true" alt="">
+          ახალი ვიდეო კონსულტაცია
+        </button>
+      }
+    </div>
+
+  </aside>
+
+  <!-- ═══ Main ═════════════════════════════════════════════════════ -->
+  <div class="cal-main">
+
+    <!-- Toolbar -->
+    <header class="cal-toolbar">
+      <div class="cal-toolbar__left">
+        <div class="cal-logo">
+          <img src="assets/icons/_cal-logo.svg" width="28" height="28" aria-hidden="true" alt="">
+          <span>კალენდარი</span>
+        </div>
+        <button class="cal-today-btn" (click)="cal.goToday()">დღეს</button>
+        <div class="cal-nav">
+          <button (click)="cal.shiftPeriod(-1)" aria-label="წინა პერიოდი">‹</button>
+          <button (click)="cal.shiftPeriod(1)"  aria-label="შემდეგი პერიოდი">›</button>
+        </div>
+        <span class="cal-period-title" aria-live="polite">
+          {{ cal.viewMode() === 'week' ? cal.weekTitle() : cal.dayTitle() }}
+        </span>
+      </div>
+      <div class="cal-toolbar__right">
+        <nav class="cal-view-tabs" aria-label="კალენდრის ხედი">
+          <button [class.active]="cal.viewMode() === 'day'" (click)="setViewMode('day')"
+            [attr.aria-pressed]="cal.viewMode() === 'day'">დღე</button>
+          <button [class.active]="cal.viewMode() === 'week'" (click)="setViewMode('week')"
+            [attr.aria-pressed]="cal.viewMode() === 'week'">კვირა</button>
+        </nav>
+        <button class="cal-icon-btn" aria-label="პარამეტრები">
+          <img src="assets/icons/_cal-settings.svg" width="18" height="18" aria-hidden="true" alt="">
+        </button>
+        <div class="cal-avatar" aria-hidden="true">D</div>
+      </div>
+    </header>
+
+    <!-- Time grid -->
+    <div class="cal-grid-container">
+
+      <!-- Day headers -->
+      <div class="cal-grid-head">
+        <div class="cal-tz-label">GMT+04</div>
+        @for (day of visibleDays(); track $index) {
+          <div class="cal-day-head" [class.is-today]="cal.isToday(day)"
+            [attr.aria-label]="day.toLocaleDateString('ka-GE', { weekday: 'long', month: 'long', day: 'numeric' })">
+            <span class="cal-day-name" aria-hidden="true">{{ dayLabels[day.getDay()] }}</span>
+            <span class="cal-day-num" [class.today-circle]="cal.isToday(day)" aria-hidden="true">
+              {{ day.getDate() }}
+            </span>
+          </div>
+        }
+      </div>
+
+      <!-- All-day row -->
+      <div class="cal-allday-row">
+        <div class="cal-tz-label cal-tz-label--small">მთელი დღე</div>
+        @for (day of visibleDays(); track $index) {
+          <div class="cal-allday-cell"></div>
+        }
+      </div>
+
+      <!-- Scrollable time grid -->
+      <div class="cal-grid-scroll" #gridWrap>
+        <div class="cal-time-grid">
+
+          <!-- Hours column -->
+          <div class="cal-hours-col" aria-hidden="true">
+            @for (h of hours; track $index) {
+              <div class="cal-hour-label">{{ cal.formatHour(h) }}</div>
+            }
+          </div>
+
+          <!-- Day columns -->
+          @for (day of visibleDays(); track $index) {
+            <div class="cal-day-col">
+
+              @for (h of hours; track $index) {
+                <button
+                  class="cal-hour-cell"
+                  [attr.aria-label]="'დაჯავშნე ' + cal.formatShortDate(day) + ' ' + cal.formatHour(h) + '-ზე'"
+                  (click)="openBookingModal(day, h)">
+                </button>
+              }
+
+              @for (layout of cal.eventsForDayWithLayout(day); track layout.ev.id) {
+                <button
+                  class="cal-event"
+                  [style.top]="cal.eventTop(layout.ev)"
+                  [style.height]="cal.eventHeight(layout.ev)"
+                  [style.left]="cal.eventLeft(layout)"
+                  [style.width]="cal.eventWidth(layout)"
+                  [style.background]="layout.ev.color"
+                  [attr.aria-label]="layout.ev.title + ', ' + cal.formatTime(layout.ev.start) + '-დან ' + cal.formatTime(layout.ev.end) + '-მდე'"
+                  (click)="showEventPopup.set(layout.ev); $event.stopPropagation()">
+                  @if (layout.ev.hasMeet) {
+                    <img class="cal-event__meet-icon" src="assets/icons/_cal-meet-white.svg"
+                      width="12" height="12" aria-hidden="true" alt="">
+                  }
+                  <span class="cal-event__title">{{ layout.ev.title }}</span>
+                  <span class="cal-event__time" aria-hidden="true">
+                    {{ cal.formatTime(layout.ev.start) }} – {{ cal.formatTime(layout.ev.end) }}
+                  </span>
+                </button>
+              }
+
+              @if (cal.isToday(day)) {
+                <div class="cal-now" [style.top]="cal.currentTimeTop()" aria-hidden="true">
+                  <div class="cal-now__dot"></div>
+                </div>
+              }
+
+            </div>
+          }
+
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ═══ Event popup ═══════════════════════════════════════════════ -->
+@if (showEventPopup(); as ev) {
+  <div class="cal-popup-overlay"
+    (click)="closeEventPopup()"
+    (keydown.escape)="closeEventPopup()">
+    <dialog class="cal-popup"
+      [attr.aria-label]="ev.title"
+      (click)="$event.stopPropagation()"
+      (keydown.escape)="closeEventPopup()"
+      open>
+      <div class="cal-popup__head" [style.background]="ev.color">
+        <button class="cal-popup__close" (click)="closeEventPopup()" aria-label="დახურვა">✕</button>
+      </div>
+      <div class="cal-popup__body">
+        <h3 class="cal-popup__title">{{ ev.title }}</h3>
+        <div class="cal-popup__row">
+          <img src="assets/icons/_cal-clock.svg" width="16" height="16" aria-hidden="true" alt="">
+          {{ cal.formatShortDate(ev.start) }} · {{ cal.formatTime(ev.start) }} – {{ cal.formatTime(ev.end) }}
+        </div>
+        @if (ev.notes) {
+          <div class="cal-popup__row">
+            <img src="assets/icons/_cal-doc.svg" width="16" height="16" aria-hidden="true" alt="">
+            {{ ev.notes }}
+          </div>
+        }
+        @if (ev.hasMeet && ev.meetLink) {
+          <div class="cal-popup__meet">
+            <img src="assets/icons/_cal-meet-blue.svg" width="18" height="18" aria-hidden="true" alt="">
+            <a [href]="ev.meetLink" target="_blank" rel="noopener noreferrer">შეუერთდი ვიდეო კონსულტაციას</a>
+          </div>
+        }
+      </div>
+      <div class="cal-popup__foot">
+        <button class="cal-popup__del" (click)="deleteEvent(ev)">
+          <img src="assets/icons/_cal-trash.svg" width="16" height="16" aria-hidden="true" alt="">
+          წაშლა
+        </button>
+        <button class="cal-popup__edit" (click)="openEditModal(ev)">რედაქტირება</button>
+      </div>
+    </dialog>
+  </div>
+}
+
+<!-- ═══ Booking modal ════════════════════════════════════════════ -->
+@if (showBookModal()) {
+  <div class="cal-modal-overlay"
+    (click)="closeBookingModal()"
+    (keydown.escape)="closeBookingModal()">
+    <dialog class="cal-modal"
+      aria-labelledby="book-modal-title"
+      (click)="$event.stopPropagation()"
+      (keydown.escape)="closeBookingModal()"
+      open>
+
+      <div class="cal-modal__head">
+        <h2 id="book-modal-title">{{ editingEventId() ? 'ვიზიტის რედაქტირება' : 'ვიზიტის დაჯავშნა' }}</h2>
+        <button (click)="closeBookingModal()" aria-label="დახურვა">✕</button>
+      </div>
+
+      <div class="cal-modal__body">
+        <div class="cal-modal__field">
+          <label for="book-title" class="visually-hidden">ვიზიტის სათაური</label>
+          <input id="book-title" class="cal-modal__title-input"
+            [(ngModel)]="form.title" placeholder="სათაურის დამატება" />
+        </div>
+
+        <div class="cal-modal__field">
+          <lib-date-picker [date]="form.date" placeholder="Date"
+            (changeDate)="onDatePickerChange($event)">
+          </lib-date-picker>
+        </div>
+
+        <div class="cal-modal__field cal-modal__field--row">
+          <img src="assets/icons/_cal-clock.svg" width="16" height="16" aria-hidden="true" alt="">
+          <label for="book-start" class="visually-hidden">დაწყების დრო</label>
+          <input id="book-start" class="cal-modal__input cal-modal__input--time" type="time" [(ngModel)]="form.startTime" />
+          <span class="cal-modal__sep" aria-hidden="true">–</span>
+          <label for="book-end" class="visually-hidden">დასრულების დრო</label>
+          <input id="book-end" class="cal-modal__input cal-modal__input--time" type="time" [(ngModel)]="form.endTime" />
+        </div>
+
+        <div class="cal-modal__field cal-modal__field--row">
+          <img src="assets/icons/_cal-list.svg" width="16" height="16" aria-hidden="true" alt="">
+          <label for="book-notes" class="visually-hidden">შენიშვნები</label>
+          <input id="book-notes" class="cal-modal__input cal-modal__input--full"
+            [(ngModel)]="form.notes" placeholder="შენიშვნის ან ვიზიტის მიზეზის დამატება" />
+        </div>
+
+        <div class="cal-modal__field">
+          <button class="cal-meet-toggle" [class.active]="form.hasMeet"
+            [attr.aria-pressed]="form.hasMeet" (click)="toggleMeet()">
+            @if (form.hasMeet) {
+              <img src="assets/icons/_cal-meet-blue.svg" width="18" height="18" aria-hidden="true" alt="">
+              <span>ვიდეო კონსულტაცია დამატებულია ✓</span>
+            } @else {
+              <img src="assets/icons/_cal-meet-gray.svg" width="18" height="18" aria-hidden="true" alt="">
+              <span>ვიდეო კონსულტაციის დამატება (Meet)</span>
+            }
+          </button>
+          @if (form.hasMeet) {
+            <p class="cal-meet-note">Meet ბმული გენერირდება შენახვისას.</p>
+          }
+        </div>
+      </div>
+
+      @if (formError()) {
+        <p class="cal-modal__error" role="alert">{{ formError() }}</p>
+      }
+
+      <div class="cal-modal__foot">
+        <button class="cal-modal__cancel" (click)="closeBookingModal()">გაუქმება</button>
+        <button class="cal-modal__save" [style.background]="form.color" (click)="saveBooking()">
+          {{ editingEventId() ? 'ცვლილებების შენახვა' : 'დაჯავშნა' }}
+        </button>
+      </div>
+
+    </dialog>
+  </div>
+}

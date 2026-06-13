@@ -48,7 +48,7 @@
             <span class="page-hero__stat-label">კმაყოფილების მაჩვენებელი</span>
           </div>
         </div>
-        <a class="btn btn--primary" href="#">დაჯავშნე კონსულტაცია</a>
+        <app-button text="დაჯავშნე კონსულტაცია" (btnClick)="goToCalendar()"></app-button>
       </div>
     </div>
   </section>
@@ -162,7 +162,7 @@
       <p class="cta__desc">დაჯავშნეთ თქვენი პირველი კონსულტაცია და განიცადეთ ექსპერტიზაზე, თანაგრძნობასა და მტკიცებულებებზე დაფუძნებული მოვლა.
       </p>
       <div class="cta__actions">
-        <a class="btn btn--white" href="#">დაჯავშნე კონსულტაცია</a>
+        <app-button className="btn--white" text="დაჯავშნე კონსულტაცია" (btnClick)="goToCalendar()"></app-button>
         <a class="btn btn--outline-white" href="#">დარეკე ახლავე</a>
       </div>
     </div>

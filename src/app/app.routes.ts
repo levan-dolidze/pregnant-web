@@ -83,6 +83,13 @@ export const routes: Routes = [
             (m) => m.BlogComponent
           ),
       },
+      {
+        path: 'calendar',
+        loadComponent: () =>
+          import('./features/calendar/calendar.component').then(
+            (m) => m.CalendarComponent
+          ),
+      },
     ],
   },
   { path: '**', redirectTo: '' },

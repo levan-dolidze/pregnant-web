@@ -20,7 +20,7 @@
           ვუძღვებით თქვენ ორსულობის ყველა ეტაპზე.
         </p>
         <div class="hero__actions">
-          <app-button  text="ვიზიტზე ჩაწერა"></app-button>
+          <app-button text="ვიზიტზე ჩაწერა" (btnClick)="goToCalendar()"></app-button>
           <app-button 
           className="btn--outline stroked"
           [customIconRight]="'assets/icons/_video.svg'">
@@ -184,7 +184,7 @@
           <li>FIGO-ს წევრი</li>
           <li>ლაპაროსკოპიული ქირურგია</li>
         </ul>
-        <a class="btn btn--primary" href="#">დაჯავშნეთ კონსულტაცია</a>
+        <app-button text="დაჯავშნეთ კონსულტაცია" (btnClick)="goToCalendar()"></app-button>
       </div>
     </div>
   </section>
@@ -242,8 +242,8 @@
       <h2 class="cta__title">თქვენი მოგზაურობა აქ იწყება</h2>
       <p class="cta__desc">ჩაეწერეთ პირველ ვიზიტზე და მიიღეთ ექსპერტული დახმარება პირველი დღიდანვე.</p>
       <div class="cta__actions">
-        <a class="btn btn--white" href="#">ჩაეწერეთ ვიზიტზე</a>
-        <a class="btn btn--outline-white" href="#">დარეკეთ ახლა</a>
+        <app-button className="btn--white" text="ჩაეწერეთ ვიზიტზე" (btnClick)="goToCalendar()"></app-button>
+        <a class="btn btn--outline-white" href="tel:+995000000000">დარეკეთ ახლა</a>
       </div>
     </div>
   </section>
