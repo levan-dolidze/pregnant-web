@@ -23,20 +23,30 @@
 
   &__terms {
     @include flex-init;
+
+    p {
+      gap: 10px;
+        a {
+            text-decoration: none;
+            margin-left: 5px;
+            color: $primary;
+            font-family: $font-medium
+          }
+    }
   }
 }
 
-.ppc-form {
-  display: grid;
-  gap: 16px;
+  .ppc-form {
+    display: grid;
+    gap: 16px;
 
-  app-input {
-    width: 100%;
+    app-input {
+      width: 100%;
+    }
   }
-}
 
-.error-msg {
-  @include font(11px, 400, $red100, $font-default);
-  margin-top: 2px;
-  padding-left: 4px;
-}
+  .error-msg {
+    @include font(11px, 400, $red100, $font-default);
+    margin-top: 2px;
+    padding-left: 4px;
+  }
