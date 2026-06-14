@@ -97,48 +97,23 @@
   <section class="services" aria-labelledby="services-title">
     <div class="services__inner">
       <header class="section-hd">
-        <span class="badge badge--purple">ჩვენი სერვისები</span>
-        <h2 class="section-hd__title" id="services-title">ყოვლისმომცველი მზრუნველობა ორსულობისას</h2>
-        <p class="section-hd__desc">პირველი ტრიმესტრიდან მშობიარობის შემდგომ პერიოდამდე — ჩვენ თქვენს გვერდით ვართ ყოველ ნაბიჯზე.</p>
+        <span class="badge badge--purple">{{ servicesSection().header.badge }}</span>
+        <h2 class="section-hd__title" id="services-title">{{ servicesSection().header.title }}</h2>
+        <p class="section-hd__desc">{{ servicesSection().header.subtitle }}</p>
       </header>
       <ul class="services__grid">
-        <li class="srv-card">
-          <span class="srv-card__icon" aria-hidden="true">🤰</span>
-          <h3 class="srv-card__title">პრენატალური მეთვალყურეობა</h3>
-          <p class="srv-card__text">რეგულარული შემოწმებები, ულტრაბგერა და ლაბორატორიული ანალიზები ბავშვის განვითარების თვალყურის დევნისთვის.</p>
-          <span class="srv-card__link">გაიგეთ მეტი →</span>
-        </li>
-        <li class="srv-card">
-          <span class="srv-card__icon" aria-hidden="true">💊</span>
-          <h3 class="srv-card__title">მაღალი რისკის ორსულობა</h3>
-          <p class="srv-card__text">სპეციალიზებული მოვლა რთული ორსულობებისთვის თანამედროვე დიაგნოსტიკური მხარდაჭერით.</p>
-          <span class="srv-card__link">გაიგეთ მეტი →</span>
-        </li>
-        <li class="srv-card">
-          <span class="srv-card__icon" aria-hidden="true">💬</span>
-          <h3 class="srv-card__title">ონლაინ კონსულტაციები</h3>
-          <p class="srv-card__text">დისტანციური ვიზიტები არაგადაუდებელი კითხვებისა და დაკვირვებისთვის.</p>
-          <span class="srv-card__link">გაიგეთ მეტი →</span>
-        </li>
-            <li class="srv-card">
-              <span class="srv-card__icon" aria-hidden="true">🏥</span>
-              <h3 class="srv-card__title">მშობიარობა &amp; მიღება</h3>
-              <p class="srv-card__text">სრული მხარდაჭერა მშობიარობის დროს თანამედროვე სამშობიაროებში.</p>
-              <span class="srv-card__link">გაიგეთ მეტი →</span>
-            </li>
-
-        <li class="srv-card srv-card--accent">
-          <span class="srv-card__icon" aria-hidden="true">🏥</span>
-          <h3 class="srv-card__title">მშობელთა სკოლა</h3>
-          <p class="srv-card__text">ბავშვის მოვლის ვიდეო კრებული დედებისთვის</p>
-          <span class="srv-card__link">გაიგეთ მეტი →</span>
-        </li>
-        <li class="srv-card srv-card--accent">
-          <span class="srv-card__icon" aria-hidden="true">🛍️</span>
-          <h3 class="srv-card__title">პროდუქტები</h3>
-          <p class="srv-card__text">შერჩეული პროდუქტები ახალშობილთა მოვლისა და მშობიარობის შემდგომი პერიოდისთვის.</p>
-          <span class="srv-card__link">გაიგეთ მეტი →</span>
-        </li>
+        @for (card of servicesSection().cards; track card.title; let i = $index) {
+          <li class="srv-card" [class.srv-card--accent]="card.accent"
+            [style.cursor]="card.action ? 'pointer' : 'default'"
+            (click)="navigate(card.action)"
+            onKeyPress
+            >
+            <span class="srv-card__icon" aria-hidden="true">{{ card.logo }}</span>
+            <h3 class="srv-card__title">{{ card.title }}</h3>
+            <p class="srv-card__text">{{ card.subtitle }}</p>
+            <span class="srv-card__link">გაიგეთ მეტი →</span>
+          </li>
+        }
       </ul>
     </div>
   </section>

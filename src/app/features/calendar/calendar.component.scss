@@ -198,7 +198,7 @@ $hour-height: 60px;
   margin-right: 8px;
 
   span {
-    font-size: 22px;
+    font-size: 18px;
     color: $gray13;
     font-family: $font-default;
     font-weight: 300;
@@ -237,10 +237,7 @@ $hour-height: 60px;
 }
 
 .cal-period-title {
-  font-size: 22px;
-  color: $gray700;
-  font-family: $font-default;
-  font-weight: 400;
+  @include font(18px, 400, $gray700, $font-default);
   margin-left: 4px;
 }
 
