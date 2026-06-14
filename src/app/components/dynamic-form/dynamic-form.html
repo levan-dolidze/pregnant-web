@@ -1,0 +1,148 @@
+﻿<ng-container *transloco="let t">
+  @if (formModelConfig) {
+
+  <div class="modal-cont p-24">
+    <div class="title">
+      <div>
+        <h2 class="caps-medium f-s-20">
+          {{ t(data.title) }}
+        </h2>
+      </div>
+      <div class="close" (click)="onClose()" onKeyPress>
+        <img src="../../../../assets/images/svgs/close.svg" alt="Close" />
+      </div>
+    </div>
+
+    <div class="modal-cont__modal-body">
+      <form [formGroup]="formModel" (ngSubmit)="onSubmit()">
+
+        @for (controlGroup of formModelConfig.sections; let index=$index; track $index;) {
+        @if (formModel.get(controlGroup.controlKey)) {
+
+        <div class="modal-cont__input-item">
+
+          @switch (controlGroup.formFieldType) {
+            <!-- @case ( 'file-upload') {
+              @if (formModelConfig.showFileUpload) {
+              <file-upload [files]="files" 
+                [wrapperTxt]="t(controlGroup.label??'ჩააგდე ფოტო ან')" 
+                [sectionType]="fileTypes.ClientStatement"
+                (fileSelected)="onImageSelected($event)" 
+                [imageSrc]="formModel.get(controlGroup.controlKey)?.value"
+                [allowedFileTypes]="data.allowedFileTypes"
+                />
+              }
+            } -->
+
+          @case ('input') {
+          <app-input [formControlName]="controlGroup.controlKey" 
+                     [placeholder]="controlGroup.label!"
+                     [type]="controlGroup.inputType!" 
+                     [isRequired]="controlGroup.isRequired">
+          </app-input>
+
+          <mat-hint class="error-msg" *validationErrors="
+                                        formModel;
+                                        control: controlGroup.controlKey;
+                                        let err;
+                                        additionalValue: {
+                                          submit:
+                                          formModel.get(controlGroup.controlKey)! &&
+                                          formModel.get(controlGroup.controlKey)?.dirty!,
+                                          patternTypes:controlGroup.patternTypes
+                                        }
+                                      ">
+            {{ err }}
+          </mat-hint>
+          }
+
+          @case ('text-area') {
+          <app-text-area 
+          [formControlName]="controlGroup.controlKey" 
+          [placeholder]="t(controlGroup.label!)" [isRequired]="true">
+          </app-text-area>
+
+          <mat-hint class="error-msg" *validationErrors="
+                                                        formModel;
+                                                        control: controlGroup.controlKey;
+                                                        let err;
+                                                        additionalValue: {
+                                                          submit:
+                                                          formModel.get(controlGroup.controlKey)! &&
+                                                          formModel.get(controlGroup.controlKey)?.dirty!,
+                                                           patternTypes:controlGroup.patternTypes
+                                                        }
+                                                      ">
+            {{ err }}
+          </mat-hint>
+          }
+<!-- 
+          @case('radio'){
+           <app-radio-button [data]="radioList()" 
+           [radioGap]="48" [formControlName]="controlGroup.controlKey"
+           (ngModelChange)="onRadioChange($event)"
+           />
+          } -->
+
+            @case ('drop-down') {
+            <app-drop-down 
+            [formControlName]="controlGroup.controlKey" 
+            [placeholder]="controlGroup.label!"
+            [isRequired]="controlGroup.isRequired"
+            [list]="controlGroup.getDropdownList!"
+            >
+            </app-drop-down>
+            
+            <mat-hint class="error-msg" *validationErrors="
+                                                    formModel;
+                                                    control: controlGroup.controlKey;
+                                                    let err;
+                                                    additionalValue: {
+                                                      submit:
+                                                      formModel.get(controlGroup.controlKey)! &&
+                                                      formModel.get(controlGroup.controlKey)?.dirty!,
+                                                      patternTypes:controlGroup.patternTypes
+                                                    }
+                                                  ">
+              {{ err }}
+            </mat-hint>
+            }
+
+              <!-- @case ('picker') {
+
+                  <app-date-picker #inputElementFrom
+                  [placeholder]="t(controlGroup.label!)"
+                  [formControlName]="controlGroup.controlKey"
+                  [isRequired]="controlGroup.isRequired"
+                  [isDisabled]="controlGroup.isDisabled === true && data.action === 'edit'"
+                  (changeDate)="formModel.get(controlGroup.controlKey)?.setValue($event);
+                  onStartChanged($event)" [control]="form.get(controlGroup.controlKey)"
+                    [isDoubleCalendarView]="false" [isReadonly]="true" [min]="today!">
+                  </app-date-picker>
+      
+              } -->
+              
+          }
+        </div>
+        }
+        }
+        @if (formModelConfig.formErrorMessages?.length) {
+          @for (errMsg of formModelConfig.formErrorMessages; track errMsg.errorKey) {
+            @if (formModel.errors?.[errMsg.errorKey]) {
+              <div class="modal-cont__input-item">
+                <mat-hint class="error-msg">{{ errMsg.message }}</mat-hint>
+              </div>
+            }
+          }
+        }
+        <div class="add-button">
+          <app-button [text]="data.title" type="submit" [isLoading]="isLoading"
+            [isDisabled]="formModel.invalid">
+          </app-button>
+        </div>
+      </form>
+    </div>
+  </div>
+  }
+
+</ng-container>

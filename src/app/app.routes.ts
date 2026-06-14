@@ -70,6 +70,13 @@ export const routes: Routes = [
           ),
       },
       {
+        path: 'purchase-pregnant-course/:session',
+        loadComponent: () =>
+          import('./features/courses/purchase-pregnant-course/purchase-pregnant-course.component').then(
+            (m) => m.PurchasePregnantCourseComponent
+          ),
+      },
+      {
         path: 'shop',
         loadComponent: () =>
           import('./features/shop/shop.component').then(

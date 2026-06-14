@@ -1,6 +1,7 @@
 import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 import { Router } from '@angular/router';
+import { GuidService } from 'src/app/shared/services/guid/guid.service';
 
 @Component({
   selector: 'app-courses',
@@ -12,6 +13,7 @@ import { Router } from '@angular/router';
 export class CoursesComponent {
   private readonly sanitizer = inject(DomSanitizer);
   private readonly router = inject(Router);
+  private readonly guidService = inject(GuidService);
 
   readonly videoUrl: SafeResourceUrl = this.sanitizer.bypassSecurityTrustResourceUrl(
     'https://www.youtube.com/embed/dQw4w9WgXcQ?rel=0&modestbranding=1'
@@ -38,7 +40,7 @@ export class CoursesComponent {
 
 
   onPurchase() {
-
+    this.router.navigate(['/purchase-pregnant-course/', this.guidService.getUUID])
   }
 
 }

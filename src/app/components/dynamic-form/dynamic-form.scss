@@ -1,0 +1,9 @@
+@use "../../../assets/scss/variables" as *;
+@use "../../../assets/scss/mixins" as *;
+
+@include modalBase;
+
+.error-msg {
+    color: $error;
+    font-size: 12px;
+}
