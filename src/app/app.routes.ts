@@ -97,6 +97,13 @@ export const routes: Routes = [
             (m) => m.CalendarComponent
           ),
       },
+      {
+        path: 'my-courses',
+        loadComponent: () =>
+          import('./features/my-courses/my-courses.component').then(
+            (m) => m.MyCoursesComponent
+          ),
+      },
     ],
   },
   { path: '**', redirectTo: '' },
