@@ -21,9 +21,7 @@
         </p>
         <div class="hero__actions">
           <app-button text="ვიზიტზე ჩაწერა" (btnClick)="goToCalendar()"></app-button>
-          <app-button 
-          className="btn--outline stroked"
-          [customIconRight]="'assets/icons/_video.svg'">
+          <app-button className="btn--outline stroked" [customIconRight]="'assets/icons/_video.svg'">
             ვიდეოს ნახვა
           </app-button>
         </div>
@@ -103,16 +101,13 @@
       </header>
       <ul class="services__grid">
         @for (card of servicesSection().cards; track card.title; let i = $index) {
-          <li class="srv-card" [class.srv-card--accent]="card.accent"
-            [style.cursor]="card.action ? 'pointer' : 'default'"
-            (click)="navigate(card.action)"
-            onKeyPress
-            >
-            <span class="srv-card__icon" aria-hidden="true">{{ card.logo }}</span>
-            <h3 class="srv-card__title">{{ card.title }}</h3>
-            <p class="srv-card__text">{{ card.subtitle }}</p>
-            <span class="srv-card__link">გაიგეთ მეტი →</span>
-          </li>
+        <li class="srv-card" [class.srv-card--accent]="card.accent" [style.cursor]="card.action ? 'pointer' : 'default'"
+          (click)="navigate(card.action)" onKeyPress>
+          <span class="srv-card__icon" aria-hidden="true">{{ card.logo }}</span>
+          <h3 class="srv-card__title">{{ card.title }}</h3>
+          <p class="srv-card__text">{{ card.subtitle }}</p>
+          <span class="srv-card__link">გაიგეთ მეტი →</span>
+        </li>
         }
       </ul>
     </div>
@@ -174,7 +169,8 @@
       <div class="reviews__grid">
         <blockquote class="review">
           <div class="review__stars" aria-label="5 stars" aria-hidden="true">★★★★★</div>
-          <p class="review__text">ექიმი თამარი წარმოუდგენლად მხარდამჭერი იყო ჩემი მაღალი რისკის ორსულობის მანძილზე. მისმა კომპეტენციამ თავდაჯერებულობა მომცა ყოველ ეტაპზე.</p>
+          <p class="review__text">ექიმი თამარი წარმოუდგენლად მხარდამჭერი იყო ჩემი მაღალი რისკის ორსულობის მანძილზე.
+            მისმა კომპეტენციამ თავდაჯერებულობა მომცა ყოველ ეტაპზე.</p>
           <footer class="review__footer">
             <div class="review__avatar" aria-hidden="true">ნ</div>
             <div>
@@ -185,7 +181,8 @@
         </blockquote>
         <blockquote class="review review--featured">
           <div class="review__stars" aria-label="5 ვარსკვლავი" aria-hidden="true">★★★★★</div>
-          <p class="review__text">ონლაინ კონსულტაციის შესაძლებლობა მაშველი აღმოჩნდა მესამე ტრიმესტრში. სწრაფი, პროფესიული და დამამშვიდებელი ყოველ ჯერზე.</p>
+          <p class="review__text">ონლაინ კონსულტაციის შესაძლებლობა მაშველი აღმოჩნდა მესამე ტრიმესტრში. სწრაფი,
+            პროფესიული და დამამშვიდებელი ყოველ ჯერზე.</p>
           <footer class="review__footer">
             <div class="review__avatar" aria-hidden="true">მ</div>
             <div>
@@ -196,7 +193,8 @@
         </blockquote>
         <blockquote class="review">
           <div class="review__stars" aria-label="5 ვარსკვლავი" aria-hidden="true">★★★★★</div>
-          <p class="review__text">პირველი ვიზიტიდან მშობიარობამდე სრულად ვგრძნობდი მზრუნველობას. მთელი გუნდი აბსოლუტურად განსაკუთრებულია.</p>
+          <p class="review__text">პირველი ვიზიტიდან მშობიარობამდე სრულად ვგრძნობდი მზრუნველობას. მთელი გუნდი აბსოლუტურად
+            განსაკუთრებულია.</p>
           <footer class="review__footer">
             <div class="review__avatar" aria-hidden="true">თ</div>
             <div>

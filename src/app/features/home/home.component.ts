@@ -28,7 +28,7 @@ export class HomeComponent {
     cards: [
       { logo: '💬', title: 'ონლაინ კონსულტაციები', subtitle: 'დისტანციური ვიზიტები არაგადაუდებელი კითხვებისა და დაკვირვებისთვის.', action: null },
       { logo: '🏥', title: 'მშობიარობა & მიღება', subtitle: 'სრული მხარდაჭერა მშობიარობის დროს თანამედროვე სამშობიაროებში.', action: null },
-      { logo: '🏥', title: 'მშობელთა სკოლა', subtitle: 'ბავშვის მოვლის ვიდეო კრებული დედებისთვის', action: '/services', accent: true },
+      { logo: '🏥', title: 'მშობელთა სკოლა', subtitle: 'ბავშვის მოვლის ვიდეო კრებული დედებისთვის', action: '/pregnant-school', accent: true },
       { logo: '🛍️', title: 'პროდუქტები', subtitle: 'შერჩეული პროდუქტები ახალშობილთა მოვლისა და მშობიარობის შემდგომი პერიოდისთვის.', action: null, accent: true },
     ] as ServiceCard[],
   });
