@@ -32,6 +32,10 @@ export class PurchasePregnantCourseComponent {
     if (this.form.invalid) {
       ControlModeChange.formFieldsModeControl('markAsDirty', this.form);
 
+    } else {
+
+      //a
+
     }
   }
 }
