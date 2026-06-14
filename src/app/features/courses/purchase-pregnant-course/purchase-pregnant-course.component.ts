@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { InputComponent } from 'src/app/components/input/input.component';
@@ -6,6 +6,8 @@ import { ButtonComponent } from 'src/app/components/button/button.component';
 import { ValidationErrorsDirective } from 'src/app/shared/directives/validation-errors.directive';
 import { ControlModeChange } from 'src/app/shared/functions/controlModeChange';
 import { regExp } from 'src/app/shared/utils/regex';
+import { PurchaseService } from '../data-access/purchase.service';
+import type { CoursePurchaseRequest } from '../models/course-purchase.model';
 
 @Component({
   selector: 'app-purchase-pregnant-course',
@@ -22,6 +24,10 @@ import { regExp } from 'src/app/shared/utils/regex';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class PurchasePregnantCourseComponent {
+
+  private readonly purchaseService = inject(PurchaseService)
+
+
   readonly form = new FormGroup({
     name: new FormControl('', [Validators.required]),
     surname: new FormControl('', [Validators.required]),
@@ -35,7 +41,18 @@ export class PurchasePregnantCourseComponent {
 
     } else {
 
-      //a
+      const params = this.form.getRawValue();
+
+      this.purchaseService.pay(params).subscribe({
+        next: (() => {
+
+        }),
+        error: (() => {
+
+        })
+      })
+
+
 
     }
   }

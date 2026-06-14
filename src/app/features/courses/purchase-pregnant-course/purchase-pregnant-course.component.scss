@@ -20,11 +20,6 @@
   &__title {
     @include font(24px, 700, $gray700, $font-bold);
   }
-
-  &__subtitle {
-    @include font(14px, 400, $gray13, $font-default);
-    margin: 0 0 28px;
-  }
 }
 
 .ppc-form {
