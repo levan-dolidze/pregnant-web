@@ -5,6 +5,7 @@ import { InputComponent } from 'src/app/components/input/input.component';
 import { ButtonComponent } from 'src/app/components/button/button.component';
 import { ValidationErrorsDirective } from 'src/app/shared/directives/validation-errors.directive';
 import { ControlModeChange } from 'src/app/shared/functions/controlModeChange';
+import { regExp } from 'src/app/shared/utils/regex';
 
 @Component({
   selector: 'app-purchase-pregnant-course',
@@ -24,8 +25,8 @@ export class PurchasePregnantCourseComponent {
   readonly form = new FormGroup({
     name: new FormControl('', [Validators.required]),
     surname: new FormControl('', [Validators.required]),
-    mob: new FormControl('', [Validators.required, Validators.pattern(/^\d+$/)]),
-    email: new FormControl('', [Validators.required, Validators.email]),
+    mob: new FormControl('', [Validators.required, Validators.pattern(regExp.onlyNumbers)]),
+    email: new FormControl('', [Validators.required, Validators.pattern(regExp.email)]),
   });
 
   onPay(): void {
