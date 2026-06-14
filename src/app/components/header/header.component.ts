@@ -70,7 +70,7 @@ export class HeaderComponent implements OnInit {
     {
       name: 'For_Me', index: 1,
       children: [
-        { name: 'Pregnant_School', routerLink: '/services' },
+        { name: 'Courses', routerLink: '/courses' },
         { name: 'Shop',            routerLink: '/shop' }
       ]
     },

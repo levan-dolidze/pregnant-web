@@ -1,0 +1,42 @@
+<main class="ps-page">
+
+  <!-- ── Hero ─────────────────────────────────────────────────── -->
+  <section class="ps-hero">
+    <div class="ps-hero__inner">
+
+      <div class="ps-hero__content">
+        <span class="ps-badge">მშობელთა სკოლა</span>
+        <h1 class="ps-hero__title">{{ course.subtitle }}</h1>
+        <p class="ps-hero__desc">{{ course.desc }}</p>
+        <div class="ps-hero__meta">
+          <span class="ps-meta-chip">🎬 {{ course.modules.length }} გაკვეთილი</span>
+          <span class="ps-meta-chip">📱 ნებისმიერ მოწყობილობაზე</span>
+          <span class="ps-meta-chip">♾️ უვადო წვდომა</span>
+        </div>
+      </div>
+
+      <div class="ps-hero__video-wrap">
+        <iframe
+          class="ps-hero__video"
+          [src]="videoUrl"
+          title="მშობელთა სკოლა — შესავალი"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen>
+        </iframe>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ── CTA ───────────────────────────────────────────────────── -->
+  <div class="ps-cta">
+    <div class="ps-cta__inner">
+      <div class="ps-cta__info">
+        <span class="ps-cta__price">{{ course.price }}</span>
+        <span class="ps-cta__note">ერთჯერადი გადახდა · უვადო წვდომა</span>
+      </div>
+      <button class="ps-cta__btn" (click)="onPurchase()">შეძენა</button>
+    </div>
+  </div>
+
+</main>

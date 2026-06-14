@@ -63,10 +63,10 @@ export const routes: Routes = [
           ),
       },
       {
-        path: 'pregnant-school',
+        path: 'courses',
         loadComponent: () =>
-          import('./features/pregnant-school/pregnant-school.component').then(
-            (m) => m.PregnantSchoolComponent
+          import('./features/courses/courses.component').then(
+            (m) => m.CoursesComponent
           ),
       },
       {

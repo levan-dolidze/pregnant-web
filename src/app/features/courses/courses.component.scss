@@ -1,0 +1,172 @@
+@use "variables" as *;
+@use "mixins" as *;
+
+.ps-page {
+  min-height: 100vh;
+  background: $mainBg;
+}
+
+// ── Hero ─────────────────────────────────────────────────────────
+.ps-hero {
+  background: linear-gradient(135deg, $hero-grad-start, $hero-grad-mid, $hero-grad-end);
+  padding: 64px 24px;
+
+  &__inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 48px;
+    align-items: center;
+
+    @media (max-width: 768px) {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  &__title {
+    @include font(32px, 700, $gray700, $font-bold);
+    line-height: 1.3;
+    margin: 16px 0 20px;
+  }
+
+  &__desc {
+    @include font(15px, 400, $gray13, $font-default);
+    line-height: 1.7;
+    margin-bottom: 24px;
+  }
+
+  &__meta {
+    @include flex-init;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  &__video-wrap {
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, .15);
+    aspect-ratio: 16 / 9;
+    background: $black;
+  }
+
+  &__video {
+    width: 100%;
+    height: 100%;
+    display: block;
+  }
+}
+
+.ps-badge {
+  display: inline-block;
+  background: $pink100;
+  color: $pink;
+  border-radius: 20px;
+  padding: 4px 14px;
+  @include font(12px, 600, $pink, $font-bold);
+  letter-spacing: .4px;
+}
+
+.ps-meta-chip {
+  background: $white;
+  border-radius: 20px;
+  padding: 6px 14px;
+  @include font(12px, 500, $gray700, $font-medium);
+  box-shadow: 0 1px 4px rgba(0, 0, 0, .08);
+}
+
+// ── Modules ──────────────────────────────────────────────────────
+.ps-modules {
+  padding: 64px 24px;
+
+  &__inner {
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  &__title {
+    @include font(24px, 700, $gray700, $font-bold);
+    margin-bottom: 32px;
+    text-align: center;
+  }
+
+  &__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 16px;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+}
+
+.ps-module-card {
+  @include flex-init;
+  gap: 16px;
+  background: $white;
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, .06);
+  transition: box-shadow .15s;
+
+  &:hover { box-shadow: 0 4px 16px rgba(0, 0, 0, .1); }
+
+  &__icon {
+    font-size: 28px;
+    flex-shrink: 0;
+  }
+
+  &__label {
+    @include font(14px, 600, $gray700, $font-bold);
+    margin: 0 0 4px;
+  }
+
+  &__desc {
+    @include font(13px, 400, $gray13, $font-default);
+    margin: 0;
+    line-height: 1.5;
+  }
+}
+
+// ── CTA ──────────────────────────────────────────────────────────
+.ps-cta {
+  position: sticky;
+  bottom: 0;
+  background: $white;
+  border-top: 1px solid $gray12;
+  padding: 16px 24px;
+  z-index: 10;
+  box-shadow: 0 -4px 20px rgba(0, 0, 0, .08);
+
+  &__inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    @include flex-center-between;
+  }
+
+  &__info {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  &__price {
+    @include font(28px, 700, $gray700, $font-bold);
+  }
+
+  &__note {
+    @include font(12px, 400, $gray13, $font-default);
+  }
+
+  &__btn {
+    background: $pink;
+    border: none;
+    border-radius: 12px;
+    padding: 14px 40px;
+    @include font(16px, 600, $white, $font-bold);
+    cursor: pointer;
+    transition: filter .15s;
+
+    &:hover { filter: brightness(.9); }
+  }
+}
