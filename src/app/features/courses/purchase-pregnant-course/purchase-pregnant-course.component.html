@@ -1,0 +1,71 @@
+<main class="ppc-page">
+  <div class="ppc-card">
+
+    <h1 class="ppc-card__title">კურსის შეძენა</h1>
+    <p class="ppc-card__subtitle">შეავსეთ ფორმა გადახდისთვის</p>
+
+    <form [formGroup]="form" (ngSubmit)="onPay()" class="ppc-form">
+
+      <app-input
+        formControlName="name"
+        placeholder="სახელი"
+        [isRequired]="true"
+        [isInvalid]="form.controls['name'].invalid && form.controls['name'].dirty">
+      </app-input>
+      <mat-hint class="error-msg"
+        *validationErrors="form; control: 'name'; let err; additionalValue: {
+          submit: (form.controls['name'] && form.controls['name'].dirty),
+          patternTypes: 'none'
+        }">
+        {{ err }}
+      </mat-hint>
+
+      <app-input
+        formControlName="surname"
+        placeholder="გვარი"
+        [isRequired]="true"
+        [isInvalid]="form.controls['surname'].invalid && form.controls['surname'].dirty">
+      </app-input>
+      <mat-hint class="error-msg"
+        *validationErrors="form; control: 'surname'; let err; additionalValue: {
+          submit: (form.controls['surname'] && form.controls['surname'].dirty),
+          patternTypes: 'none'
+        }">
+        {{ err }}
+      </mat-hint>
+
+      <app-input
+        formControlName="mob"
+        placeholder="მობილური"
+        type="tel"
+        [isRequired]="true"
+        [isInvalid]="form.controls['mob'].invalid && form.controls['mob'].dirty">
+      </app-input>
+      <mat-hint class="error-msg"
+        *validationErrors="form; control: 'mob'; let err; additionalValue: {
+          submit: (form.controls['mob'] && form.controls['mob'].dirty),
+          patternTypes: 'mobNumber'
+        }">
+        {{ err }}
+      </mat-hint>
+
+      <app-input
+        formControlName="email"
+        placeholder="ელ-ფოსტა"
+        type="email"
+        [isRequired]="true"
+        [isInvalid]="form.controls['email'].invalid && form.controls['email'].dirty">
+      </app-input>
+      <mat-hint class="error-msg"
+        *validationErrors="form; control: 'email'; let err; additionalValue: {
+          submit: (form.controls['email'] && form.controls['email'].dirty),
+          patternTypes: 'email'
+        }">
+        {{ err }}
+      </mat-hint>
+
+      <app-button text="გადახდა" type="submit"></app-button>
+
+    </form>
+  </div>
+</main>
