@@ -8,6 +8,8 @@ import { ControlModeChange } from 'src/app/shared/functions/controlModeChange';
 import { regExp } from 'src/app/shared/utils/regex';
 import { PurchaseService } from '../data-access/purchase.service';
 import type { CoursePurchaseRequest } from '../models/course-purchase.model';
+import { NgClass } from '@angular/common';
+import { CheckboxComponent } from 'src/app/components/checkbox/checkbox.component';
 
 @Component({
   selector: 'app-purchase-pregnant-course',
@@ -18,6 +20,8 @@ import type { CoursePurchaseRequest } from '../models/course-purchase.model';
     InputComponent,
     ButtonComponent,
     ValidationErrorsDirective,
+    NgClass,
+    CheckboxComponent
   ],
   templateUrl: './purchase-pregnant-course.component.html',
   styleUrl: './purchase-pregnant-course.component.scss',
@@ -31,6 +35,7 @@ export class PurchasePregnantCourseComponent {
   readonly form = new FormGroup({
     name: new FormControl('', [Validators.required]),
     surname: new FormControl('', [Validators.required]),
+    termsChecked: new FormControl('', [Validators.requiredTrue]),
     mob: new FormControl('', [Validators.required, Validators.pattern(regExp.onlyNumbers)]),
     email: new FormControl('', [Validators.required, Validators.pattern(regExp.email)]),
   });

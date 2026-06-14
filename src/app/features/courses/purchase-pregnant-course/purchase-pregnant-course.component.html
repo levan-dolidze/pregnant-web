@@ -49,6 +49,15 @@
         </mat-hint>
       </div>
 
+    <div class="ppc-card__terms">
+        <div><app-checkbox formControlName="termsChecked"></app-checkbox></div>
+        <p [ngClass]="{'invalid':form.get('termsChecked')?.invalid&&form.get('termsChecked')?.dirty}">
+            {{'გავეცანი და ვეთანხმები დაზღვევის პირობებს'}}<span>
+                <a [target]="'_blank'"
+                    [href]="'https://google.com/'">{{'ვეთანხმები პირობებს'}}</a>
+                 </span></p>
+    </div>
+
       <app-button text="გადახდა" type="submit"></app-button>
 
     </form>
