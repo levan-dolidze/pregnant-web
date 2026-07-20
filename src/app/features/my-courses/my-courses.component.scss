@@ -1,0 +1,95 @@
+@use "variables" as *;
+@use "mixins" as *;
+
+.mc-page {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 48px 24px;
+
+  &__title {
+    @include font(24px, 700, $gray700, $font-bold);
+    margin-bottom: 24px;
+  }
+}
+
+.mc-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.mc-card {
+  background: $white;
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, .06);
+
+  &__title {
+    @include font(16px, 600, $gray700, $font-bold);
+    margin: 0 0 6px;
+  }
+
+  &__desc {
+    @include font(13px, 400, $gray13, $font-default);
+    line-height: 1.5;
+    margin: 0 0 10px;
+  }
+
+  &__meta {
+    @include flex-init;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 14px;
+  }
+
+  &__progress {
+    @include flex-init;
+    gap: 10px;
+  }
+
+  &__percent {
+    @include font(12px, 600, $gray700, $font-medium);
+    flex-shrink: 0;
+  }
+
+  &__btn {
+    margin-top: 14px;
+    background: $pink;
+    border: none;
+    border-radius: 10px;
+    padding: 10px 24px;
+    @include font(14px, 600, $white, $font-bold);
+    cursor: pointer;
+    transition: filter .15s;
+
+    &:hover { filter: brightness(.9); }
+  }
+}
+
+.mc-meta-chip {
+  background: $gray11;
+  border-radius: 20px;
+  padding: 4px 12px;
+  @include font(12px, 500, $gray700, $font-medium);
+}
+
+.mc-progress {
+  flex: 1;
+  height: 6px;
+  border-radius: 4px;
+  background: $gray12;
+  overflow: hidden;
+
+  &__bar {
+    height: 100%;
+    background: $pink;
+    border-radius: 4px;
+  }
+}
+
+.mc-empty {
+  @include font(14px, 400, $gray13, $font-default);
+}

@@ -1,0 +1,31 @@
+<main class="mc-page">
+  <h1 class="mc-page__title">ჩემი კურსები</h1>
+
+  @if (courses.length) {
+    <ul class="mc-list">
+      @for (course of courses; track course.title) {
+        <li class="mc-card">
+          <div class="mc-card__body">
+            <h2 class="mc-card__title">{{ course.title }}</h2>
+            <p class="mc-card__desc">{{ course.description }}</p>
+            <div class="mc-card__meta">
+              <span class="mc-meta-chip">📖 {{ course.chapters }} თავი</span>
+              <span class="mc-meta-chip">🎬 {{ course.videos }} ვიდეო</span>
+            </div>
+          </div>
+          <div class="mc-card__progress">
+            <div class="mc-progress">
+              <div class="mc-progress__bar" [style.width.%]="course.progress"></div>
+            </div>
+            <span class="mc-card__percent">{{ course.progress }}%</span>
+          </div>
+          <button class="mc-card__btn" (click)="startLearning(course)">
+            {{ course.progress > 0 ? 'სწავლის გაგრძელება' : 'სწავლის დაწყება' }}
+          </button>
+        </li>
+      }
+    </ul>
+  } @else {
+    <p class="mc-empty">თქვენ ჯერ არ გაქვთ შეძენილი კურსი.</p>
+  }
+</main>
