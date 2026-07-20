@@ -63,10 +63,10 @@ export const routes: Routes = [
           ),
       },
       {
-        path: 'courses',
+        path: 'courses-promo',
         loadComponent: () =>
-          import('./features/courses/courses.component').then(
-            (m) => m.CoursesComponent
+          import('./features/courses/courses-promo.component').then(
+            (m) => m.CoursesPromoComponent
           ),
       },
       {

@@ -4,13 +4,13 @@ import { Router } from '@angular/router';
 import { GuidService } from 'src/app/shared/services/guid/guid.service';
 
 @Component({
-  selector: 'app-courses',
+  selector: 'app-courses-promo',
   imports: [],
-  templateUrl: './courses.component.html',
-  styleUrl: './courses.component.scss',
+  templateUrl: './courses-promo.component.html',
+  styleUrl: './courses-promo.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class CoursesComponent {
+export class CoursesPromoComponent {
   private readonly sanitizer = inject(DomSanitizer);
   private readonly router = inject(Router);
   private readonly guidService = inject(GuidService);
