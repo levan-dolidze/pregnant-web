@@ -1,5 +1,5 @@
 import { BreakpointObserver, MediaMatcher } from '@angular/cdk/layout';
-import { Component, inject, OnInit, ViewChild, ViewEncapsulation } from '@angular/core';
+import { Component, inject, OnChanges, OnInit, SimpleChanges, ViewChild, ViewEncapsulation } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { MatSidenav, MatSidenavContent, MatSidenavModule } from '@angular/material/sidenav';
 import { MatExpansionModule } from '@angular/material/expansion';
@@ -57,7 +57,7 @@ interface quicklinks {
         SharedModule
     ],
     templateUrl: './full.component.html',
-    styleUrls: [],
+    styleUrl: './full.component.scss',
     encapsulation: ViewEncapsulation.None
 })
 export class FullComponent implements OnInit {
@@ -87,6 +87,7 @@ export class FullComponent implements OnInit {
   get isTablet(): boolean {
     return this.resView;
   }
+
 
   // for mobile app sidebar
   apps: apps[] = [

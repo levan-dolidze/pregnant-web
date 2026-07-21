@@ -24,7 +24,7 @@
           <mat-nav-list class="sidebar-list">
             @for(item of navItems; track item) {
 
-            <app-nav-item [sidenavCollapsed]="options.sidenavCollapsed"  [item]="item" (notify)="sidenav.toggle()" />
+            <app-nav-item [item]="item" (notify)="sidenav.toggle()" />
             }
           </mat-nav-list>
       </div>

@@ -6,7 +6,7 @@ import { CoreService } from './core.service';
   selector: 'app-branding',
   standalone: true,
   template: `
-    <div class="branding">
+    <!-- <div class="branding">
       <a href="/">
         <img
           style="transition: width 0.3s ease, opacity 0.3s ease; "
@@ -21,7 +21,7 @@ import { CoreService } from './core.service';
           alt="logo"
         />
       </a>
-    </div>
+    </div> -->
   `,
 })
 export class BrandingComponent implements OnInit {

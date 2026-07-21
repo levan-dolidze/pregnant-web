@@ -4,6 +4,16 @@
   box-sizing: border-box;
 }
 
+body {
+  font-family: $font-medium;
+  color: $textPrimary;
+  font-size: 14px;
+  line-height: 1.334rem;
+}
+
+html .mat-drawer-container {
+  background-color: $white;
+}
 
 .mainWrapper {
   display: flex;
@@ -23,6 +33,10 @@
   &.maxWidth {
     max-width: $boxedWidth;
   }
+}
+
+.w-100 {
+  // width: 100%;
 }
 
 .h-100 {
@@ -72,11 +86,29 @@
   opacity: 0.5;
 }
 
+.cursor-pointer {
+  cursor: pointer;
+}
+
+.avatar-group {
+  img {
+    border: 2px solid $white;
+    margin-right: -5px;
+
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+}
 
 .text-hover-primary:hover {
   .hover-text {
     color: $primary;
   }
+}
+
+.filter-sidebar {
+  width: 290px;
 }
 
 .input-wrapper {
