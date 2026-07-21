@@ -65,14 +65,14 @@ export const routes: Routes = [
       {
         path: 'courses-promo',
         loadComponent: () =>
-          import('./features/courses/courses-promo.component').then(
+          import('./features/courses-promo/courses-promo.component').then(
             (m) => m.CoursesPromoComponent
           ),
       },
       {
         path: 'purchase-pregnant-course/:session',
         loadComponent: () =>
-          import('./features/courses/purchase-pregnant-course/purchase-pregnant-course.component').then(
+          import('./features/courses-promo/purchase-pregnant-course/purchase-pregnant-course.component').then(
             (m) => m.PurchasePregnantCourseComponent
           ),
       },
@@ -103,6 +103,18 @@ export const routes: Routes = [
           import('./features/my-courses/my-courses.component').then(
             (m) => m.MyCoursesComponent
           ),
+      },
+      {
+        path: 'courses',
+        loadChildren: () => {
+          return import('./features/my-courses/courses/courses.routers').then(
+            (m) => m.routes
+          );
+        },
+        // loadComponent: () =>
+        //   import('./features/my-courses/courses/courses.component').then(
+        //     (m) => m.CoursesComponent
+        //   ),
       },
     ],
   },

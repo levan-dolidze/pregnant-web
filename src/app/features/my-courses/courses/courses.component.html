@@ -1,0 +1,10 @@
+<section class="course-content">
+  @if (lessonLabel) {
+    <h2 class="course-content__title">{{ lessonLabel }}</h2>
+    <p class="course-content__placeholder">გაკვეთილის კონტენტი მალე დაემატება.</p>
+  } @else if (chapterLabel) {
+    <h2 class="course-content__title">{{ chapterLabel }}</h2>
+  } @else {
+    <p class="course-content__placeholder">აირჩიეთ გაკვეთილი მენიუდან.</p>
+  }
+</section>

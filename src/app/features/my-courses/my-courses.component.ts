@@ -1,4 +1,5 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
+import { Router } from '@angular/router';
 
 interface MyCourse {
   title: string;
@@ -16,6 +17,11 @@ interface MyCourse {
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class MyCoursesComponent {
+
+
+  private readonly router = inject(Router);
+
+
   readonly courses: MyCourse[] = [
     {
       title: 'მშობელთა სკოლა',
@@ -28,5 +34,7 @@ export class MyCoursesComponent {
 
   startLearning(course: MyCourse): void {
     // TODO: navigate to the course player once it exists
+    this.router.navigate(['/courses'])
+
   }
 }

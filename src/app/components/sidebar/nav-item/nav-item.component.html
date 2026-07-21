@@ -1,0 +1,52 @@
+<ng-container *transloco="let t">
+
+  @if(item.navCap){
+  <div mat-subheader class="nav-caption">
+    {{ item.navCap }}
+  </div>
+  }
+  <!-- &&-->
+  @if(!item.navCap && !item.external && !item.twoLines ) {
+
+  <a  mat-list-item (click)="onItemSelected(item)"
+  [ngClass]="{
+    'activeMenu': item.route
+      ? router.isActive(item.route, false)
+      : false,
+    expanded: expanded,
+    disabled: item.disabled
+  }" [class.collapsed]="this.sidenavCollapsed" class="menu-list-item"
+  [style.paddingLeft.px]="16 + depth * 16">
+
+<div class="route-icon-label" >
+  @if(item.iconName) {
+  <img  [src]="item.iconName" alt="icons" width="20" height="20">
+  }
+  <span class="item-text" >{{ item.displayName }}</span>
+</div>
+
+    @if(item.children && item.children.length) {
+    <span class="arrow-icon" fxFlex>
+      <span fxFlex></span>
+      <mat-icon [@indicatorRotate]="expanded ? 'expanded' : 'collapsed'">
+        expand_more
+      </mat-icon>
+    </span>
+    } @if(item.chip) {
+    <span>
+      <span class="{{ item.chipClass }} p-x-8 p-y-4 item-chip f-w-500 rounded-pill ">{{ item.chipContent }}</span>
+    </span>
+    }
+  </a>
+  }
+
+  <!-- external Link -->
+
+
+  <!-- children -->
+  @if(expanded) { @for(child of item.children; track child) {
+  <app-nav-item [item]="child" (click)="onSubItemSelected(child)" [depth]="depth + 1">
+  </app-nav-item>
+  } }
+
+</ng-container>

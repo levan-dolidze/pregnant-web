@@ -1,0 +1,57 @@
+@use "variables" as *;
+@use "mixins" as *;
+
+.menu-list-item {
+  @include flex-center-between;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-right: 16px;
+  cursor: pointer;
+  text-decoration: none;
+  border-radius: 8px;
+  transition: background .15s;
+
+  &:hover {
+    background: $gray11;
+  }
+
+  &.activeMenu {
+    background: $pink100;
+
+    .item-text {
+      color: $pink;
+      font-weight: 600;
+    }
+  }
+}
+
+.route-icon-label {
+  @include flex-init;
+  gap: 10px;
+  min-width: 0;
+}
+
+.item-text {
+  @include font(14px, 500, $gray700, $font-medium);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.arrow-icon {
+  @include flex-init;
+
+  ::ng-deep mat-icon {
+    font-size: 18px;
+    width: 18px;
+    height: 18px;
+    color: $gray13;
+  }
+}
+
+.nav-caption {
+  @include font(11px, 700, $gray13, $font-bold);
+  text-transform: uppercase;
+  letter-spacing: .06em;
+  padding: 16px 16px 4px;
+}

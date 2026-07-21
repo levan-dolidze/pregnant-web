@@ -1,0 +1,10 @@
+@use "../../../assets/scss/variables" as *;
+.content-container {
+    display: flex;
+    flex-direction: column;
+}
+
+
+mat-list-item:hover {
+    cursor: pointer;
+}
