@@ -11,7 +11,7 @@
           <a class="nav-chapter__item"
              [routerLink]="child.route"
              routerLinkActive="nav-chapter__item--active"
-             (click)="onLessonClick()">
+             (click)="onLessonClick(child)">
             {{ child.displayName }}
           </a>
         </li>
@@ -22,7 +22,7 @@
   <a class="nav-chapter__header nav-chapter__header--link"
      [routerLink]="item.route"
      routerLinkActive="nav-chapter__header--active"
-     (click)="onLessonClick()">
+     (click)="onLessonClick(item)">
     <span class="nav-chapter__title">{{ item.displayName }}</span>
   </a>
 }

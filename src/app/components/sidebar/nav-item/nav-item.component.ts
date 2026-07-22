@@ -11,7 +11,7 @@ import { NavItem } from './nav-item';
 })
 export class AppNavItemComponent {
   @Input({ required: true }) item!: NavItem;
-  @Output() notify = new EventEmitter<void>();
+  @Output() navigateEmit = new EventEmitter<NavItem>();
 
   readonly expanded = signal(false);
 
@@ -19,9 +19,10 @@ export class AppNavItemComponent {
     this.expanded.update((value) => !value);
   }
 
-  onLessonClick(): void {
+  onLessonClick(route: NavItem): void {
+
     if (globalThis.innerWidth < 1024) {
-      this.notify.emit();
+      this.navigateEmit.emit(route);
     }
   }
 }

@@ -19,6 +19,7 @@ import { AppNavItemComponent } from './nav-item/nav-item.component';
 import { CoreService } from './core.service';
 import { AppSettings } from '../layout/utils/config';
 import { CustomizerComponent } from './customizer/customizer.component';
+import { NavItem } from './nav-item/nav-item';
 
 
 const MOBILE_VIEW = 'screen and (max-width: 768px)';
@@ -215,6 +216,12 @@ export class FullComponent implements OnInit {
 
   ngOnInit(): void {
   }
+
+  onNavigateEmit(event: NavItem){
+
+    console.log(event)
+  }
+
 
   ngOnDestroy() {
     this.layoutChangesSubscription.unsubscribe();
