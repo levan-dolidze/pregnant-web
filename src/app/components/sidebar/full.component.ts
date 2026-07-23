@@ -220,6 +220,7 @@ export class FullComponent implements OnInit {
   onNavigateEmit(event: NavItem){
 
     console.log(event)
+    // have to 
   }
 
 

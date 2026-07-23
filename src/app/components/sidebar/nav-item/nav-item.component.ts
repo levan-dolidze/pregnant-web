@@ -20,9 +20,10 @@ export class AppNavItemComponent {
   }
 
   onLessonClick(route: NavItem): void {
+    this.navigateEmit.emit(route);
 
-    if (globalThis.innerWidth < 1024) {
-      this.navigateEmit.emit(route);
-    }
+    // if (globalThis.innerWidth < 1024) {
+    //   this.navigateEmit.emit(route);
+    // }
   }
 }

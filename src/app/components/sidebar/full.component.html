@@ -18,7 +18,9 @@
     <mat-sidenav 
     #leftsidenav [mode]="isOver ? 'over' : 'side'"
       [opened]="options.navPos === 'side' && options.sidenavOpened && !isOver && !resView"
-      (openedChange)="onSidenavOpenedChange($event)" (closedStart)="onSidenavClosedStart()" class="sidebarNav">
+      (openedChange)="onSidenavOpenedChange($event)" 
+      (closedStart)="onSidenavClosedStart()" 
+      class="sidebarNav">
       <div class="flex-layout">
         <app-sidebar (toggleMobileNav)="sidenav.toggle()" [showToggle]="isOver"></app-sidebar>
           <mat-nav-list class="sidebar-list">
