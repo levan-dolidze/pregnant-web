@@ -3,6 +3,7 @@ import { takeUntilDestroyed, toSignal } from '@angular/core/rxjs-interop';
 import { ActivatedRoute, NavigationEnd, Router, RouterLink, RouterLinkActive } from '@angular/router';
 import { distinctUntilChanged, filter, map } from 'rxjs';
 import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatDialog } from '@angular/material/dialog';
 import { TranslocoModule } from '@jsverse/transloco';
 import { selectStep } from 'src/app/shared/state/step-state/step-selectors';
 import { Store } from '@ngrx/store';
@@ -10,6 +11,7 @@ import { LoaderService } from '../loader/loader.service';
 import { MaterialModule } from 'src/app/shared/shared-module/material.module';
 import { SharedModule } from 'src/app/shared/shared-module/shared';
 import { MenuConfig } from './utils';
+import { AuthModalComponent } from 'src/app/features/auth/data-access/auth-modal.component';
 
 @Component({
   selector: 'app-header',
@@ -24,6 +26,7 @@ export class HeaderComponent implements OnInit {
   readonly destroyRef = inject(DestroyRef);
   readonly router = inject(Router);
   readonly activatedRoute = inject(ActivatedRoute);
+  private readonly dialog = inject(MatDialog);
 
   protected readonly store = inject(Store);
 
@@ -89,6 +92,9 @@ export class HeaderComponent implements OnInit {
     globalThis.history.back();
   }
 
+  onLogin(){
+    this.dialog.open(AuthModalComponent);
+  }
 
   readonly sessionId = toSignal(
     this.router.events.pipe(

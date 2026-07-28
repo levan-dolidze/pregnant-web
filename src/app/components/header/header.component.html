@@ -60,7 +60,11 @@
       <mat-icon>{{ isMenuOpen() ? 'close' : 'menu' }}</mat-icon>
     </button>
 
-    <!-- Profile dropdown -->
+      <app-button 
+       [className]="'stroked-fill h-40'" 
+       [text]="t('LogIn')" 
+       (btnClick)="onLogin()">
+      </app-button>
     <div class="topbar__profile">
       <button class="topbar__profile-btn" [matMenuTriggerFor]="profileMenu" aria-label="Profile">
         <mat-icon>person</mat-icon>

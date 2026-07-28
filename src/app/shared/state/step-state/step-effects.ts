@@ -7,7 +7,6 @@ import { Store } from '@ngrx/store';
 import { SessionStorageService } from '../../services/session-storage.service';
 import { LanguagesEnum, TranslationService } from '../../translate/translation.serive';
 import { ProductId } from '../../utils/enums';
-import { AuthService } from 'src/app/auth/data-access/auth.service';
 import { TokenLoginResponse } from 'src/app/auth/ui/auth-models';
 import { of } from 'rxjs';
 import { HttpErrorResponse } from '@angular/common/http';
@@ -24,7 +23,6 @@ export class StepEffects {
     private readonly actions$ = inject(Actions);
     readonly sessionStorage = inject(SessionStorageService)
     private readonly t = inject(TranslationService)
-    private readonly authService = inject(AuthService)
     private readonly jwtService = inject(JwtService)
 
     initParamsState$ = createEffect(

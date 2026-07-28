@@ -1,20 +1,20 @@
 import { ResponseNotificationEnum } from "./enums";
 
-export abstract class ApiResponseBase<T> {
-  // code = -1;
-  // message = '';
-  // data?: T;
-  // loaded?:boolean
-  value: T;
-  statusCode:number;
-  hasError: boolean;
-  logNotifications: ResponseNotificationEnum[];
-  displayNotifications: ResponseNotificationEnum[]
+export abstract class ApiResponseBase<T = {}> {
+  success: boolean;
+  result: HttpResult;
+  data?: T;
+  loaded?: boolean
 }
 
 
+export interface HttpResult {
+  code: number,
+  description: string
+}
+
 
 export enum ResponseStatus {
-  Success = 200,
+  Success = 1,
   Error = -9999
 }

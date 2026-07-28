@@ -1,0 +1,61 @@
+@use "variables" as *;
+@use "mixins" as *;
+
+.login-form {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  position: relative;
+
+  &__title {
+    margin: 6px 0 0;
+    @include font(20px, 700, $primary, $font-medium);
+    text-transform: uppercase;
+  }
+
+  &__otp-description {
+    max-width: 390px;
+    margin: 10px 0 0;
+    text-align: center;
+    line-height: 1.45;
+    @include font(14px, 500, $textPrimary, $font-default);
+  }
+
+  &__fields {
+    display: grid;
+    gap: 16px;
+    align-items: start;
+    width: 100%;
+    min-height: 0;
+    padding-top: 18px;
+  }
+
+  &__inputs {
+    width: 100%;
+    display: grid;
+    gap: 12px;
+  }
+
+
+  &__actions {
+    width: 100%;
+    margin-top: 0;
+  }
+
+  &__back-btn {
+    width: fit-content;
+    margin: 0 auto;
+    padding: 0;
+    border: 0;
+    background: transparent;
+    cursor: pointer;
+    @include font(13px, 600, $primary, $font-medium);
+    margin-top: 10px;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}
