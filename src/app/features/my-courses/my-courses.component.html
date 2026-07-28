@@ -1,16 +1,16 @@
 <main class="mc-page">
   <h1 class="mc-page__title">ჩემი კურსები</h1>
 
-  @if (courses.length) {
+  @if (courses().length) {
     <ul class="mc-list">
-      @for (course of courses; track course.title) {
+      @for (course of courses(); track course.title) {
         <li class="mc-card">
           <div class="mc-card__body">
             <h2 class="mc-card__title">{{ course.title }}</h2>
             <p class="mc-card__desc">{{ course.description }}</p>
             <div class="mc-card__meta">
-              <span class="mc-meta-chip">📖 {{ course.chapters }} თავი</span>
-              <span class="mc-meta-chip">🎬 {{ course.videos }} ვიდეო</span>
+              <span class="mc-meta-chip">📖 {{ course.chapterCount }} თავი</span>
+              <span class="mc-meta-chip">🎬 {{ course.videoCount }} ვიდეო</span>
             </div>
           </div>
           <div class="mc-card__progress">

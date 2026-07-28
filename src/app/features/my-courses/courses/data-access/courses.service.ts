@@ -18,6 +18,14 @@ export interface CourseLessonContent {
   description: string;
 }
 
+export interface CourseSummary {
+  title: string;
+  description: string;
+  chapterCount: number;
+  videoCount: number;
+  progress: number;
+}
+
 @Injectable({
   providedIn: 'root'
 })
@@ -52,6 +60,19 @@ export class CoursesService {
       title: 'Dummy lesson title',
       description: 'Dummy lesson description.',
     });
+  }
+
+  getCourseDescription(courseId: string) {
+    return signal<CourseSummary[]>([
+      {
+        title: 'მშობელთა სკოლა',
+        description: 'კომპლექსური ვიდეო კურსი ორსულობის, მშობიარობისა და ახალშობილის მოვლის შესახებ.',
+        chapterCount: 10,
+        videoCount: 120,
+        progress: 20,
+      },
+    ]
+  );
   }
 
 }
