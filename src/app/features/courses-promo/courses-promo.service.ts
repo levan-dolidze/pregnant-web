@@ -1,6 +1,25 @@
-import { Injectable } from '@angular/core';
+import { Injectable, signal } from '@angular/core';
+export interface CoursePromoSummary {
+  courseName: string;
+  title: string;
+  description: string;
+  lessonQty: number;
+  price: number;
+  videoUrl: string;
+}
 
 @Injectable({
   providedIn: 'root'
 })
-export class CoursesPromoService {}
+export class CoursesPromoService {
+
+    readonly coursePromo = signal<CoursePromoSummary>({
+      courseName: 'მშობელთა სკოლა',
+      title: 'ბავშვის მოვლის ვიდეო კრებული დედებისთვის',
+      description: 'კომპლექსური ვიდეო კურსი, რომელიც მოიცავს ორსულობის, მშობიარობისა და ახალშობილის მოვლის ყველა მნიშვნელოვან ასპექტს. Dr. თამარ თევზაძის ხელმძღვანელობით შეიძინეთ ცოდნა, რომელიც ნამდვილად გამოგადგებათ.',
+      lessonQty: 6,
+      price: 120,
+      videoUrl: 'https://www.youtube.com/embed/dQw4w9WgXcQ?rel=0&modestbranding=1'
+    });
+  
+}

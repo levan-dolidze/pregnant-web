@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { GuidService } from 'src/app/shared/services/guid/guid.service';
 import { PurchaseService } from './data-access/purchase.service';
 import { VideoViewerComponent } from 'src/app/components/video-viewer/video-viewer.component';
+import { CoursesPromoService } from './courses-promo.service';
 
 @Component({
   selector: 'app-courses-promo',
@@ -14,12 +15,11 @@ import { VideoViewerComponent } from 'src/app/components/video-viewer/video-view
 export class CoursesPromoComponent {
   private readonly router = inject(Router);
   private readonly guidService = inject(GuidService);
-  private readonly purchaseService = inject(PurchaseService);
+  private readonly purchaseService = inject(CoursesPromoService);
 
-  readonly videoUrl = 'https://www.youtube.com/embed/dQw4w9WgXcQ?rel=0&modestbranding=1';
   readonly promo = this.purchaseService.coursePromo;
 
-  onPurchase() {
+  onPurchaseInit() {
     this.router.navigate(['/purchase-pregnant-course/', this.guidService.getUUID])
   }
 

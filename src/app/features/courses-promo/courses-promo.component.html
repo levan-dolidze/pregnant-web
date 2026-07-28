@@ -1,6 +1,5 @@
 <main class="ps-page">
 
-  <!-- ── Hero ─────────────────────────────────────────────────── -->
   <section class="ps-hero">
     <div class="ps-hero__inner">
 
@@ -17,21 +16,20 @@
 
       <app-video-viewer
         class="ps-hero__video-wrap"
-        [videoUrl]="videoUrl"
+        [videoUrl]="promo().videoUrl"
         title="მშობელთა სკოლა — შესავალი">
       </app-video-viewer>
 
     </div>
   </section>
 
-  <!-- ── CTA ───────────────────────────────────────────────────── -->
   <div class="ps-cta">
     <div class="ps-cta__inner">
       <div class="ps-cta__info">
-        <span class="ps-cta__price">{{ promo().price }}</span>
+        <span class="ps-cta__price">{{ promo().price }} ₾</span>
         <span class="ps-cta__note">ერთჯერადი გადახდა · უვადო წვდომა</span>
       </div>
-      <button class="ps-cta__btn" (click)="onPurchase()">შეძენა</button>
+      <button class="ps-cta__btn" (click)="onPurchaseInit()">შეძენა</button>
     </div>
   </div>
 
