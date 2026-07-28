@@ -2,6 +2,11 @@
 @use "mixins" as *;
 
 .nav-chapter {
+  &--active:not(.nav-chapter--expanded) {
+    > .nav-chapter__header .nav-chapter__title {
+      color: $primary;
+    }
+  }
   &__header {
     @include flex-center-between;
     width: 100%;
@@ -18,11 +23,11 @@
     }
 
     &--active {
-      background: $pink100;
+      background: $primary;
 
       .nav-chapter__title {
-        color: $pink;
-        font-weight: 600;
+        @include font(14px, 500, $primary, $font-medium);
+
       }
     }
   }
@@ -44,6 +49,10 @@
     list-style: none;
     margin: 0;
     padding: 4px 0 8px 16px;
+
+    &--collapsed {
+      display: none;
+    }
   }
 
   &__item {
@@ -59,7 +68,7 @@
     }
 
     &--active {
-      color: $pink;
+      color: $primary;
       font-weight: 600;
     }
   }

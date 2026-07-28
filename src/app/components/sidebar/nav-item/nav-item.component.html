@@ -1,12 +1,14 @@
 <ng-container *transloco="let t">
   @if (item.sections && item.sections.length) {
-    <button type="button" class="nav-chapter__header" (click)="toggle()">
-      <span class="nav-chapter__title">{{ t(item.chapter) }}</span>
-      <mat-icon class="nav-chapter__arrow" [class.nav-chapter__arrow--open]="expanded()">expand_more</mat-icon>
-    </button>
+    <div class="nav-chapter"
+         routerLinkActive="nav-chapter--active"
+         [class.nav-chapter--expanded]="expanded()">
+      <button type="button" class="nav-chapter__header" (click)="toggle()">
+        <span class="nav-chapter__title">{{ t(item.chapter) }}</span>
+        <mat-icon class="nav-chapter__arrow" [class.nav-chapter__arrow--open]="expanded()">expand_more</mat-icon>
+      </button>
 
-    @if (expanded()) {
-      <ul class="nav-chapter__list">
+      <ul class="nav-chapter__list" [class.nav-chapter__list--collapsed]="!expanded()">
         @for (section of item.sections; track section.route) {
           <li>
             <a class="nav-chapter__item"
@@ -18,7 +20,7 @@
           </li>
         }
       </ul>
-    }
+    </div>
   } @else {
     <a class="nav-chapter__header nav-chapter__header--link"
        [routerLink]="item.route"
