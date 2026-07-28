@@ -5,7 +5,7 @@
     <form [formGroup]="form" (ngSubmit)="onPay()" class="ppc-form">
     <h1 class="ppc-card__title">კურსის შეძენა</h1>
 
-      <div class="ppc-field">
+      <!-- <div class="ppc-field">
         <app-input formControlName="name" placeholder="სახელი" [isRequired]="true"
           [isInvalid]="form.controls['name'].invalid && form.controls['name'].dirty">
         </app-input>
@@ -25,7 +25,7 @@
             submit: (form.controls['surname'] && form.controls['surname'].dirty), patternTypes: 'none' }">
           {{ err }}
         </mat-hint>
-      </div>
+      </div> -->
 
       <div class="ppc-field">
         <app-input formControlName="mobileNumber" placeholder="მობილური" type="tel" [isRequired]="true"
