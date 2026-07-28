@@ -8,7 +8,7 @@ export const login = createAction(
 );
 export const loginSuccess = createAction(
   "[Auth] LoginSuccess",
-  props<{ success: boolean }>()
+  props<{ tokenGroup: AuthTokenResponse }>()
 );
 export const loginError = createAction(
   '[Auth] Login Error',
@@ -16,14 +16,6 @@ export const loginError = createAction(
 );
 
 
-export const approveLoginSuccess = createAction(
-  '[Auth] Approve Login Success',
-  props<{ tokenGroup: AuthTokenResponse }>()
-);
-export const approveLoginError = createAction(
-  '[Auth] Approve Login Error',
-  props<{ message: string }>()
-);
 
 export const backToCredentials = createAction(
   '[Auth] Back To Credentials',

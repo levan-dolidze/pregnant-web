@@ -7,8 +7,6 @@ import {
 } from '@ngrx/effects';
 import { catchError, EMPTY, map, mergeMap, of, tap } from 'rxjs';
 import {
-  approveLoginError,
-  approveLoginSuccess,
   login,
   loginError,
   loginSuccess,
@@ -37,8 +35,8 @@ export class AuthEffects {
         const auth = this.sessionStorage.getKey('auth')
         if (!auth) return EMPTY;
 
-        return of(approveLoginSuccess({
-          tokenGroup: auth
+        return of(loginSuccess({
+          tokenGroup: auth 
         }));
       })
     )
@@ -51,7 +49,7 @@ export class AuthEffects {
         this.accountService.login(loginRequest).pipe(
           map((res) =>
             res.success
-              ? loginSuccess({ success: true })
+              ? loginSuccess({ tokenGroup: res.data  })
               : loginError({ message: res.result })
           ),
           catchError((err) => {
@@ -65,37 +63,8 @@ export class AuthEffects {
   loginSuccess$ = createEffect(() =>
     this.actions$.pipe(
       ofType(loginSuccess),
-      tap(({ success }) => {
-        this.alertService.notification({
-          message: 'OTP გაიგზავნა თქვენს ტელეფონზე',
-          messageType: 'success',
-        });
-      })
-    ), { dispatch: false }
-  );
-
-  // approveLogin$ = createEffect(() =>
-  //   this.actions$.pipe(
-  //     ofType(approveLogin),
-  //     mergeMap(({ request }) =>
-  //       this.accountService.approveLogin(request).pipe(
-  //         map((response) =>
-  //           response.success
-  //             ? approveLoginSuccess({ tokenGroup: response.data! })
-  //             : approveLoginError({ message: response.result?.description || 'Invalid OTP' })
-  //         ),
-  //         catchError((err) => {
-  //           return of(approveLoginError({ message: err?.error?.result?.description || 'OTP-ს დადასტურება ვერ მოხდა' }));
-  //         })
-  //       )
-  //     )
-  //   )
-  // );
-
-  approveLoginSuccess$ = createEffect(() =>
-    this.actions$.pipe(
-      ofType(approveLoginSuccess),
       tap(({ tokenGroup }) => {
+    
         if (tokenGroup) {
           this.sessionStorage.saveKey('auth', JSON.stringify(tokenGroup));
           const rout = this.activatedRoute.snapshot.queryParams['returnUrl'] ?? '';
@@ -113,17 +82,6 @@ export class AuthEffects {
         let msg = message.code === LoginResponseCode.CredentialInvalid ? 'მომხმარებელი ან პაროლი არასწორია' : 'სისტემაში შესვლა ვერ მოხდა'
         this.alertService.notification({
           message: msg,
-          messageType: 'error',
-        });
-      })
-    ), { dispatch: false }
-  );
-  approveLoginError$ = createEffect(() =>
-    this.actions$.pipe(
-      ofType(approveLoginError),
-      tap(({ message }) => {
-        this.alertService.notification({
-          message: message || 'არასწორი OTP',
           messageType: 'error',
         });
       })

@@ -19,6 +19,7 @@ import { stepKey, stepReducer } from './shared/state/step-state/step-reducers';
 import { StepEffects } from './shared/state/step-state';
 import { DateToStringPipe } from './shared/pipe/date-to-string.pipe';
 import { httpInterceptor } from './core/interceptor/http.interceptor';
+import { AuthEffects, authKey, authReducer } from './auth/data-access/state/auth';
 
 function getStoredLang() {
   return sessionStorage.getItem('saLang')
@@ -49,8 +50,9 @@ export const appConfig: ApplicationConfig = {
       CookieModule.withOptions(),
     ),
     provideState({ name: stepKey, reducer: stepReducer }),
+    provideState({ name: authKey, reducer: authReducer }),
 
-    provideEffects([StepEffects]),
+    provideEffects([StepEffects,AuthEffects]),
 
 
     provideStoreDevtools({

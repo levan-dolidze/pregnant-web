@@ -1,8 +1,5 @@
 import { createReducer, on } from '@ngrx/store';
 import {
-  approveLogin,
-  approveLoginError,
-  approveLoginSuccess,
   backToCredentials,
   login,
   loginError,
@@ -31,17 +28,17 @@ export const authReducer = createReducer<AccountSource>(
     loading: false,
   })),
 
-  on(approveLogin, (state) => ({
-    ...state,
-    loading: true,
-  })),
+  // on(approveLogin, (state) => ({
+  //   ...state,
+  //   loading: true,
+  // })),
 
-  on(approveLoginSuccess, (state, { tokenGroup }) => ({
-    ...state,
-    authResponse: tokenGroup,
-    loaded: true,
-    loading: false,
-  })),
+  // on(approveLoginSuccess, (state, { tokenGroup }) => ({
+  //   ...state,
+  //   authResponse: tokenGroup,
+  //   loaded: true,
+  //   loading: false,
+  // })),
   
   on(backToCredentials, (state) => ({
     ...state,
@@ -50,11 +47,11 @@ export const authReducer = createReducer<AccountSource>(
     loading: false,
   })),
 
-  on(approveLoginError, (state, { message }) => ({
-    ...state,
-    loading: false,
-    err: message
-  })),
+  // on(approveLoginError, (state, { message }) => ({
+  //   ...state,
+  //   loading: false,
+  //   err: message
+  // })),
 
   on(logout, logOutSuccess, (state) => ({
     ...state,

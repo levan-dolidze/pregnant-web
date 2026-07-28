@@ -20,17 +20,9 @@ export const selectIsAuth = createSelector(
   (auth) => !!auth.authResponse?.access_token
 );
 
-export const otpSent = createSelector(
-  authFeature,
-  (auth) => !!auth.otpSent
-);
 
 export const selectLoginLoading = createSelector(
   authFeature,
   (state) => state.loading
 );
 
-export const selectOtpSent = createSelector(
-  authFeature,
-  (state) => state.otpSent
-);

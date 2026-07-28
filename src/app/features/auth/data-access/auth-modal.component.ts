@@ -6,6 +6,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { TranslocoModule } from '@jsverse/transloco';
 import { Store } from '@ngrx/store';
 import { AccountService } from 'src/app/auth/data-access/account.service';
+import { AuthActions } from 'src/app/auth/data-access/state/auth';
 import { AlertService } from 'src/app/components/alert/alert.service';
 import { LoaderService } from 'src/app/components/loader/loader.service';
 import { ControlModeChange } from 'src/app/shared/functions/controlModeChange';
@@ -75,7 +76,9 @@ export class AuthModalComponent implements OnInit, OnChanges {
     }
     else {
       const request = this.initForm.getRawValue();
-      // this.store.dispatch(AuthActions.login({ loginRequest: request }));
+
+      console.log(request)
+      this.store.dispatch(AuthActions.login({ loginRequest: request }));
 
     }
   }

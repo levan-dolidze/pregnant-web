@@ -8,6 +8,7 @@ import {
   TitleStrategy,
 } from '@angular/router';
 import { LayoutComponent } from './components/layout/layout.component';
+import { authGuard } from './shared/guards/auth-.guard';
 
 
 @Injectable()
@@ -41,6 +42,7 @@ export const routes: Routes = [
       },
       {
         path: 'home',
+        // canActivate: [authGuard],
         loadComponent: () => {
           return import('./features/home/home.component').then(
             (m) => m.HomeComponent
@@ -49,6 +51,7 @@ export const routes: Routes = [
       },
       {
         path: 'about',
+        // canActivate: [authGuard],
         loadComponent: () => {
           return import('./features/about/about.component').then(
             (m) => m.AboutComponent
@@ -57,6 +60,7 @@ export const routes: Routes = [
       },
       {
         path: 'contact',
+        // canActivate: [authGuard],
         loadComponent: () =>
           import('./features/contact/contact.component').then(
             (m) => m.ContactComponent
@@ -64,6 +68,7 @@ export const routes: Routes = [
       },
       {
         path: 'courses-promo',
+        // canActivate: [authGuard],
         loadComponent: () =>
           import('./features/courses-promo/courses-promo.component').then(
             (m) => m.CoursesPromoComponent
@@ -71,6 +76,7 @@ export const routes: Routes = [
       },
       {
         path: 'purchase-pregnant-course/:session',
+        // canActivate: [authGuard],
         loadComponent: () =>
           import('./features/courses-promo/purchase-pregnant-course/purchase-pregnant-course.component').then(
             (m) => m.PurchasePregnantCourseComponent
@@ -78,6 +84,7 @@ export const routes: Routes = [
       },
       {
         path: 'shop',
+        // canActivate: [authGuard],
         loadComponent: () =>
           import('./features/shop/shop.component').then(
             (m) => m.ShopComponent
@@ -85,6 +92,7 @@ export const routes: Routes = [
       },
       {
         path: 'blog',
+        // canActivate: [authGuard],
         loadComponent: () =>
           import('./features/blog/blog.component').then(
             (m) => m.BlogComponent
@@ -92,6 +100,7 @@ export const routes: Routes = [
       },
       {
         path: 'calendar',
+        canActivate: [authGuard],
         loadComponent: () =>
           import('./features/calendar/calendar.component').then(
             (m) => m.CalendarComponent
@@ -99,6 +108,7 @@ export const routes: Routes = [
       },
       {
         path: 'profile',
+        canActivate: [authGuard],
         loadComponent: () =>
           import('./features/profile/profile.component').then(
             (m) => m.ProfileComponent
@@ -106,6 +116,7 @@ export const routes: Routes = [
       },
       {
         path: 'my-courses',
+        canActivate: [authGuard],
         loadComponent: () =>
           import('./features/my-courses/my-courses.component').then(
             (m) => m.MyCoursesComponent
@@ -113,6 +124,7 @@ export const routes: Routes = [
       },
       {
         path: 'courses',
+        // canActivate: [authGuard],
         loadChildren: () => {
           return import('./features/my-courses/courses/courses.routers').then(
             (m) => m.routes

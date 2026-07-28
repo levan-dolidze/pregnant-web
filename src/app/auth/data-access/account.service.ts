@@ -5,6 +5,7 @@ import { ApiResponseBase } from 'src/app/core/utils/models';
 import { Observable } from 'rxjs';
 import { ApiService } from 'src/app/core/api-service/api.service';
 import { Login } from '../utils/auth';
+import { AuthTokenResponse } from './state/models';
 
 const authBasePath = '/api/Auth';
 
@@ -17,7 +18,7 @@ export class AccountService {
 
 
 
-  public login(params: Login): Observable<ApiResponseBase<unknown>> {
+  public login(params: Login): Observable<ApiResponseBase<AuthTokenResponse>> {
     return this.apiService.post(`${authBasePath}/Login`, params);
   }
 
