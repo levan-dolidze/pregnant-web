@@ -28,14 +28,19 @@
       </div>
 
       <div class="ppc-field">
-        <app-input formControlName="mob" placeholder="მობილური" type="tel" [isRequired]="true"
-          [isInvalid]="form.controls['mob'].invalid && form.controls['mob'].dirty">
+        <app-input formControlName="mobileNumber" placeholder="მობილური" type="tel" [isRequired]="true"
+          [isInvalid]="form.controls['mobileNumber'].invalid && form.controls['mobileNumber'].dirty">
         </app-input>
         <mat-hint class="error-msg"
-          *validationErrors="form; control: 'mob'; let err; additionalValue: {
-            submit: (form.controls['mob'] && form.controls['mob'].dirty), patternTypes: 'mobNumber' }">
+          *validationErrors="form; control: 'mobileNumber'; let err; additionalValue: {
+            submit: (form.controls['mobileNumber'] && form.controls['mobileNumber'].dirty), patternTypes: 'mobNumber' }">
           {{ err }}
         </mat-hint>
+
+                <app-otp 
+                (confirmOtpEmit)="confirmOtp($event)" 
+                [clientNumber]="form.get('mobileNumber').value">
+                </app-otp>
       </div>
 
       <div class="ppc-field">

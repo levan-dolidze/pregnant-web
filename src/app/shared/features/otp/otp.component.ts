@@ -29,11 +29,11 @@ export class OtpComponent implements OnInit {
 
   constructor(
     @Optional() public dialogRef: MatDialogRef<OtpComponent>,
-    @Inject(MAT_DIALOG_DATA)
-    public data: { otpDialogModel: Signal<OtpDialog> }
+    @Optional() @Inject(MAT_DIALOG_DATA)
+    public data: { otpDialogModel: Signal<OtpDialog> } | null
   ) { }
 
-  @Output() confirmOtpEmit: EventEmitter<string> = new EventEmitter();
+  @Output() confirmOtpEmit: EventEmitter<boolean> = new EventEmitter();
   @Output() resendOtpEmit: EventEmitter<void> = new EventEmitter();
 
   clientNumber = input.required<string>();
@@ -119,11 +119,11 @@ export class OtpComponent implements OnInit {
 
 
   private getOtp() {
-    if (!this.data.otpDialogModel()?.mobileNumber) return
+    if (!this.clientNumber()) return
 
     else {
       const params = {
-        mobileNumber: this.data.otpDialogModel().mobileNumber,
+        mobileNumber: this.clientNumber(),
       };
 
       this.otpService.requestOtp(params)
@@ -158,7 +158,7 @@ export class OtpComponent implements OnInit {
       const params = {
         code: this.otpf.otp.value,
         passwordId: this.passwordIdState(),
-        phoneNumber: this.data.otpDialogModel().mobileNumber,
+        phoneNumber: this.clientNumber(),
         productName: null
       } as VerifyOtpRequest
 
@@ -167,6 +167,7 @@ export class OtpComponent implements OnInit {
         subscribe({
           next: ((passwordId: string) => {
             this.onClose(true)
+            this.confirmOtpEmit.emit(true)
             this.verifyUtpLoading.set({ loading: false, error: '' })
             clearInterval(this.timerInterval);
           }),
@@ -196,6 +197,6 @@ export class OtpComponent implements OnInit {
   }
 
   onClose(result?: boolean) {
-    this.dialogRef.close(result);
+    this.dialogRef?.close(result);
   }
 }

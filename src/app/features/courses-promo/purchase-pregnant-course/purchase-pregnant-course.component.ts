@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject, signal } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { InputComponent } from 'src/app/components/input/input.component';
@@ -10,6 +10,9 @@ import { PurchaseService } from '../data-access/purchase.service';
 import type { CoursePurchaseRequest } from '../models/course-purchase.model';
 import { NgClass } from '@angular/common';
 import { CheckboxComponent } from 'src/app/components/checkbox/checkbox.component';
+import { OtpModalComponent } from 'src/app/shared/features/otp/otp-modal/otp-modal.component';
+import { MatDialog } from '@angular/material/dialog';
+import { OtpComponent } from 'src/app/shared/features/otp/otp.component';
 
 @Component({
   selector: 'app-purchase-pregnant-course',
@@ -21,7 +24,8 @@ import { CheckboxComponent } from 'src/app/components/checkbox/checkbox.componen
     ButtonComponent,
     ValidationErrorsDirective,
     NgClass,
-    CheckboxComponent
+    CheckboxComponent,
+    OtpComponent
   ],
   templateUrl: './purchase-pregnant-course.component.html',
   styleUrl: './purchase-pregnant-course.component.scss',
@@ -31,34 +35,74 @@ export class PurchasePregnantCourseComponent {
 
   private readonly purchaseService = inject(PurchaseService)
 
+  readonly dialog = inject(MatDialog);
 
   readonly form = new FormGroup({
     name: new FormControl('', [Validators.required]),
     surname: new FormControl('', [Validators.required]),
     termsChecked: new FormControl('', [Validators.requiredTrue]),
-    mob: new FormControl('', [Validators.required, Validators.pattern(regExp.onlyNumbers)]),
+    mobileNumber: new FormControl('', [Validators.required, Validators.pattern(regExp.onlyNumbers)]),
     email: new FormControl('', [Validators.required, Validators.pattern(regExp.email)]),
   });
 
+
+  get f() {
+    return this.form.controls
+  }
+
+  
   onPay(): void {
     if (this.form.invalid) {
       ControlModeChange.formFieldsModeControl('markAsDirty', this.form);
 
     } else {
 
-      const params = this.form.getRawValue();
-
-      this.purchaseService.pay(params).subscribe({
-        next: (() => {
-
-        }),
-        error: (() => {
-
-        })
-      })
-
-
-
     }
   }
+
+  confirmOtp(confirm:boolean){
+
+    this.purchase()
+
+  }
+
+
+
+  purchase(){
+    const params = this.form.getRawValue();
+
+    // this.purchaseService.pay(params).subscribe({
+    //   next: (() => {
+
+    //   }),
+    //   error: (() => {
+
+    //   })
+    // })
+  }
+
+  // openOtp() {
+  //   const dialogRef = this.dialog.open(OtpModalComponent, {
+  //     position: { bottom: '0' },
+  //     panelClass: 'dialog-border-radius',
+
+  //     data: {
+  //       otpDialogModel: signal({
+  //         title: 'შეიყვანე კოდი',
+  //         mobileNumber: this.f.mobileNumber.value,
+  //       })
+  //     },
+  //   });
+
+  //   dialogRef.afterClosed().subscribe((result) => {
+  //     if (result) {
+  //       // const contacts = this.form.getRawValue();
+  //       // this.store.dispatch(saveContactsSuccess({ contacts }))
+
+  //       // const stepParams = this.navigateParams()
+  //       // this.store.dispatch(getPassportTemplatesInit({ stepParams }))
+  //     }
+  //   })
+  // }
+
 }
