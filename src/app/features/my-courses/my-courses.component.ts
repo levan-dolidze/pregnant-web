@@ -1,10 +1,11 @@
 import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { Router } from '@angular/router';
 import { CoursesService, CourseSummary } from './courses/data-access/courses.service';
+import { ButtonComponent } from 'src/app/components/button/button.component';
 
 @Component({
   selector: 'app-my-courses',
-  imports: [],
+  imports: [ButtonComponent],
   templateUrl: './my-courses.component.html',
   styleUrl: './my-courses.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush

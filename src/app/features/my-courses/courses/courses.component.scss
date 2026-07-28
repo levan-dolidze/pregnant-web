@@ -13,7 +13,7 @@
   }
 
   &__title {
-    @include font(28px, 700, $gray700, $font-bold);
+    @include font(24px, 500, $gray700, $font-medium);
     margin: 0 0 12px;
   }
 

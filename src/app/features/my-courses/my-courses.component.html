@@ -19,9 +19,12 @@
             </div>
             <span class="mc-card__percent">{{ course.progress }}%</span>
           </div>
-          <button class="mc-card__btn" (click)="startLearning(course)">
-            {{ course.progress > 0 ? 'სწავლის გაგრძელება' : 'სწავლის დაწყება' }}
-          </button>
+          <app-button
+            class="mc-card__btn"
+            width=""
+            [text]="course.progress > 0 ? 'სწავლის გაგრძელება' : 'სწავლის დაწყება'"
+            (btnClick)="startLearning(course)">
+          </app-button>
         </li>
       }
     </ul>
