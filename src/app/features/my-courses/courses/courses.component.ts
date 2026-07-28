@@ -1,13 +1,16 @@
 import { JsonPipe } from '@angular/common';
 import { ChangeDetectionStrategy, Component, Input, OnChanges, OnDestroy, OnInit, SimpleChanges, inject } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { DomSanitizer } from '@angular/platform-browser';
+import { MatIconModule } from '@angular/material/icon';
 import { Subscription } from 'rxjs';
 import { CoursesService } from './data-access/courses.service';
 import { LoadingDirective } from 'src/app/components/loader/loading.directive';
+import { TranslocoModule } from '@jsverse/transloco';
 
 @Component({
   selector: 'app-courses',
-  imports: [JsonPipe,LoadingDirective],
+  imports: [JsonPipe, LoadingDirective, TranslocoModule, MatIconModule],
   templateUrl: './courses.component.html',
   styleUrl: './courses.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush
@@ -15,7 +18,9 @@ import { LoadingDirective } from 'src/app/components/loader/loading.directive';
 export class CoursesComponent implements OnInit,OnChanges, OnDestroy {
   private readonly route = inject(ActivatedRoute);
   private readonly coursesService = inject(CoursesService);
+  readonly sanitizer = inject(DomSanitizer);
   readonly courseBy = this.coursesService.courseBy
+
   private readonly paramsSub = Subscription.EMPTY;
 
   @Input() item:string;

@@ -1,8 +1,21 @@
-<section class="course-content">
 <div *loading="false"></div>
 
-  {{courseBy().title}}
-  {{courseBy().description}}
+<section class="lesson" *transloco="let t">
 
-  <video [src]="courseBy()?.videoUrl"></video>
+  <h1 class="lesson__title">{{ t(courseBy().section) }}</h1>
+
+  <div class="lesson__meta">
+    <span class="lesson__meta-item">
+      <mat-icon class="lesson__meta-icon">schedule</mat-icon>
+      {{ courseBy().time }}
+    </span>
+    <span class="lesson__meta-item">
+      <mat-icon class="lesson__meta-icon">play_circle_outline</mat-icon>
+      ვიდეო გაკვეთილი
+    </span>
+  </div>
+
+  <div class="lesson__video">
+    <iframe  title [src]="sanitizer.bypassSecurityTrustResourceUrl(courseBy().videoUrl)" allowfullscreen></iframe>
+  </div>
 </section>

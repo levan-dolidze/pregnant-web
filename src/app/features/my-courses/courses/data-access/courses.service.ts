@@ -12,11 +12,15 @@ export interface CourseChapter {
 export interface CourseLessonContent {
   chapter: string;
   section: string;
-  name: string;
   videoUrl: string;
   title: string;
-  description: string;
+  time: string;
+  typeId: VideoTypeIds
 }
+export enum VideoTypeIds {
+  VideoLession
+}
+
 
 export interface CourseSummary {
   title: string;
@@ -51,18 +55,15 @@ export class CoursesService {
   ]
 
   //getBy
-   readonly courseBy = signal<CourseLessonContent>({
+  readonly courseBy = signal<CourseLessonContent>({
     chapter: 'intro',
     section: 'who_am_i',
-    name: 'who_am_i',
-    videoUrl: 'https://www.youtube.com/embed/dQw4w9WgXcQ',
+    videoUrl: 'https://www.youtube.com/embed/QFcv5Ma8u8k',
     title: 'Dummy lesson title',
-    description: 'Dummy lesson description.',
+    time: '1:20',
+    typeId: VideoTypeIds.VideoLession
   });
 
-  getCourseBy(chapter: string, section: string) {
-    return this.courseBy;
-  }
 
   readonly courseDescription = signal<CourseSummary[]>([
     {
