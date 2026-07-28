@@ -18,7 +18,7 @@ export class OtpModalComponent  {
 
 
 
-  confirmOtp(otp: string) {
+  confirmOtp(confirmed: boolean) {
 
   }
 

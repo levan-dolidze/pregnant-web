@@ -7,6 +7,7 @@ import { ValidationErrorsDirective } from 'src/app/shared/directives/validation-
 import { ControlModeChange } from 'src/app/shared/functions/controlModeChange';
 import { regExp } from 'src/app/shared/utils/regex';
 import { PurchaseService } from '../data-access/purchase.service';
+import { CoursesPromoService } from '../courses-promo.service';
 import type { CoursePurchaseRequest } from '../models/course-purchase.model';
 import { NgClass } from '@angular/common';
 import { CheckboxComponent } from 'src/app/components/checkbox/checkbox.component';
@@ -34,8 +35,10 @@ import { OtpComponent } from 'src/app/shared/features/otp/otp.component';
 export class PurchasePregnantCourseComponent {
 
   private readonly purchaseService = inject(PurchaseService)
+  private readonly coursesPromoService = inject(CoursesPromoService)
 
   readonly dialog = inject(MatDialog);
+  readonly promo = this.coursesPromoService.coursePromo;
 
   readonly form = new FormGroup({
     name: new FormControl('', [Validators.required]),

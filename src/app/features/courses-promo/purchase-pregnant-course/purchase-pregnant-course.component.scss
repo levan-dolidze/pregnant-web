@@ -21,6 +21,20 @@
     @include font(24px, 700, $gray700, $font-bold);
   }
 
+  &__price {
+    @include flex-center-between;
+    padding-top: 8px;
+    border-top: 1px solid $gray12;
+  }
+
+  &__price-label {
+    @include font(14px, 500, $gray13, $font-medium);
+  }
+
+  &__price-value {
+    @include font(20px, 700, $gray700, $font-bold);
+  }
+
   &__terms {
     @include flex-init;
 
