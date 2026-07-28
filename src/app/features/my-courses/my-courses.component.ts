@@ -14,7 +14,7 @@ export class MyCoursesComponent {
   private readonly router = inject(Router);
   private readonly coursesService = inject(CoursesService);
 
-  readonly courses = this.coursesService.getCourseDescription('pregnant-school');
+  readonly myCourses = this.coursesService.courseDescription;
 
   startLearning(course: CourseSummary): void {
     // TODO: navigate to the course player once it exists

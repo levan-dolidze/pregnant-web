@@ -2,6 +2,7 @@ import { JsonPipe } from '@angular/common';
 import { ChangeDetectionStrategy, Component, Input, OnChanges, OnDestroy, OnInit, SimpleChanges, inject } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs';
+import { CoursesService } from './data-access/courses.service';
 
 @Component({
   selector: 'app-courses',
@@ -12,6 +13,8 @@ import { Subscription } from 'rxjs';
 })
 export class CoursesComponent implements OnInit,OnChanges, OnDestroy {
   private readonly route = inject(ActivatedRoute);
+  private readonly coursesService = inject(CoursesService);
+  courseBy = this.coursesService.courseBy
   private paramsSub = Subscription.EMPTY;
 
   @Input() item:string;

@@ -1,9 +1,9 @@
 <main class="mc-page">
   <h1 class="mc-page__title">ჩემი კურსები</h1>
 
-  @if (courses().length) {
+  @if (myCourses().length) {
     <ul class="mc-list">
-      @for (course of courses(); track course.title) {
+      @for (course of myCourses(); track course.title) {
         <li class="mc-card">
           <div class="mc-card__body">
             <h2 class="mc-card__title">{{ course.title }}</h2>

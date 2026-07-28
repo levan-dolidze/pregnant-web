@@ -51,28 +51,29 @@ export class CoursesService {
   ]
 
   //getBy
+   readonly courseBy = signal<CourseLessonContent>({
+    chapter: 'intro',
+    section: 'who_am_i',
+    name: 'who_am_i',
+    videoUrl: 'https://www.youtube.com/embed/dQw4w9WgXcQ',
+    title: 'Dummy lesson title',
+    description: 'Dummy lesson description.',
+  });
+
   getCourseBy(chapter: string, section: string) {
-    return signal<CourseLessonContent>({
-      chapter,
-      section,
-      name: section,
-      videoUrl: 'https://www.youtube.com/embed/dQw4w9WgXcQ',
-      title: 'Dummy lesson title',
-      description: 'Dummy lesson description.',
-    });
+    return this.courseBy;
   }
 
-  getCourseDescription(courseId: string) {
-    return signal<CourseSummary[]>([
-      {
-        title: 'მშობელთა სკოლა',
-        description: 'კომპლექსური ვიდეო კურსი ორსულობის, მშობიარობისა და ახალშობილის მოვლის შესახებ.',
-        chapterCount: 10,
-        videoCount: 120,
-        progress: 20,
-      },
-    ]
-  );
-  }
+  readonly courseDescription = signal<CourseSummary[]>([
+    {
+      title: 'მშობელთა სკოლა',
+      description: 'კომპლექსური ვიდეო კურსი ორსულობის, მშობიარობისა და ახალშობილის მოვლის შესახებ.',
+      chapterCount: 10,
+      videoCount: 120,
+      progress: 20,
+    },
+  ]);
+
+
 
 }
