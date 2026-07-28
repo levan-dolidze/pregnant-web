@@ -1,4 +1,8 @@
 <section class="course-content">
+<div *loading="false"></div>
+
   {{courseBy().title}}
   {{courseBy().description}}
+
+  <video [src]="courseBy()?.videoUrl"></video>
 </section>

@@ -3,10 +3,11 @@ import { ChangeDetectionStrategy, Component, Input, OnChanges, OnDestroy, OnInit
 import { ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { CoursesService } from './data-access/courses.service';
+import { LoadingDirective } from 'src/app/components/loader/loading.directive';
 
 @Component({
   selector: 'app-courses',
-  imports: [JsonPipe],
+  imports: [JsonPipe,LoadingDirective],
   templateUrl: './courses.component.html',
   styleUrl: './courses.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush
@@ -14,8 +15,8 @@ import { CoursesService } from './data-access/courses.service';
 export class CoursesComponent implements OnInit,OnChanges, OnDestroy {
   private readonly route = inject(ActivatedRoute);
   private readonly coursesService = inject(CoursesService);
-  courseBy = this.coursesService.courseBy
-  private paramsSub = Subscription.EMPTY;
+  readonly courseBy = this.coursesService.courseBy
+  private readonly paramsSub = Subscription.EMPTY;
 
   @Input() item:string;
   @Input() chapter:string;
@@ -24,10 +25,6 @@ export class CoursesComponent implements OnInit,OnChanges, OnDestroy {
 
   ngOnInit(): void {
 
-    // this.paramsSub = this.route.paramMap.subscribe((params) => {
-    //   this.chapterLabel = humanize(params.get('chapter'));
-    //   this.lessonLabel = humanize(params.get('item'));
-    // });
   }
 
   ngOnChanges(changes: SimpleChanges): void {
