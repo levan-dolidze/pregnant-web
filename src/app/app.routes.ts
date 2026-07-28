@@ -98,6 +98,13 @@ export const routes: Routes = [
           ),
       },
       {
+        path: 'profile',
+        loadComponent: () =>
+          import('./features/profile/profile.component').then(
+            (m) => m.ProfileComponent
+          ),
+      },
+      {
         path: 'my-courses',
         loadComponent: () =>
           import('./features/my-courses/my-courses.component').then(
