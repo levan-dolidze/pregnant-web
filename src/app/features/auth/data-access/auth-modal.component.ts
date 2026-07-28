@@ -7,6 +7,7 @@ import { TranslocoModule } from '@jsverse/transloco';
 import { Store } from '@ngrx/store';
 import { AccountService } from 'src/app/auth/data-access/account.service';
 import { AuthActions } from 'src/app/auth/data-access/state/auth';
+import { loading } from 'src/app/auth/data-access/state/auth/auth-selectors';
 import { AlertService } from 'src/app/components/alert/alert.service';
 import { LoaderService } from 'src/app/components/loader/loader.service';
 import { ControlModeChange } from 'src/app/shared/functions/controlModeChange';
@@ -26,13 +27,11 @@ export class AuthModalComponent implements OnInit, OnChanges {
     @Optional() @Inject(MAT_DIALOG_DATA) public data: unknown
   ) {}
 
-  onClose(): void {
-    this.dialogRef.close();
-  }
 
 
   protected readonly store = inject(Store);
 
+  readonly loadingState = toSignal(this.store.select(loading))
   accountService = inject(AccountService);
   router = inject(Router);
   route = inject(ActivatedRoute);
@@ -87,4 +86,10 @@ export class AuthModalComponent implements OnInit, OnChanges {
     this.initForm.reset()
     // this.store.dispatch(AuthActions.backToCredentials());
   }
+
+
+  onClose(): void {
+    this.dialogRef.close();
+  }
+
 }

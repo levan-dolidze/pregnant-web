@@ -57,8 +57,12 @@
               </div>
 
               <div class="login-form__actions">
-                <app-button [text]="'შესვლა'"
-                  [type]="'submit'"></app-button>
+                <app-button 
+                  [text]="'შესვლა'"
+                  [type]="'submit'"
+                  [isLoading]="loadingState()"
+                  >
+                  </app-button>
               </div>
             </form>
 
