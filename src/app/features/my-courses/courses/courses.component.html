@@ -11,7 +11,9 @@
     </span>
   </div>
 
-  <div class="lesson__video">
-    <iframe  title [src]="sanitizer.bypassSecurityTrustResourceUrl(courseBy().videoUrl)" allowfullscreen></iframe>
-  </div>
+  <app-video-viewer
+    class="lesson__video"
+    [videoUrl]="courseBy().videoUrl"
+    [title]="t(courseBy().section)">
+  </app-video-viewer>
 </section>

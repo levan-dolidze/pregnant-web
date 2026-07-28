@@ -1,0 +1,16 @@
+@use "variables" as *;
+
+:host {
+  display: block;
+  border-radius: 16px;
+  overflow: hidden;
+  aspect-ratio: 16 / 9;
+  background: $black;
+}
+
+.video-viewer__frame {
+  width: 100%;
+  height: 100%;
+  display: block;
+  border: none;
+}
