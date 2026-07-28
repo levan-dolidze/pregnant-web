@@ -86,5 +86,13 @@
   "Policy_cannot_start_earlier_than_current_date": "Policy can't start earlier than current date",
   "Policy_should_end_later_than_its_start": "Policy should end later than its start",
   "Policy_holder_age_must_be_grather_than_18": "Policy holder age must be grather than 18",
-  "Purchase_New_Policy": "შეიძინე ახალი პოლისი"
+  "Purchase_New_Policy": "შეიძინე ახალი პოლისი",
+
+  "who_am_i": "Who Am I",
+  "what_you_will_learn": "What You Will Learn",
+  "breastfeeding": "Breastfeeding",
+  "bottle_feeding": "Bottle Feeding",
+
+  "intro": "intro",
+  "childNutrition": "Child Nutrition"
 }

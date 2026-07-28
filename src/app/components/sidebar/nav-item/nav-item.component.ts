@@ -1,11 +1,12 @@
 import { Component, EventEmitter, Input, Output, signal } from '@angular/core';
 import { RouterLink, RouterLinkActive } from '@angular/router';
 import { MatIconModule } from '@angular/material/icon';
+import { TranslocoModule } from '@jsverse/transloco';
 import { NavItem } from './nav-item';
 
 @Component({
   selector: 'app-nav-item',
-  imports: [MatIconModule, RouterLink, RouterLinkActive],
+  imports: [MatIconModule, RouterLink, RouterLinkActive, TranslocoModule],
   templateUrl: './nav-item.component.html',
   styleUrl: './nav-item.component.scss',
 })

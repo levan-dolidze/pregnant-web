@@ -13,7 +13,8 @@ import { CommonModule } from '@angular/common';
 import { MaterialModule } from 'src/app/shared/shared-module/material.module';
 import { SidebarComponent } from './sidebar.component';
 import { HeaderComponent } from '../header/header.component';
-import { navItems } from './sidebar-data';
+import { buildNavItems } from './sidebar-data';
+import { CoursesService } from 'src/app/features/my-courses/courses/data-access/courses.service';
 import { SharedModule } from 'src/app/shared/shared-module/shared';
 import { AppNavItemComponent } from './nav-item/nav-item.component';
 import { CoreService } from './core.service';
@@ -67,8 +68,9 @@ export class FullComponent implements OnInit {
   private readonly mediaMatcher = inject(MediaMatcher);
   private readonly router = inject(Router);
   private readonly breakpointObserver = inject(BreakpointObserver);
+  private readonly coursesService = inject(CoursesService);
 
-  navItems = navItems;
+  readonly navItems = buildNavItems(this.coursesService.arr);
 
   @ViewChild('leftsidenav')
   public sidenav: MatSidenav;

@@ -89,5 +89,13 @@
   "Policy_cannot_start_earlier_than_current_date": " პოლისის დაწყების თარიღი არ შეიძლება იყოს დღევანდელ დღეზე ნაკლები",
   "Policy_should_end_later_than_its_start": "პოლისის დასრულების თარიღი უნდა იყოს დაწყების თარიღზე მეტი",
   "Policy_holder_age_must_be_grather_than_18": "დამზღვევი უნდა იყოს მინიმუმ 18 წლის",
-  "Purchase_New_Policy": "შეიძინე ახალი პოლისი"
+  "Purchase_New_Policy": "შეიძინე ახალი პოლისი",
+
+  "who_am_i": "ვინ ვარ",
+  "what_you_will_learn": "რას შეისწავლი",
+  "breastfeeding": "ძუძუთი კვება",
+  "bottle_feeding": "ბოთლით კვება",
+  "intro":"შესავალი",
+  "childNutrition":"ბავშვის კვება"
+
 }

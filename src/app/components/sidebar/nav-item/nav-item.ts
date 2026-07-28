@@ -1,18 +1,6 @@
 export interface NavItem {
-  displayName?: string;
-  disabled?: boolean;
-  external?: boolean;
-  twoLines?: boolean;
-  chip?: boolean;
-  iconName?: string;
-  navCap?: string;
-  chipContent?: string;
-  chipClass?: string;
-  subtext?: string;
+  chapter?: string;
+  name?: string;
   route?: string;
-  children?: NavItem[];
-  ddType?: string;
-  permission?:string[];
+  sections?: NavItem[];
 }
-
-

@@ -1,28 +1,30 @@
-@if (item.children && item.children.length) {
-  <button type="button" class="nav-chapter__header" (click)="toggle()">
-    <span class="nav-chapter__title">{{ item.displayName }}</span>
-    <mat-icon class="nav-chapter__arrow" [class.nav-chapter__arrow--open]="expanded()">expand_more</mat-icon>
-  </button>
+<ng-container *transloco="let t">
+  @if (item.sections && item.sections.length) {
+    <button type="button" class="nav-chapter__header" (click)="toggle()">
+      <span class="nav-chapter__title">{{ t(item.chapter) }}</span>
+      <mat-icon class="nav-chapter__arrow" [class.nav-chapter__arrow--open]="expanded()">expand_more</mat-icon>
+    </button>
 
-  @if (expanded()) {
-    <ul class="nav-chapter__list">
-      @for (child of item.children; track child.route) {
-        <li>
-          <a class="nav-chapter__item"
-             [routerLink]="child.route"
-             routerLinkActive="nav-chapter__item--active"
-             (click)="onLessonClick(child)">
-            {{ child.displayName }}
-          </a>
-        </li>
-      }
-    </ul>
+    @if (expanded()) {
+      <ul class="nav-chapter__list">
+        @for (section of item.sections; track section.route) {
+          <li>
+            <a class="nav-chapter__item"
+               [routerLink]="section.route"
+               routerLinkActive="nav-chapter__item--active"
+               (click)="onLessonClick(section)">
+              {{ t(section.name) }}
+            </a>
+          </li>
+        }
+      </ul>
+    }
+  } @else {
+    <a class="nav-chapter__header nav-chapter__header--link"
+       [routerLink]="item.route"
+       routerLinkActive="nav-chapter__header--active"
+       (click)="onLessonClick(item)">
+      <span class="nav-chapter__title">{{ item.chapter }}</span>
+    </a>
   }
-} @else {
-  <a class="nav-chapter__header nav-chapter__header--link"
-     [routerLink]="item.route"
-     routerLinkActive="nav-chapter__header--active"
-     (click)="onLessonClick(item)">
-    <span class="nav-chapter__title">{{ item.displayName }}</span>
-  </a>
-}
+</ng-container>
