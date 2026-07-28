@@ -25,17 +25,20 @@ export class CoursesPromoComponent {
 
 
   readonly store = inject(Store);
-  readonly iSAuth = toSignal(this.store.select(iSAuthState)) 
+  readonly iSAuth = toSignal(this.store.select(iSAuthState))
 
   readonly promo = this.purchaseService.coursePromo;
 
   onPurchaseInit() {
-    if (this.iSAuth()) {
-      this.router.navigate(['/purchase-pregnant-course/', this.guidService.getUUID])
-    }
-    else{
-    this.dialog.open(AuthModalComponent, { width: '540px' });
-    }
+    this.router.navigate(['/purchase-pregnant-course/', this.guidService.getUUID])
+
+    //???
+    // if (this.iSAuth()) { 
+    //   this.router.navigate(['/purchase-pregnant-course/', this.guidService.getUUID])
+    // }
+    // else {
+    //   this.dialog.open(AuthModalComponent, { width: '540px' });
+    // }
   }
 
 }
