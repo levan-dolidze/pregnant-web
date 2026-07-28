@@ -1,4 +1,22 @@
-import { Injectable } from '@angular/core';
+import { Injectable, signal } from '@angular/core';
+
+export interface CourseSection {
+  name: string;
+}
+
+export interface CourseChapter {
+  chapter: string;
+  sections: CourseSection[];
+}
+
+export interface CourseLessonContent {
+  chapter: string;
+  section: string;
+  name: string;
+  videoUrl: string;
+  title: string;
+  description: string;
+}
 
 @Injectable({
   providedIn: 'root'
@@ -6,8 +24,8 @@ import { Injectable } from '@angular/core';
 export class CoursesService {
 
 
-  //get 
-  arr = [
+  //get
+  arr: CourseChapter[] = [
     {
       chapter: 'intro',
       sections: [
@@ -25,7 +43,15 @@ export class CoursesService {
   ]
 
   //getBy
-
-  
+  getCourseBy(chapter: string, section: string) {
+    return signal<CourseLessonContent>({
+      chapter,
+      section,
+      name: section,
+      videoUrl: 'https://www.youtube.com/embed/dQw4w9WgXcQ',
+      title: 'Dummy lesson title',
+      description: 'Dummy lesson description.',
+    });
+  }
 
 }

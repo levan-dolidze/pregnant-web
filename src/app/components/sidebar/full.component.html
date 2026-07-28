@@ -24,7 +24,7 @@
       <div class="flex-layout">
         <app-sidebar (toggleMobileNav)="sidenav.toggle()" [showToggle]="isOver"></app-sidebar>
           <mat-nav-list class="sidebar-list">
-            @for(item of navItems; track item) {
+            @for(item of navItems(); track item) {
             <app-nav-item [item]="item" (navigateEmit)="onNavigateEmit($event)" />
             }
           </mat-nav-list>
@@ -41,7 +41,7 @@
       (openedChange)="onSidenavOpenedChange($event)" (closedStart)="onSidenavClosedStart()" class="sidebarNav">
       <app-sidebar> </app-sidebar>
         <mat-nav-list class="sidebar-list">
-          @for(item of navItems; track item) {
+          @for(item of navItems(); track item) {
           <app-nav-item [item]="item" (navigateEmit)="onNavigateEmit($event)"> </app-nav-item>
           }
         </mat-nav-list>
