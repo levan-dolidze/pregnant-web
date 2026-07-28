@@ -92,8 +92,8 @@ export class HeaderComponent implements OnInit {
     globalThis.history.back();
   }
 
-  onLogin(){
-    this.dialog.open(AuthModalComponent);
+  onLoginInit(){
+    this.dialog.open(AuthModalComponent, { width: '540px' });
   }
 
   readonly sessionId = toSignal(

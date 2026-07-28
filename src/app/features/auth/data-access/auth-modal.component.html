@@ -1,12 +1,10 @@
 <ng-container *transloco="let t">
-  <div class="blank-layout-container">
     <div class="wrapper">
-      <div class="auth-brand">
+      <!-- <div class="auth-brand">
         <img src="./assets/images/logos/logo-geo.svg" alt="Aldagi Logo" width="120" height="100" />
-      </div>
+      </div> -->
 
       <div class="auth-fields" >
-        <div class="p-32 h-100">
           <div class="login-form">
             <h4 class="login-form__title caps-uppercase">
               {{ 'ავტორიზაცია' }}
@@ -39,8 +37,7 @@
                    formControlName="password" 
                    [placeholder]="'პაროლი'" 
                    [type]="'password'"
-                  
-                    class="input">
+                   class="input">
                   </app-input>
 
                   <mat-hint class="error-msg" *validationErrors="
@@ -57,18 +54,15 @@
                     {{ 'ველი სავალდებულოა' }}
                   </mat-hint>
                 </div>
-
               </div>
 
               <div class="login-form__actions">
-                <!-- <app-button [isLoading]="loading()!" [text]="otpSent() ? 'დადასტურება' : 'შესვლა'"
-                  [type]="'submit'"></app-button> -->
+                <app-button [text]="'შესვლა'"
+                  [type]="'submit'"></app-button>
               </div>
             </form>
 
           </div>
-        </div>
       </div>
     </div>
-  </div>
 </ng-container>
