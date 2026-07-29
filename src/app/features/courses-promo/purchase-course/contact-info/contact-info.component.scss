@@ -1,6 +1,7 @@
 @use "variables" as *;
 @use "mixins" as *;
 
+
 .ppc-card__title {
   @include font(20px, 500, $gray700, $font-medium);
 }
