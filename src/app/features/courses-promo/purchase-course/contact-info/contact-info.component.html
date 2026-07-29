@@ -3,9 +3,17 @@
 <form [formGroup]="form" (ngSubmit)="onNext()">
 
   <div class="ppc-field">
-    <app-input formControlName="mobileNumber" 
-     placeholder="მობილური" 
-     type="tel"></app-input>
+    <app-input formControlName="mobileNumber"
+     placeholder="მობილური"
+     type="tel"
+     [isRequired]="true">
+     </app-input>
+
+    <mat-hint class="error-msg"
+      *validationErrors="form; control: 'mobileNumber'; let err; additionalValue: {
+        submit: (form.controls['mobileNumber'] && form.controls['mobileNumber'].dirty), patternTypes: 'mobNumber' }">
+      {{ err }}
+    </mat-hint>
 
     <app-otp
       (confirmOtpEmit)="confirmOtpEmit.emit($event)"
@@ -14,10 +22,19 @@
   </div>
 
   <div class="ppc-field">
-    <app-input formControlName="email" placeholder="ელ-ფოსტა" type="email"></app-input>
+    <app-input formControlName="email" placeholder="ელ-ფოსტა" type="email"
+     [isRequired]="true"
+     [isInvalid]="form.controls['email'].invalid && form.controls['email'].dirty"></app-input>
+    <mat-hint class="error-msg"
+      *validationErrors="form; control: 'email'; let err; additionalValue: {
+        submit: (form.controls['email'] && form.controls['email'].dirty), patternTypes: 'email' }">
+      {{ err }}
+    </mat-hint>
   </div>
 
-<app-button text="შემდეგი" ></app-button>
+<app-button 
+[text]="'შესვლა'"
+[type]="'submit'">
+</app-button>
 
 </form>
-

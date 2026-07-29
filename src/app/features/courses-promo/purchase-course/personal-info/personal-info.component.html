@@ -1,16 +1,34 @@
+<div class="wrapper">
+
 <h2 class="ppc-card__title">პირადი ინფორმაცია</h2>
 
 <form class="ppc-page__info" [formGroup]="form" (ngSubmit)="onNext()">
 
   <div class="ppc-page__fields">
-    <app-input formControlName="userName" placeholder="სახელი"></app-input>
+    <app-input formControlName="userName" placeholder="სახელი" [isRequired]="true"
+      [isInvalid]="form.controls['userName'].invalid && form.controls['userName'].dirty">
+    </app-input>
+    <mat-hint class="error-msg"
+      *validationErrors="form; control: 'userName'; let err; additionalValue: {
+        submit: (form.controls['userName'] && form.controls['userName'].dirty), patternTypes: 'none' }">
+      {{ err }}
+    </mat-hint>
   </div>
 
   <div class="ppc-page__fields">
-    <app-input formControlName="userLastName" placeholder="გვარი"></app-input>
+    <app-input formControlName="userLastName" placeholder="გვარი" [isRequired]="true"
+      [isInvalid]="form.controls['userLastName'].invalid && form.controls['userLastName'].dirty">
+    </app-input>
+    <mat-hint class="error-msg"
+      *validationErrors="form; control: 'userLastName'; let err; additionalValue: {
+        submit: (form.controls['userLastName'] && form.controls['userLastName'].dirty), patternTypes: 'none' }">
+      {{ err }}
+    </mat-hint>
   </div>
 
-<app-button text="შემდეგი" ></app-button>
+<app-button text="შემდეგი" [type]="'submit'"></app-button>
 
 </form>
+
+</div>
 

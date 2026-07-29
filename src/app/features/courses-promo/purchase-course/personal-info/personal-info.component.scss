@@ -1,14 +1,28 @@
 @use "variables" as *;
 @use "mixins" as *;
 
+
+.wrapper{
+  display: grid;
+  gap: 16px;
+}
 .ppc-card__title {
   @include font(20px, 500, $gray700, $font-medium);
 }
 
 .ppc-page__info {
-  display: flex;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+
+  app-button {
+    grid-column: 1 / -1;
+  }
 }
 
-.ppc-page__fields {
-  width: 50%;
+.error-msg {
+  @include font(11px, 400, $red100, $font-default);
+  margin-top: 2px;
+  padding-left: 4px;
 }
+

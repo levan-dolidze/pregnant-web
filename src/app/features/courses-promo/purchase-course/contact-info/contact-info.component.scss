@@ -4,3 +4,9 @@
 .ppc-card__title {
   @include font(20px, 500, $gray700, $font-medium);
 }
+
+.error-msg {
+  @include font(11px, 400, $red100, $font-default);
+  margin-top: 2px;
+  padding-left: 4px;
+}
