@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, inject, signal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject, Input, OnInit, signal } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { InputComponent } from 'src/app/components/input/input.component';
@@ -32,13 +32,16 @@ import { OtpComponent } from 'src/app/shared/features/otp/otp.component';
   styleUrl: './purchase-course.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class PurchaseCourseComponent {
+export class PurchaseCourseComponent implements OnInit {
 
   private readonly purchaseService = inject(PurchaseService)
   private readonly coursesPromoService = inject(CoursesPromoService)
 
   readonly dialog = inject(MatDialog);
   readonly promo = this.coursesPromoService.coursePromo;
+
+  @Input() courseName: string;
+
 
   readonly form = new FormGroup({
     name: new FormControl('', [Validators.required]),
@@ -53,7 +56,10 @@ export class PurchaseCourseComponent {
     return this.form.controls
   }
 
-  
+  ngOnInit(): void {
+    console.log(this.courseName)
+  }
+
   onPay(): void {
     if (this.form.invalid) {
       ControlModeChange.formFieldsModeControl('markAsDirty', this.form);
@@ -63,7 +69,7 @@ export class PurchaseCourseComponent {
     }
   }
 
-  confirmOtp(confirm:boolean){
+  confirmOtp(confirm: boolean) {
 
     this.purchase()
 
@@ -71,7 +77,7 @@ export class PurchaseCourseComponent {
 
 
 
-  purchase(){
+  purchase() {
     const params = this.form.getRawValue();
 
     // this.purchaseService.pay(params).subscribe({
