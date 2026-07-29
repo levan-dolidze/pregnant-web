@@ -46,7 +46,9 @@ export class PurchaseCourseComponent implements OnInit {
     { stepId: 3 },
   ]);
 
-  readonly currentStep = signal(1);
+
+  readonly #step = signal<number>(1);
+  readonly stepState = computed(() => this.#step());
 
 
   readonly form = new FormGroup({
