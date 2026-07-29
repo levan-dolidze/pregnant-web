@@ -22,12 +22,12 @@ import { IDropDown } from '../../shared/utils/iui-list-item';
   imports: [CommonModule, MatSelectModule, ReactiveFormsModule, MatInputModule, TranslocoModule],
   template: `
 
- <ng-container *transloco="let t">
+<ng-container *transloco="let t">
 
-    <div class="input-block">
-      <mat-form-field
-        appearance="fill"
-        class="w-100"
+  <div class="input-block">
+    <mat-form-field
+      appearance="fill"
+      class="w-100"
         [ngClass]="{
       isReadonly: isReadonly,
       'open': isOpen,
@@ -35,43 +35,44 @@ import { IDropDown } from '../../shared/utils/iui-list-item';
       'form-invalid-control': control?.invalid&&control?.dirty
     }"
       >
-        <!-- 'form-invalid-control': control?.invalid&&control?.dirty&&!isOpen -->
+      <!-- 'form-invalid-control': control?.invalid&&control?.dirty&&!isOpen -->
 
-        <mat-label>{{ t(placeholder)}}
+      <mat-label>{{ t(placeholder)}}
         @if(isRequired){
-            <span class="required-star"><img src="../../../../assets/images/svgs/_required-star.svg" alt="Star"></span>
-          }
-        </mat-label>
-     
-        <!-- [formControl]="selectControl" -->
+          <span class="required-star"><img src="../../../../assets/images/svgs/_required-star.svg" alt="Star"></span>
+        }
+      </mat-label>
 
-        <mat-select
-          class="mat-select"
-          [disabled]="isDisabled"
-          [formControl]="selectControl" 
-          (selectionChange)="onSelectionChange($event)"
-          (openedChange)="toggle($event)"
+      <!-- [formControl]="selectControl" -->
+
+      <mat-select
+        class="mat-select"
+        [disabled]="isDisabled"
+        [formControl]="selectControl"
+        (selectionChange)="onSelectionChange($event)"
+        (openedChange)="toggle($event)"
         >
+        @for (item of list; track item; let i = $index) {
           <mat-option
-            *ngFor="let item of list; let i = index"
             [value]="item.id"
             class="option"
             [disabled]="bookedTimes.includes(item.text!)">
             {{ item.text }}
           </mat-option>
+        }
 
-        </mat-select>
+      </mat-select>
 
-        <!-- @if(isRemove) {
-          <img (click)="onRemoveVal()" src="../../../../assets/images/svgs/_close_native.svg" alt="Close" class="close-icon">
-        } -->
-        <img src="../../../assets/images/svgs/_dropdown-arrow.svg" alt="Arrow" class="dropdown-icon">
+      <!-- @if(isRemove) {
+      <img (click)="onRemoveVal()" src="../../../../assets/images/svgs/_close_native.svg" alt="Close" class="close-icon">
+      } -->
+      <img src="../../../assets/images/svgs/_dropdown-arrow.svg" alt="Arrow" class="dropdown-icon">
 
-      </mat-form-field>
-    </div>
- </ng-container>
+    </mat-form-field>
+  </div>
+</ng-container>
 
-  `,
+`,
   styleUrl: './drop-down.component.scss',
   providers: [
     {
