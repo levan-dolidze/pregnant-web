@@ -13,8 +13,7 @@ export type PatternTypes =
   | 'none';
 
 @Pipe({
-  name: 'validationFormat',
-  standalone: true,
+  name: 'validationFormat'
 })
 export class ValidationHelper implements PipeTransform {
   constructor(private readonly translateService: TranslocoService) { }

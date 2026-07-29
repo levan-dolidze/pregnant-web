@@ -1,6 +1,6 @@
 <h2 class="ppc-card__title">პირადი ინფორმაცია</h2>
 
-<div class="ppc-page__info" [formGroup]="form">
+<form class="ppc-page__info" [formGroup]="form" (ngSubmit)="onNext()">
 
   <div class="ppc-page__fields">
     <app-input formControlName="userName" placeholder="სახელი"></app-input>
@@ -9,6 +9,8 @@
   <div class="ppc-page__fields">
     <app-input formControlName="userLastName" placeholder="გვარი"></app-input>
   </div>
-</div>
 
-<app-button text="შემდეგი" (btnClick)="onNext()"></app-button>
+<app-button text="შემდეგი" ></app-button>
+
+</form>
+

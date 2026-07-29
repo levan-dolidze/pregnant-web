@@ -4,7 +4,6 @@ import { TranslocoModule } from '@jsverse/transloco';
 
 @Component({
   selector: 'app-button',
-  standalone: true,
   imports: [
     TranslocoModule,
     MatProgressSpinner,

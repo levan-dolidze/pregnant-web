@@ -3,11 +3,9 @@ import { RouterLink, RouterLinkActive } from '@angular/router';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatIconModule } from '@angular/material/icon';
 import { TranslocoModule } from '@jsverse/transloco';
-import { MenuLeaf } from './utils';
 
 @Component({
   selector: 'app-nav-sub-menu',
-  standalone: true,
   imports: [MatMenuModule, MatIconModule, RouterLink, RouterLinkActive, TranslocoModule],
   template: `
     <ng-container *transloco="let t">

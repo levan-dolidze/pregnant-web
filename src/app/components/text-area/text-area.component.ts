@@ -4,7 +4,6 @@ import { SharedModule } from 'src/app/shared/shared-module/shared';
 
 @Component({
   selector: 'app-text-area',
-  standalone: true,
   imports: [SharedModule],
   template:`
   <ng-container *transloco="let t" >

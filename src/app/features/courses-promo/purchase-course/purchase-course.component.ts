@@ -18,7 +18,6 @@ import { ConfirmComponent } from './confirm/confirm.component';
 
 @Component({
   selector: 'app-purchase-course',
-  standalone: true,
   imports: [
     ReactiveFormsModule,
     SidePanel,

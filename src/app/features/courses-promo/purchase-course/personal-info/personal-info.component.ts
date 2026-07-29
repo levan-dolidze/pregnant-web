@@ -6,7 +6,6 @@ import { ControlModeChange } from 'src/app/shared/functions/controlModeChange';
 
 @Component({
   selector: 'app-personal-info',
-  standalone: true,
   imports: [ReactiveFormsModule, InputComponent, ButtonComponent],
   templateUrl: './personal-info.component.html',
   styleUrl: './personal-info.component.scss',
@@ -26,7 +25,7 @@ export class PersonalInfoComponent {
      ControlModeChange.formFieldsModeControl('markAsDirty', this.form);
    }
    else{
-    
+
    }
 
   }

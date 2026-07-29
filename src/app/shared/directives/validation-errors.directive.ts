@@ -18,8 +18,7 @@ export interface AdditionalValue {
   patternTypes: PatternTypes;
 }
 @Directive({
-  selector: '[validationErrors]',
-  standalone: true,
+  selector: '[validationErrors]'
 })
 export class ValidationErrorsDirective implements OnChanges, AfterViewInit {
 

@@ -7,7 +7,6 @@ import { TranslocoModule } from '@jsverse/transloco';
 
 @Component({
   selector: 'app-radio-button',
-  standalone: true,
   imports: [NgClass, TranslocoModule, FormsModule, MatInputModule, MatRadioModule],
   templateUrl: './radio-button.html',
   changeDetection: ChangeDetectionStrategy.OnPush,

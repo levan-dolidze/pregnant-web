@@ -4,7 +4,6 @@ import { CoreService } from './core.service';
 
 @Component({
   selector: 'app-branding',
-  standalone: true,
   template: `
     <!-- <div class="branding">
       <a href="/">

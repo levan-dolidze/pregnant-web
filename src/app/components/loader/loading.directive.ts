@@ -2,8 +2,7 @@ import { ComponentRef, Directive, EmbeddedViewRef, Input, OnChanges, OnInit, Tem
 import { Loader } from "./loader";
 
 @Directive({
-  selector: '[loading]',
-  standalone: true,
+  selector: '[loading]'
 })
 export class LoadingDirective implements OnInit, OnChanges {
   private readonly templateRef = inject(TemplateRef);

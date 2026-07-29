@@ -15,7 +15,6 @@ const HOURS         = Array.from({ length: 24 }, (_, i) => i);
 
 @Component({
   selector: 'app-calendar',
-  standalone: true,
   imports: [FormsModule, DatePicker, MatDatepickerModule, MatNativeDateModule],
   providers: [CalendarService, { provide: MAT_DATE_LOCALE, useValue: 'ka-GE' }],
   templateUrl: './calendar.component.html',
