@@ -1,0 +1,172 @@
+@use 'variables' as *;
+@use 'mixins' as *;
+
+lib-inline-message {
+    @include inline-message;
+    margin: 10px 0px;
+    width: 90%;
+}
+
+.side-wrapper {
+    display: grid;
+    width: 100%;
+    gap: 20px;
+
+    &__row-item {
+        flex-direction: row;
+        box-sizing: border-box;
+        display: flex;
+        place-content: stretch space-between;
+        position: relative;
+        align-items: center;
+
+        span:first-child {
+            @include font(16px, 400, $gray13, $font-default);
+            display: inline-block;
+        }
+
+        span:last-child {
+            @include font(16px, 400, $black, $font-default);
+            text-align: right;
+
+        }
+
+        del {
+            @include font(14px, 400, $gray13, $font-default);
+            margin-right: 5px;
+        }
+
+        >.total {
+            display: grid;
+            gap: 5px;
+        }
+
+        .insured-list {
+            display: flex;
+            flex-direction: column;
+            text-transform: capitalize;
+
+            .insured-item:not(:first-child) {
+                margin-top: 10px;
+            }
+        }
+    }
+
+
+    &__total {
+        place-self: end;
+
+        del {
+            @include font(20px, 400, $gray13, $font-default);
+            float: right
+        }
+
+        div {
+            @include font(36px, 500, $black, $font-medium);
+        }
+    }
+
+    &__total-message {
+        place-self: end;
+
+        lib-inline-message {
+            width: 100%;
+            gap: 6px;
+            margin: 0px 0px 5px 0px;
+        }
+    }
+
+    &__symbol {
+        @include font(24px, 500, $black, $font-default);
+    }
+
+    &__message,
+    &__terms {
+        @include flex-init;
+        gap: 5px;
+
+        p {
+            gap: 10px;
+
+            a {
+                text-decoration: none;
+                margin-left: 5px;
+                color: $primary;
+                font-family: $font-medium
+            }
+        }
+    }
+
+    &__message {
+        @include font(14px, 400, $blue, $font-default);
+    }
+
+    &__terms {
+        p {
+            @include font(14px, 500, $black, $font-default);
+        }
+
+        span {
+            color: $primary;
+        }
+
+        .invalid {
+            color: $error;
+        }
+    }
+
+    &__price {
+        gap: 4px;
+    }
+
+    &__contentText {
+        @include font(14px, 400, $gray1, $font-default);
+        max-height: 210px;
+        overflow-y: auto;
+        a {
+            @include font(14px, 500, $primary, $font-medium);
+            text-decoration: none;
+        }
+    }
+
+    &__read-more {
+        display: flex;
+        align-items: center;
+        gap: 4px;
+        justify-self: start;
+        background: none;
+        border: none;
+        padding: 0;
+        cursor: pointer;
+        @include font(14px, 500, $primary, $font-medium);
+    }
+
+    &__row-item-p {
+        @include font(14px, 400, $black, $font-default);
+    }
+}
+
+.error-msg {
+    @include font(12px, 400, $error, $font-default);
+}
+
+.reverse {
+    flex-direction: row-reverse;
+}
+
+
+@media screen and (max-width: 768px) {
+    .side-wrapper {
+        padding-bottom: 10px;
+    }
+
+    .side-wrapper__contentText {
+        max-height: 159px;
+        overflow: hidden;
+
+        &--expanded {
+            max-height: 210px;
+            overflow-y: auto;
+        }
+    }
+}

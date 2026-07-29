@@ -8,16 +8,16 @@ import { AppSettingsService } from 'src/app/shared/services/app-settings.service
 import { Languages, TranslationService } from 'src/app/shared/translate/translation.serive';
 import { Store } from '@ngrx/store';
 import { initAppParams } from 'src/app/shared/state/step-state';
-import { ProductId } from 'src/app/shared/utils/enums';
 import { SessionStorageService } from 'src/app/shared/services/session-storage.service';
 import { TokenLoginResponse } from 'src/app/auth/ui/auth-models';
 import { InitQueryParams } from 'src/app/shared/state/step-state/utils';
+import { CourseId } from 'src/app/shared/utils/enums';
 
 export class Query {
   user_id: string;
   mode: string;
   lang: Languages;
-  productId: ProductId
+  courseId: CourseId
 }
 
 @Component({

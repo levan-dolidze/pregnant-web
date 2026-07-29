@@ -1,0 +1,91 @@
+<ng-container *transloco="let t">
+    <div *loading="sidePanelConfig()?.promoCode?.pageLoading!"></div>
+
+    <form [formGroup]="form" (ngSubmit)="onSubmit()">
+
+        @if (sidePanelConfig()) {
+        <div class="side-wrapper">
+
+            @if (sidePanelConfig()?.items?.show) {
+            <div class="side-wrapper__row-item">
+                <span> {{sidePanelConfig().items?.insuredCount}} {{t(sidePanelConfig().items?.label)}} </span>
+                <span>
+                    @if ((sidePanelConfig().items?.originalPrice) > sidePanelConfig().items?.value) {
+
+                    <del>{{sidePanelConfig().items?.originalPrice|numberToDecimal}}
+                        {{t(sidePanelConfig()?.totalPrice.currency)}}</del>
+                    }
+
+                    <span>{{sidePanelConfig().items?.value|numberToDecimal}}
+                        {{t(sidePanelConfig()?.totalPrice.currency)}}</span>
+                </span>
+            </div>
+            }
+      
+<!--    
+            @if (sidePanelConfig().inlineMessage?.enabled) {
+            <lib-inline-message>
+                <img src="assets/svgs/_info-black.svg" alt="Info">
+                {{t(sidePanelConfig().inlineMessage.text)}}
+            </lib-inline-message>
+            } -->
+       
+            
+            <div class="side-wrapper__total">
+                @if (sidePanelConfig()?.totalPrice?.original>sidePanelConfig()?.totalPrice?.final) {
+                <del>{{sidePanelConfig()?.totalPrice?.original|numberToDecimal}}
+                    {{t(sidePanelConfig()?.totalPrice.currency)}}</del>
+                }
+
+                <div>{{sidePanelConfig()?.totalPrice?.final|numberToDecimal}}
+                    {{t(sidePanelConfig()?.totalPrice.currency)}}
+                    @if(sidePanelConfig()?.totalPrice?.symbols){
+                    <span class="side-wrapper__symbol">
+                        {{sidePanelConfig()?.totalPrice.symbols}}
+                    </span>
+                    }
+                </div>
+            </div>
+            @if (sidePanelConfig()?.priceMessage?.enabled) {
+            <div class="side-wrapper__total-message">
+                <!-- <lib-inline-message>
+                    <img src="assets/svgs/_tool-tip.svg" alt="Info" [customTooltip]="'customTooltip centerText'" tooltip
+                        [tiptxt]="t(sidePanelConfig().priceMessage.tipText) ">
+                    {{t(sidePanelConfig().priceMessage.text)}}
+                </lib-inline-message> -->
+            </div>
+            }
+
+            @if(sidePanelConfig()?.submitButton?.showSubmit) {
+
+            <!-- @if (sidePanelConfig()?.specialMessage) {
+            <div class="side-wrapper__message">
+                <img [src]="sidePanelConfig()?.specialMessage?.icon" alt="Icon">
+                <p>{{sidePanelConfig()?.specialMessage?.text}}</p>
+            </div>
+            } -->
+
+
+            @if (sidePanelConfig()?.terms) {
+
+            <div class="side-wrapper__terms">
+                <div><app-checkbox formControlName="termsChecked"></app-checkbox></div>
+                <p [ngClass]="{'invalid':form.get('termsChecked')?.invalid&&form.get('termsChecked')?.dirty}">
+                    {{t('Read_and_agree')}}<span>
+                        <a [target]="'_blank'"
+                            [href]="sidePanelConfig()?.terms.linkUrl">{{sidePanelConfig()?.terms.documentNumber}}</a>
+                         </span></p>
+            </div>
+            }
+
+            <app-button [type]="'submit'" [text]="sidePanelConfig()?.submitButton?.text!"
+                [isLoading]="sidePanelConfig()?.submitButton?.loading"
+                [isDisabled]="sidePanelConfig()?.submitButton?.disabled"
+                >
+            </app-button>
+            }
+
+        </div>
+        }
+    </form>
+</ng-container>

@@ -51,29 +51,12 @@
           {{ err }}
         </mat-hint>
       </div>
-
-    <div class="ppc-card__terms">
-        <div><app-checkbox formControlName="termsChecked"></app-checkbox></div>
-        <p [ngClass]="{'invalid':form.get('termsChecked')?.invalid&&form.get('termsChecked')?.dirty}">
-            {{'გავეცანი და ვეთანხმები დაზღვევის პირობებს'}}<span>
-                <a [target]="'_blank'"
-                    [href]="'https://google.com/'">{{'ვეთანხმები პირობებს'}}</a>
-                 </span></p>
-    </div>
-
-      <div class="ppc-card__price">
-        <span class="ppc-card__price-label">ჯამი</span>
-        <span class="ppc-card__price-value">{{ promo().price }} ₾</span>
-      </div>
-
-      <app-button text="გადახდა" type="submit"></app-button>
     </form>
   </div>
 
-    <div class="ppc-page__panel">
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. 
-      Nam repellat reprehenderit atque iure quos nisi magnam dolores 
-      voluptate porro nulla maiores saepe, doloremque alias dolorum,
-      velit vero! Delectus, culpa eius!
-    </div>
+        <div class="ppc-page__panel">
+          <lib-side-panel [courseId]="courseId.Pregnant" 
+          [sidePanelConfig]="panelConfig"
+            (submitEmit)="onSidePanelSubmit($event)"></lib-side-panel>
+        </div>
 </main>

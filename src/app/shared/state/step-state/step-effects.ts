@@ -6,12 +6,12 @@ import { initAppParams, loadAppStoredParams} from './step-actions';
 import { Store } from '@ngrx/store';
 import { SessionStorageService } from '../../services/session-storage.service';
 import { LanguagesEnum, TranslationService } from '../../translate/translation.serive';
-import { ProductId } from '../../utils/enums';
 import { TokenLoginResponse } from 'src/app/auth/ui/auth-models';
 import { of } from 'rxjs';
 import { HttpErrorResponse } from '@angular/common/http';
 import { JwtService } from 'src/app/auth/data-access/jwt.service';
 import { InitQueryParams } from './utils';
+import { CourseId } from '../../utils/enums';
 
 
 @Injectable()
@@ -48,7 +48,7 @@ export class StepEffects {
         {
             pageName: 'travel',
             path: ['/travel'],
-            productId: ProductId.Travel,
+            productId: CourseId.Pregnant,
         },
     ];
 

@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, inject, Input, OnInit, signal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, computed, inject, Input, OnInit, signal } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { InputComponent } from 'src/app/components/input/input.component';
@@ -14,6 +14,9 @@ import { CheckboxComponent } from 'src/app/components/checkbox/checkbox.componen
 import { OtpModalComponent } from 'src/app/shared/features/otp/otp-modal/otp-modal.component';
 import { MatDialog } from '@angular/material/dialog';
 import { OtpComponent } from 'src/app/shared/features/otp/otp.component';
+import { SidePanel, SubmitModel } from '../side-panel/side-panel';
+import { SidePanelConfig } from '../side-panel/utils/sidepanel-config';
+import { CourseId } from 'src/app/shared/utils/enums';
 
 @Component({
   selector: 'app-purchase-course',
@@ -26,7 +29,8 @@ import { OtpComponent } from 'src/app/shared/features/otp/otp.component';
     ValidationErrorsDirective,
     NgClass,
     CheckboxComponent,
-    OtpComponent
+    OtpComponent,
+    SidePanel
   ],
   templateUrl: './purchase-course.component.html',
   styleUrl: './purchase-course.component.scss',
@@ -70,13 +74,43 @@ export class PurchaseCourseComponent implements OnInit {
   }
 
   confirmOtp(confirm: boolean) {
-
     this.purchase()
-
   }
 
+  panelConfig = computed<SidePanelConfig>(() => ({
+    items:
+    {
+      label: 'Baby_care_video_collection_for_mothers',
+      value: 7,
+      showStrikethrough: true,
+      show: true
+    },
+    promoCode: {
+      enabled: true,
+    },
+    totalPrice: {
+      final: 4,
+      currency: '₾',
+      showStrikethrough: true
+    },
+    terms: {
+      documentNumber: 'SHI/001/24',
+      linkUrl: 'https://tbcinsurance-website-files.s3.eu-west-1.amazonaws.com/wordings/FOREIGN_STUDENTS_Health_and_PA_INSURANCE_2024.pdf'
+    },
+    submitButton: {
+      text: 'Pay',
+      disabled: false,
+      loading:false,
+      showSubmit: true
+    }
+  }))
 
+  onSidePanelSubmit(e: SubmitModel) {
 
+  
+  }
+
+  courseId = CourseId
   purchase() {
     const params = this.form.getRawValue();
 

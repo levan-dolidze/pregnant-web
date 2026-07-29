@@ -1,7 +1,4 @@
-export enum BaseUrl {
-    Travel = 'travel'
-}
 
-export enum ProductId {
-    Travel = 8
+export enum CourseId {
+    Pregnant = 1
 }
