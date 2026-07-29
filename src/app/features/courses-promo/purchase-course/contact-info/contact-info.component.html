@@ -1,0 +1,19 @@
+<h2 class="ppc-card__title">საკონტაქტო ინფორმაცია</h2>
+
+<div [formGroup]="form">
+
+  <div class="ppc-field">
+    <app-input formControlName="mobileNumber" placeholder="მობილური" type="tel"></app-input>
+
+    <app-otp
+      (confirmOtpEmit)="confirmOtpEmit.emit($event)"
+      [clientNumber]="form.get('mobileNumber').value">
+    </app-otp>
+  </div>
+
+  <div class="ppc-field">
+    <app-input formControlName="email" placeholder="ელ-ფოსტა" type="email"></app-input>
+  </div>
+</div>
+
+<app-button text="შემდეგი" (btnClick)="onNext()"></app-button>

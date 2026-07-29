@@ -1,12 +1,12 @@
 <div class="mini-routing">
     @for (route of routes(); track $index) {
     <span class="mini-routing__step"
-    [ngClass]="{'active':routes()[0].stepId > $index}">
+    [ngClass]="{'active':currentStep() > $index}">
         {{ route.stepId }}
     </span>
     @if (!$last) {
     <span class="mini-routing__line"
-    [ngClass]="{'active':routes()[0].stepId > $index + 1}">
+    [ngClass]="{'active':currentStep() > $index + 1}">
     </span>
     }
     }

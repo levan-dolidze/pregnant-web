@@ -1,39 +1,31 @@
 import { ChangeDetectionStrategy, Component, computed, inject, Input, OnInit, signal } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import { MatFormFieldModule } from '@angular/material/form-field';
-import { InputComponent } from 'src/app/components/input/input.component';
-import { ButtonComponent } from 'src/app/components/button/button.component';
-import { ValidationErrorsDirective } from 'src/app/shared/directives/validation-errors.directive';
 import { ControlModeChange } from 'src/app/shared/functions/controlModeChange';
 import { regExp } from 'src/app/shared/utils/regex';
 import { PurchaseService } from '../data-access/purchase.service';
 import { CoursesPromoService } from '../courses-promo.service';
 import type { CoursePurchaseRequest } from '../models/course-purchase.model';
-import { NgClass } from '@angular/common';
-import { CheckboxComponent } from 'src/app/components/checkbox/checkbox.component';
 import { OtpModalComponent } from 'src/app/shared/features/otp/otp-modal/otp-modal.component';
 import { MatDialog } from '@angular/material/dialog';
-import { OtpComponent } from 'src/app/shared/features/otp/otp.component';
 import { SidePanel, SubmitModel } from '../side-panel/side-panel';
 import { SidePanelConfig } from '../side-panel/utils/sidepanel-config';
 import { CourseId } from 'src/app/shared/utils/enums';
 import { MiniProgressBar } from 'src/app/components/mini-progress-bar/mini-progress-bar';
 import { StepRoutes } from 'src/app/components/step-helper/utils/models';
+import { PersonalInfoComponent } from './personal-info/personal-info.component';
+import { ContactInfoComponent } from './contact-info/contact-info.component';
+import { ConfirmComponent } from './confirm/confirm.component';
 
 @Component({
   selector: 'app-purchase-course',
   standalone: true,
   imports: [
     ReactiveFormsModule,
-    MatFormFieldModule,
-    InputComponent,
-    ButtonComponent,
-    ValidationErrorsDirective,
-    NgClass,
-    CheckboxComponent,
-    OtpComponent,
     SidePanel,
-    MiniProgressBar
+    MiniProgressBar,
+    PersonalInfoComponent,
+    ContactInfoComponent,
+    ConfirmComponent
   ],
   templateUrl: './purchase-course.component.html',
   styleUrl: './purchase-course.component.scss',
@@ -54,6 +46,8 @@ export class PurchaseCourseComponent implements OnInit {
     { stepId: 2 },
     { stepId: 3 },
   ]);
+
+  readonly currentStep = signal(1);
 
 
   readonly form = new FormGroup({

@@ -11,5 +11,6 @@ import { StepRoutes } from '../step-helper/utils/models';
 })
 export class MiniProgressBar {
   readonly routes = input<Array<StepRoutes>>([]);
+  readonly currentStep = input<number>(1);
 
 }

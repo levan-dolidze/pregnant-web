@@ -4,65 +4,19 @@
 
     <form [formGroup]="form" (ngSubmit)="onPay()" class="ppc-form">
 
-    <lib-mini-progress-bar [routes]="routes()"></lib-mini-progress-bar>
-    <h2 class="ppc-card__title">პირადი ინფორმაცია</h2>
+    <lib-mini-progress-bar [routes]="routes()" [currentStep]="currentStep()"></lib-mini-progress-bar>
 
-    <div class="ppc-page__info">
-
-      <div class="ppc-page__fields">
-
-        <app-input formControlName="name" placeholder="სახელი" [isRequired]="true"
-          [isInvalid]="form.controls['name'].invalid && form.controls['name'].dirty">
-        </app-input>
-        <mat-hint class="error-msg"
-          *validationErrors="form; control: 'name'; let err; additionalValue: {
-            submit: (form.controls['name'] && form.controls['name'].dirty), patternTypes: 'none' }">
-          {{ err }}
-        </mat-hint>
-      </div>
-
-      <div class="ppc-page__fields">
-
-        <app-input formControlName="surname" placeholder="გვარი" [isRequired]="true"
-          [isInvalid]="form.controls['surname'].invalid && form.controls['surname'].dirty">
-        </app-input>
-        <mat-hint class="error-msg"
-          *validationErrors="form; control: 'surname'; let err; additionalValue: {
-            submit: (form.controls['surname'] && form.controls['surname'].dirty), patternTypes: 'none' }">
-          {{ err }}
-        </mat-hint>
-      </div>
-    </div>
-
-      <div class="ppc-field">
-        <app-input formControlName="mobileNumber" placeholder="მობილური" type="tel" [isRequired]="true"
-          [isInvalid]="form.controls['mobileNumber'].invalid && form.controls['mobileNumber'].dirty">
-        </app-input>
-        <mat-hint class="error-msg"
-          *validationErrors="form; control: 'mobileNumber'; let err; additionalValue: {
-            submit: (form.controls['mobileNumber'] && form.controls['mobileNumber'].dirty), patternTypes: 'mobNumber' }">
-          {{ err }}
-        </mat-hint>
-
-                <app-otp 
-                (confirmOtpEmit)="confirmOtp($event)" 
-                [clientNumber]="form.get('mobileNumber').value">
-                </app-otp>
-      </div>
-
-      <div class="ppc-field">
-        <app-input formControlName="email" placeholder="ელ-ფოსტა" type="email" [isRequired]="true"
-          [isInvalid]="form.controls['email'].invalid && form.controls['email'].dirty">
-        </app-input>
-        <mat-hint class="error-msg"
-          *validationErrors="form; control: 'email'; let err; additionalValue: {
-            submit: (form.controls['email'] && form.controls['email'].dirty), patternTypes: 'email' }">
-          {{ err }}
-        </mat-hint>
-      </div>
-        <app-button [type]="'submit'"
-                    [text]="'შემდეგი'">
-        </app-button>
+    @switch (currentStep()) {
+      @case (1) {
+        <app-personal-info ></app-personal-info>
+      }
+      @case (2) {
+        <app-contact-info ></app-contact-info>
+      }
+      @case (3) {
+        <app-confirm ></app-confirm>
+      }
+    }
     </form>
   </div>
 

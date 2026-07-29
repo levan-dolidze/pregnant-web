@@ -20,13 +20,6 @@
 
   }
 
-  &__info {
-    display: flex
-  }
-
-  &__fields {
-    width: 50%;
-  }
 }
 
 .ppc-card {
@@ -40,10 +33,6 @@
   overflow-y: auto;
 
 
-
-  &__title {
-    @include font(20px, 500, $gray700, $font-medium);
-  }
 
   &__price {
     @include flex-center-between;
@@ -78,14 +67,4 @@
 .ppc-form {
   display: grid;
   gap: 16px;
-
-  app-input {
-    width: 100%;
-  }
-}
-
-.error-msg {
-  @include font(11px, 400, $red100, $font-default);
-  margin-top: 2px;
-  padding-left: 4px;
 }
