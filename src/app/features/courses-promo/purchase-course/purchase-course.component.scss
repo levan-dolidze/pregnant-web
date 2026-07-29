@@ -10,9 +10,13 @@
 
   &__panel {
     align-self: flex-start;
-    width: 300px;
-    background-color: red;
+    width: 400px;
+    background-color:$white;
     max-height: calc(100vh - 100px);
+
+    border-radius: 16px;
+    padding: 16px;
+    min-height: 200px;
 
   }
 }
