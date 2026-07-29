@@ -13,6 +13,13 @@ export const loadAppStoredParams = createAction(
 );
 
 
+export const goNext = createAction(
+    '[InitAppParams] Go Next Init',
+    props<{ nextStep: number }>()
+);
+
+
+
 
 
 

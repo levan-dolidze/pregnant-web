@@ -48,8 +48,21 @@ export class StepEffects {
         {
             pageName: 'travel',
             path: ['/travel'],
-            productId: CourseId.Pregnant,
+            courseId: CourseId.Pregnant,
         },
     ];
+
+    navigate(courseId: CourseId) {
+
+        const matchingUrl = this.urls.find(
+            step => step.courseId === courseId);
+
+        console.debug(matchingUrl)
+
+        // if (!matchingUrl) return;
+        // this.router.navigate([
+        //     ...matchingUrl.path, pageName, courseId, this.guidService.uuid,
+        // ]);
+    }
 
 }
