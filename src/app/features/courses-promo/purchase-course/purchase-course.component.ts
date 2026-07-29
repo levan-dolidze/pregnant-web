@@ -17,6 +17,8 @@ import { OtpComponent } from 'src/app/shared/features/otp/otp.component';
 import { SidePanel, SubmitModel } from '../side-panel/side-panel';
 import { SidePanelConfig } from '../side-panel/utils/sidepanel-config';
 import { CourseId } from 'src/app/shared/utils/enums';
+import { MiniProgressBar } from 'src/app/components/mini-progress-bar/mini-progress-bar';
+import { StepRoutes } from 'src/app/components/step-helper/utils/models';
 
 @Component({
   selector: 'app-purchase-course',
@@ -30,7 +32,8 @@ import { CourseId } from 'src/app/shared/utils/enums';
     NgClass,
     CheckboxComponent,
     OtpComponent,
-    SidePanel
+    SidePanel,
+    MiniProgressBar
   ],
   templateUrl: './purchase-course.component.html',
   styleUrl: './purchase-course.component.scss',
@@ -45,6 +48,12 @@ export class PurchaseCourseComponent implements OnInit {
   readonly promo = this.coursesPromoService.coursePromo;
 
   @Input() courseName: string;
+
+  readonly routes = signal<StepRoutes[]>([
+    { stepId: 1 },
+    { stepId: 2 },
+    { stepId: 3 },
+  ]);
 
 
   readonly form = new FormGroup({
@@ -94,7 +103,7 @@ export class PurchaseCourseComponent implements OnInit {
       showStrikethrough: true
     },
     terms: {
-      documentNumber: 'SHI/001/24',
+      documentNumber: 'პირობებს',
       linkUrl: 'https://tbcinsurance-website-files.s3.eu-west-1.amazonaws.com/wordings/FOREIGN_STUDENTS_Health_and_PA_INSURANCE_2024.pdf'
     },
     submitButton: {
