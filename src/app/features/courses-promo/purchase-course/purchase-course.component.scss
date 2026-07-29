@@ -11,13 +11,21 @@
   &__panel {
     align-self: flex-start;
     width: 400px;
-    background-color:$white;
+    background-color: $white;
     max-height: calc(100vh - 100px);
 
     border-radius: 16px;
     padding: 16px;
     min-height: 200px;
 
+  }
+
+  &__info {
+    display: flex
+  }
+
+  &__fields {
+    width: 50%;
   }
 }
 
@@ -26,13 +34,15 @@
   border-radius: 16px;
   padding: 24px;
   width: 100%;
-  max-width: 480px;
+  max-width: 50%;
   box-shadow: 0 8px 32px rgba(0, 0, 0, .08);
   max-height: calc(100vh - 100px);
   overflow-y: auto;
 
+
+
   &__title {
-    @include font(24px, 700, $gray700, $font-bold);
+    @include font(20px, 500, $gray700, $font-medium);
   }
 
   &__price {

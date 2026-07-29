@@ -3,11 +3,14 @@
 
 
     <form [formGroup]="form" (ngSubmit)="onPay()" class="ppc-form">
-    <!-- <h1 class="ppc-card__title">კურსის შეძენა</h1> -->
 
     <lib-mini-progress-bar [routes]="routes()"></lib-mini-progress-bar>
+    <h2 class="ppc-card__title">პირადი ინფორმაცია</h2>
 
-      <!-- <div class="ppc-field">
+    <div class="ppc-page__info">
+
+      <div class="ppc-page__fields">
+
         <app-input formControlName="name" placeholder="სახელი" [isRequired]="true"
           [isInvalid]="form.controls['name'].invalid && form.controls['name'].dirty">
         </app-input>
@@ -18,7 +21,8 @@
         </mat-hint>
       </div>
 
-      <div class="ppc-field">
+      <div class="ppc-page__fields">
+
         <app-input formControlName="surname" placeholder="გვარი" [isRequired]="true"
           [isInvalid]="form.controls['surname'].invalid && form.controls['surname'].dirty">
         </app-input>
@@ -27,7 +31,8 @@
             submit: (form.controls['surname'] && form.controls['surname'].dirty), patternTypes: 'none' }">
           {{ err }}
         </mat-hint>
-      </div> -->
+      </div>
+    </div>
 
       <div class="ppc-field">
         <app-input formControlName="mobileNumber" placeholder="მობილური" type="tel" [isRequired]="true"
@@ -54,7 +59,12 @@
             submit: (form.controls['email'] && form.controls['email'].dirty), patternTypes: 'email' }">
           {{ err }}
         </mat-hint>
+
       </div>
+
+        <app-button [type]="'submit'"
+                    [text]="'შემდეგი'">
+        </app-button>
     </form>
   </div>
 
