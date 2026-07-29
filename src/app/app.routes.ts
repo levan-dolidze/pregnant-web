@@ -75,11 +75,11 @@ export const routes: Routes = [
           ),
       },
       {
-        path: 'purchase-pregnant-course/:session',
+        path: 'purchase-course/:courseName/:session',
         // canActivate: [authGuard],
         loadComponent: () =>
-          import('./features/courses-promo/purchase-pregnant-course/purchase-pregnant-course.component').then(
-            (m) => m.PurchasePregnantCourseComponent
+          import('./features/courses-promo/purchase-course/purchase-course.component').then(
+            (m) => m.PurchaseCourseComponent
           ),
       },
       {
@@ -116,7 +116,7 @@ export const routes: Routes = [
       },
       {
         path: 'my-courses',
-        canActivate: [authGuard],
+        // canActivate: [authGuard],
         loadComponent: () =>
           import('./features/my-courses/my-courses.component').then(
             (m) => m.MyCoursesComponent

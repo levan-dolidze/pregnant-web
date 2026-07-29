@@ -16,7 +16,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { OtpComponent } from 'src/app/shared/features/otp/otp.component';
 
 @Component({
-  selector: 'app-purchase-pregnant-course',
+  selector: 'app-purchase-course',
   standalone: true,
   imports: [
     ReactiveFormsModule,
@@ -28,11 +28,11 @@ import { OtpComponent } from 'src/app/shared/features/otp/otp.component';
     CheckboxComponent,
     OtpComponent
   ],
-  templateUrl: './purchase-pregnant-course.component.html',
-  styleUrl: './purchase-pregnant-course.component.scss',
+  templateUrl: './purchase-course.component.html',
+  styleUrl: './purchase-course.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class PurchasePregnantCourseComponent {
+export class PurchaseCourseComponent {
 
   private readonly purchaseService = inject(PurchaseService)
   private readonly coursesPromoService = inject(CoursesPromoService)

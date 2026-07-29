@@ -9,6 +9,7 @@ import { Store } from '@ngrx/store';
 import { iSAuthState } from 'src/app/auth/data-access/state/auth/auth-selectors';
 import { MatDialog } from '@angular/material/dialog';
 import { AuthModalComponent } from '../auth/data-access/auth-modal.component';
+import { CourseNames } from './models/course-purchase.model';
 
 @Component({
   selector: 'app-courses-promo',
@@ -30,11 +31,11 @@ export class CoursesPromoComponent {
   readonly promo = this.purchaseService.coursePromo;
 
   onPurchaseInit() {
-    this.router.navigate(['/purchase-pregnant-course/', this.guidService.getUUID])
+    this.router.navigate(['/purchase-course/', CourseNames.Pregnant, this.guidService.getUUID])
 
     //???
     // if (this.iSAuth()) { 
-    //   this.router.navigate(['/purchase-pregnant-course/', this.guidService.getUUID])
+    //   this.router.navigate(['/purchase-course/', this.guidService.getUUID])
     // }
     // else {
     //   this.dialog.open(AuthModalComponent, { width: '540px' });
