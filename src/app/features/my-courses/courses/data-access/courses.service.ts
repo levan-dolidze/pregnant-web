@@ -48,8 +48,8 @@ export class CoursesService {
     {
       chapter: 'childNutrition',
       sections: [
-        { name: 'who_am_i' },
-        { name: 'what_you_will_learn' }
+        { name: 'breastfeeding' },
+        { name: 'bottle_feeding' }
       ]
     }
   ]
