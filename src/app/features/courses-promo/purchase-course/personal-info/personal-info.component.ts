@@ -6,7 +6,7 @@ import { ButtonComponent } from 'src/app/components/button/button.component';
 import { ValidationErrorsDirective } from 'src/app/shared/directives/validation-errors.directive';
 import { ControlModeChange } from 'src/app/shared/functions/controlModeChange';
 import { Store } from '@ngrx/store';
-import { goTo } from 'src/app/shared/state/step-state';
+import { CoursePurchaseFlowActions } from '../../data-access/state/course-purchase-flow';
 
 @Component({
   selector: 'app-personal-info',
@@ -32,7 +32,11 @@ export class PersonalInfoComponent {
       ControlModeChange.formFieldsModeControl('markAsDirty', this.form);
     }
     else {
-      this.store.dispatch(goTo({ step: 2 }))
+      const { userName, userLastName } = this.form.getRawValue();
+      this.store.dispatch(CoursePurchaseFlowActions.savePersonalInfo({
+        personalInfo: { name: userName, surname: userLastName },
+        step: 2
+      }));
     }
 
   }

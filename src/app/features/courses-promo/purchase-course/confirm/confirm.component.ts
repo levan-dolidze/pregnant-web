@@ -1,5 +1,8 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject, Input } from '@angular/core';
+import { toSignal } from '@angular/core/rxjs-interop';
+import { Store } from '@ngrx/store';
 import { ButtonComponent } from 'src/app/components/button/button.component';
+import { CoursePurchaseFlowActions, CoursePurchaseFlowSelectors } from '../../data-access/state/course-purchase-flow';
 
 @Component({
   selector: 'app-confirm',
@@ -9,4 +12,15 @@ import { ButtonComponent } from 'src/app/components/button/button.component';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ConfirmComponent {
+
+  private readonly store = inject(Store);
+
+  @Input() courseName: string;
+
+  readonly loading = toSignal(this.store.select(CoursePurchaseFlowSelectors.selectPurchaseLoading));
+  readonly error = toSignal(this.store.select(CoursePurchaseFlowSelectors.selectPurchaseError));
+
+  onConfirm(): void {
+    this.store.dispatch(CoursePurchaseFlowActions.purchaseCourse());
+  }
 }

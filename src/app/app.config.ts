@@ -20,6 +20,11 @@ import { StepEffects } from './shared/state/step-state';
 import { DateToStringPipe } from './shared/pipe/date-to-string.pipe';
 import { httpInterceptor } from './core/interceptor/http.interceptor';
 import { AuthEffects, authKey, authReducer } from './auth/data-access/state/auth';
+import {
+  CoursePurchaseFlowEffects,
+  coursePurchaseFlowKey,
+  coursePurchaseFlowReducer,
+} from './features/courses-promo/data-access/state/course-purchase-flow';
 
 function getStoredLang() {
   return sessionStorage.getItem('saLang')
@@ -51,8 +56,9 @@ export const appConfig: ApplicationConfig = {
     ),
     provideState({ name: stepKey, reducer: stepReducer }),
     provideState({ name: authKey, reducer: authReducer }),
+    provideState({ name: coursePurchaseFlowKey, reducer: coursePurchaseFlowReducer }),
 
-    provideEffects([StepEffects,AuthEffects]),
+    provideEffects([StepEffects, AuthEffects, CoursePurchaseFlowEffects]),
 
 
     provideStoreDevtools({

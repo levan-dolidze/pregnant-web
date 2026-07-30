@@ -19,7 +19,7 @@
     </mat-hint>
 
     <app-otp
-      (confirmOtpEmit)="confirmOtpEmit.emit($event)"
+      (confirmOtpEmit)="onOtpConfirmed($event)"
       [clientNumber]="form.get('mobileNumber').value">
     </app-otp>
   </div>

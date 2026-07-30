@@ -4,18 +4,22 @@
 
     <form [formGroup]="form" (ngSubmit)="onPay()" class="ppc-form">
 
-    <lib-mini-progress-bar [routes]="routes()" [currentStep]="currentStepState()"></lib-mini-progress-bar>
+    <lib-mini-progress-bar [routes]="routes()" [currentStep]="currentStep()"></lib-mini-progress-bar>
 
-    {{currentStepState()}}
-    @switch (currentStepState()) {
+    @switch (currentStep()) {
       @case (1) {
         <app-personal-info></app-personal-info>
       }
       @case (2) {
-        <app-contact-info ></app-contact-info>
+        <app-contact-info></app-contact-info>
       }
       @case (3) {
-        <app-confirm ></app-confirm>
+        <app-confirm [courseName]="courseName"></app-confirm>
+      }
+      @case (4) {
+        <div class="wrapper">
+          <h2 class="ppc-card__title">გმადლობთ! შენაძენი წარმატებით დასრულდა</h2>
+        </div>
       }
     }
     </form>

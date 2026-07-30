@@ -17,7 +17,7 @@ import { ContactInfoComponent } from './contact-info/contact-info.component';
 import { ConfirmComponent } from './confirm/confirm.component';
 import { Store } from '@ngrx/store';
 import { toSignal } from '@angular/core/rxjs-interop';
-import { currentStepState } from 'src/app/shared/state/step-state/step-selectors';
+import { CoursePurchaseFlowSelectors } from '../data-access/state/course-purchase-flow';
 
 @Component({
   selector: 'app-purchase-course',
@@ -50,7 +50,7 @@ export class PurchaseCourseComponent implements OnInit {
   ]);
 
   readonly store = inject(Store);
-  readonly currentStepState = toSignal(this.store.select(currentStepState)) 
+  readonly currentStep = toSignal(this.store.select(CoursePurchaseFlowSelectors.selectCurrentStep));
 
 
   readonly form = new FormGroup({

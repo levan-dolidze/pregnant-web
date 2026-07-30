@@ -2,6 +2,16 @@
 <div class="wrapper">
 <h2 class="ppc-card__title">დაადასტურე ინფორმაცია</h2>
 
-<app-button [type]="'submit'" text="გადახდა"></app-button>
+@if (error()) {
+  <p class="error-msg">{{ error() }}</p>
+}
+
+<app-button
+  [type]="'button'"
+  [isLoading]="loading()"
+  [isDisabled]="loading()"
+  (btnClick)="onConfirm()"
+  text="გადახდა">
+</app-button>
 
 </div>
