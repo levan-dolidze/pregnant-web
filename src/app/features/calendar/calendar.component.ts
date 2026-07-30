@@ -35,8 +35,13 @@ export class CalendarComponent implements AfterViewInit {
   readonly showMyCalendars   = signal(true);
   readonly showBookingPages  = signal(true);
   readonly showMeetSection   = signal(true);
+  readonly showMobileSidebar = signal(false);
   readonly editingEventId    = signal<string | null>(null);
   readonly formError         = signal<string | null>(null);
+
+  toggleMobileSidebar(): void {
+    this.showMobileSidebar.update(v => !v);
+  }
 
   form: BookingForm = this.defaultForm();
 

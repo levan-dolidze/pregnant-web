@@ -10,6 +10,15 @@
     @include font(24px, 700, $gray700, $font-bold);
     margin-bottom: 24px;
   }
+
+  @media (max-width: 768px) {
+    padding: 32px 16px;
+
+    &__title {
+      font-size: 20px;
+      margin-bottom: 16px;
+    }
+  }
 }
 
 .mc-list {

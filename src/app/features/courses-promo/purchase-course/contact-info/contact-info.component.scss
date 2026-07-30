@@ -26,3 +26,9 @@
   margin-top: 2px;
   padding-left: 4px;
 }
+
+@media (max-width: 480px) {
+  .ppc-page__info {
+    grid-template-columns: 1fr;
+  }
+}

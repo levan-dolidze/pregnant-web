@@ -7,8 +7,9 @@
 }
 
 .mat-drawer-inner-container {
-  background-color: $primary;
+  width: 250px !important;
 }
-.mat-drawer-side{
+
+.mat-drawer-side {
   border: none;
 }

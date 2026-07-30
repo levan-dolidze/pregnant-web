@@ -93,7 +93,7 @@ export class HeaderComponent implements OnInit {
   }
 
   onLoginInit(){
-    this.dialog.open(AuthModalComponent, { width: '540px' });
+    this.dialog.open(AuthModalComponent, { width: '540px', maxWidth: '95vw' });
   }
 
   readonly sessionId = toSignal(

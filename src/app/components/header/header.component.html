@@ -11,7 +11,7 @@
       </span>
     </div>
     <ng-container>
-      <button mat-icon-button aria-label="Notifications" [routerLink]="'notifications/notification-list'">
+      <button class="topbar__notify" mat-icon-button aria-label="Notifications" [routerLink]="'notifications/notification-list'">
       </button>
       <mat-menu #notificationmenu="matMenu" class="topbar-dd cardWithShadow">
         <div class="d-flex align-items-center p-x-32 p-y-16">
@@ -60,9 +60,10 @@
       <mat-icon>{{ isMenuOpen() ? 'close' : 'menu' }}</mat-icon>
     </button>
 
-      <app-button 
-       [className]="'stroked-fill h-40'" 
-       [text]="t('LogIn')" 
+      <app-button
+       class="topbar__login"
+       [className]="'stroked-fill h-40'"
+       [text]="t('LogIn')"
        (btnClick)="onLoginInit()">
       </app-button>
     <div class="topbar__profile">
@@ -114,6 +115,21 @@
           </a>
         }
       }
+
+      <span class="topbar__mobile-group">{{ t('Profile') }}</span>
+      <a class="topbar__mobile-link" routerLink="/profile"
+         routerLinkActive="topbar__mobile-link--active"
+         [routerLinkActiveOptions]="{exact: true}"
+         (click)="toggleMenu()">
+        {{ t('Profile') }}
+      </a>
+      <a class="topbar__mobile-link" routerLink="/my-courses"
+         routerLinkActive="topbar__mobile-link--active"
+         [routerLinkActiveOptions]="{exact: true}"
+         (click)="toggleMenu()">
+        {{ t('My_Courses') }}
+      </a>
+
       <app-button
         [text]="t('LogOut')"
         (btnClick)="onLogOut()"

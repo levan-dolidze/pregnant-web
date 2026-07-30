@@ -68,3 +68,24 @@
   display: grid;
   gap: 16px;
 }
+
+@media (max-width: 768px) {
+  .ppc-page {
+    flex-direction: column;
+    align-items: stretch;
+    margin-top: 0;
+    padding: 16px;
+    max-height: none;
+
+    &__panel {
+      width: 100%;
+      max-height: none;
+    }
+  }
+
+  .ppc-card {
+    max-width: 100%;
+    max-height: none;
+    padding: 20px;
+  }
+}

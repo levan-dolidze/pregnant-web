@@ -2,8 +2,13 @@
   (click)="showCreateMenu.set(false); closeEventPopup()"
   (keydown.escape)="showCreateMenu.set(false); closeEventPopup()">
 
+  <!-- ═══ Sidebar backdrop (mobile) ═════════════════════════════════ -->
+  @if (showMobileSidebar()) {
+    <div class="cal-sidebar-backdrop" (click)="showMobileSidebar.set(false)" (keydown.escape)="showMobileSidebar.set(false)"></div>
+  }
+
   <!-- ═══ Sidebar ════════════════════════════════════════════════════ -->
-  <aside class="cal-sidebar">
+  <aside class="cal-sidebar" [class.is-open]="showMobileSidebar()">
 
     <!-- Create button -->
     <div class="cal-create"
@@ -101,6 +106,9 @@
     <!-- Toolbar -->
     <header class="cal-toolbar">
       <div class="cal-toolbar__left">
+        <button class="cal-mobile-toggle" (click)="toggleMobileSidebar(); $event.stopPropagation()" aria-label="მენიუ">
+          <span></span><span></span><span></span>
+        </button>
         <div class="cal-logo">
           <img src="assets/icons/_cal-logo.svg" width="28" height="28" aria-hidden="true" alt="">
           <span>კალენდარი</span>

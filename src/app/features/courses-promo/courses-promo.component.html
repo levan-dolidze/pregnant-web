@@ -29,7 +29,12 @@
         <span class="ps-cta__price">{{ promo().price }} ₾</span>
         <span class="ps-cta__note">ერთჯერადი გადახდა · უვადო წვდომა</span>
       </div>
-      <button class="ps-cta__btn" (click)="onPurchaseInit()">შეძენა</button>
+      <app-button
+        className="ps-cta__btn"
+        [type]="'button'"
+        text="შეძენა"
+        (btnClick)="onPurchaseInit()">
+      </app-button>
     </div>
   </div>
 

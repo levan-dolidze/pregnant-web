@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { GuidService } from 'src/app/shared/services/guid/guid.service';
 import { PurchaseService } from './data-access/purchase.service';
 import { VideoViewerComponent } from 'src/app/components/video-viewer/video-viewer.component';
+import { ButtonComponent } from 'src/app/components/button/button.component';
 import { CoursesPromoService } from './courses-promo.service';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { Store } from '@ngrx/store';
@@ -13,7 +14,7 @@ import { CourseNames } from './models/course-purchase.model';
 
 @Component({
   selector: 'app-courses-promo',
-  imports: [VideoViewerComponent],
+  imports: [VideoViewerComponent, ButtonComponent],
   templateUrl: './courses-promo.component.html',
   styleUrl: './courses-promo.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush
