@@ -161,25 +161,26 @@ export class OtpComponent implements OnInit {
         phoneNumber: this.clientNumber(),
         productName: null
       } as VerifyOtpRequest
+    this.confirmOtpEmit.emit(true)
 
-      this.otpService.verifyRequestedOtpCode(params)
-        .pipe(take(1)).
-        subscribe({
-          next: ((passwordId: string) => {
-            this.onClose(true)
-            this.confirmOtpEmit.emit(true)
-            this.verifyUtpLoading.set({ loading: false, error: '' })
-            clearInterval(this.timerInterval);
-          }),
-          error: ((err: HttpErrorResponse) => {
-            console.error(err.error)
-            this.otpf.otp.markAsDirty();
-            this.otpf.otp.setErrors({
-              invalidOtp: true
-            });
-            this.verifyUtpLoading.set({ loading: false, error: err.error })
-          })
-        })
+      // this.otpService.verifyRequestedOtpCode(params)
+      //   .pipe(take(1)).
+      //   subscribe({
+      //     next: ((passwordId: string) => {
+      //       this.onClose(true)
+      //       this.confirmOtpEmit.emit(true)
+      //       this.verifyUtpLoading.set({ loading: false, error: '' })
+      //       clearInterval(this.timerInterval);
+      //     }),
+      //     error: ((err: HttpErrorResponse) => {
+      //       console.error(err.error)
+      //       this.otpf.otp.markAsDirty();
+      //       this.otpf.otp.setErrors({
+      //         invalidOtp: true
+      //       });
+      //       this.verifyUtpLoading.set({ loading: false, error: err.error })
+      //     })
+      //   })
     }
   }
 

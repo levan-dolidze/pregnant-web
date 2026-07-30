@@ -2,8 +2,23 @@
 @use "mixins" as *;
 
 
+.wrapper {
+  display: grid;
+  gap: 16px;
+}
+
 .ppc-card__title {
   @include font(20px, 500, $gray700, $font-medium);
+}
+
+.ppc-page__info {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+
+  app-button {
+    grid-column: 1 / -1;
+  }
 }
 
 .error-msg {

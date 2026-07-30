@@ -16,19 +16,20 @@
       @case (3) {
         <app-confirm [courseName]="courseName"></app-confirm>
       }
-      @case (4) {
-        <div class="wrapper">
-          <h2 class="ppc-card__title">გმადლობთ! შენაძენი წარმატებით დასრულდა</h2>
-        </div>
-      }
+
     }
     </form>
 
   </div>
+
+  @if (currentStep()>2) {
 
         <div class="ppc-page__panel">
           <lib-side-panel [courseId]="courseId.Pregnant" 
           [sidePanelConfig]="panelConfig"
             (submitEmit)="onSidePanelSubmit($event)"></lib-side-panel>
         </div>
+
+  }
+
 </main>

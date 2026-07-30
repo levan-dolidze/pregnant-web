@@ -1,15 +1,15 @@
 <div class="wrapper">
 
-
 <h2 class="ppc-card__title">საკონტაქტო ინფორმაცია</h2>
 
-<form [formGroup]="form" (ngSubmit)="onNext()">
+<form class="ppc-page__info" [formGroup]="form" (ngSubmit)="onNext()">
 
-  <div class="ppc-field">
+  <div class="ppc-page__fields">
     <app-input formControlName="mobileNumber"
      placeholder="მობილური"
      type="tel"
-     [isRequired]="true">
+     [isRequired]="true"
+     [isInvalid]="form.controls['mobileNumber'].invalid && form.controls['mobileNumber'].dirty">
      </app-input>
 
     <mat-hint class="error-msg"
@@ -17,14 +17,9 @@
         submit: (form.controls['mobileNumber'] && form.controls['mobileNumber'].dirty), patternTypes: 'mobNumber' }">
       {{ err }}
     </mat-hint>
-
-    <app-otp
-      (confirmOtpEmit)="onOtpConfirmed($event)"
-      [clientNumber]="form.get('mobileNumber').value">
-    </app-otp>
   </div>
 
-  <div class="ppc-field">
+  <div class="ppc-page__fields">
     <app-input formControlName="email" placeholder="ელ-ფოსტა" type="email"
      [isRequired]="true"
      [isInvalid]="form.controls['email'].invalid && form.controls['email'].dirty"></app-input>
@@ -35,11 +30,18 @@
     </mat-hint>
   </div>
 
-<app-button 
-[text]="'შესვლა'"
+  @if(showOtpState()) {
+<app-otp (confirmOtpEmit)="onOtpConfirmed($event)" [clientNumber]="form.get('mobileNumber').value">
+</app-otp>
+  }
+ 
+
+<app-button
+[text]="'Next'"
 [type]="'submit'">
 </app-button>
 
 </form>
+
 
 </div>

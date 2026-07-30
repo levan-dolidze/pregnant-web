@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, EventEmitter, inject, Output } from '@angular/core';
+import { ChangeDetectionStrategy, Component, computed, EventEmitter, inject, Output, signal } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { InputComponent } from 'src/app/components/input/input.component';
@@ -28,29 +28,25 @@ export class ContactInfoComponent {
 
   @Output() confirmOtpEmit = new EventEmitter<boolean>();
 
+  private readonly showOtp = signal<boolean>(false)
+  readonly showOtpState = computed(() => this.showOtp())
+
   onNext(): void {
     if (this.form.invalid) {
       ControlModeChange.formFieldsModeControl('markAsDirty', this.form);
     } else {
-      this.saveContactInfo();
+      this.showOtp.set(true)
     }
   }
 
   onOtpConfirmed(confirmed: boolean): void {
-    this.saveContactInfo();
-    this.store.dispatch(CoursePurchaseFlowActions.setOtpConfirmed({ confirmed }));
-
-    if (confirmed) {
-      this.store.dispatch(CoursePurchaseFlowActions.goToStep({ step: 3 }));
-    }
-
-    this.confirmOtpEmit.emit(confirmed);
-  }
-
-  private saveContactInfo(): void {
+    console.log(confirmed)
     const { email, mobileNumber } = this.form.getRawValue();
     this.store.dispatch(CoursePurchaseFlowActions.saveContactInfo({
-      contactInfo: { email, mobileNumber }
+      contactInfo: { email, mobileNumber },
+      step: 3
     }));
   }
+
+
 }

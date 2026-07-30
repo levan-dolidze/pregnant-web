@@ -1,17 +1,7 @@
 
 <div class="wrapper">
-<h2 class="ppc-card__title">დაადასტურე ინფორმაცია</h2>
 
-@if (error()) {
-  <p class="error-msg">{{ error() }}</p>
-}
+  გმადლობთ! შენაძენი წარმატებით დასრულდა
 
-<app-button
-  [type]="'button'"
-  [isLoading]="loading()"
-  [isDisabled]="loading()"
-  (btnClick)="onConfirm()"
-  text="გადახდა">
-</app-button>
 
 </div>

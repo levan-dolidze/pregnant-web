@@ -54,11 +54,7 @@ export class PurchaseCourseComponent implements OnInit {
 
 
   readonly form = new FormGroup({
-    name: new FormControl('', [Validators.required]),
-    surname: new FormControl('', [Validators.required]),
     termsChecked: new FormControl('', [Validators.requiredTrue]),
-    mobileNumber: new FormControl('', [Validators.required, Validators.pattern(regExp.onlyNumbers)]),
-    email: new FormControl('', [Validators.required, Validators.pattern(regExp.email)]),
   });
 
 

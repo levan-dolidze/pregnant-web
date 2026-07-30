@@ -33,6 +33,8 @@ export class PersonalInfoComponent {
     }
     else {
       const { userName, userLastName } = this.form.getRawValue();
+
+      
       this.store.dispatch(CoursePurchaseFlowActions.savePersonalInfo({
         personalInfo: { name: userName, surname: userLastName },
         step: 2

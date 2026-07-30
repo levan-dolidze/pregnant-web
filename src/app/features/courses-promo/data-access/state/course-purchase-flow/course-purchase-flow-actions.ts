@@ -13,7 +13,7 @@ export const savePersonalInfo = createAction(
 
 export const saveContactInfo = createAction(
   '[Course Purchase Flow] Save Contact Info',
-  props<{ contactInfo: ContactInfo }>()
+  props<{ contactInfo: ContactInfo, step?: number }>()
 );
 
 export const setOtpConfirmed = createAction(

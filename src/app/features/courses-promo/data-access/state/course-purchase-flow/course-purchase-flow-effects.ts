@@ -8,6 +8,7 @@ import {
   purchaseCourse,
   purchaseCourseFailure,
   purchaseCourseSuccess,
+  saveContactInfo,
   savePersonalInfo,
 } from './course-purchase-flow-actions';
 import { selectPurchaseRequest } from './course-purchase-flow-selectors';
@@ -22,6 +23,13 @@ export class CoursePurchaseFlowEffects {
   savePersonalInfo$ = createEffect(() =>
     this.actions$.pipe(
       ofType(savePersonalInfo),
+      filter(({ step }) => step != null),
+      map(({ step }) => goToStep({ step }))
+    )
+  );
+  saveContactInfo$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(saveContactInfo),
       filter(({ step }) => step != null),
       map(({ step }) => goToStep({ step }))
     )
