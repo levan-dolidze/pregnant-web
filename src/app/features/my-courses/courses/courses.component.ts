@@ -1,4 +1,3 @@
-import { JsonPipe } from '@angular/common';
 import { ChangeDetectionStrategy, Component, Input, OnChanges, OnDestroy, OnInit, SimpleChanges, inject } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { MatIconModule } from '@angular/material/icon';
@@ -10,7 +9,7 @@ import { VideoViewerComponent } from 'src/app/components/video-viewer/video-view
 
 @Component({
   selector: 'app-courses',
-  imports: [JsonPipe, LoadingDirective, TranslocoModule, MatIconModule, VideoViewerComponent],
+  imports: [LoadingDirective, TranslocoModule, MatIconModule, VideoViewerComponent],
   templateUrl: './courses.component.html',
   styleUrl: './courses.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush
