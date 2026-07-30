@@ -1,7 +1,29 @@
-
+<ng-container *transloco="let t">
 <div class="wrapper">
 
-  გმადლობთ! შენაძენი წარმატებით დასრულდა
+  <h2 class="ppc-card__title">{{ t('What_you_will_get') }}</h2>
+
+
+  {{ t('After_payment_you_will_receive') }}
+
+  <ul class="confirm-benefits">
+    <li class="confirm-benefits__item">
+      <span class="confirm-benefits__icon">
+        <img src="assets/images/svgs/_check.svg" width="10" height="10" alt="" aria-hidden="true">
+      </span>
+      <span>{{ t('Full_baby_care_video_collection_for_mothers') }}</span>
+    </li>
+    <li class="confirm-benefits__item">
+      <span class="confirm-benefits__icon">
+        <img src="assets/images/svgs/_check.svg" width="10" height="10" alt="" aria-hidden="true">
+      </span>
+      <span>{{ t('Free_gynecologist_consultation') }}</span>
+    </li>
+  </ul>
+
+
+
 
 
 </div>
+</ng-container>

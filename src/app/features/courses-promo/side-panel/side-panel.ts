@@ -36,7 +36,7 @@ export class SidePanel implements OnInit, AfterViewInit, OnDestroy {
 
 
   form = new FormGroup({
-    termsChecked: new FormControl(false),
+    termsChecked: new FormControl(false,[Validators.requiredTrue]),
   })
 
   constructor() {

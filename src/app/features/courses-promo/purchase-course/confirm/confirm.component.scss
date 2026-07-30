@@ -1,6 +1,41 @@
 @use "variables" as *;
 @use "mixins" as *;
 
+
+.wrapper {
+  display: grid;
+  gap: 16px;
+}
+
 .ppc-card__title {
   @include font(20px, 500, $gray700, $font-medium);
+}
+
+.confirm-benefits {
+  display: grid;
+  gap: 12px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+
+  &__item {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  &__icon {
+    flex: none;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background-color: $primary;
+    display: grid;
+    place-items: center;
+    margin-top: 2px;
+
+    img {
+      display: block;
+    }
+  }
 }

@@ -25,7 +25,6 @@
     &__time-left-otp-resend {
         @include flex-center;
         @include font(14px, 400, var(--label), $font-default);
-        margin-top: 60px;
         gap: 10px;
         pointer-events: none;
     }
@@ -37,12 +36,13 @@
     }
 
     &__reload-icon {
-        @include iconFrame(22px, 22px);
-        background-image: var(--reload);
+        width: 22px;
+        height: 22px;
+        object-fit: contain;
     }
 
     &__otp-time-value {
-        color: var(--black-white);
+        color: $black;
     }
 }
 

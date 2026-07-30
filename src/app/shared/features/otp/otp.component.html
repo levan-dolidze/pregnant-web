@@ -18,11 +18,11 @@
     <div (click)="resendOtp()" class="otp-container__time-left-otp-resend"
          [class.otp-container__otp-resend]="!timeLeftToEnterOtpState()"
          onKeyPress>
-    <div class="otp-container__reload-icon"></div>
+    <img class="otp-container__reload-icon" src="assets/icons/_reload.svg" width="22" height="22" alt="" aria-hidden="true">
     <p>{{t('OTP_resend')}} 
-      <!-- @if(timeLeftToEnterOtpState()){ -->
+      @if(timeLeftToEnterOtpState()){
         <span class="otp-container__otp-time-value">{{timeLeftToEnterOtpState()}} {{t('In_Second')}}</span>
-      <!-- } -->
+      }
     </p>
     </div>
     </div>

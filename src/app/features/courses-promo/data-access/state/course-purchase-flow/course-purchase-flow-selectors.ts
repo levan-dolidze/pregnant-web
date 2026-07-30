@@ -5,6 +5,10 @@ import { CoursePurchaseFlowState } from './models';
 export const selectCoursePurchaseFlowState =
   createFeatureSelector<CoursePurchaseFlowState>(coursePurchaseFlowKey);
 
+export const coursePurchaseFlowState = createSelector(
+  selectCoursePurchaseFlowState,
+  (state) => state
+);
 export const selectCurrentStep = createSelector(
   selectCoursePurchaseFlowState,
   (state) => state.currentStep
@@ -25,7 +29,7 @@ export const selectOtpConfirmed = createSelector(
   (state) => state.otpConfirmed
 );
 
-export const selectPurchaseLoading = createSelector(
+export const purchaseLoading = createSelector(
   selectCoursePurchaseFlowState,
   (state) => state.loading
 );

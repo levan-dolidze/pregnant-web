@@ -18,6 +18,7 @@ import { ConfirmComponent } from './confirm/confirm.component';
 import { Store } from '@ngrx/store';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { CoursePurchaseFlowSelectors } from '../data-access/state/course-purchase-flow';
+import { selectCoursePurchaseFlowState } from '../data-access/state/course-purchase-flow/course-purchase-flow-selectors';
 
 @Component({
   selector: 'app-purchase-course',
@@ -37,9 +38,13 @@ export class PurchaseCourseComponent implements OnInit {
 
   private readonly purchaseService = inject(PurchaseService)
   private readonly coursesPromoService = inject(CoursesPromoService)
+  private readonly store = inject(Store)
 
   readonly dialog = inject(MatDialog);
   readonly promo = this.coursesPromoService.coursePromo;
+  readonly coursePurchaseFlowState = toSignal(this.store.select(selectCoursePurchaseFlowState));
+  readonly currentStep = toSignal(this.store.select(CoursePurchaseFlowSelectors.selectCurrentStep));
+  readonly loading = toSignal(this.store.select(CoursePurchaseFlowSelectors.purchaseLoading));
 
   @Input() courseName: string;
 
@@ -49,8 +54,6 @@ export class PurchaseCourseComponent implements OnInit {
     { stepId: 3 },
   ]);
 
-  readonly store = inject(Store);
-  readonly currentStep = toSignal(this.store.select(CoursePurchaseFlowSelectors.selectCurrentStep));
 
 
   readonly form = new FormGroup({
@@ -102,7 +105,7 @@ export class PurchaseCourseComponent implements OnInit {
     submitButton: {
       text: 'Pay',
       disabled: false,
-      loading:false,
+      loading: this.loading(),
       showSubmit: true
     }
   }))
