@@ -34,10 +34,6 @@ export class StepEffects {
                     document.documentElement.setAttribute('theme', query.mode);
                     this.sessionStorage.saveKey('mode', query.mode);
                     return loadAppStoredParams({ tokenRequest,query })
-                    // const query = this.sessionStorage.getKey(FlowQueryStore.TnetQuery);
-                    // const theme = this.sessionStorage.getKey('mode');
-                    // document.documentElement.setAttribute('theme', theme ?? 'light');
-                    // return loadAppStoredParams({ tokenRequest, query })
                 })
             ),
     );

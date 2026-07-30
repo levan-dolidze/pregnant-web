@@ -7,11 +7,8 @@ export interface InitQueryParams {
     token?: string | null;
     loading?: boolean;
     error?: string | null;
+    currentStep: number
 }
 
 export type Mode = 'dark' | 'light';
 
-
-export enum FlowQueryStore {
-    TnetQuery = 'tnetQuery',
-}

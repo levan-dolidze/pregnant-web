@@ -1,10 +1,12 @@
-import { ChangeDetectionStrategy, Component, EventEmitter, Output } from '@angular/core';
+import { ChangeDetectionStrategy, Component, EventEmitter, inject, Output } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { InputComponent } from 'src/app/components/input/input.component';
 import { ButtonComponent } from 'src/app/components/button/button.component';
 import { ValidationErrorsDirective } from 'src/app/shared/directives/validation-errors.directive';
 import { ControlModeChange } from 'src/app/shared/functions/controlModeChange';
+import { Store } from '@ngrx/store';
+import { goTo } from 'src/app/shared/state/step-state';
 
 @Component({
   selector: 'app-personal-info',
@@ -21,13 +23,16 @@ export class PersonalInfoComponent {
   })
   @Output() next = new EventEmitter<void>();
 
+  readonly store = inject(Store);
+
+
   onNext(): void {
 
     if (this.form.invalid) {
       ControlModeChange.formFieldsModeControl('markAsDirty', this.form);
     }
     else {
-
+      this.store.dispatch(goTo({ step: 2 }))
     }
 
   }

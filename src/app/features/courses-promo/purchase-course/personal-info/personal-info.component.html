@@ -26,7 +26,10 @@
     </mat-hint>
   </div>
 
-<app-button text="შემდეგი" [type]="'submit'"></app-button>
+<app-button 
+text="შემდეგი" [type]="'submit'"
+[isDisabled]="form.invalid"
+></app-button>
 
 </form>
 

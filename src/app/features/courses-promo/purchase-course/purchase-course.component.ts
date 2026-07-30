@@ -15,6 +15,9 @@ import { StepRoutes } from 'src/app/components/step-helper/utils/models';
 import { PersonalInfoComponent } from './personal-info/personal-info.component';
 import { ContactInfoComponent } from './contact-info/contact-info.component';
 import { ConfirmComponent } from './confirm/confirm.component';
+import { Store } from '@ngrx/store';
+import { toSignal } from '@angular/core/rxjs-interop';
+import { currentStepState } from 'src/app/shared/state/step-state/step-selectors';
 
 @Component({
   selector: 'app-purchase-course',
@@ -46,9 +49,8 @@ export class PurchaseCourseComponent implements OnInit {
     { stepId: 3 },
   ]);
 
-
-  readonly #step = signal<number>(1);
-  readonly stepState = computed(() => this.#step());
+  readonly store = inject(Store);
+  readonly currentStepState = toSignal(this.store.select(currentStepState)) 
 
 
   readonly form = new FormGroup({

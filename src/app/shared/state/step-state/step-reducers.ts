@@ -1,5 +1,5 @@
 import { createReducer, on } from "@ngrx/store";
-import { initAppParams, loadAppStoredParams } from "./step-actions";
+import { goTo, initAppParams, loadAppStoredParams } from "./step-actions";
 import { InitQueryParams } from "./utils";
 
 const initParamsState: InitQueryParams = {
@@ -8,6 +8,7 @@ const initParamsState: InitQueryParams = {
     token: null,
     loading: false,
     error: null,
+    currentStep: 1
 }
 
 export const stepReducer = createReducer(
@@ -15,6 +16,10 @@ export const stepReducer = createReducer(
     on(initAppParams, loadAppStoredParams, (state, { query }) => ({
         ...state,
         ...query,
+    })),
+    on(goTo, (state, { step }) => ({
+        ...state,
+        currentStep: step
     })),
 );
 

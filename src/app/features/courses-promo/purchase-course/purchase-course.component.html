@@ -4,9 +4,10 @@
 
     <form [formGroup]="form" (ngSubmit)="onPay()" class="ppc-form">
 
-    <lib-mini-progress-bar [routes]="routes()" [currentStep]="stepState()"></lib-mini-progress-bar>
+    <lib-mini-progress-bar [routes]="routes()" [currentStep]="currentStepState()"></lib-mini-progress-bar>
 
-    @switch (stepState()) {
+    {{currentStepState()}}
+    @switch (currentStepState()) {
       @case (1) {
         <app-personal-info></app-personal-info>
       }

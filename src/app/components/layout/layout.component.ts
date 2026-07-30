@@ -56,6 +56,7 @@ export class LayoutComponent implements OnInit {
         lang:'ka',
         user_id: queryParams.user_id,
         productId: queryParams.productId,
+        currentStep:1
       } as InitQueryParams
 
       const tokenResponse = {

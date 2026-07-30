@@ -21,3 +21,9 @@ export const policiesLoadingState = createSelector(
     selectStepState,
     (state) => state.loading
 );
+
+
+export const currentStepState = createSelector(
+    selectStepState,
+    (state) => state.currentStep
+);
