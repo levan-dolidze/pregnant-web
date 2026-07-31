@@ -5,7 +5,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 
-const basePath = '/Tnet';
+const basePath = '/Otp';
 
 @Injectable({
   providedIn: 'root',
