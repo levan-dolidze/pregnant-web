@@ -12,9 +12,9 @@ export interface CourseChapter {
 export interface CourseLessonContent {
   chapter: string;
   section: string;
-  videoUrl: string;
+  url: string;
   title: string;
-  time: string;
+  duration: string;
   typeId: VideoTypeIds
 }
 export enum VideoTypeIds {
@@ -58,9 +58,9 @@ export class CoursesService {
   readonly courseBy = signal<CourseLessonContent>({
     chapter: 'intro',
     section: 'who_am_i',
-    videoUrl: 'https://www.youtube.com/embed/QFcv5Ma8u8k',
+    url: 'https://www.youtube.com/embed/QFcv5Ma8u8k',
     title: 'Dummy lesson title',
-    time: '1:20',
+    duration: '1:20',
     typeId: VideoTypeIds.VideoLession
   });
 

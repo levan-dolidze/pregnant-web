@@ -7,13 +7,13 @@
   <div class="lesson__meta">
     <span class="lesson__meta-item">
       <mat-icon class="lesson__meta-icon">schedule</mat-icon>
-      {{ courseBy().time }} წუთი
+      {{ courseBy().duration }} წუთი
     </span>
   </div>
 
   <app-video-viewer
     class="lesson__video"
-    [videoUrl]="courseBy().videoUrl"
+    [videoUrl]="courseBy().url"
     [title]="t(courseBy().section)">
   </app-video-viewer>
 </section>
