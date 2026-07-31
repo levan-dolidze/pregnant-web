@@ -2,8 +2,9 @@
   <div class="ppc-card">
 
 
-    <form [formGroup]="form" (ngSubmit)="onPay()" class="ppc-form">
+    <div class="ppc-form">
 
+  
     <lib-mini-progress-bar [routes]="routes()" [currentStep]="currentStep()"></lib-mini-progress-bar>
 
     @switch (currentStep()) {
@@ -18,7 +19,7 @@
       }
 
     }
-    </form>
+    </div>
 
   </div>
 

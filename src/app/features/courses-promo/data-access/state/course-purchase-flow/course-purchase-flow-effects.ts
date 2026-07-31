@@ -1,8 +1,9 @@
 import { inject, Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
-import { Store } from '@ngrx/store';
-import { catchError, filter, map, of, switchMap, withLatestFrom } from 'rxjs';
+import { Router } from '@angular/router';
+import { catchError, filter, map, of, switchMap, tap } from 'rxjs';
 import { PurchaseService } from '../../purchase.service';
+import { AlertService } from 'src/app/components/alert/alert.service';
 import {
   goToStep,
   purchaseCourse,
@@ -11,14 +12,14 @@ import {
   saveContactInfo,
   savePersonalInfo,
 } from './course-purchase-flow-actions';
-import { selectPurchaseRequest } from './course-purchase-flow-selectors';
 
 @Injectable()
 export class CoursePurchaseFlowEffects {
 
   private readonly actions$ = inject(Actions);
-  private readonly store = inject(Store);
+  private readonly router = inject(Router);
   private readonly purchaseService = inject(PurchaseService);
+  private readonly alertService = inject(AlertService);
 
   savePersonalInfo$ = createEffect(() =>
     this.actions$.pipe(
@@ -38,10 +39,12 @@ export class CoursePurchaseFlowEffects {
   purchaseCourse$ = createEffect(() =>
     this.actions$.pipe(
       ofType(purchaseCourse),
-      withLatestFrom(this.store.select(selectPurchaseRequest)),
-      switchMap(([, request]) =>
-        this.purchaseService.pay(request).pipe(
-          map(() => purchaseCourseSuccess()),
+      switchMap(({ request }) =>
+        this.purchaseService.registerOrder(request).pipe(
+          map((res) => {
+            console.log(res);
+            return purchaseCourseSuccess({ paymentUrl: res.paymentUrl });
+          }),
           catchError((err) =>
             of(
               purchaseCourseFailure({
@@ -57,7 +60,11 @@ export class CoursePurchaseFlowEffects {
   purchaseCourseSuccess$ = createEffect(() =>
     this.actions$.pipe(
       ofType(purchaseCourseSuccess),
-      map(() => goToStep({ step: 4 }))
-    )
+      tap(({ paymentUrl }) => {
+        console.log(paymentUrl)
+        globalThis.location.href = paymentUrl
+      })
+    ),
+    { dispatch: false }
   );
 }

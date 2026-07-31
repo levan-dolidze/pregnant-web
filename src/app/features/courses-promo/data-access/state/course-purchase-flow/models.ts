@@ -1,11 +1,20 @@
 export interface PersonalInfo {
-  name: string | null;
-  surname: string | null;
+  userName: string | null;
+  userLastName: string | null;
 }
 
 export interface ContactInfo {
   email: string | null;
   mobileNumber: string | null;
+}
+
+export interface PurchaseCourseRequest {
+  sessionId: string;
+  userName: string;
+  userLastName: string;
+  email: string;
+  mobileNumber: string;
+  productId: number;
 }
 
 export class CoursePurchaseFlowState {
@@ -21,8 +30,8 @@ export class CoursePurchaseFlowState {
 export const coursePurchaseFlowInitialState: CoursePurchaseFlowState = {
   currentStep: 1,
   personalInfo: {
-    name: null,
-    surname: null,
+    userName: null,
+    userLastName: null,
   },
   contactInfo: {
     email: null,

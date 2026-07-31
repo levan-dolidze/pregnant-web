@@ -17,8 +17,9 @@ import { ContactInfoComponent } from './contact-info/contact-info.component';
 import { ConfirmComponent } from './confirm/confirm.component';
 import { Store } from '@ngrx/store';
 import { toSignal } from '@angular/core/rxjs-interop';
-import { CoursePurchaseFlowSelectors } from '../data-access/state/course-purchase-flow';
-import { selectCoursePurchaseFlowState } from '../data-access/state/course-purchase-flow/course-purchase-flow-selectors';
+import { CoursePurchaseFlowActions, CoursePurchaseFlowSelectors } from '../data-access/state/course-purchase-flow';
+import { selectContactInfo, selectCoursePurchaseFlowState, selectPersonalInfo } from '../data-access/state/course-purchase-flow/course-purchase-flow-selectors';
+import { PurchaseCourseRequest } from '../data-access/state/course-purchase-flow/models';
 
 @Component({
   selector: 'app-purchase-course',
@@ -43,10 +44,16 @@ export class PurchaseCourseComponent implements OnInit {
   readonly dialog = inject(MatDialog);
   readonly promo = this.coursesPromoService.coursePromo;
   readonly coursePurchaseFlowState = toSignal(this.store.select(selectCoursePurchaseFlowState));
+  readonly personalInfoState = toSignal(this.store.select(selectPersonalInfo));
+  readonly contactInfoState = toSignal(this.store.select(selectContactInfo));
+
+
+
   readonly currentStep = toSignal(this.store.select(CoursePurchaseFlowSelectors.selectCurrentStep));
   readonly loading = toSignal(this.store.select(CoursePurchaseFlowSelectors.purchaseLoading));
 
   @Input() courseName: string;
+  @Input() sessionId: string;
 
   readonly routes = signal<StepRoutes[]>([
     { stepId: 1 },
@@ -69,13 +76,17 @@ export class PurchaseCourseComponent implements OnInit {
     console.log(this.courseName)
   }
 
-  onPay(): void {
-    if (this.form.invalid) {
-      ControlModeChange.formFieldsModeControl('markAsDirty', this.form);
 
-    } else {
+  private buildPurchaseRequest(): PurchaseCourseRequest {
 
-    }
+    return {
+      sessionId: this.sessionId,
+      userName: this.personalInfoState().userName,
+      userLastName: this.personalInfoState().userLastName,
+      email: this.contactInfoState().email,
+      mobileNumber: this.contactInfoState().mobileNumber,
+      productId: this.courseId.Pregnant,
+    };
   }
 
   confirmOtp(confirm: boolean) {
@@ -111,8 +122,10 @@ export class PurchaseCourseComponent implements OnInit {
   }))
 
   onSidePanelSubmit(e: SubmitModel) {
+    const params = this.buildPurchaseRequest()
 
-  
+    console.log(params)
+    this.store.dispatch(CoursePurchaseFlowActions.purchaseCourse({ request: params }));
   }
 
   courseId = CourseId

@@ -21,7 +21,5 @@ export class ConfirmComponent {
   readonly loading = toSignal(this.store.select(CoursePurchaseFlowSelectors.purchaseLoading));
   readonly error = toSignal(this.store.select(CoursePurchaseFlowSelectors.selectPurchaseError));
 
-  onConfirm(): void {
-    this.store.dispatch(CoursePurchaseFlowActions.purchaseCourse());
-  }
+
 }

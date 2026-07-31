@@ -44,13 +44,4 @@ export const selectPurchaseError = createSelector(
   (state) => state.error
 );
 
-export const selectPurchaseRequest = createSelector(
-  selectPersonalInfo,
-  selectContactInfo,
-  (personalInfo, contactInfo) => ({
-    name: personalInfo.name,
-    surname: personalInfo.surname,
-    email: contactInfo.email,
-    mob: contactInfo.mobileNumber,
-  })
-);
+

@@ -76,7 +76,7 @@ export const routes: Routes = [
           ),
       },
       {
-        path: 'purchase-course/:courseName/:session',
+        path: 'purchase-course/:courseName/:sessionId',
         // canActivate: [authGuard],
         loadComponent: () =>
           import('./features/courses-promo/purchase-course/purchase-course.component').then(

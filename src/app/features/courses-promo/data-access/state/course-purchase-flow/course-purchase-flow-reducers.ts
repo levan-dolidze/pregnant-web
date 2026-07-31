@@ -4,7 +4,6 @@ import {
   purchaseCourse,
   purchaseCourseFailure,
   purchaseCourseSuccess,
-  resetPurchaseFlow,
   saveContactInfo,
   savePersonalInfo,
   setOtpConfirmed,
@@ -51,8 +50,6 @@ export const coursePurchaseFlowReducer = createReducer(
     loading: false,
     error,
   })),
-
-  on(resetPurchaseFlow, () => coursePurchaseFlowInitialState)
 );
 
 export const coursePurchaseFlowKey = 'coursePurchaseFlow';

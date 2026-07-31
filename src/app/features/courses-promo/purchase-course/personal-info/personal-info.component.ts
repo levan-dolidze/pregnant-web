@@ -36,7 +36,7 @@ export class PersonalInfoComponent {
 
       
       this.store.dispatch(CoursePurchaseFlowActions.savePersonalInfo({
-        personalInfo: { name: userName, surname: userLastName },
+        personalInfo: { userName: userName, userLastName: userLastName },
         step: 2
       }));
     }

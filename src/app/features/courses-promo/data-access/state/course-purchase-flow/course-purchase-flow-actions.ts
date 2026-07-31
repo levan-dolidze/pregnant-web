@@ -1,5 +1,5 @@
 import { createAction, props } from '@ngrx/store';
-import { ContactInfo, PersonalInfo } from './models';
+import { ContactInfo, PersonalInfo, PurchaseCourseRequest } from './models';
 
 export const goToStep = createAction(
   '[Course Purchase Flow] Go To Step',
@@ -22,11 +22,14 @@ export const setOtpConfirmed = createAction(
 );
 
 export const purchaseCourse = createAction(
-  '[Course Purchase Flow] Purchase Course'
+  '[Course Purchase Flow] Purchase Course',
+  props<{ request: PurchaseCourseRequest }>()
 );
 
 export const purchaseCourseSuccess = createAction(
-  '[Course Purchase Flow] Purchase Course Success'
+  '[Course Purchase Flow] Purchase Course Success',
+  props<{ paymentUrl: string }>()
+
 );
 
 export const purchaseCourseFailure = createAction(
@@ -34,6 +37,3 @@ export const purchaseCourseFailure = createAction(
   props<{ error: string }>()
 );
 
-export const resetPurchaseFlow = createAction(
-  '[Course Purchase Flow] Reset Purchase Flow'
-);
