@@ -1,13 +1,10 @@
 import { computed, DestroyRef, inject, Injectable, signal } from '@angular/core';
+import { HttpParams } from '@angular/common/http';
 import { ApiService } from 'src/app/core/api-service/api.service';
-import { ContactInfoModel, ContactInfoSource } from '../utils/model';
+import { ContactInfoModel, ContactInfoSource, SendContactMessage } from '../utils/model';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { finalize } from 'rxjs';
 
-export interface ContactRequest {
-  mobileNumber: string | null;
-  question: string | null;
-}
 const basePath = '/Contact';
 
 @Injectable({
@@ -45,6 +42,8 @@ export class ContactService {
     return this.apiService.get(`${basePath}/GetContactInfo`)
   }
 
-
+  sendContactMessage(params: SendContactMessage) {
+    return this.apiService.post(`${basePath}/SendContactMessage`,params);
+  }
 
 }

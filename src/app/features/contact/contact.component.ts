@@ -1,14 +1,19 @@
 import { Component, inject, OnInit } from '@angular/core';
+import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { MatFormFieldModule } from '@angular/material/form-field';
 import { InputComponent } from 'src/app/components/input/input.component';
 import { TextAreaComponent } from 'src/app/components/text-area/text-area.component';
 import { ContactService } from './data-access/contact.service';
 import { LoadingDirective } from 'src/app/components/loader/loading.directive';
 import { ButtonComponent } from 'src/app/components/button/button.component';
+import { ControlModeChange } from 'src/app/shared/functions/controlModeChange';
+import { regExp } from 'src/app/shared/utils/regex';
+import { ValidationErrorsDirective } from 'src/app/shared/directives/validation-errors.directive';
 
 
 @Component({
   selector: 'app-contact',
-  imports: [InputComponent, TextAreaComponent, LoadingDirective, ButtonComponent],
+  imports: [InputComponent, TextAreaComponent, LoadingDirective, ButtonComponent, ReactiveFormsModule, MatFormFieldModule, ValidationErrorsDirective],
   templateUrl: './contact.component.html',
   styleUrl: './contact.component.scss',
   providers: [ContactService],
@@ -23,12 +28,37 @@ export class ContactComponent implements OnInit {
   readonly contactState = this.contactService.contact;
   readonly loading = this.contactService.laoding;
 
+  readonly form = new FormGroup({
+    // personalNumber: new FormControl('', [Validators.required, Validators.pattern(regExp.mobileGe)]),
+    mobileNumber: new FormControl('', [Validators.required]),
+    message: new FormControl('', [Validators.required]),
+  });
+
   ngOnInit(): void {
 
 
 
   }
 
+  onSend(): void {
+    if (this.form.invalid) {
+      ControlModeChange.formFieldsModeControl('markAsDirty', this.form);
+    } else {
 
+      const params = {
+        ...this.form.getRawValue(),
+        personalNumber: "01010101010"
+      }
+
+      this.contactService.sendContactMessage(params).subscribe({
+        next: ((res) => {
+          console.log(res)
+        }),
+        error:(()=>{
+
+        })
+      })
+    }
+  }
 
 }

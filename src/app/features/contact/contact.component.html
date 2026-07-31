@@ -86,33 +86,43 @@
         </div>
       </div>
 
-      <div class="ask-card__compose">
+      <form class="ask-card__compose" [formGroup]="form" (ngSubmit)="onSend()">
         <div class="ask-card__field">
           <label class="ask-card__label" for="phone">მობილურის ნომერი</label>
           <app-input
-            id="phone"
             type="tel"
+            formControlName="mobileNumber"
             placeholder="ტელეფონი"
             [isRequired]="true"
+            [isInvalid]="form.controls['mobileNumber'].invalid && form.controls['mobileNumber'].dirty"
           />
+          <mat-hint class="error-msg"
+            *validationErrors="form; control: 'mobileNumber'; let err; additionalValue: {
+              submit: (form.controls['mobileNumber'] && form.controls['mobileNumber'].dirty), patternTypes: 'mobNumber' }">
+            {{ err }}
+          </mat-hint>
         </div>
 
         <div class="ask-card__field">
           <label class="ask-card__label" for="question">თქვენი შეკითხვა</label>
           <app-text-area
-            id="question"
+            formControlName="message"
             placeholder="დაწერეთ შეკითხვა ექიმს..."
           />
+          <mat-hint class="error-msg"
+            *validationErrors="form; control: 'message'; let err; additionalValue: {
+              submit: (form.controls['message'] && form.controls['message'].dirty), patternTypes: 'none' }">
+            {{ err }}
+          </mat-hint>
         </div>
 
         <app-button
-        
-          [type]="'button'"
+          [type]="'submit'"
           className="stroked"
           text="შეტყობინების გაგზავნა">
           <img src="assets/images/svgs/_send.svg" width="18" height="18" alt="" aria-hidden="true">
         </app-button>
-      </div>
+      </form>
 
     </div>
 

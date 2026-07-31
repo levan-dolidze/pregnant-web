@@ -10,3 +10,11 @@ export class ContactInfoSource {
 }
 
 
+
+export interface SendContactMessage {
+  message: string;
+  personalNumber: string;
+  mobileNumber: string;
+
+
+}

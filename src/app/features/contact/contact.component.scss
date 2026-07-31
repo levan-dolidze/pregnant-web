@@ -241,6 +241,11 @@
 
 }
 
+.error-msg {
+  color: $error;
+  font-size: 12px;
+}
+
 @keyframes pulse {
   0%, 100% { box-shadow: 0 0 0 2px rgba($green, .3); }
   50%       { box-shadow: 0 0 0 5px rgba($green, .15); }
