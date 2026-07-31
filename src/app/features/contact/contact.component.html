@@ -1,4 +1,6 @@
 <main class="contact">
+    <div *loading="loading()"></div>
+
   <div class="contact__blob contact__blob--1" aria-hidden="true"></div>
   <div class="contact__blob contact__blob--2" aria-hidden="true"></div>
 
@@ -21,28 +23,28 @@
           <span class="contact-details__icon" aria-hidden="true">📍</span>
           <div>
             <span class="contact-details__label">მისამართი</span>
-            <span class="contact-details__value">თბილისი, ლუბლიანას ქ. 5, მიხეილ ჭიაურელის გასასვლელი</span>
+            <span class="contact-details__value">{{contactState().address}}</span>
           </div>
         </li>
         <li class="contact-details__item">
           <span class="contact-details__icon" aria-hidden="true">📞</span>
           <div>
             <span class="contact-details__label">ტელეფონი</span>
-            <a class="contact-details__value contact-details__value--link" href="tel:+995 558 42 41 61">+995 558 42 41 61</a>
+            <a class="contact-details__value contact-details__value--link" href="tel:+995 558 42 41 61">{{contactState().mobileNumber}}</a>
           </div>
         </li>
         <li class="contact-details__item">
           <span class="contact-details__icon" aria-hidden="true">✉️</span>
           <div>
             <span class="contact-details__label">ელ-ფოსტა</span>
-            <a class="contact-details__value contact-details__value--link" href="mailto:info@pregnant.ge">tamusali12@gmail.com</a>
+            <a class="contact-details__value contact-details__value--link" href="mailto:info@pregnant.ge">{{contactState().email}}</a>
           </div>
         </li>
         <li class="contact-details__item">
           <span class="contact-details__icon" aria-hidden="true">🕐</span>
           <div>
             <span class="contact-details__label">სამუშაო საათები</span>
-            <span class="contact-details__value">ორშ – პარ, 9:00 – 18:00</span>
+            <span class="contact-details__value">{{contactState().workingHours}}</span>
           </div>
         </li>
       </ul>
@@ -103,13 +105,13 @@
           />
         </div>
 
-        <button class="ask-card__send" type="button">
-          შეტყობინების გაგზავნა
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-            <path d="M22 2L11 13" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-            <path d="M22 2L15 22L11 13L2 9L22 2Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
-        </button>
+        <app-button
+        
+          [type]="'button'"
+          className="stroked"
+          text="შეტყობინების გაგზავნა">
+          <img src="assets/images/svgs/_send.svg" width="18" height="18" alt="" aria-hidden="true">
+        </app-button>
       </div>
 
     </div>

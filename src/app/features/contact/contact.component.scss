@@ -239,29 +239,6 @@
     color: $gray13;
   }
 
-  &__send {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
-    width: 100%;
-    padding: 15px 28px;
-    background: $grad;
-    color: $white;
-    border: none;
-    border-radius: 14px;
-    font-size: 15px;
-    font-weight: 700;
-    cursor: pointer;
-    box-shadow: 0 4px 20px rgba($primary, .35);
-    transition: transform $ease, box-shadow $ease;
-    margin-top: 4px;
-
-    &:hover  { transform: translateY(-2px); box-shadow: 0 8px 32px rgba($primary, .48); }
-    &:active { transform: translateY(0); }
-
-    @media (max-width: 400px) { font-size: 14px; padding: 13px 20px; }
-  }
 }
 
 @keyframes pulse {
