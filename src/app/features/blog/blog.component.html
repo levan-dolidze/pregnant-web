@@ -13,21 +13,15 @@
 
   <section class="blog-posts" aria-labelledby="posts-title">
     <div class="blog-posts__inner">
+      <div *loading="loading()"></div>
       <ul class="posts-grid">
-        @for (post of posts; track post.id) {
+        @for (post of posts(); track post.blogId) {
           <li class="post-card">
-            <a class="post-card__img-wrap" href="#" [attr.aria-label]="post.title">
-              <img class="post-card__img" [src]="post.image" [alt]="post.title">
-            </a>
+            <img class="post-card__img" [src]="post.url" [alt]="post.title">
             <div class="post-card__body">
-              <p class="post-card__meta">{{ post.author }} &bull; {{ post.date }}</p>
+              <p class="post-card__meta">{{ post.doctorFullName }} &bull; {{ post.date | dateToString:'d MMM y' }}</p>
               <h2 class="post-card__title">{{ post.title }}</h2>
-              <p class="post-card__excerpt">{{ post.excerpt }}</p>
-              <ul class="post-card__tags" aria-label="კატეგორიები">
-                @for (tag of post.tags; track tag) {
-                  <li class="post-card__tag">{{ tag }}</li>
-                }
-              </ul>
+              <p class="post-card__excerpt">{{ post.content }}</p>
             </div>
           </li>
         }

@@ -1,7 +1,11 @@
 {
   "permissions": {
     "allow": [
-      "Bash(npx tsc *)"
+      "Bash(npx tsc *)",
+      "Bash(mkdir -p \"e:/pregnant-web/src/app/features/blog/utils\")"
+    ],
+    "additionalDirectories": [
+      "e:\\pregnant-web\\src\\app\\features\\blog"
     ]
   }
 }

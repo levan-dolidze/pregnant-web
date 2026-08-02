@@ -9,7 +9,6 @@ import { toSignal } from '@angular/core/rxjs-interop';
 import { Store } from '@ngrx/store';
 import { iSAuthState } from 'src/app/auth/data-access/state/auth/auth-selectors';
 import { MatDialog } from '@angular/material/dialog';
-import { AuthModalComponent } from '../auth/data-access/auth-modal.component';
 import { CourseNames } from './models/course-purchase.model';
 
 @Component({
