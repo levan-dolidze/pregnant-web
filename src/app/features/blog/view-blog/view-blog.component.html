@@ -12,7 +12,7 @@
 
 
     <p class="blog-detail__meta">
-      {{ blogById.doctorFullName }} &bull; {{ blogById.date | dateToString:'d MMMM y' }}
+      {{ blogById.doctorFullName }} | {{ blogById.date | dateToString:'d MMMM y' }}
     </p>
 
     <p class="blog-detail__content">{{ blogById.content }}</p>
