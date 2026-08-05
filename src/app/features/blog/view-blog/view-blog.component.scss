@@ -1,0 +1,50 @@
+@use 'variables' as *;
+@use '../../_feature-shared' as *;
+
+.blog-detail {
+  &__cover {
+    height: clamp(220px, 38vw, 420px);
+    background: $grad-bg no-repeat center / cover;
+    border-radius: 0 0 $r $r;
+  }
+
+  &__inner {
+    @include inner();
+    max-width: 720px;
+    padding-block: 32px clamp(64px, 9vw, 104px);
+  }
+
+  &__back {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 14px;
+    font-weight: 600;
+    color: $primary;
+    text-decoration: none;
+    margin-bottom: 28px;
+
+    &:hover { text-decoration: underline; }
+  }
+
+  &__title {
+    font-size: clamp(24px, 4vw, 36px);
+    font-weight: 800;
+    color: $blue;
+    line-height: 1.25;
+    margin: 0 0 14px;
+  }
+
+  &__meta {
+    font-size: 14px;
+    color: $gray13;
+    margin: 0 0 40px;
+  }
+
+  &__content {
+    font-size: 18px;
+    line-height: 1.9;
+    color: $gray700;
+    white-space: pre-line;
+  }
+}

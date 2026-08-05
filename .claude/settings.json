@@ -2,7 +2,8 @@
   "permissions": {
     "allow": [
       "Bash(npx tsc *)",
-      "Bash(mkdir -p \"e:/pregnant-web/src/app/features/blog/utils\")"
+      "Bash(mkdir -p \"e:/pregnant-web/src/app/features/blog/utils\")",
+      "Bash(grep -n '^$blue\\\\b\\\\|^$gray700\\\\b\\\\|^$gray13\\\\b\\\\|^$textPrimary\\\\b\\\\|^$gray5\\\\b\\\\|^$boxedWidth\\\\b' e:/pregnant-web/src/assets/scss/_variables.scss)"
     ],
     "additionalDirectories": [
       "e:\\pregnant-web\\src\\app\\features\\blog"

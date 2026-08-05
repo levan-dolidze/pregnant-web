@@ -1,1 +1,15 @@
-<p>view-blog works!</p>
+<article class="blog-detail">
+  <div class="blog-detail__cover" [style.background-image]="'url(' + blogById.url + ')'"></div>
+
+  <div class="blog-detail__inner">
+    <a class="blog-detail__back" routerLink="/blog">&larr; ბლოგზე დაბრუნება</a>
+
+    <h1 class="blog-detail__title">{{ blogById.title }}</h1>
+
+    <p class="blog-detail__meta">
+      {{ blogById.doctorFullName }} &bull; {{ blogById.date | dateToString:'d MMMM y' }}
+    </p>
+
+    <p class="blog-detail__content">{{ blogById.content }}</p>
+  </div>
+</article>

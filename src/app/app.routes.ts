@@ -10,6 +10,7 @@ import {
 import { LayoutComponent } from './components/layout/layout.component';
 import { authGuard } from './shared/guards/auth-.guard';
 import { ContactService } from './features/contact/data-access/contact.service';
+import { blogByResolver } from './features/blog/resolver/blog-by.resolver';
 
 
 @Injectable()
@@ -100,6 +101,7 @@ export const routes: Routes = [
       },
       {
         path: 'view-blog/:blogId',
+        resolve: { blogById: blogByResolver },
         loadComponent: () =>
           import('./features/blog/view-blog/view-blog.component').then(
             (m) => m.ViewBlogComponent
