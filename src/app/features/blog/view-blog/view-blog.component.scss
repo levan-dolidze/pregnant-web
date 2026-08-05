@@ -7,50 +7,39 @@
     height: clamp(220px, 38vw, 420px);
     background: $grad-bg no-repeat center / cover;
     border-radius: 0 0 $r $r;
+    display: grid;
+    gap: 20px
   }
 
   &__inner {
     @include inner();
-    max-width: 720px;
-    padding-block: 32px clamp(64px, 9vw, 104px);
-  }
+    display: grid;
+    gap: 20px;
+    margin-top: 24px;
 
-  &__back {
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    font-size: 14px;
-    font-weight: 600;
-    color: $primary;
-    text-decoration: none;
-    margin-bottom: 28px;
-
-    &:hover { text-decoration: underline; }
   }
 
   &__back-icon {
-    @include iconFrame(16px, 16px);
-    background-image: var(--arrow-left);
+    width: 10px;
+    height: 16px;
   }
 
+
   &__title {
-    font-size: clamp(24px, 4vw, 36px);
-    font-weight: 800;
-    color: $blue;
-    line-height: 1.25;
-    margin: 0 0 14px;
+    @include font(24px, 500, $blue, $font-bold);
+  }
+  &__title-wrapper{
+    @include flex-init;
+    gap: 10px;
+    cursor: pointer;
   }
 
   &__meta {
-    font-size: 14px;
-    color: $gray13;
-    margin: 0 0 40px;
+    @include font(14px, 400, $gray13, $font-default);
   }
 
   &__content {
-    font-size: 18px;
-    line-height: 1.9;
-    color: $gray700;
-    white-space: pre-line;
+    @include font(18px, 400, $gray700, $font-default);
+    line-height: 1.3;
   }
 }
