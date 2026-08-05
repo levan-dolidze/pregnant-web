@@ -1,4 +1,5 @@
 @use 'variables' as *;
+@use 'mixins' as *;
 @use '../../_feature-shared' as *;
 
 .blog-detail {
@@ -25,6 +26,11 @@
     margin-bottom: 28px;
 
     &:hover { text-decoration: underline; }
+  }
+
+  &__back-icon {
+    @include iconFrame(16px, 16px);
+    background-image: var(--arrow-left);
   }
 
   &__title {
