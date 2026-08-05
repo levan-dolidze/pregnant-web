@@ -93,10 +93,16 @@ export const routes: Routes = [
       },
       {
         path: 'blog',
-        // canActivate: [authGuard],
         loadComponent: () =>
           import('./features/blog/blog.component').then(
             (m) => m.BlogComponent
+          ),
+      },
+      {
+        path: 'view-blog/:blogId',
+        loadComponent: () =>
+          import('./features/blog/view-blog/view-blog.component').then(
+            (m) => m.ViewBlogComponent
           ),
       },
       {

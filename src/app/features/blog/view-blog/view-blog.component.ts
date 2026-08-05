@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-view-blog',
@@ -8,4 +8,6 @@ import { Component } from '@angular/core';
 })
 export class ViewBlogComponent {
 
+
+  @Input() blogId: string;
 }

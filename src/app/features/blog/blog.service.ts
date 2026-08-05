@@ -18,8 +18,8 @@ export class BlogService {
   readonly blogsState = computed(() => this.blogs())
   blogsLoading$ = this.getBlogs()
 
-  readonly blogList = computed(() => this.blogs().data);
-  readonly loading = computed(() => this.blogs().loader);
+  readonly blogList = computed(() => this.blogs()?.data);
+  readonly loading = computed(() => this.blogs()?.loader);
 
   constructor() {
     this.blogsLoading$.pipe(takeUntilDestroyed(this.destroyRef),
@@ -38,6 +38,10 @@ export class BlogService {
 
   getBlogs() {
     return this.apiService.get(`${basePath}/GetBlogs`)
+  }
+
+  getBlogById(blogId: string) {
+    return this.apiService.get(`${basePath}/GetBlogById/?BlogId=${blogId}`)
   }
 
 }

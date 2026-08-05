@@ -16,7 +16,7 @@
       <div *loading="loading()"></div>
       <ul class="posts-grid">
         @for (post of posts(); track post.blogId) {
-          <li class="post-card">
+          <li class="post-card" (click)="onViewBlog(post)">
             <img class="post-card__img" [src]="post.url" [alt]="post.title">
             <div class="post-card__body">
               <p class="post-card__meta">{{ post.doctorFullName }} &bull; {{ post.date | dateToString:'d MMM y' }}</p>
