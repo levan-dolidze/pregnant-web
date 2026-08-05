@@ -1,4 +1,8 @@
-import { Injectable, signal } from '@angular/core';
+import { computed, DestroyRef, inject, Injectable, signal } from '@angular/core';
+import { ApiService } from 'src/app/core/api-service/api.service';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+import { finalize } from 'rxjs';
+import { CourseId } from 'src/app/shared/utils/enums';
 
 export interface CourseSection {
   name: string;
@@ -8,6 +12,13 @@ export interface CourseChapter {
   chapter: string;
   sections: CourseSection[];
 }
+
+export class CoursesMenuSource {
+  data: CourseChapter[]
+  loader: boolean = true
+}
+
+const basePath = '/MyCourses';
 
 export interface CourseLessonContent {
   chapter: string;
@@ -35,24 +46,32 @@ export interface CourseSummary {
 })
 export class CoursesService {
 
+  private readonly apiService = inject(ApiService);
+  destroyRef = inject(DestroyRef);
 
-  //get
-  arr: CourseChapter[] = [
-    {
-      chapter: 'intro',
-      sections: [
-        { name: 'who_am_i' },
-        { name: 'what_you_will_learn' }
-      ]
-    },
-    {
-      chapter: 'childNutrition',
-      sections: [
-        { name: 'breastfeeding' },
-        { name: 'bottle_feeding' }
-      ]
-    }
-  ]
+  coursesMenu = signal<CoursesMenuSource | null>(null);
+  readonly coursesMenuState = computed(() => this.coursesMenu())
+  coursesMenuLoading$ = this.getCoursesMenu()
+
+  readonly chapters = computed(() => this.coursesMenu().data);
+  readonly loading = computed(() => this.coursesMenu().loader);
+
+  constructor() {
+    this.coursesMenuLoading$.pipe(takeUntilDestroyed(this.destroyRef),
+      finalize(() => this.coursesMenu.update((x) => ({ ...x, loader: false })))
+    ).subscribe({
+      next: (res) => {
+        this.coursesMenu.update((x) => ({ data: res, loader: false }))
+      },
+      error: (err: any) => {
+        console.error(err);
+      },
+    });
+  }
+
+  getCoursesMenu(courseId: CourseId = CourseId.Pregnant) {
+    return this.apiService.get(`${basePath}/GetCoursesMenu?courseId=${courseId}`)
+  }
 
   //getBy
   readonly courseBy = signal<CourseLessonContent>({

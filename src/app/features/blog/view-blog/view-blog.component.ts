@@ -12,7 +12,6 @@ import { DateToStringPipe } from 'src/app/shared/pipe/date-to-string.pipe';
 export class ViewBlogComponent {
 
   @Input() blogId: string;
-
   @Input() blogById: BlogModel;
 
 }

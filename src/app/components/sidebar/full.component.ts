@@ -70,7 +70,7 @@ export class FullComponent implements OnInit {
   private readonly breakpointObserver = inject(BreakpointObserver);
   private readonly coursesService = inject(CoursesService);
 
-  readonly navItems = buildNavItems(this.coursesService.arr);
+  readonly navItems = buildNavItems(this.coursesService.chapters);
 
   @ViewChild('leftsidenav')
   public sidenav: MatSidenav;
