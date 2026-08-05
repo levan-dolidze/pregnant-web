@@ -4,7 +4,7 @@
 
 .blog-detail {
   &__cover {
-    height: clamp(220px, 38vw, 420px);
+    height: clamp(100px, 38vw, 420px);
     background: $grad-bg no-repeat center / cover;
     border-radius: 0 0 $r $r;
     display: grid;
@@ -12,11 +12,11 @@
   }
 
   &__inner {
-    @include inner();
+    width: 70%;
+    margin: 0 auto;
     display: grid;
     gap: 20px;
     margin-top: 24px;
-
   }
 
   &__back-icon {
@@ -28,7 +28,8 @@
   &__title {
     @include font(24px, 500, $blue, $font-bold);
   }
-  &__title-wrapper{
+
+  &__title-wrapper {
     @include flex-init;
     gap: 10px;
     cursor: pointer;
@@ -41,5 +42,15 @@
   &__content {
     @include font(18px, 400, $gray700, $font-default);
     line-height: 1.3;
+  }
+}
+
+@media (max-width: 768px) {
+  .blog-detail {
+
+    &__inner {
+      width: auto;
+
+    }
   }
 }
