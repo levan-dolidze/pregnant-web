@@ -17,7 +17,7 @@ import { TranslationService } from 'src/app/shared/translate/translation.serive'
 
 @Component({
   selector: 'app-auth-modal',
-  imports: [TranslocoModule,SharedModule,OtpComponent],
+  imports: [TranslocoModule, SharedModule, OtpComponent],
   templateUrl: './auth-modal.component.html',
   styleUrl: './auth-modal.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush
@@ -26,20 +26,20 @@ export class AuthModalComponent implements OnInit, OnChanges {
   constructor(
     @Optional() public dialogRef: MatDialogRef<AuthModalComponent>,
     @Optional() @Inject(MAT_DIALOG_DATA) public data: unknown
-  ) {}
+  ) { }
 
 
 
   protected readonly store = inject(Store);
 
   readonly loadingState = toSignal(this.store.select(loading))
-  accountService = inject(AccountService);
-  router = inject(Router);
-  route = inject(ActivatedRoute);
-  alert = inject(AlertService);
-  loaderService = inject(LoaderService);
-  destroyRef = inject(DestroyRef);
-  translate = inject(TranslationService);
+  readonly accountService = inject(AccountService);
+  readonly router = inject(Router);
+  readonly route = inject(ActivatedRoute);
+  readonly alert = inject(AlertService);
+  readonly loaderService = inject(LoaderService);
+  readonly destroyRef = inject(DestroyRef);
+  readonly translate = inject(TranslationService);
 
   // readonly loaded = toSignal(this.store.select(selectLoginLoaded));
   // readonly loading = toSignal(this.store.select(loading));
@@ -90,7 +90,7 @@ export class AuthModalComponent implements OnInit, OnChanges {
 
   readonly otpConfirmed = signal(false);
 
-  onOtpConfirmed(confirmed: boolean){
+  onOtpConfirmed(confirmed: boolean) {
     this.otpConfirmed.set(confirmed);
 
     if (confirmed) {
@@ -101,11 +101,11 @@ export class AuthModalComponent implements OnInit, OnChanges {
     }
   }
 
-  confirmOtp(event:boolean){
+  confirmOtp(event: boolean) {
 
   }
 
-  private forgotPassInit =signal<boolean>(false);
+  private forgotPassInit = signal<boolean>(false);
   readonly forgotPassInitState = computed(() => this.forgotPassInit())
 
   onLogin() {
@@ -156,14 +156,16 @@ export class AuthModalComponent implements OnInit, OnChanges {
   }
 
   onBackToLogin(): void {
+    this.reset()
+  }
+
+  reset() {
     this.authActionType = 'initLogin';
     this.smsAuthForm.reset();
     this.forgotPassForm.reset();
     this.forgotPassInit.set(false);
     this.otpConfirmed.set(false);
   }
-
-
 
   onRegister(): void {
     // TODO: wire to registration flow once the backend endpoint/route exists
