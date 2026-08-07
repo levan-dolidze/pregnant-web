@@ -3,6 +3,7 @@ import { ApiService } from 'src/app/core/api-service/api.service';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { finalize } from 'rxjs';
 import { CourseId } from 'src/app/shared/utils/enums';
+import { HttpErrorResponse } from '@angular/common/http';
 
 export interface CourseSection {
   name: string;
@@ -28,6 +29,18 @@ export interface CourseLessonContent {
   duration: string;
   typeId: VideoTypeIds
 }
+
+export class CourseLessonContentSource {
+  data: CourseLessonContent
+  loader: boolean = true
+}
+
+export interface MyCourseByRequest {
+  chapter: string,
+  section: string
+}
+
+
 export enum VideoTypeIds {
   VideoLession
 }
@@ -56,6 +69,11 @@ export class CoursesService {
   readonly chapters = computed(() => this.coursesMenu().data);
   readonly loading = computed(() => this.coursesMenu().loader);
 
+
+  private myCourseBy = signal<CourseLessonContentSource | null>(null);
+  readonly myCourseByState = computed(() => this.myCourseBy())
+
+
   constructor() {
     this.coursesMenuLoading$.pipe(takeUntilDestroyed(this.destroyRef),
       finalize(() => this.coursesMenu.update((x) => ({ ...x, loader: false })))
@@ -82,6 +100,20 @@ export class CoursesService {
     duration: '1:20',
     typeId: VideoTypeIds.VideoLession
   });
+
+  getMyCourseBy(params: MyCourseByRequest) {
+    this.apiService.get(`${basePath}/GetMyCourseBy`, params).pipe(
+      takeUntilDestroyed(this.destroyRef),
+      finalize(() => this.myCourseBy.update((x) => ({ ...x, loader: false })))
+    ).subscribe({
+      next: (res) => {
+        this.myCourseBy.update(() => ({ data: res, loader: false }))
+      },
+      error: (err:HttpErrorResponse) => {
+        console.error(err.error);
+      },
+    });
+  }
 
 
   readonly courseDescription = signal<CourseSummary[]>([

@@ -8,7 +8,7 @@ import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-blog',
-  imports: [LoadingDirective, DateToStringPipe, JsonPipe],
+  imports: [LoadingDirective, DateToStringPipe],
   templateUrl: './blog.component.html',
   styleUrl: './blog.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,

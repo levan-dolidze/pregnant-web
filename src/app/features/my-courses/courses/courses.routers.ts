@@ -26,7 +26,7 @@ export const routes: Routes = [
                     ),
             },
             {
-                path: ':chapter/:item',
+                path: ':chapter/:section',
                 data: {
                     mode: 'კურსები',
                 },
