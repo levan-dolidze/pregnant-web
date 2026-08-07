@@ -21,6 +21,7 @@
   &__fields-newpass {
     display: grid;
     gap: 16px;
+    margin-top: 16px;
   }
 
 
@@ -43,21 +44,8 @@
   &__actions {
     width: 100%;
     margin-top: 0;
-  }
-
-  &__back-btn {
-    width: fit-content;
-    margin: 0 auto;
-    padding: 0;
-    border: 0;
-    background: transparent;
-    cursor: pointer;
-    @include font(13px, 600, $primary, $font-medium);
-    margin-top: 10px;
-
-    &:hover {
-      text-decoration: underline;
-    }
+    display: grid;
+    gap: 16px;
   }
 
   &__close {
@@ -66,11 +54,12 @@
     right: 20px;
     width: 24px;
     height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     border: 0;
     background: transparent;
     cursor: pointer;
-    @include font(16px, 400, $gray700, $font-default);
-    line-height: 1;
   }
 
   &__links {

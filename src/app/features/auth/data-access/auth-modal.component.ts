@@ -142,7 +142,8 @@ export class AuthModalComponent implements OnInit, OnChanges {
   }
 
   backToCredentials(): void {
-    this.initForm.reset()
+    this.initForm.reset();
+    this.forgotPassInit.set(false)
     // this.store.dispatch(AuthActions.backToCredentials());
   }
 
