@@ -18,6 +18,10 @@
     text-transform: uppercase;
   }
 
+  &__fields-newpass {
+    display: grid;
+    gap: 16px;
+  }
 
 
   &__fields {

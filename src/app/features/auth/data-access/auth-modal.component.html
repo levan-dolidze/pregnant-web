@@ -12,6 +12,7 @@
             <ng-container
               [ngTemplateOutlet]="authActionType === 'initLogin' ? initLogin :
                                   authActionType === 'smsAuth' ? smsAuth :
+                                  authActionType === 'forgotPass' ? forgotPass :
                                   null">
             </ng-container>
 
@@ -115,9 +116,91 @@
                   </div>
                 </div>
 
+ 
+
                 <div class="login-form__actions">
                   <app-button
                     [text]="'გაგრძელება'"
+                    [type]="'submit'"
+                    [isLoading]="loadingState()">
+                    </app-button>
+                </div>
+
+                <button type="button" class="login-form__back-btn" (click)="onBackToLogin()">უკან დაბრუნება</button>
+              </form>
+            </ng-template>
+
+            <ng-template #forgotPass>
+              <form class="login-form__fields" [formGroup]="forgotPassForm" (ngSubmit)="onForgotPassSubmit()">
+                <div class="login-form__inputs">
+                  <div class="input-wrapper">
+                    <app-input formControlName="username" [placeholder]="'მომხმარებელი'"
+                      class="input">
+                    </app-input>
+                    <mat-hint class="error-msg" *validationErrors="
+                        forgotPassForm;
+                        control: 'username';
+                        let err;
+                        additionalValue: {
+                          submit:
+                            forgotPassForm.controls['username'] &&
+                            forgotPassForm.controls['username'].dirty,
+                          patternTypes: 'none'
+                        }
+                      ">
+                      {{ 'ველი სავალდებულოა' }}
+                    </mat-hint>
+
+                    @if (forgotPassInitState() && !otpConfirmed()) {
+                      <app-otp (confirmOtpEmit)="onOtpConfirmed($event)"
+                               [clientNumber]="clientNumber">
+                      </app-otp>
+                    }
+
+                    @if (otpConfirmed()) {
+                      <div class="login-form__fields-newpass">
+
+                      <app-input formControlName="newPassword" [placeholder]="'ახალი პაროლი'" [type]="'password'" class="input">
+                      </app-input>
+                      <mat-hint class="error-msg" *validationErrors="
+                          forgotPassForm;
+                          control: 'newPassword';
+                          let err;
+                          additionalValue: {
+                            submit:
+                              forgotPassForm.controls['newPassword'] &&
+                              forgotPassForm.controls['newPassword'].dirty,
+                            patternTypes: 'none'
+                          }
+                        ">
+                        {{ 'ველი სავალდებულოა' }}
+                      </mat-hint>
+
+                      <app-input formControlName="confirmNewPassword" [placeholder]="'გაიმეორეთ ახალი პაროლი'" [type]="'password'" class="input">
+                      </app-input>
+                      <mat-hint class="error-msg" *validationErrors="
+                          forgotPassForm;
+                          control: 'confirmNewPassword';
+                          let err;
+                          additionalValue: {
+                            submit:
+                              forgotPassForm.controls['confirmNewPassword'] &&
+                              forgotPassForm.controls['confirmNewPassword'].dirty,
+                            patternTypes: 'none'
+                          }
+                        ">
+                        {{ 'ველი სავალდებულოა' }}
+                      </mat-hint>
+
+                      </div>
+                    }
+
+                  </div>
+                </div>
+
+                <div class="login-form__actions">
+                  <app-button
+                    [text]="'გაგზავნა'"
                     [type]="'submit'"
                     [isLoading]="loadingState()">
                     </app-button>

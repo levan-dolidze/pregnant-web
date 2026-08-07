@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, DestroyRef, inject, Inject, OnChanges, OnInit, Optional, SimpleChanges } from '@angular/core';
+import { ChangeDetectionStrategy, Component, computed, DestroyRef, inject, Inject, OnChanges, OnInit, Optional, signal, SimpleChanges } from '@angular/core';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
@@ -54,7 +54,13 @@ export class AuthModalComponent implements OnInit, OnChanges {
     personalNumber: new FormControl('', [Validators.required]),
   });
 
-  authActionType: 'initLogin' | 'smsAuth' = 'initLogin';
+  forgotPassForm = new FormGroup({
+    username: new FormControl('', [Validators.required]),
+    newPassword: new FormControl(''),
+    confirmNewPassword: new FormControl(''),
+  });
+
+  authActionType: 'initLogin' | 'smsAuth' | 'forgotPass' = 'initLogin';
 
   get if() {
     return this.initForm.controls;
@@ -82,13 +88,25 @@ export class AuthModalComponent implements OnInit, OnChanges {
     console.log(changes);
   }
 
-  onOtpConfirmed(confirmed: boolean){
+  readonly otpConfirmed = signal(false);
 
+  onOtpConfirmed(confirmed: boolean){
+    this.otpConfirmed.set(confirmed);
+
+    if (confirmed) {
+      this.forgotPassForm.controls.newPassword.addValidators(Validators.required);
+      this.forgotPassForm.controls.confirmNewPassword.addValidators(Validators.required);
+      this.forgotPassForm.controls.newPassword.updateValueAndValidity();
+      this.forgotPassForm.controls.confirmNewPassword.updateValueAndValidity();
+    }
   }
 
   confirmOtp(event:boolean){
 
   }
+
+  private forgotPassInit =signal<boolean>(false);
+  readonly forgotPassInitState = computed(() => this.forgotPassInit())
 
   onLogin() {
     if (this.initForm.invalid) {
@@ -110,13 +128,26 @@ export class AuthModalComponent implements OnInit, OnChanges {
     }
   }
 
+  onForgotPassSubmit(): void {
+    if (this.forgotPassForm.invalid) {
+      ControlModeChange.formFieldsModeControl('markAsDirty', this.forgotPassForm);
+    } else if (!this.forgotPassInitState()) {
+      // step 1: username confirmed, now show the OTP field
+      this.forgotPassInit.set(true);
+    } else {
+      const request = this.forgotPassForm.getRawValue();
+      console.log(request)
+      // TODO: dispatch forgot-password reset once the backend endpoint exists
+    }
+  }
+
   backToCredentials(): void {
     this.initForm.reset()
     // this.store.dispatch(AuthActions.backToCredentials());
   }
 
   onForgotPassword(): void {
-    // TODO: wire to forgot-password flow once the backend endpoint/route exists
+    this.authActionType = 'forgotPass';
   }
 
   onSmsAuth(): void {
@@ -126,6 +157,9 @@ export class AuthModalComponent implements OnInit, OnChanges {
   onBackToLogin(): void {
     this.authActionType = 'initLogin';
     this.smsAuthForm.reset();
+    this.forgotPassForm.reset();
+    this.forgotPassInit.set(false);
+    this.otpConfirmed.set(false);
   }
 
 
