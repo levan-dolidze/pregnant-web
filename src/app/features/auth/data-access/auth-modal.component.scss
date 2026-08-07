@@ -55,6 +55,60 @@
       text-decoration: underline;
     }
   }
+
+  &__close {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    width: 24px;
+    height: 24px;
+    border: 0;
+    background: transparent;
+    cursor: pointer;
+    @include font(16px, 400, $gray700, $font-default);
+    line-height: 1;
+  }
+
+  &__links {
+    width: 100%;
+    display: grid;
+    gap: 12px;
+    margin-top: 4px;
+  }
+
+  &__link {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    border: 0;
+    background: transparent;
+    padding: 0;
+    cursor: pointer;
+    @include font(14px, 500, $primary, $font-medium);
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
+  &__register {
+    width: 100%;
+    text-align: center;
+    margin: 8px 0 0;
+    @include font(14px, 500, $gray700, $font-default);
+  }
+
+  &__register-link {
+    border: 0;
+    background: transparent;
+    padding: 0;
+    cursor: pointer;
+    @include font(14px, 600, $primary, $font-medium);
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
 }
 
 .error-msg {

@@ -50,8 +50,18 @@ export class AuthModalComponent implements OnInit, OnChanges {
     password: new FormControl('', [Validators.required]),
   });
 
+  smsAuthForm = new FormGroup({
+    personalNumber: new FormControl('', [Validators.required]),
+  });
+
+  authActionType: 'initLogin' | 'smsAuth' = 'initLogin';
+
   get if() {
     return this.initForm.controls;
+  }
+
+  get smf() {
+    return this.smsAuthForm.controls;
   }
 
   // account = toSignal(this.store.select(AuthSelectors.selectAccount));
@@ -91,9 +101,37 @@ export class AuthModalComponent implements OnInit, OnChanges {
     }
   }
 
+  onSmsAuthSubmit(): void {
+    if (this.smsAuthForm.invalid) {
+      ControlModeChange.formFieldsModeControl('markAsDirty', this.smsAuthForm);
+    } else {
+      const request = this.smsAuthForm.getRawValue();
+      console.log(request)
+    }
+  }
+
   backToCredentials(): void {
     this.initForm.reset()
     // this.store.dispatch(AuthActions.backToCredentials());
+  }
+
+  onForgotPassword(): void {
+    // TODO: wire to forgot-password flow once the backend endpoint/route exists
+  }
+
+  onSmsAuth(): void {
+    this.authActionType = 'smsAuth';
+  }
+
+  onBackToLogin(): void {
+    this.authActionType = 'initLogin';
+    this.smsAuthForm.reset();
+  }
+
+
+
+  onRegister(): void {
+    // TODO: wire to registration flow once the backend endpoint/route exists
   }
 
 
