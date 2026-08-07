@@ -10,7 +10,6 @@ import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { OtpService } from './service/otp-service';
 import { OtpResponse, VerifyOtpRequest } from './models';
 import { TranslocoModule } from '@jsverse/transloco';
-import { take } from 'rxjs';
 export interface OtpDialog {
   mobileNumber: string,
 }

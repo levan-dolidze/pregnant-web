@@ -1,13 +1,10 @@
 <ng-container *transloco="let t">
     <div class="wrapper">
-      <!-- <div class="auth-brand">
-        <img src="./assets/images/logos/logo-geo.svg" alt="Aldagi Logo" width="120" height="100" />
-      </div> -->
-
       <div class="auth-fields" >
           <div class="login-form">
+
             <h4 class="login-form__title caps-uppercase">
-              {{ 'ავტორიზაცია' }}
+              {{ t('Authorization') }}
             </h4>
 
             <form class="login-form__fields" [formGroup]="initForm" (ngSubmit)="onLogin()">
@@ -54,6 +51,10 @@
                     {{ 'ველი სავალდებულოა' }}
                   </mat-hint>
                 </div>
+
+                    <app-otp (confirmOtpEmit)="onOtpConfirmed($event)" 
+                             [clientNumber]="clientNumber">
+                    </app-otp>
               </div>
 
               <div class="login-form__actions">

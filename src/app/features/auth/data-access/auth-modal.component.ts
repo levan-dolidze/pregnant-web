@@ -10,13 +10,14 @@ import { AuthActions } from 'src/app/auth/data-access/state/auth';
 import { loading } from 'src/app/auth/data-access/state/auth/auth-selectors';
 import { AlertService } from 'src/app/components/alert/alert.service';
 import { LoaderService } from 'src/app/components/loader/loader.service';
+import { OtpComponent } from 'src/app/shared/features/otp/otp.component';
 import { ControlModeChange } from 'src/app/shared/functions/controlModeChange';
 import { SharedModule } from 'src/app/shared/shared-module/shared';
 import { TranslationService } from 'src/app/shared/translate/translation.serive';
 
 @Component({
   selector: 'app-auth-modal',
-  imports: [TranslocoModule,SharedModule],
+  imports: [TranslocoModule,SharedModule,OtpComponent],
   templateUrl: './auth-modal.component.html',
   styleUrl: './auth-modal.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush
@@ -64,9 +65,19 @@ export class AuthModalComponent implements OnInit, OnChanges {
     // }
   }
 
+  clientNumber = '591880290'
+
 
   ngOnChanges(changes: SimpleChanges): void {
     console.log(changes);
+  }
+
+  onOtpConfirmed(confirmed: boolean){
+
+  }
+
+  confirmOtp(event:boolean){
+
   }
 
   onLogin() {
@@ -75,10 +86,8 @@ export class AuthModalComponent implements OnInit, OnChanges {
     }
     else {
       const request = this.initForm.getRawValue();
-
       console.log(request)
       this.store.dispatch(AuthActions.login({ loginRequest: request }));
-
     }
   }
 
