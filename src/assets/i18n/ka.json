@@ -37,6 +37,8 @@
   "Error_incorrect_email": "ელ. ფოსტის ფორმატი არასწორია",
   "Error_incorrect_mob": "მობილური ნომერი უნდა შეიცავდეს 9 სიმბოლოს",
   "Error_incorrect_promo_code": "პრომო კოდი არასწორია",
+  "Error_min_length": "პაროლი უნდა შეიცავდეს მინიმუმ 6 სიმბოლოს",
+  "Error_password_mismatch": "პაროლები არ ემთხვევა",
   "Select_Insurer": "აირჩიე დამზღვევი",
 
   "Personal_number": "პირადი ნომერი",

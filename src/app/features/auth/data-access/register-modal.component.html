@@ -1,0 +1,138 @@
+<ng-container *transloco="let t">
+  <div class="wrapper">
+    <div class="auth-fields">
+      <div class="register-form">
+
+        <button type="button" class="register-form__close" (click)="onClose()" aria-label="დახურვა">
+          <img src="assets/icons/_close.svg" width="24" height="24" alt="Close" aria-hidden="true">
+        </button>
+
+        <h4 class="register-form__title caps-uppercase">
+          {{ t('Register') }}
+        </h4>
+
+        <form class="register-form__fields" [formGroup]="registerForm" (ngSubmit)="onRegister()">
+          <div class="register-form__inputs">
+
+            <div class="input-wrapper">
+              <app-input
+                formControlName="personalNumber"
+                [placeholder]="'პირადი ნომერი'"
+                [isInvalid]="rf.personalNumber.invalid && rf.personalNumber.dirty"
+                class="input">
+              </app-input>
+              <mat-hint class="error-msg" *validationErrors="
+                  registerForm;
+                  control: 'personalNumber';
+                  let err;
+                  additionalValue: {
+                    submit: rf.personalNumber.dirty,
+                    patternTypes: 'format'
+                  }
+                ">
+                {{ err }}
+              </mat-hint>
+            </div>
+
+            <div class="input-wrapper">
+              <app-input
+                formControlName="mobileNumber"
+                [type]="'tel'"
+                [placeholder]="'მობილური ნომერი'"
+                [isInvalid]="rf.mobileNumber.invalid && rf.mobileNumber.dirty"
+                class="input">
+              </app-input>
+              <mat-hint class="error-msg" *validationErrors="
+                  registerForm;
+                  control: 'mobileNumber';
+                  let err;
+                  additionalValue: {
+                    submit: rf.mobileNumber.dirty,
+                    patternTypes: 'mobNumber'
+                  }
+                ">
+                {{ err }}
+              </mat-hint>
+            </div>
+
+            <div class="input-wrapper">
+              <app-input
+                formControlName="email"
+                [type]="'email'"
+                [placeholder]="'იმეილი'"
+                [isInvalid]="rf.email.invalid && rf.email.dirty"
+                class="input">
+              </app-input>
+              <mat-hint class="error-msg" *validationErrors="
+                  registerForm;
+                  control: 'email';
+                  let err;
+                  additionalValue: {
+                    submit: rf.email.dirty,
+                    patternTypes: 'email'
+                  }
+                ">
+                {{ err }}
+              </mat-hint>
+            </div>
+
+            <div class="input-wrapper">
+              <app-input
+                formControlName="password"
+                [placeholder]="'შექმენი პაროლი'"
+                [type]="showPassword() ? 'text' : 'password'"
+                [icon]="'assets/icons/closed eye.svg'"
+                (iconClickEmit)="toggleShowPassword()"
+                [isInvalid]="rf.password.invalid && rf.password.dirty"
+                class="input">
+              </app-input>
+              <mat-hint class="error-msg" *validationErrors="
+                  registerForm;
+                  control: 'password';
+                  let err;
+                  additionalValue: {
+                    submit: rf.password.dirty,
+                    patternTypes: 'none'
+                  }
+                ">
+                {{ err }}
+              </mat-hint>
+            </div>
+
+            <div class="input-wrapper">
+              <app-input
+                formControlName="confirmPassword"
+                [placeholder]="'გაიმეორეთ პაროლი'"
+                [type]="showConfirmPassword() ? 'text' : 'password'"
+                [icon]="'assets/icons/closed eye.svg'"
+                (iconClickEmit)="toggleShowConfirmPassword()"
+                [isInvalid]="rf.confirmPassword.invalid && rf.confirmPassword.dirty"
+                class="input">
+              </app-input>
+              <mat-hint class="error-msg" *validationErrors="
+                  registerForm;
+                  control: 'confirmPassword';
+                  let err;
+                  additionalValue: {
+                    submit: rf.confirmPassword.dirty,
+                    patternTypes: 'none'
+                  }
+                ">
+                {{ err }}
+              </mat-hint>
+            </div>
+
+          </div>
+
+          <div class="register-form__actions">
+            <app-button
+              [text]="'დარეგისტრირდი'"
+              [type]="'submit'">
+            </app-button>
+          </div>
+        </form>
+
+      </div>
+    </div>
+  </div>
+</ng-container>

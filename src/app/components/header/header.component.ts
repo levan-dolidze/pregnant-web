@@ -12,6 +12,7 @@ import { MaterialModule } from 'src/app/shared/shared-module/material.module';
 import { SharedModule } from 'src/app/shared/shared-module/shared';
 import { MenuConfig } from './utils';
 import { AuthModalComponent } from 'src/app/features/auth/data-access/auth-modal.component';
+import { RegisterModalComponent } from 'src/app/features/auth/data-access/register-modal.component';
 
 @Component({
   selector: 'app-header',
@@ -98,7 +99,7 @@ export class HeaderComponent implements OnInit {
   }
 
   onRegisterInit(){
-
+    this.dialog.open(RegisterModalComponent, { width: '540px', maxWidth: '95vw' });
   }
 
   readonly sessionId = toSignal(

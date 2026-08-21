@@ -53,6 +53,12 @@ export class ValidationHelper implements PipeTransform {
             );
           }
           break;
+        case 'minlength':
+          messages.push(this.translateService.translate('Error_min_length'));
+          break;
+        case 'mismatch':
+          messages.push(this.translateService.translate('Error_password_mismatch'));
+          break;
       }
     }
     return messages;

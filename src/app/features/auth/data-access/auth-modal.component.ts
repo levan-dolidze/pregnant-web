@@ -1,7 +1,8 @@
 import { ChangeDetectionStrategy, Component, computed, DestroyRef, inject, Inject, OnChanges, OnInit, Optional, signal, SimpleChanges } from '@angular/core';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
+import { MAT_DIALOG_DATA, MatDialog, MatDialogRef } from '@angular/material/dialog';
+import { RegisterModalComponent } from './register-modal.component';
 import { ActivatedRoute, Router } from '@angular/router';
 import { TranslocoModule } from '@jsverse/transloco';
 import { Store } from '@ngrx/store';
@@ -31,6 +32,7 @@ export class AuthModalComponent implements OnInit, OnChanges {
 
 
   protected readonly store = inject(Store);
+  private readonly dialog = inject(MatDialog);
 
   readonly loadingState = toSignal(this.store.select(loading))
   readonly accountService = inject(AccountService);
@@ -168,7 +170,8 @@ export class AuthModalComponent implements OnInit, OnChanges {
   }
 
   onRegister(): void {
-    // TODO: wire to registration flow once the backend endpoint/route exists
+    this.dialogRef.close();
+    this.dialog.open(RegisterModalComponent, { width: '540px', maxWidth: '95vw' });
   }
 
 

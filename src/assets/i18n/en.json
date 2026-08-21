@@ -38,6 +38,8 @@
   "Error_incorrect_email": "Incorrect Email Format",
   "Error_incorrect_mob": "Mobile number must contain 9 characters",
   "Error_incorrect_promo_code": "Incorrect Promo Code",
+  "Error_min_length": "Password must be at least 6 characters",
+  "Error_password_mismatch": "Passwords do not match",
   "Personal_number": "ID number",
   "Unexpected_Error": "Unexpected Error",
   "Name": "Name",
