@@ -22,7 +22,7 @@ export class AccountService {
     return this.apiService.post(`${authBasePath}/Login`, params);
   }
 
-  public userRegister(params: UserRegister): Observable<ApiResponseBase<AuthTokenResponse>> {
+  public userRegister(params: UserRegister): Observable<AuthTokenResponse> {
     return this.apiService.post(`${authBasePath}/UserRegister`, params);
   }
 

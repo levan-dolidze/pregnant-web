@@ -96,7 +96,7 @@ export class AuthEffects {
     this.actions$.pipe(
       ofType(userRegister),
       switchMap(({ registerRequest }) => this.accountService.userRegister(registerRequest).pipe(
-        map((tokenGroup) => userRegisterSuccess({ tokenGroup: tokenGroup.data })),
+        map((response) => userRegisterSuccess({ tokenGroup: response })),
         catchError((message) => of(userRegisterError({message})))
       ))
     )
@@ -107,12 +107,14 @@ export class AuthEffects {
       ofType(userRegisterSuccess),
       tap(({ tokenGroup }) => {
 
+        console.log(tokenGroup)
         if (tokenGroup) {
           this.sessionStorage.saveKey('auth', JSON.stringify(tokenGroup));
           this.alertService.notification({
             message: 'წარმატებით დარეგისტრირდა',
             messageType: 'success',
           });
+
           // const rout = this.activatedRoute.snapshot.queryParams['returnUrl'] ?? '';
           // this.router.navigate([rout]);
         }

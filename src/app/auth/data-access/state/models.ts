@@ -1,15 +1,19 @@
 
 
 export interface AccountSource {
-  // account: Account;
+  // account?: Account;
   authResponse: AuthTokenResponse | null
   loaded: boolean;
   loading: boolean;
 }
 
+// export interface Account {
+
+// }
+
 export interface AuthTokenResponse {
-  access_token: string;
-  expires_in: number;
+  accessToken: string;
+  expiresIn: number;
 }
 
 export const authInitialState: AccountSource = {

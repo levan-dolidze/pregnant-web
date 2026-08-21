@@ -17,7 +17,7 @@ export const loading = createSelector(
 );
 export const iSAuthState = createSelector(
   authFeature,
-  (auth) => !!auth.authResponse?.access_token
+  (auth) => !!auth.authResponse?.accessToken
 );
 
 

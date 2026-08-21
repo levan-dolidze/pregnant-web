@@ -5,7 +5,7 @@ import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { TranslocoModule } from '@jsverse/transloco';
 import { Store } from '@ngrx/store';
 import { AuthActions } from 'src/app/auth/data-access/state/auth';
-import { loading } from 'src/app/auth/data-access/state/auth/auth-selectors';
+import { loading, selectAccount } from 'src/app/auth/data-access/state/auth/auth-selectors';
 import { ControlModeChange } from 'src/app/shared/functions/controlModeChange';
 import { SharedModule } from 'src/app/shared/shared-module/shared';
 import { regExp } from 'src/app/shared/utils/regex';
@@ -45,6 +45,7 @@ export class RegisterModalComponent {
   private readonly store = inject(Store);
 
   readonly loadingState = toSignal(this.store.select(loading));
+  readonly selectAccount = toSignal(this.store.select(selectAccount));
 
   registerForm = new FormGroup({
     personalNumber: new FormControl('', [Validators.required, Validators.pattern(regExp.personalID)]),
