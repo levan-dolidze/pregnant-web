@@ -1,0 +1,16 @@
+.login-form {
+
+    &__fields,
+    &__inputs {
+        display: grid;
+        gap: 16px;
+    }
+
+    &__fields {
+        width: 30%;
+        margin: 0 auto;
+        margin-top: 60px;
+
+    }
+
+}

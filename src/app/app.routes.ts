@@ -115,6 +115,7 @@ export const routes: Routes = [
             (m) => m.CalendarComponent
           ),
       },
+
       {
         path: 'profile',
         canActivate: [authGuard],
@@ -132,6 +133,13 @@ export const routes: Routes = [
           ),
       },
       {
+        path: 'signal-form',
+        loadComponent: () =>
+          import('./features/signal-forms/signal-forms.component').then(
+            (m) => m.SignalFormsComponent
+          ),
+      },
+      {
         path: 'courses',
         // canActivate: [authGuard],
         loadChildren: () => {
@@ -139,6 +147,7 @@ export const routes: Routes = [
             (m) => m.routes
           );
         },
+
         // loadComponent: () =>
         //   import('./features/my-courses/courses/courses.component').then(
         //     (m) => m.CoursesComponent

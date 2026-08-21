@@ -1,0 +1,28 @@
+<form class="login-form__fields" [formRoot]="signupForm">
+    <div class="login-form__inputs">
+        <app-input [formField]="signupForm.firstName" [placeholder]="'სახელი'" class="input">
+        </app-input>
+
+        @for (item of signupForm.firstName().errors(); track $index) {
+
+        @if(signupForm.firstName().dirty()) {
+        @if (item.kind==='required') {
+        {{item.message}}
+        }
+        }
+        }
+
+        <app-input [formField]="signupForm.lastName" [placeholder]="'გვარი'" class="input">
+        </app-input>
+
+
+        <app-input [formField]="signupForm.email" [placeholder]="'ელ.ფოსტა'" class="input">
+        </app-input>
+
+    </div>
+
+    <div class="login-form__actions" >
+        <app-button [text]="'შესვლა'" [type]="'submit'">
+        </app-button>
+    </div>
+</form>
