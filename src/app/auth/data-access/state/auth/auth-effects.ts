@@ -5,13 +5,16 @@ import {
   ofType,
   ROOT_EFFECTS_INIT,
 } from '@ngrx/effects';
-import { catchError, EMPTY, map, mergeMap, of, tap } from 'rxjs';
+import { catchError, EMPTY, map, mergeMap, of, switchMap, tap } from 'rxjs';
 import {
   login,
   loginError,
   loginSuccess,
   logout,
   logOutSuccess,
+  userRegister,
+  userRegisterError,
+  userRegisterSuccess,
 } from './auth-actions';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AccountService } from 'src/app/auth/data-access/account.service';
@@ -36,7 +39,7 @@ export class AuthEffects {
         if (!auth) return EMPTY;
 
         return of(loginSuccess({
-          tokenGroup: auth 
+          tokenGroup: auth
         }));
       })
     )
@@ -49,11 +52,11 @@ export class AuthEffects {
         this.accountService.login(loginRequest).pipe(
           map((res) =>
             res.success
-              ? loginSuccess({ tokenGroup: res.data  })
+              ? loginSuccess({ tokenGroup: res.data })
               : loginError({ message: res.result })
           ),
           catchError((err) => {
-            return of(loginError({ message: err?.error?.result}));
+            return of(loginError({ message: err?.error?.result }));
           })
         )
       )
@@ -64,7 +67,7 @@ export class AuthEffects {
     this.actions$.pipe(
       ofType(loginSuccess),
       tap(({ tokenGroup }) => {
-    
+
         if (tokenGroup) {
           this.sessionStorage.saveKey('auth', JSON.stringify(tokenGroup));
           const rout = this.activatedRoute.snapshot.queryParams['returnUrl'] ?? '';
@@ -88,6 +91,46 @@ export class AuthEffects {
     ), { dispatch: false }
   );
 
+
+  userRegister$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(userRegister),
+      switchMap(({ registerRequest }) => this.accountService.userRegister(registerRequest).pipe(
+        map((tokenGroup) => userRegisterSuccess({ tokenGroup: tokenGroup.data })),
+        catchError((message) => of(userRegisterError({message})))
+      ))
+    )
+  );
+
+  userRegisterSuccess$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(userRegisterSuccess),
+      tap(({ tokenGroup }) => {
+
+        if (tokenGroup) {
+          this.sessionStorage.saveKey('auth', JSON.stringify(tokenGroup));
+          this.alertService.notification({
+            message: 'წარმატებით დარეგისტრირდა',
+            messageType: 'success',
+          });
+          // const rout = this.activatedRoute.snapshot.queryParams['returnUrl'] ?? '';
+          // this.router.navigate([rout]);
+        }
+      })
+    ), { dispatch: false }
+  );
+
+  userRegisterError$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(userRegisterError),
+      tap(({ message }) => {
+        this.alertService.notification({
+          message: message?.description || 'რეგისტრაცია ვერ მოხერხდა',
+          messageType: 'error',
+        });
+      })
+    ), { dispatch: false }
+  );
 
   logout$ = createEffect(() =>
     this.actions$.pipe(

@@ -1,9 +1,11 @@
 import { ChangeDetectionStrategy, Component, Inject, inject, Optional } from '@angular/core';
+import { toSignal } from '@angular/core/rxjs-interop';
 import { AbstractControl, FormGroup, FormControl, ValidationErrors, ValidatorFn, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { TranslocoModule } from '@jsverse/transloco';
-import { AccountService } from 'src/app/auth/data-access/account.service';
-import { AlertService } from 'src/app/components/alert/alert.service';
+import { Store } from '@ngrx/store';
+import { AuthActions } from 'src/app/auth/data-access/state/auth';
+import { loading } from 'src/app/auth/data-access/state/auth/auth-selectors';
 import { ControlModeChange } from 'src/app/shared/functions/controlModeChange';
 import { SharedModule } from 'src/app/shared/shared-module/shared';
 import { regExp } from 'src/app/shared/utils/regex';
@@ -40,8 +42,9 @@ export class RegisterModalComponent {
     @Optional() @Inject(MAT_DIALOG_DATA) public data: unknown
   ) { }
 
-  private readonly accountService = inject(AccountService);
-  private readonly alertService = inject(AlertService);
+  private readonly store = inject(Store);
+
+  readonly loadingState = toSignal(this.store.select(loading));
 
   registerForm = new FormGroup({
     personalNumber: new FormControl('', [Validators.required, Validators.pattern(regExp.personalID)]),
@@ -60,18 +63,7 @@ export class RegisterModalComponent {
       ControlModeChange.formFieldsModeControl('markAsDirty', this.registerForm);
     } else {
       const request = this.registerForm.getRawValue();
-      this.accountService.userRegister(request).subscribe({
-        next: (res) => {
-          if (res.success) {
-            this.dialogRef.close();
-          } else {
-            this.alertService.notification({ message: res.result?.description, messageType: 'error' });
-          }
-        },
-        error: () => {
-          this.alertService.notification({ message: 'რეგისტრაცია ვერ მოხერხდა', messageType: 'error' });
-        }
-      });
+      this.store.dispatch(AuthActions.userRegister({ registerRequest: request }));
     }
   }
 

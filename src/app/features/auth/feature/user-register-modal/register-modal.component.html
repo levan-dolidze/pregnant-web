@@ -123,7 +123,9 @@
           <div class="register-form__actions">
             <app-button
               [text]="'დარეგისტრირდი'"
-              [type]="'submit'">
+              [type]="'submit'"
+              [isLoading]="loadingState()"
+              >
             </app-button>
           </div>
         </form>

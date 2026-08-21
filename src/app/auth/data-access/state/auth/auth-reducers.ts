@@ -6,6 +6,9 @@ import {
   loginSuccess,
   logout,
   logOutSuccess,
+  userRegister,
+  userRegisterError,
+  userRegisterSuccess,
 } from './auth-actions';
 import { AccountSource, authInitialState } from '../models';
 
@@ -59,6 +62,23 @@ export const authReducer = createReducer<AccountSource>(
     loaded: false,
     loading: false,
     otpSent: false,
+  })),
+
+  on(userRegister, (state) => ({
+    ...state,
+    loading: true,
+    loaded: false,
+  })),
+
+  on(userRegisterSuccess, (state) => ({
+    ...state,
+    loading: false,
+    loaded: true,
+  })),
+
+  on(userRegisterError, (state) => ({
+    ...state,
+    loading: false,
   })),
 );
 
