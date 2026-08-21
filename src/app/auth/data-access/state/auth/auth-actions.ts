@@ -1,6 +1,7 @@
 import { createAction, props } from "@ngrx/store";
 import { Login, UserRegister } from "src/app/auth/utils/auth";
 import { AuthTokenResponse, LoginErrResponse } from "../models";
+import { HttpErrorResponse } from "@angular/common/http";
 
 export const login = createAction(
   "[Auth] Login",
@@ -25,7 +26,7 @@ export const userRegisterSuccess = createAction(
 );
 export const userRegisterError = createAction(
   '[Auth] User Register Error',
-  props<{ message: LoginErrResponse }>()
+  props<{ message: HttpErrorResponse }>()
 );
 
 

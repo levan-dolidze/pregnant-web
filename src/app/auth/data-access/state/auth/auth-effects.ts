@@ -126,8 +126,9 @@ export class AuthEffects {
     this.actions$.pipe(
       ofType(userRegisterError),
       tap(({ message }) => {
+        console.log(message.error)
         this.alertService.notification({
-          message: message?.description || 'რეგისტრაცია ვერ მოხერხდა',
+          message: message.error.description || 'რეგისტრაცია ვერ მოხერხდა',
           messageType: 'error',
         });
       })
