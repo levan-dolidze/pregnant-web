@@ -56,7 +56,7 @@ describe('RegisterModalComponent', () => {
       confirmPassword: 'password2',
     });
 
-    expect(component.rf.confirmPassword.errors?.['mismatch']).toBe(true);
+    expect(component.f.confirmPassword.errors?.['mismatch']).toBe(true);
     expect(component.registerForm.valid).toBe(false);
   });
 

@@ -6,7 +6,9 @@ import {
   Input,
   Output,
   ViewChild,
+  computed,
   forwardRef,
+  signal,
 } from '@angular/core';
 import { ControlValueAccessor, FormsModule, NG_VALUE_ACCESSOR, ReactiveFormsModule } from '@angular/forms';
 import { MatIconModule } from '@angular/material/icon';
@@ -40,7 +42,7 @@ import { TranslocoModule } from '@jsverse/transloco';
           style="width: 90%;"
           matInput
           autocomplete="off"
-          [type]="type || 'text'"
+          [type]="effectiveType()"
           [maxlength]="maxlength"
           [minlength]="minlength"
           [max]="max"
@@ -55,12 +57,16 @@ import { TranslocoModule } from '@jsverse/transloco';
           (change)="onInputChange($event)"
           #inputEl
         />
-        @if(icon) {
+        @if(type === 'password') {
+        <span class="icon">
+          <img src="assets/icons/closed eye.svg" (click)="togglePasswordVisibility()" alt="toggle password visibility"/>
+        </span>
+        } @else if(icon) {
         <span class="icon">
           <img [src]="icon" (click)="onIconClick()"/>
         </span>
         }
-  
+
       </mat-form-field>
     </ng-container>
   `,
@@ -102,6 +108,15 @@ export class InputComponent implements AfterViewInit, ControlValueAccessor {
   @Output() changeEmit = new EventEmitter<Event>();
 
 
+
+  private readonly showPassword = signal(false);
+  readonly effectiveType = computed(() =>
+    this.type === 'password' && this.showPassword() ? 'text' : (this.type || 'text')
+  );
+
+  togglePasswordVisibility(): void {
+    this.showPassword.update(v => !v);
+  }
 
   private onModelChange = (_: any) => { };
 

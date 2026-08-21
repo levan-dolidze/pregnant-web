@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, Inject, Optional, signal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Inject, Optional } from '@angular/core';
 import { AbstractControl, FormGroup, FormControl, ValidationErrors, ValidatorFn, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { TranslocoModule } from '@jsverse/transloco';
@@ -48,17 +48,6 @@ export class RegisterModalComponent {
 
   get f() {
     return this.registerForm.controls;
-  }
-
-  readonly showPassword = signal(false);
-  readonly showConfirmPassword = signal(false);
-
-  toggleShowPassword(): void {
-    this.showPassword.update(v => !v);
-  }
-
-  toggleShowConfirmPassword(): void {
-    this.showConfirmPassword.update(v => !v);
   }
 
   onRegister(): void {

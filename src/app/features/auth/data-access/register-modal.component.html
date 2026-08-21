@@ -80,9 +80,7 @@
               <app-input
                 formControlName="password"
                 [placeholder]="'შექმენი პაროლი'"
-                [type]="showPassword() ? 'text' : 'password'"
-                [icon]="'assets/icons/closed eye.svg'"
-                (iconClickEmit)="toggleShowPassword()"
+                [type]="'password'"
                 [isInvalid]="f.password.invalid && f.password.dirty"
                 class="input">
               </app-input>
@@ -103,9 +101,7 @@
               <app-input
                 formControlName="confirmPassword"
                 [placeholder]="'გაიმეორეთ პაროლი'"
-                [type]="showConfirmPassword() ? 'text' : 'password'"
-                [icon]="'assets/icons/closed eye.svg'"
-                (iconClickEmit)="toggleShowConfirmPassword()"
+                [type]="'password'"
                 [isInvalid]="f.confirmPassword.invalid && f.confirmPassword.dirty"
                 class="input">
               </app-input>
