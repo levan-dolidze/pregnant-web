@@ -52,9 +52,7 @@ export interface NotFoundMessage {
       <div class="item-not-found">
         <div class="item-not-found__content">
 
-        <div class="item-not-found__icon-box">
-          <img src="/assets/icons/Vector12.png" alt="not-found" />
-        </div>
+        <div class="item-not-found__icon-box"></div>
 
         <div class="item-not-found__title">
           <p>{{ source.title }}</p>
