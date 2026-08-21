@@ -18,7 +18,7 @@
               <app-input
                 formControlName="personalNumber"
                 [placeholder]="'პირადი ნომერი'"
-                [isInvalid]="rf.personalNumber.invalid && rf.personalNumber.dirty"
+                [isInvalid]="f.personalNumber.invalid && f.personalNumber.dirty"
                 class="input">
               </app-input>
               <mat-hint class="error-msg" *validationErrors="
@@ -26,7 +26,7 @@
                   control: 'personalNumber';
                   let err;
                   additionalValue: {
-                    submit: rf.personalNumber.dirty,
+                    submit: f.personalNumber.dirty,
                     patternTypes: 'format'
                   }
                 ">
@@ -39,7 +39,7 @@
                 formControlName="mobileNumber"
                 [type]="'tel'"
                 [placeholder]="'მობილური ნომერი'"
-                [isInvalid]="rf.mobileNumber.invalid && rf.mobileNumber.dirty"
+                [isInvalid]="f.mobileNumber.invalid && f.mobileNumber.dirty"
                 class="input">
               </app-input>
               <mat-hint class="error-msg" *validationErrors="
@@ -47,7 +47,7 @@
                   control: 'mobileNumber';
                   let err;
                   additionalValue: {
-                    submit: rf.mobileNumber.dirty,
+                    submit: f.mobileNumber.dirty,
                     patternTypes: 'mobNumber'
                   }
                 ">
@@ -60,7 +60,7 @@
                 formControlName="email"
                 [type]="'email'"
                 [placeholder]="'იმეილი'"
-                [isInvalid]="rf.email.invalid && rf.email.dirty"
+                [isInvalid]="f.email.invalid && f.email.dirty"
                 class="input">
               </app-input>
               <mat-hint class="error-msg" *validationErrors="
@@ -68,7 +68,7 @@
                   control: 'email';
                   let err;
                   additionalValue: {
-                    submit: rf.email.dirty,
+                    submit: f.email.dirty,
                     patternTypes: 'email'
                   }
                 ">
@@ -83,7 +83,7 @@
                 [type]="showPassword() ? 'text' : 'password'"
                 [icon]="'assets/icons/closed eye.svg'"
                 (iconClickEmit)="toggleShowPassword()"
-                [isInvalid]="rf.password.invalid && rf.password.dirty"
+                [isInvalid]="f.password.invalid && f.password.dirty"
                 class="input">
               </app-input>
               <mat-hint class="error-msg" *validationErrors="
@@ -91,7 +91,7 @@
                   control: 'password';
                   let err;
                   additionalValue: {
-                    submit: rf.password.dirty,
+                    submit: f.password.dirty,
                     patternTypes: 'none'
                   }
                 ">
@@ -106,7 +106,7 @@
                 [type]="showConfirmPassword() ? 'text' : 'password'"
                 [icon]="'assets/icons/closed eye.svg'"
                 (iconClickEmit)="toggleShowConfirmPassword()"
-                [isInvalid]="rf.confirmPassword.invalid && rf.confirmPassword.dirty"
+                [isInvalid]="f.confirmPassword.invalid && f.confirmPassword.dirty"
                 class="input">
               </app-input>
               <mat-hint class="error-msg" *validationErrors="
@@ -114,7 +114,7 @@
                   control: 'confirmPassword';
                   let err;
                   additionalValue: {
-                    submit: rf.confirmPassword.dirty,
+                    submit: f.confirmPassword.dirty,
                     patternTypes: 'none'
                   }
                 ">

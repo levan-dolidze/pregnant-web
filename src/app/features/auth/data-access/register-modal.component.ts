@@ -46,7 +46,7 @@ export class RegisterModalComponent {
     confirmPassword: new FormControl('', [Validators.required]),
   }, { validators: passwordsMatchValidator('password', 'confirmPassword') });
 
-  get rf() {
+  get f() {
     return this.registerForm.controls;
   }
 
