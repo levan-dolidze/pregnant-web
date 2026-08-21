@@ -1,7 +1,9 @@
-import { ChangeDetectionStrategy, Component, Inject, Optional } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Inject, inject, Optional } from '@angular/core';
 import { AbstractControl, FormGroup, FormControl, ValidationErrors, ValidatorFn, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { TranslocoModule } from '@jsverse/transloco';
+import { AccountService } from 'src/app/auth/data-access/account.service';
+import { AlertService } from 'src/app/components/alert/alert.service';
 import { ControlModeChange } from 'src/app/shared/functions/controlModeChange';
 import { SharedModule } from 'src/app/shared/shared-module/shared';
 import { regExp } from 'src/app/shared/utils/regex';
@@ -38,6 +40,9 @@ export class RegisterModalComponent {
     @Optional() @Inject(MAT_DIALOG_DATA) public data: unknown
   ) { }
 
+  private readonly accountService = inject(AccountService);
+  private readonly alertService = inject(AlertService);
+
   registerForm = new FormGroup({
     personalNumber: new FormControl('', [Validators.required, Validators.pattern(regExp.personalID)]),
     mobileNumber: new FormControl('', [Validators.required, Validators.pattern(regExp.mobileGe)]),
@@ -55,8 +60,18 @@ export class RegisterModalComponent {
       ControlModeChange.formFieldsModeControl('markAsDirty', this.registerForm);
     } else {
       const request = this.registerForm.getRawValue();
-      console.log(request);
-      // TODO: dispatch registration once the backend endpoint exists
+      this.accountService.userRegister(request).subscribe({
+        next: (res) => {
+          if (res.success) {
+            this.dialogRef.close();
+          } else {
+            this.alertService.notification({ message: res.result?.description, messageType: 'error' });
+          }
+        },
+        error: () => {
+          this.alertService.notification({ message: 'რეგისტრაცია ვერ მოხერხდა', messageType: 'error' });
+        }
+      });
     }
   }
 

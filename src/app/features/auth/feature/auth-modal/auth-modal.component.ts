@@ -2,7 +2,6 @@ import { ChangeDetectionStrategy, Component, computed, DestroyRef, inject, Injec
 import { toSignal } from '@angular/core/rxjs-interop';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialog, MatDialogRef } from '@angular/material/dialog';
-import { RegisterModalComponent } from './register-modal.component';
 import { ActivatedRoute, Router } from '@angular/router';
 import { TranslocoModule } from '@jsverse/transloco';
 import { Store } from '@ngrx/store';
@@ -15,6 +14,7 @@ import { OtpComponent } from 'src/app/shared/features/otp/otp.component';
 import { ControlModeChange } from 'src/app/shared/functions/controlModeChange';
 import { SharedModule } from 'src/app/shared/shared-module/shared';
 import { TranslationService } from 'src/app/shared/translate/translation.serive';
+import { RegisterModalComponent } from '../user-register-modal/register-modal.component';
 
 @Component({
   selector: 'app-auth-modal',

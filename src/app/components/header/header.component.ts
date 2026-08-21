@@ -11,8 +11,8 @@ import { LoaderService } from '../loader/loader.service';
 import { MaterialModule } from 'src/app/shared/shared-module/material.module';
 import { SharedModule } from 'src/app/shared/shared-module/shared';
 import { MenuConfig } from './utils';
-import { AuthModalComponent } from 'src/app/features/auth/data-access/auth-modal.component';
-import { RegisterModalComponent } from 'src/app/features/auth/data-access/register-modal.component';
+import { RegisterModalComponent } from 'src/app/features/auth/feature/user-register-modal/register-modal.component';
+import { AuthModalComponent } from 'src/app/features/auth/feature/auth-modal/auth-modal.component';
 
 @Component({
   selector: 'app-header',
@@ -91,7 +91,6 @@ export class HeaderComponent implements OnInit {
   isChildActive(item: MenuConfig): boolean {
     return item.children?.some(c => this.router.url.startsWith(c.routerLink)) ?? false;
   }
-
 
 
   onLoginInit(){

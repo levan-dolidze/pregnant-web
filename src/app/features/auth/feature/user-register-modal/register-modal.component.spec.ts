@@ -1,10 +1,12 @@
 import { MockModule } from 'ng-mocks';
 import { TranslocoModule } from '@jsverse/transloco';
 import { render } from '@testing-library/angular';
-import { SharedModule } from '../../../shared/shared-module/shared';
+import { SharedModule } from '../../../../shared/shared-module/shared';
 import { RegisterModalComponent } from './register-modal.component';
 import '@testing-library/jest-dom';
 import { MAT_DIALOG_DATA, MatDialogModule, MatDialogRef } from '@angular/material/dialog';
+import { provideHttpClient } from '@angular/common/http';
+import { provideHttpClientTesting } from '@angular/common/http/testing';
 
 const mockDialogRef = {
   close: jest.fn(),
@@ -18,6 +20,8 @@ describe('RegisterModalComponent', () => {
     const { container } = await render(RegisterModalComponent, {
       imports: [SharedModule, MockModule(TranslocoModule), MatDialogModule],
       providers: [
+        provideHttpClient(),
+        provideHttpClientTesting(),
         { provide: MAT_DIALOG_DATA, useValue: {} },
         { provide: MatDialogRef, useValue: mockDialogRef }
       ],
@@ -29,6 +33,8 @@ describe('RegisterModalComponent', () => {
     const { fixture } = await render(RegisterModalComponent, {
       imports: [SharedModule, MockModule(TranslocoModule), MatDialogModule],
       providers: [
+        provideHttpClient(),
+        provideHttpClientTesting(),
         { provide: MAT_DIALOG_DATA, useValue: {} },
         { provide: MatDialogRef, useValue: mockDialogRef }
       ],
@@ -42,6 +48,8 @@ describe('RegisterModalComponent', () => {
     const { fixture } = await render(RegisterModalComponent, {
       imports: [SharedModule, MockModule(TranslocoModule), MatDialogModule],
       providers: [
+        provideHttpClient(),
+        provideHttpClientTesting(),
         { provide: MAT_DIALOG_DATA, useValue: {} },
         { provide: MatDialogRef, useValue: mockDialogRef }
       ],
@@ -64,6 +72,8 @@ describe('RegisterModalComponent', () => {
     const { fixture } = await render(RegisterModalComponent, {
       imports: [SharedModule, MockModule(TranslocoModule), MatDialogModule],
       providers: [
+        provideHttpClient(),
+        provideHttpClientTesting(),
         { provide: MAT_DIALOG_DATA, useValue: {} },
         { provide: MatDialogRef, useValue: mockDialogRef }
       ],
@@ -85,6 +95,8 @@ describe('RegisterModalComponent', () => {
     const { fixture } = await render(RegisterModalComponent, {
       imports: [SharedModule, MockModule(TranslocoModule), MatDialogModule],
       providers: [
+        provideHttpClient(),
+        provideHttpClientTesting(),
         { provide: MAT_DIALOG_DATA, useValue: {} },
         { provide: MatDialogRef, useValue: mockDialogRef }
       ],

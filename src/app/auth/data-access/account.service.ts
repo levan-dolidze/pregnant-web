@@ -4,10 +4,10 @@ import { inject, Injectable } from '@angular/core';
 import { ApiResponseBase } from 'src/app/core/utils/models';
 import { Observable } from 'rxjs';
 import { ApiService } from 'src/app/core/api-service/api.service';
-import { Login } from '../utils/auth';
+import { Login, UserRegister } from '../utils/auth';
 import { AuthTokenResponse } from './state/models';
 
-const authBasePath = '/api/Auth';
+const authBasePath = '/Auth';
 
 @Injectable({
   providedIn: 'root',
@@ -22,7 +22,13 @@ export class AccountService {
     return this.apiService.post(`${authBasePath}/Login`, params);
   }
 
+  public userRegister(params: UserRegister): Observable<ApiResponseBase<AuthTokenResponse>> {
+    return this.apiService.post(`${authBasePath}/UserRegister`, params);
+  }
 
+
+  
+  
 
   private getRole(decodedToken: any): string {
     const role =
