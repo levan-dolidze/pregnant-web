@@ -43,6 +43,9 @@ export class HeaderComponent implements OnInit {
   private readonly backIcon = signal<boolean>(false)
   readonly backIconState = computed(() => this.backIcon())
 
+
+  isLoggedIn =false
+
   ngOnInit(): void {
     this.updateFromRoute();
 
@@ -88,12 +91,14 @@ export class HeaderComponent implements OnInit {
     return item.children?.some(c => this.router.url.startsWith(c.routerLink)) ?? false;
   }
 
-  onBack() {
-    globalThis.history.back();
-  }
+
 
   onLoginInit(){
     this.dialog.open(AuthModalComponent, { width: '540px', maxWidth: '95vw' });
+  }
+
+  onRegisterInit(){
+
   }
 
   readonly sessionId = toSignal(
@@ -111,14 +116,13 @@ export class HeaderComponent implements OnInit {
   );
 
 
-
-  onLogIn(){
-
-  }
-
   
   onLogOut() {
 
   }
 
+
+  onBack() {
+    globalThis.history.back();
+  }
 }

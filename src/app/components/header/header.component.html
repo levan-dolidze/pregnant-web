@@ -60,35 +60,45 @@
       <mat-icon>{{ isMenuOpen() ? 'close' : 'menu' }}</mat-icon>
     </button>
 
-      <app-button
-       class="topbar__login"
-       [className]="'stroked-fill h-40'"
-       [text]="t('LogIn')"
-       (btnClick)="onLoginInit()">
-      </app-button>
-    <div class="topbar__profile">
-      <button class="topbar__profile-btn" [matMenuTriggerFor]="profileMenu" aria-label="Profile">
-        <mat-icon>person</mat-icon>
+
+    <div class="topbar__login" >
+  @if (!isLoggedIn) {
+  
+  <mat-icon onKeyPress (click)="onLoginInit()">person</mat-icon>
+  <app-button class="topbar__login" [className]="'stroked-fill h-40'" [text]="t('Register')"
+    (btnClick)="onRegisterInit()">
+  </app-button>
+  }
+  @else {
+  <div class="topbar__profile">
+    <button class="topbar__profile-btn" [matMenuTriggerFor]="profileMenu" aria-label="Profile">
+      <mat-icon>person</mat-icon>
+    </button>
+  
+    <mat-menu #profileMenu="matMenu" class="topbar__profile-panel" xPosition="before">
+      <div class="topbar__profile-hd">
+        <span class="topbar__profile-avatar">
+          <mat-icon>person</mat-icon>
+        </span>
+        <span class="topbar__profile-greeting">გამარჯობა</span>
+      </div>
+  
+      <a mat-menu-item routerLink="/profile">{{ t('Profile') }}</a>
+      <a mat-menu-item routerLink="/my-courses">{{ t('My_Courses') }}</a>
+  
+      <div class="topbar__profile-sep"></div>
+  
+      <button mat-menu-item class="topbar__profile-logout-item" (click)="onLogOut()">
+        {{ t('LogOut') }}
       </button>
-
-      <mat-menu #profileMenu="matMenu" class="topbar__profile-panel" xPosition="before">
-        <div class="topbar__profile-hd">
-          <span class="topbar__profile-avatar">
-            <mat-icon>person</mat-icon>
-          </span>
-          <span class="topbar__profile-greeting">გამარჯობა</span>
-        </div>
-
-        <a mat-menu-item routerLink="/profile">{{ t('Profile') }}</a>
-        <a mat-menu-item routerLink="/my-courses">{{ t('My_Courses') }}</a>
-
-        <div class="topbar__profile-sep"></div>
-
-        <button mat-menu-item class="topbar__profile-logout-item" (click)="onLogOut()">
-          {{ t('LogOut') }}
-        </button>
-      </mat-menu>
+    </mat-menu>
+  </div>
+  }
     </div>
+
+   
+
+   
   </mat-toolbar>
 
   <!-- Mobile nav -->
