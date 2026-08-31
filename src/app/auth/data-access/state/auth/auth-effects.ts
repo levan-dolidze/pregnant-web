@@ -17,6 +17,7 @@ import {
   userRegisterSuccess,
 } from './auth-actions';
 import { ActivatedRoute, Router } from '@angular/router';
+import { MatDialog } from '@angular/material/dialog';
 import { AccountService } from 'src/app/auth/data-access/account.service';
 import { SessionStorageService } from 'src/app/shared/services/session-storage.service';
 import { AlertService } from 'src/app/components/alert/alert.service';
@@ -30,6 +31,7 @@ export class AuthEffects {
   private readonly accountService = inject(AccountService);
   private readonly alertService = inject(AlertService);
   private readonly router = inject(Router);
+  private readonly dialog = inject(MatDialog);
 
   init$ = createEffect(() =>
     this.actions$.pipe(
@@ -107,9 +109,9 @@ export class AuthEffects {
       ofType(userRegisterSuccess),
       tap(({ tokenGroup }) => {
 
-        console.log(tokenGroup)
         if (tokenGroup) {
           this.sessionStorage.saveKey('auth', JSON.stringify(tokenGroup));
+          this.dialog.closeAll();
           this.alertService.notification({
             message: 'წარმატებით დარეგისტრირდა',
             messageType: 'success',
