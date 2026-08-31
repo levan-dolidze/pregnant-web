@@ -54,6 +54,8 @@ export class PurchaseCourseComponent implements OnInit {
 
   @Input() courseName: string;
   @Input() sessionId: string;
+  courseId = CourseId
+
 
   readonly routes = signal<StepRoutes[]>([
     { stepId: 1 },
@@ -85,7 +87,7 @@ export class PurchaseCourseComponent implements OnInit {
       userLastName: this.personalInfoState().userLastName,
       email: this.contactInfoState().email,
       mobileNumber: this.contactInfoState().mobileNumber,
-      productId: this.courseId.PregnantOnline,
+      productId: +this.courseName,
     };
   }
 
@@ -128,7 +130,6 @@ export class PurchaseCourseComponent implements OnInit {
     this.store.dispatch(CoursePurchaseFlowActions.purchaseCourse({ request: params }));
   }
 
-  courseId = CourseId
   purchase() {
     const params = this.form.getRawValue();
 
