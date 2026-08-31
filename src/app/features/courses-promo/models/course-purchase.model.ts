@@ -7,5 +7,6 @@ export interface CoursePurchaseRequest {
 
 
 export enum CourseNames {
-  Pregnant = 'pregnant-course'
+  Pregnant = 'pregnant-online-course',
+  PregnantGuide = 'pregnant-guide',
 }

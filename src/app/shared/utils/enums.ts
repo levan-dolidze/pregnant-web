@@ -1,4 +1,6 @@
 
 export enum CourseId {
-    Pregnant = 1
+    PregnantOnline = 1,
+    PregnantGoude
+
 }

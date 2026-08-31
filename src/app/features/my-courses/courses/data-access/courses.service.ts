@@ -87,7 +87,7 @@ export class CoursesService {
     });
   }
 
-  getCoursesMenu(courseId: CourseId = CourseId.Pregnant) {
+  getCoursesMenu(courseId: CourseId = CourseId.PregnantOnline) {
     return this.apiService.get(`${basePath}/GetCoursesMenu?courseId=${courseId}`)
   }
 

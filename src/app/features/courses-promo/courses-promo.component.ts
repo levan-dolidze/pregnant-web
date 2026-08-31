@@ -4,7 +4,7 @@ import { GuidService } from 'src/app/shared/services/guid/guid.service';
 import { PurchaseService } from './data-access/purchase.service';
 import { VideoViewerComponent } from 'src/app/components/video-viewer/video-viewer.component';
 import { ButtonComponent } from 'src/app/components/button/button.component';
-import { CoursesPromoService } from './courses-promo.service';
+import { CoursePromoSummary, CoursesPromoService } from './courses-promo.service';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { Store } from '@ngrx/store';
 import { iSAuthState } from 'src/app/auth/data-access/state/auth/auth-selectors';
@@ -30,8 +30,8 @@ export class CoursesPromoComponent {
 
   readonly promo = this.purchaseService.coursePromo;
 
-  onPurchaseInit() {
-    this.router.navigate(['/purchase-course/', CourseNames.Pregnant, this.guidService.getUUID])
+  onPurchaseInit(course: CoursePromoSummary) {
+    this.router.navigate(['/purchase-course/', course.courseId, this.guidService.getUUID])
 
     //???
     // if (this.iSAuth()) { 

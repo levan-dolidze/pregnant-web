@@ -242,7 +242,13 @@
 
   &__icon  { font-size: 24px; display: block; margin-bottom: 20px; }
   &__title { font-size: 17px; font-weight: 700; color: $blue; margin: 0 0 10px; }
-  &__text  { font-size: 14px; color: $gray13; line-height: 1.65; margin: 0 0 20px; flex: 1; }
+  &__text  {
+    font-size: 14px; color: $gray13; line-height: 1.65; margin: 0 0 20px; flex: 1;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
+    overflow: hidden;
+  }
   &__link  { font-size: 13px; font-weight: 600; color: $primary; margin-top: auto; }
 
   @media (max-width: 540px) { padding: 24px 20px; }

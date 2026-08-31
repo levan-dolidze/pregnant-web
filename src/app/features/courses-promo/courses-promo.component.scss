@@ -120,12 +120,9 @@
 
 // ── CTA ──────────────────────────────────────────────────────────
 .ps-cta {
-  position: sticky;
-  bottom: 0;
   background: $white;
   border-top: 1px solid $gray12;
   padding: 16px 24px;
-  z-index: 10;
   box-shadow: 0 -4px 20px rgba(0, 0, 0, .08);
 
   &__inner {

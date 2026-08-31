@@ -85,7 +85,7 @@ export class PurchaseCourseComponent implements OnInit {
       userLastName: this.personalInfoState().userLastName,
       email: this.contactInfoState().email,
       mobileNumber: this.contactInfoState().mobileNumber,
-      productId: this.courseId.Pregnant,
+      productId: this.courseId.PregnantOnline,
     };
   }
 
