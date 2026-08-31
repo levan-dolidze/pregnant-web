@@ -48,6 +48,6 @@ export class HomeComponent {
 
   navigate(path: string | null, courseId?: CourseId): void {
     if (!path) return;
-    this.router.navigate([path], courseId !== undefined ? { queryParams: { courseId } } : undefined);
+    this.router.navigate([path], courseId ? { queryParams: { courseId } } : null);
   }
 }
