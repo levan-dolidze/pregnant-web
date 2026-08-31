@@ -44,8 +44,8 @@ export class HeaderComponent implements OnInit {
   private readonly backIcon = signal<boolean>(false)
   readonly backIconState = computed(() => this.backIcon())
 
+  readonly isLoggedIn = false
 
-  isLoggedIn =false
 
   ngOnInit(): void {
     this.updateFromRoute();
@@ -73,18 +73,18 @@ export class HeaderComponent implements OnInit {
   }
 
 
-  menuConfig = [
+  readonly menuConfig = [
     {
       name: 'For_Me', index: 1,
       children: [
         { name: 'Courses', routerLink: '/courses-promo' },
-        { name: 'Shop',            routerLink: '/shop' }
+        { name: 'Shop', routerLink: '/shop' }
       ]
     },
     { name: 'For_Children', index: 2, children: [] },
-    { name: 'More',         index: 3, children: [] },
-    { routerLink: '/about', name: 'Doctor',  index: 4 },
-    { routerLink: '/blog',    name: 'Blog',    index: 5 },
+    // { name: 'More',         index: 3, children: [] },
+    { routerLink: '/about', name: 'Doctor', index: 4 },
+    { routerLink: '/blog', name: 'Blog', index: 5 },
     { routerLink: '/contact', name: 'Contact', index: 6 },
   ] as MenuConfig[]
 
@@ -92,12 +92,11 @@ export class HeaderComponent implements OnInit {
     return item.children?.some(c => this.router.url.startsWith(c.routerLink)) ?? false;
   }
 
-
-  onLoginInit(){
+  onLoginInit() {
     this.dialog.open(AuthModalComponent, { width: '540px', maxWidth: '95vw' });
   }
 
-  onRegisterInit(){
+  onRegisterInit() {
     this.dialog.open(RegisterModalComponent, { width: '540px', maxWidth: '95vw' });
   }
 
@@ -116,7 +115,7 @@ export class HeaderComponent implements OnInit {
   );
 
 
-  
+
   onLogOut() {
 
   }
