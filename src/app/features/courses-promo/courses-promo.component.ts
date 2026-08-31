@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject, Input } from '@angular/core';
 import { Router } from '@angular/router';
 import { GuidService } from 'src/app/shared/services/guid/guid.service';
 import { PurchaseService } from './data-access/purchase.service';
@@ -10,15 +10,19 @@ import { Store } from '@ngrx/store';
 import { iSAuthState } from 'src/app/auth/data-access/state/auth/auth-selectors';
 import { MatDialog } from '@angular/material/dialog';
 import { CourseNames } from './models/course-purchase.model';
+import { CourseId } from 'src/app/shared/utils/enums';
+import { JsonPipe } from '@angular/common';
 
 @Component({
   selector: 'app-courses-promo',
-  imports: [VideoViewerComponent, ButtonComponent],
+  imports: [VideoViewerComponent, ButtonComponent,JsonPipe],
   templateUrl: './courses-promo.component.html',
   styleUrl: './courses-promo.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class CoursesPromoComponent {
+
+  @Input() courseId:CourseId
   private readonly router = inject(Router);
   private readonly guidService = inject(GuidService);
   private readonly purchaseService = inject(CoursesPromoService);

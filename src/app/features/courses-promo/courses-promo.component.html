@@ -1,45 +1,41 @@
 <main class="ps-page">
+  {{courseId|json}}
 
   @for (course of promo(); track course.courseName) {
 
-    <section class="ps-hero">
-      <div class="ps-hero__inner">
+  @if (!courseId||course.courseId=== +(courseId)) {
+  <section class="ps-hero">
+    <div class="ps-hero__inner">
 
-        <div class="ps-hero__content">
-          <span class="ps-badge">{{ course.courseName }}</span>
-          <h1 class="ps-hero__title">{{ course.title }}</h1>
-          <p class="ps-hero__desc">{{ course.description }}</p>
-          <div class="ps-hero__meta">
-            <span class="ps-meta-chip">🎬 {{ course.lessonQty }} გაკვეთილი</span>
-            <span class="ps-meta-chip">📱 ნებისმიერ მოწყობილობაზე</span>
-            <span class="ps-meta-chip">♾️ უვადო წვდომა</span>
-          </div>
+      <div class="ps-hero__content">
+        <span class="ps-badge">{{ course.courseName }}</span>
+        <h1 class="ps-hero__title">{{ course.title }}</h1>
+        <p class="ps-hero__desc">{{ course.description }}</p>
+        <div class="ps-hero__meta">
+          <span class="ps-meta-chip">🎬 {{ course.lessonQty }} გაკვეთილი</span>
+          <span class="ps-meta-chip">📱 ნებისმიერ მოწყობილობაზე</span>
+          <span class="ps-meta-chip">♾️ უვადო წვდომა</span>
         </div>
-
-        <app-video-viewer
-          class="ps-hero__video-wrap"
-          [videoUrl]="course.videoUrl"
-          [title]="course.title">
-        </app-video-viewer>
-
       </div>
-    </section>
 
-    <div class="ps-cta">
-      <div class="ps-cta__inner">
-        <div class="ps-cta__info">
-          <span class="ps-cta__price">{{ course.price }} ₾</span>
-          <span class="ps-cta__note">ერთჯერადი გადახდა · უვადო წვდომა</span>
-        </div>
-        <app-button
-          className="ps-cta__btn"
-          [type]="'button'"
-          text="შეძენა"
-          (btnClick)="onPurchaseInit(course)">
-        </app-button>
-      </div>
+      <app-video-viewer class="ps-hero__video-wrap" [videoUrl]="course.videoUrl" [title]="course.title">
+      </app-video-viewer>
+
     </div>
+  </section>
 
+  <div class="ps-cta">
+    <div class="ps-cta__inner">
+      <div class="ps-cta__info">
+        <span class="ps-cta__price">{{ course.price }} ₾</span>
+        <span class="ps-cta__note">ერთჯერადი გადახდა · უვადო წვდომა</span>
+      </div>
+      <app-button className="ps-cta__btn" [type]="'button'" text="შეძენა" (btnClick)="onPurchaseInit(course)">
+      </app-button>
+    </div>
+  </div>
   }
+  }
+
 
 </main>

@@ -2,6 +2,7 @@ import { Component, computed, inject } from '@angular/core';
 import { Router } from '@angular/router';
 import { ButtonComponent } from '../../components/button/button.component';
 import { CoursesPromoService } from '../courses-promo/courses-promo.service';
+import { CourseId } from 'src/app/shared/utils/enums';
 
 interface ServiceCard {
   logo: string;
@@ -9,6 +10,7 @@ interface ServiceCard {
   subtitle: string;
   action: string | null;
   accent?: boolean;
+  courseId?: CourseId;
 }
 
 @Component({
@@ -36,6 +38,7 @@ export class HomeComponent {
       subtitle: course.description,
       action: '/courses-promo',
       accent: true,
+      courseId: course.courseId,
     })),
   }));
 
@@ -43,7 +46,8 @@ export class HomeComponent {
     this.router.navigate(['/calendar']);
   }
 
-  navigate(path: string | null): void {
-    if (path) this.router.navigate([path]);
+  navigate(path: string | null, courseId?: CourseId): void {
+    if (!path) return;
+    this.router.navigate([path], courseId !== undefined ? { queryParams: { courseId } } : undefined);
   }
 }

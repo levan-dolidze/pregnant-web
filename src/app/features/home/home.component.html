@@ -102,7 +102,7 @@
       <ul class="services__grid">
         @for (card of servicesSection().cards; track card.title; let i = $index) {
         <li class="srv-card" [class.srv-card--accent]="card.accent" [style.cursor]="card.action ? 'pointer' : 'default'"
-          (click)="navigate(card.action)" onKeyPress>
+          (click)="navigate(card.action, card.courseId)" onKeyPress>
           <span class="srv-card__icon" aria-hidden="true">{{ card.logo }}</span>
           <h3 class="srv-card__title">{{ card.title }}</h3>
           <p class="srv-card__text">{{ card.subtitle }}</p>
