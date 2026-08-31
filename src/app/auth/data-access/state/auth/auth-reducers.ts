@@ -20,8 +20,9 @@ export const authReducer = createReducer<AccountSource>(
     loaded: false,
   })),
 
-  on(loginSuccess, (state) => ({
+  on(loginSuccess, (state, { tokenGroup }) => ({
     ...state,
+    authResponse: tokenGroup,
     loading: false,
     otpSent: true,
   })),
@@ -36,12 +37,6 @@ export const authReducer = createReducer<AccountSource>(
   //   loading: true,
   // })),
 
-  // on(approveLoginSuccess, (state, { tokenGroup }) => ({
-  //   ...state,
-  //   authResponse: tokenGroup,
-  //   loaded: true,
-  //   loading: false,
-  // })),
 
   on(backToCredentials, (state) => ({
     ...state,

@@ -61,7 +61,7 @@
 
 
     <div class="topbar__login" >
-  @if (!isLoggedIn) {
+  @if (!iSAuthState()) {
   
   <mat-icon onKeyPress (click)="onLoginInit()">person</mat-icon>
   <app-button class="topbar__login" [className]="'stroked-fill h-40'" [text]="t('Register')"

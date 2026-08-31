@@ -11,7 +11,9 @@ import {
   loginError,
   loginSuccess,
   logout,
+
   logOutSuccess,
+
   userRegister,
   userRegisterError,
   userRegisterSuccess,
@@ -71,9 +73,11 @@ export class AuthEffects {
       tap(({ tokenGroup }) => {
 
         if (tokenGroup) {
+          console.log(tokenGroup)
           this.sessionStorage.saveKey('auth', JSON.stringify(tokenGroup));
-          const rout = this.activatedRoute.snapshot.queryParams['returnUrl'] ?? '';
-          this.router.navigate([rout]);
+          // const rout = this.activatedRoute.snapshot.queryParams['returnUrl'] ?? '';
+          // this.router.navigate([rout]);
+          this.dialog.closeAll()
         }
       })
     ), { dispatch: false }
@@ -99,7 +103,7 @@ export class AuthEffects {
       ofType(userRegister),
       switchMap(({ registerRequest }) => this.accountService.userRegister(registerRequest).pipe(
         map((response) => userRegisterSuccess({ tokenGroup: response })),
-        catchError((message) => of(userRegisterError({message})))
+        catchError((message) => of(userRegisterError({ message })))
       ))
     )
   );

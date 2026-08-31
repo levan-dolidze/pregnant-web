@@ -13,6 +13,8 @@ import { SharedModule } from 'src/app/shared/shared-module/shared';
 import { MenuConfig } from './utils';
 import { RegisterModalComponent } from 'src/app/features/auth/feature/user-register-modal/register-modal.component';
 import { AuthModalComponent } from 'src/app/features/auth/feature/auth-modal/auth-modal.component';
+import { iSAuthState, selectAccount } from 'src/app/auth/data-access/state/auth/auth-selectors';
+import { AuthActions } from 'src/app/auth/data-access/state/auth';
 
 @Component({
   selector: 'app-header',
@@ -34,6 +36,8 @@ export class HeaderComponent implements OnInit {
   readonly isLoadingState = this.loaderService.isLoadingState;
   readonly pageName = signal<string>('')
   readonly selectStep = toSignal(this.store.select(selectStep))
+  readonly iSAuthState = toSignal(this.store.select(iSAuthState))
+  readonly selectAccount = toSignal(this.store.select(selectAccount))
 
   @Input() session: string;
 
@@ -44,7 +48,6 @@ export class HeaderComponent implements OnInit {
   private readonly backIcon = signal<boolean>(false)
   readonly backIconState = computed(() => this.backIcon())
 
-  readonly isLoggedIn = false
 
 
   ngOnInit(): void {
@@ -117,7 +120,7 @@ export class HeaderComponent implements OnInit {
 
 
   onLogOut() {
-
+    this.store.dispatch(AuthActions.logout());
   }
 
 

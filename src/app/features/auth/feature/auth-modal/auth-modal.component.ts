@@ -105,6 +105,8 @@ export class AuthModalComponent implements OnInit, OnChanges {
 
   confirmOtp(event: boolean) {
 
+    
+
   }
 
   private forgotPassInit = signal<boolean>(false);
