@@ -1,71 +1,49 @@
 <main class="home">
 
-  <!-- ─── Hero ──────────────────────────────────────────────── -->
-  <section class="hero" aria-label="Introduction">
-    <div class="hero__blob hero__blob--1" aria-hidden="true"></div>
-    <div class="hero__blob hero__blob--2" aria-hidden="true"></div>
-
-    <div class="hero__inner">
-      <div class="hero__content">
-        <span class="badge badge--pink">
-          <span class="badge__dot" aria-hidden="true"></span>
-          სერტიფიცირებული მეან-გინეკოლოგი
-        </span>
-        <h1 class="hero__title">
-          ინდივიდუალური მზრუნველობა<br>
-          <em class="hero__title-accent">ყველა დედისთვის</em>
-        </h1>
-        <p class="hero__desc">
-          თანამგრძნობი, მტკიცებულებებზე დაფუძნებული პრენატალური და პოსტნატალური მოვლა —
-          ვუძღვებით თქვენ ორსულობის ყველა ეტაპზე.
-        </p>
-        <div class="hero__actions">
-          <app-button text="ვიზიტზე ჩაწერა" (btnClick)="goToCalendar()"></app-button>
-          <!-- <app-button className="btn--outline stroked" [customIconRight]="'assets/icons/_video.svg'">
-            ვიდეოს ნახვა
-          </app-button> -->
-        </div>
-        <div class="hero__stats">
-          <div class="hero__stat">
-            <strong class="hero__stat-value">12+</strong>
-            <span class="hero__stat-label">წლის გამოცდილება</span>
+  <section class="doctor" aria-labelledby="doctor-name">
+    <div class="doctor__inner">
+      <div class="doctor__media">
+        <div class="doctor__img-bg" aria-hidden="true"></div>
+        <img class="doctor__img" src="assets/images/doctor/doctorimg.jpg" alt="Dr. თამარ თევზაძე, მეან-გინეკოლოგი">
+        <div class="doctor__creds" aria-label="Doctor credentials">
+          <div class="cred">
+            <strong class="cred__value">MD, PhD</strong>
+            <span class="cred__label">კვალიფიკაცია</span>
           </div>
-          <span class="hero__stat-divider" aria-hidden="true"></span>
-          <div class="hero__stat">
-            <strong class="hero__stat-value">3.2K+</strong>
-            <span class="hero__stat-label">მიღებული ახალშობილი</span>
+          <div class="cred">
+            <strong class="cred__value">15 წელი</strong>
+            <span class="cred__label">გამოცდილება</span>
           </div>
-          <span class="hero__stat-divider" aria-hidden="true"></span>
-          <div class="hero__stat">
-            <strong class="hero__stat-value">98%</strong>
-            <span class="hero__stat-label">პაციენტის კმაყოფილება</span>
+          <div class="cred">
+            <strong class="cred__value">FIGO</strong>
+            <span class="cred__label">წევრი</span>
           </div>
         </div>
       </div>
-
-      <div class="hero__visual" aria-hidden="true">
-        <div class="hero__img-ring"></div>
-        <div class="hero__img-wrap">
-          <img class="hero__img" src="assets/images/doctor/doctorimg.jpg" alt="Dr. თამარ თევზაძე, მეან-გინეკოლოგი">
-          <div class="hero__float hero__float--top">
-            <span class="hero__float-icon">🏆</span>
-            <div>
-              <strong>საუკეთესო ექიმი</strong>
-              <span>2026 წლის ჯილდო</span>
-            </div>
-          </div>
-          <div class="hero__float hero__float--bottom">
-            <span class="hero__float-icon">📅</span>
-            <div>
-              <strong>უახლოესი ვიზიტი</strong>
-              <span>დღეს, 14:00</span>
-            </div>
-          </div>
+  
+      <div class="doctor__info">
+        <span class="badge badge--purple">გაიცანით ექიმი</span>
+        <h2 class="doctor__name" id="doctor-name">Dr. თამარ თევზაძე</h2>
+        <p class="doctor__role">მეან-გინეკოლოგი</p>
+        <div class="doctor__rating" aria-label="შეფასება 4.9 5-დან">
+          <span class="doctor__stars" aria-hidden="true">★★★★★</span>
+          <span class="doctor__rating-text">4.9 (800+ შეფასება)</span>
         </div>
+        <p class="doctor__bio">
+          ჩემი გვერდი ეხება ქალთა ჯამრთელობას და შევქმენი იმისთვის რომ ჩვენმა ქალბატონებმა, გოგონებმა და მომავალმა
+          დედებმა მიიღონ სანდო, საჭირო და საინტერესო ინფორმაცია მათი ჯამრთელობის შესახებ. მინდა გაგიზიაროთ ჩემი ცოდნა
+          და გამოცდილება და მოგაწოდოთ თანამედროვე მტკიცებით მედიცინის მიღწევებზე დაფუძნებული ინფორმაცია.
+        </p>
+        <ul class="doctor__tags">
+          <li>ევროპული სერტიფიკატი</li>
+          <li>დედათა და ნაყოფის მედიცინა</li>
+          <li>FIGO-ს წევრი</li>
+          <li>ლაპაროსკოპიული ქირურგია</li>
+        </ul>
+        <app-button text="დაჯავშნეთ კონსულტაცია" (btnClick)="goToCalendar()"></app-button>
       </div>
     </div>
   </section>
-
   <!-- ─── Trust Strip ───────────────────────────────────────── -->
   <div class="trust-strip" aria-label="Key facts">
     <div class="trust-strip__inner">
@@ -114,50 +92,7 @@
   </section>
 
   <!-- ─── Doctor Profile ───────────────────────────────────── -->
-  <section class="doctor" aria-labelledby="doctor-name">
-    <div class="doctor__inner">
-      <div class="doctor__media">
-        <div class="doctor__img-bg" aria-hidden="true"></div>
-        <img class="doctor__img" src="assets/images/doctor/doctorimg.jpg" alt="Dr. თამარ თევზაძე, მეან-გინეკოლოგი">
-        <div class="doctor__creds" aria-label="Doctor credentials">
-          <div class="cred">
-            <strong class="cred__value">MD, PhD</strong>
-            <span class="cred__label">კვალიფიკაცია</span>
-          </div>
-          <div class="cred">
-            <strong class="cred__value">15 წელი</strong>
-            <span class="cred__label">გამოცდილება</span>
-          </div>
-          <div class="cred">
-            <strong class="cred__value">FIGO</strong>
-            <span class="cred__label">წევრი</span>
-          </div>
-        </div>
-      </div>
 
-      <div class="doctor__info">
-        <span class="badge badge--purple">გაიცანით ექიმი</span>
-        <h2 class="doctor__name" id="doctor-name">Dr. თამარ თევზაძე</h2>
-        <p class="doctor__role">მეან-გინეკოლოგი</p>
-        <div class="doctor__rating" aria-label="შეფასება 4.9 5-დან">
-          <span class="doctor__stars" aria-hidden="true">★★★★★</span>
-          <span class="doctor__rating-text">4.9 (800+ შეფასება)</span>
-        </div>
-        <p class="doctor__bio">
-          ჩემი გვერდი ეხება ქალთა ჯამრთელობას და შევქმენი იმისთვის რომ ჩვენმა ქალბატონებმა, გოგონებმა და მომავალმა
-          დედებმა მიიღონ სანდო, საჭირო და საინტერესო ინფორმაცია მათი ჯამრთელობის შესახებ. მინდა გაგიზიაროთ ჩემი ცოდნა
-          და გამოცდილება და მოგაწოდოთ თანამედროვე მტკიცებით მედიცინის მიღწევებზე დაფუძნებული ინფორმაცია.
-        </p>
-        <ul class="doctor__tags">
-          <li>ევროპული სერტიფიკატი</li>
-          <li>დედათა და ნაყოფის მედიცინა</li>
-          <li>FIGO-ს წევრი</li>
-          <li>ლაპაროსკოპიული ქირურგია</li>
-        </ul>
-        <app-button text="დაჯავშნეთ კონსულტაცია" (btnClick)="goToCalendar()"></app-button>
-      </div>
-    </div>
-  </section>
 
   <!-- ─── Testimonials ─────────────────────────────────────── -->
   <section class="reviews" aria-labelledby="reviews-title">

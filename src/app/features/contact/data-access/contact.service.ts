@@ -20,7 +20,7 @@ export class ContactService {
   contactInfoLoading$ = this.getContactInfo()
 
   readonly contact = computed(() => this.contactInfo().data);
-  readonly laoding = computed(() => this.contactInfo().loader);
+  readonly laoding = computed(() => this.contactInfo()?.loader);
 
   constructor() {
     this.contactInfoLoading$.pipe(takeUntilDestroyed(this.destroyRef),
