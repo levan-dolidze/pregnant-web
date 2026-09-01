@@ -20,6 +20,7 @@ import { toSignal } from '@angular/core/rxjs-interop';
 import { CoursePurchaseFlowActions, CoursePurchaseFlowSelectors } from '../data-access/state/course-purchase-flow';
 import { selectContactInfo, selectCoursePurchaseFlowState, selectPersonalInfo } from '../data-access/state/course-purchase-flow/course-purchase-flow-selectors';
 import { PurchaseCourseRequest } from '../data-access/state/course-purchase-flow/models';
+import { JsonPipe } from '@angular/common';
 
 @Component({
   selector: 'app-purchase-course',
@@ -29,7 +30,8 @@ import { PurchaseCourseRequest } from '../data-access/state/course-purchase-flow
     MiniProgressBar,
     PersonalInfoComponent,
     ContactInfoComponent,
-    ConfirmComponent
+    ConfirmComponent,
+    JsonPipe
   ],
   templateUrl: './purchase-course.component.html',
   styleUrl: './purchase-course.component.scss',
@@ -95,11 +97,15 @@ export class PurchaseCourseComponent implements OnInit {
     this.purchase()
   }
 
+  getPrice(){
+    return this.promo()?.find((promo) => promo.courseId === +this.courseName)?.price ?? 0
+  }
+
   panelConfig = computed<SidePanelConfig>(() => ({
     items:
     {
       label: 'Baby_care_video_collection_for_mothers',
-      value: 7,
+      value: this.getPrice(),
       showStrikethrough: true,
       show: true
     },
@@ -107,7 +113,7 @@ export class PurchaseCourseComponent implements OnInit {
       enabled: true,
     },
     totalPrice: {
-      final: 4,
+      final: this.getPrice(),
       currency: '₾',
       showStrikethrough: true
     },
