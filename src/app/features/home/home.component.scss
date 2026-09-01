@@ -1,197 +1,16 @@
 @use 'variables' as *;
 @use '../feature-shared' as *;
 
-// ─── Hero ──────────────────────────────────────────────────────
-.hero {
-  background: $grad-hero;
-  padding: clamp(48px, 8vw, 90px) 0 0;
-  overflow: hidden;
-  position: relative;
-
-  &__blob {
-    position: absolute;
-    border-radius: 50%;
-    filter: blur(80px);
-    pointer-events: none;
-    z-index: 0;
-
-    &--1 { width: 500px; height: 500px; background: rgba($primary, .12); top: -120px; right: -80px; }
-    &--2 { width: 360px; height: 360px; background: rgba($pink, .1); bottom: 60px; left: -60px; }
-
-    @media (max-width: 600px) {
-      &--1 { width: 260px; height: 260px; right: -60px; }
-      &--2 { width: 200px; height: 200px; left: -40px; }
-    }
-  }
-
-  &__inner {
-    @include inner();
-    padding-inline: clamp(16px, 5vw, 24px);
-    position: relative;
-    z-index: 1;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    align-items: flex-end;
-    gap: 48px;
-
-    @media (max-width: 900px) { grid-template-columns: 1fr; }
-  }
-
-  &__content {
-    padding-bottom: clamp(40px, 7vw, 90px);
-    min-width: 0;
-
-    @media (max-width: 900px) { text-align: center; }
-  }
-
-  &__title {
-    font-size: clamp(20px, 3.5vw, 24px);
-    font-weight: 800;
-    color: $blue;
-    line-height: 1.15;
-    margin: 14px 0 16px;
-    word-break: keep-all;
-    overflow-wrap: break-word;
-  }
-
-  &__title-accent { @include gradient-text(); font-style: normal; }
-
-  &__desc {
-    font-size: clamp(14px, 2vw, 16px);
-    color: $gray13;
-    line-height: 1.65;
-    max-width: 460px;
-    margin: 0 0 28px;
-    overflow-wrap: break-word;
-
-    @media (max-width: 900px) { margin-inline: auto; max-width: 100%; }
-  }
-
-  &__actions {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 12px;
-    margin-bottom: 40px;
-
-    @media (max-width: 900px) { justify-content: center; }
-    @media (max-width: 380px) { flex-direction: column; align-items: stretch; .btn { justify-content: center; } }
-  }
-
-  &__stats {
-    display: flex;
-    align-items: center;
-    gap: 20px;
-    flex-wrap: wrap;
-
-    @media (max-width: 900px) { justify-content: center; }
-    @media (max-width: 380px) { gap: 12px; }
-  }
-
-  &__stat { display: flex; flex-direction: column; }
-
-  &__stat-value {
-    @include gradient-text();
-    font-size: clamp(16px, 3vw, 24px);
-    font-weight: 800;
-    line-height: 1;
-  }
-
-  &__stat-label  { font-size: 11px; color: $gray13; margin-top: 4px; white-space: nowrap; }
-  &__stat-divider { width: 1px; height: 32px; background: rgba($primary, .2); flex-shrink: 0; }
-
-  &__visual {
-    display: flex;
-    justify-content: center;
-    align-items: flex-end;
-    position: relative;
-
-    @media (max-width: 900px) { display: none; }
-  }
-
-  &__img-ring {
-    position: absolute;
-    inset: -24px -24px 0;
-    border-radius: 28px 28px 0 0;
-    background: $grad;
-    opacity: .1;
-    z-index: 0;
-  }
-
-  &__img-wrap { position: relative; z-index: 1; width: 400px; }
-
-  &__img {
-    display: block;
-    width: 100%;
-    height: 500px;
-    object-fit: cover;
-    object-position: top center;
-    border-radius: 24px 24px 0 0;
-    background: linear-gradient(180deg, $primary-01 20%, $pink300 100%);
-  }
-
-  &__float {
-    @include card();
-    position: absolute;
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    padding: 14px 18px;
-    animation: float 3s ease-in-out infinite;
-
-    strong { display: block; font-size: 13px; font-weight: 700; color: $blue; }
-    span   { font-size: 12px; color: $gray13; }
-
-    &--top    { top: 40px; left: -48px; animation-delay: 0s; }
-    &--bottom { bottom: 40px; right: -48px; animation-delay: 1.5s; }
-  }
-
-  &__float-icon { font-size: 24px; flex-shrink: 0; }
-}
-
-// ─── Trust Strip ───────────────────────────────────────────────
-.trust-strip {
-  background: $primaryHover;
-  padding: 16px 0;
-
-  &__inner {
-    @include inner();
-    padding-inline: clamp(16px, 5vw, 24px);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 4px 0;
-  }
-
-  &__item {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    padding: 6px 14px;
-    color: rgba($white, .85);
-    font-size: 13px;
-    font-weight: 500;
-
-    @media (max-width: 480px) { font-size: 12px; padding: 5px 10px; }
-  }
-
-  &__icon { font-size: 15px; flex-shrink: 0; }
-
-  &__sep {
-    width: 1px;
-    height: 20px;
-    background: rgba($white, .2);
-    flex-shrink: 0;
-
-    @media (max-width: 700px) { display: none; }
-  }
-}
 
 // ─── Services ──────────────────────────────────────────────────
 .services {
   @include section();
   background: $white100;
-  &__inner { @include inner(); padding-inline: clamp(16px, 5vw, 24px); }
+
+  &__inner {
+    @include inner();
+    padding-inline: clamp(16px, 5vw, 24px);
+  }
 
   &__grid {
     list-style: none;
@@ -201,8 +20,14 @@
     grid-template-columns: repeat(3, 1fr);
     gap: 24px;
 
-    @media (max-width: 900px) { grid-template-columns: repeat(2, 1fr); gap: 16px; }
-    @media (max-width: 540px) { grid-template-columns: 1fr; }
+    @media (max-width: 900px) {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
+    }
+
+    @media (max-width: 540px) {
+      grid-template-columns: 1fr;
+    }
   }
 }
 
@@ -218,7 +43,9 @@
   &::before {
     content: '';
     position: absolute;
-    top: 0; left: 0; right: 0;
+    top: 0;
+    left: 0;
+    right: 0;
     height: 3px;
     background: $grad;
     transform: scaleX(0);
@@ -229,29 +56,69 @@
   &:hover {
     transform: translateY(-5px);
     box-shadow: $s3;
-    &::before { transform: scaleX(1); }
+
+    &::before {
+      transform: scaleX(1);
+    }
   }
 
   &--accent {
     background: $grad;
-    .srv-card__title, .srv-card__text, .srv-card__link { color: $white; }
-    .srv-card__link { opacity: .8; }
-    &:hover { box-shadow: 0 20px 56px rgba($primary, .4); }
-    &::before { display: none; }
+
+    .srv-card__title,
+    .srv-card__text,
+    .srv-card__link {
+      color: $white;
+    }
+
+    .srv-card__link {
+      opacity: .8;
+    }
+
+    &:hover {
+      box-shadow: 0 20px 56px rgba($primary, .4);
+    }
+
+    &::before {
+      display: none;
+    }
   }
 
-  &__icon  { font-size: 24px; display: block; margin-bottom: 20px; }
-  &__title { font-size: 17px; font-weight: 700; color: $blue; margin: 0 0 10px; }
-  &__text  {
-    font-size: 14px; color: $gray13; line-height: 1.65; margin: 0 0 20px; flex: 1;
+  &__icon {
+    font-size: 24px;
+    display: block;
+    margin-bottom: 20px;
+  }
+
+  &__title {
+    font-size: 17px;
+    font-weight: 700;
+    color: $blue;
+    margin: 0 0 10px;
+  }
+
+  &__text {
+    font-size: 14px;
+    color: $gray13;
+    line-height: 1.65;
+    margin: 0 0 20px;
+    flex: 1;
     display: -webkit-box;
     -webkit-box-orient: vertical;
     -webkit-line-clamp: 3;
     overflow: hidden;
   }
-  &__link  { font-size: 13px; font-weight: 600; color: $primary; margin-top: auto; }
 
-  @media (max-width: 540px) { padding: 24px 20px; }
+  &__link {
+    font-size: 13px;
+    font-weight: 600;
+    color: $primary;
+    margin-top: auto;
+  }
+
+  @media (max-width: 540px) {
+    padding: 24px 20px;
+  }
 }
 
 // ─── Doctor ────────────────────────────────────────────────────
@@ -260,18 +127,26 @@
 
   &__inner {
     @include inner();
+
     padding-inline: clamp(16px, 5vw, 24px);
     display: grid;
     grid-template-columns: 1fr 1.1fr;
     align-items: center;
     gap: 88px;
 
-    @media (max-width: 900px) { grid-template-columns: 1fr; gap: 60px; }
+    @media (max-width: 900px) {
+      grid-template-columns: 1fr;
+      gap: 60px;
+    }
   }
 
   &__media {
     position: relative;
-    @media (max-width: 900px) { max-width: 340px; margin-inline: auto; }
+
+    @media (max-width: 900px) {
+      max-width: 340px;
+      margin-inline: auto;
+    }
   }
 
   &__img-bg {
@@ -308,7 +183,9 @@
     box-shadow: $s3;
   }
 
-  &__info .badge { margin-bottom: 16px; }
+  &__info .badge {
+    margin-bottom: 16px;
+  }
 
   &__name {
     font-size: clamp(18px, 3vw, 24px);
@@ -318,11 +195,37 @@
     line-height: 1.15;
   }
 
-  &__role         { font-size: 16px; font-weight: 600; color: $pink; margin: 0 0 14px; }
-  &__rating       { display: flex; align-items: center; gap: 10px; margin-bottom: 22px; }
-  &__stars        { color: $yellow; font-size: 18px; letter-spacing: 2px; }
-  &__rating-text  { font-size: 14px; color: $gray13; }
-  &__bio          { font-size: 16px; color: $gray700; line-height: 1.75; margin: 0 0 28px; }
+  &__role {
+    font-size: 16px;
+    font-weight: 600;
+    color: $pink;
+    margin: 0 0 14px;
+  }
+
+  &__rating {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 22px;
+  }
+
+  &__stars {
+    color: $yellow;
+    font-size: 18px;
+    letter-spacing: 2px;
+  }
+
+  &__rating-text {
+    font-size: 14px;
+    color: $gray13;
+  }
+
+  &__bio {
+    font-size: 16px;
+    color: $gray700;
+    line-height: 1.75;
+    margin: 0 0 28px;
+  }
 
   &__tags {
     list-style: none;
@@ -349,17 +252,33 @@
   align-items: center;
   padding: 16px 20px;
 
-  & + & { border-left: 1px solid $gray5; }
+  &+& {
+    border-left: 1px solid $gray5;
+  }
 
-  &__value { font-size: 16px; font-weight: 800; @include gradient-text(); }
-  &__label { font-size: 11px; color: $gray13; margin-top: 3px; white-space: nowrap; }
+  &__value {
+    font-size: 16px;
+    font-weight: 800;
+    @include gradient-text();
+  }
+
+  &__label {
+    font-size: 11px;
+    color: $gray13;
+    margin-top: 3px;
+    white-space: nowrap;
+  }
 }
 
 // ─── Reviews ───────────────────────────────────────────────────
 .reviews {
   @include section();
   background: $white100;
-  &__inner { @include inner(); padding-inline: clamp(16px, 5vw, 24px); }
+
+  &__inner {
+    @include inner();
+    padding-inline: clamp(16px, 5vw, 24px);
+  }
 
   &__grid {
     display: grid;
@@ -371,9 +290,15 @@
       grid-template-columns: 1fr;
       max-width: 480px;
       margin-inline: auto;
-      .review--featured { transform: none; }
+
+      .review--featured {
+        transform: none;
+      }
     }
-    @media (max-width: 540px) { gap: 16px; }
+
+    @media (max-width: 540px) {
+      gap: 16px;
+    }
   }
 }
 
@@ -386,23 +311,45 @@
   gap: 20px;
   transition: transform $ease, box-shadow $ease;
 
-  &:hover { transform: translateY(-4px); box-shadow: $s3; }
+  &:hover {
+    transform: translateY(-4px);
+    box-shadow: $s3;
+  }
 
   &--featured {
     background: $grad;
     box-shadow: 0 12px 40px rgba($primary, .35);
     transform: translateY(-8px);
 
-    .review__stars  { color: rgba($white, .9); }
-    .review__text,
-    .review__name   { color: $white; }
-    .review__meta   { color: rgba($white, .7); }
-    .review__avatar { background: rgba($white, .25); color: $white; }
+    .review__stars {
+      color: rgba($white, .9);
+    }
 
-    &:hover { transform: translateY(-12px); box-shadow: 0 20px 56px rgba($primary, .5); }
+    .review__text,
+    .review__name {
+      color: $white;
+    }
+
+    .review__meta {
+      color: rgba($white, .7);
+    }
+
+    .review__avatar {
+      background: rgba($white, .25);
+      color: $white;
+    }
+
+    &:hover {
+      transform: translateY(-12px);
+      box-shadow: 0 20px 56px rgba($primary, .5);
+    }
   }
 
-  &__stars { color: $yellow; font-size: 16px; letter-spacing: 3px; }
+  &__stars {
+    color: $yellow;
+    font-size: 16px;
+    letter-spacing: 3px;
+  }
 
   &__text {
     font-size: 15px;
@@ -432,7 +379,11 @@
     opacity: .3;
   }
 
-  &__footer { display: flex; align-items: center; gap: 14px; }
+  &__footer {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
 
   &__avatar {
     width: 44px;
@@ -448,8 +399,22 @@
     flex-shrink: 0;
   }
 
-  &__name { display: block; font-style: normal; font-size: 15px; font-weight: 700; color: $blue; }
-  &__meta { display: block; font-size: 12px; color: $gray13; margin-top: 2px; }
+  &__name {
+    display: block;
+    font-style: normal;
+    font-size: 15px;
+    font-weight: 700;
+    color: $blue;
+  }
 
-  @media (max-width: 540px) { padding: 24px; }
+  &__meta {
+    display: block;
+    font-size: 12px;
+    color: $gray13;
+    margin-top: 2px;
+  }
+
+  @media (max-width: 540px) {
+    padding: 24px;
+  }
 }
