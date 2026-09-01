@@ -10,6 +10,7 @@ import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { OtpService } from './service/otp-service';
 import { OtpResponse, VerifyOtpRequest } from './models';
 import { TranslocoModule } from '@jsverse/transloco';
+import { take } from 'rxjs';
 export interface OtpDialog {
   mobileNumber: string,
 }
@@ -128,7 +129,8 @@ export class OtpComponent implements OnInit {
       this.otpService.requestOtp(params)
         .pipe().subscribe({
           next: ((response: OtpResponse) => {
-            this.passwordId.set(response.guid)
+            console.log(response.devOtpCode)
+            this.passwordId.set(response.devOtpCode);
           }),
           error: ((err) => {
             console.error(err)
@@ -156,30 +158,31 @@ export class OtpComponent implements OnInit {
       this.verifyUtpLoading.set({ loading: true, error: '' })
       const params = {
         code: this.otpf.otp.value,
-        passwordId: this.passwordIdState(),
-        phoneNumber: this.clientNumber(),
-        productName: null
+        // passwordId: this.passwordIdState(),
+        mobileNumber: this.clientNumber(),
+        // productName: null
       } as VerifyOtpRequest
-    this.confirmOtpEmit.emit(true)
+    // this.confirmOtpEmit.emit(true)
 
-      // this.otpService.verifyRequestedOtpCode(params)
-      //   .pipe(take(1)).
-      //   subscribe({
-      //     next: ((passwordId: string) => {
-      //       this.onClose(true)
-      //       this.confirmOtpEmit.emit(true)
-      //       this.verifyUtpLoading.set({ loading: false, error: '' })
-      //       clearInterval(this.timerInterval);
-      //     }),
-      //     error: ((err: HttpErrorResponse) => {
-      //       console.error(err.error)
-      //       this.otpf.otp.markAsDirty();
-      //       this.otpf.otp.setErrors({
-      //         invalidOtp: true
-      //       });
-      //       this.verifyUtpLoading.set({ loading: false, error: err.error })
-      //     })
-      //   })
+      this.otpService.confirmOtp(params)
+        .pipe(take(1)).
+        subscribe({
+          next: ((passwordId: string) => {
+            this.onClose(true)
+            this.confirmOtpEmit.emit(true)
+            this.verifyUtpLoading.set({ loading: false, error: '' })
+            clearInterval(this.timerInterval);
+          }),
+          error: ((err: HttpErrorResponse) => {
+            console.error(err.error.description)
+            this.confirmOtpEmit.emit(false)
+            this.otpf.otp.markAsDirty();
+            this.otpf.otp.setErrors({
+              invalidOtp: true
+            });
+            this.verifyUtpLoading.set({ loading: false, error: err.error.description })
+          })
+        })
     }
   }
 
@@ -190,7 +193,7 @@ export class OtpComponent implements OnInit {
   private dynamicInputDash() {
     const inputs = document.querySelectorAll('.ng-otp-input-wrapper input');
 
-    inputs.forEach((input: HTMLInputElement) => {
+    inputs.forEach((input: HTMLInputElement|any) => {
       input.value ? input.classList.remove('has-dash') :
         input.classList.add('has-dash');
     });

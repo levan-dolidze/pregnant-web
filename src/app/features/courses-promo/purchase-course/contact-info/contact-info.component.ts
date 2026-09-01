@@ -9,6 +9,7 @@ import { ControlModeChange } from 'src/app/shared/functions/controlModeChange';
 import { regExp } from 'src/app/shared/utils/regex';
 import { Store } from '@ngrx/store';
 import { CoursePurchaseFlowActions } from '../../data-access/state/course-purchase-flow';
+import { OtpService } from 'src/app/shared/features/otp/service/otp-service';
 
 @Component({
   selector: 'app-contact-info',
@@ -20,6 +21,7 @@ import { CoursePurchaseFlowActions } from '../../data-access/state/course-purcha
 export class ContactInfoComponent {
 
   private readonly store = inject(Store);
+  private readonly otpService = inject(OtpService);
 
   form = new FormGroup({
     email: new FormControl('', [Validators.required, Validators.pattern(regExp.email)]),
@@ -41,11 +43,14 @@ export class ContactInfoComponent {
 
   onOtpConfirmed(confirmed: boolean): void {
     console.log(confirmed)
-    const { email, mobileNumber } = this.form.getRawValue();
-    this.store.dispatch(CoursePurchaseFlowActions.saveContactInfo({
-      contactInfo: { email, mobileNumber },
-      step: 3
-    }));
+
+    if (confirmed){
+      const { email, mobileNumber } = this.form.getRawValue();
+      this.store.dispatch(CoursePurchaseFlowActions.saveContactInfo({
+        contactInfo: { email, mobileNumber },
+        step: 3
+      }));
+    }
   }
 
 

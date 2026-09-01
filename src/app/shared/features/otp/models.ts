@@ -1,13 +1,14 @@
 export interface VerifyOtpRequest {
-    passwordId: string;
+    // passwordId: string;
     code: string,
-    phoneNumber: string;
-    productName: string | null;
+    mobileNumber: string;
+    // productName: string | null;
 }
 
 export interface OtpRequest {
     mobileNumber: string,
 }
 export interface OtpResponse {
-    guid: string
+    description: string
+    devOtpCode: string
 }
