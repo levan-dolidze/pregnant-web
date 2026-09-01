@@ -20,13 +20,13 @@ export class OtpService {
 
   requestOtp(params: OtpRequest): Observable<OtpResponse> {
     return this.apiService
-      .post(`${basePath}/requestotp`, params)
+      .post(`${basePath}/requestOtp`, params)
   }
 
 
-  verifyRequestedOtpCode(params: VerifyOtpRequest) {
+  confirmOtp(params: VerifyOtpRequest) {
     return this.apiService
-      .post(`${basePath}/verifyrequestedotpcode`, params)
+      .post(`${basePath}/confirmOtp`, params)
   }
 
 
