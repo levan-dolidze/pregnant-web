@@ -10,6 +10,7 @@ import { ControlModeChange } from 'src/app/shared/functions/controlModeChange';
 import { regExp } from 'src/app/shared/utils/regex';
 import { ValidationErrorsDirective } from 'src/app/shared/directives/validation-errors.directive';
 import { finalize } from 'rxjs';
+import { AlertService } from 'src/app/components/alert/alert.service';
 
 
 @Component({
@@ -25,6 +26,7 @@ export class ContactComponent implements OnInit {
 
 
   readonly contactService = inject(ContactService);
+  readonly alertService = inject(AlertService);
   readonly sendLoading = signal<boolean>(false);
   readonly sendLoadingState = computed(() => this.sendLoading());
 
@@ -54,7 +56,6 @@ export class ContactComponent implements OnInit {
       this.sendLoading.set(true)
       const params = {
         ...this.form.getRawValue(),
-        personalNumber: "01010101010"
       }
 
       this.contactService.sendContactMessage(params).
@@ -62,6 +63,7 @@ export class ContactComponent implements OnInit {
         subscribe({
           next: ((res) => {
             console.log(res)
+            this.alertService.notification({ message: 'წარმატებით გაიგზავნა', messageType: 'success' })
           }),
           error: (() => {
 
