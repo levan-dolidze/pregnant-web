@@ -245,4 +245,29 @@ $grad-hero: linear-gradient(140deg, $hero-grad-start 0%, $hero-grad-mid 45%, $he
       }
     }
   }
+
+  &__social {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: 600;
+    font-size: 15px;
+    color: $white;
+    text-decoration: none;
+    padding: 12px 22px;
+    border-radius: 999px;
+    border: 1px solid rgba($white, .5);
+    transition: background .2s ease, border-color .2s ease;
+
+    &:hover {
+      background: rgba($white, .12);
+      border-color: $white;
+    }
+  }
+
+  &__social-icon {
+    width: 20px;
+    height: 20px;
+    flex-shrink: 0;
+  }
 }

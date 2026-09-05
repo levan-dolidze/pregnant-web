@@ -150,8 +150,21 @@
       <h2 class="cta__title">თქვენი მოგზაურობა აქ იწყება</h2>
       <p class="cta__desc">ჩაეწერეთ პირველ ვიზიტზე და მიიღეთ ექსპერტული დახმარება პირველი დღიდანვე.</p>
       <div class="cta__actions">
-        <app-button className="btn--white" text="ჩაეწერეთ ვიზიტზე" (btnClick)="goToCalendar()"></app-button>
-        <a class="btn btn--outline-white" href="tel:+995000000000">დარეკეთ ახლა</a>
+        <!-- <app-button className="btn--white" text="ჩაეწერეთ ვიზიტზე" (btnClick)="goToCalendar()"></app-button>
+        <a class="btn btn--outline-white" href="tel:+995000000000">დარეკეთ ახლა</a> -->
+        <a
+          class="cta__social"
+          href="https://www.instagram.com/doctor_tamuna/"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="Instagram">
+          <svg class="cta__social-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <rect x="2" y="2" width="20" height="20" rx="5.5" stroke="currentColor" stroke-width="1.8"/>
+            <circle cx="12" cy="12" r="4.5" stroke="currentColor" stroke-width="1.8"/>
+            <circle cx="17.5" cy="6.5" r="1" fill="currentColor"/>
+          </svg>
+          <span>Instagram</span>
+        </a>
       </div>
     </div>
   </section>
