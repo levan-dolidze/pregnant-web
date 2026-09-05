@@ -14,17 +14,16 @@ import { VideoViewerComponent } from 'src/app/components/video-viewer/video-view
   styleUrl: './courses.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class CoursesComponent implements OnInit,OnChanges, OnDestroy {
+export class CoursesComponent implements OnInit, OnChanges, OnDestroy {
   private readonly route = inject(ActivatedRoute);
   private readonly coursesService = inject(CoursesService);
-  readonly courseBy = this.coursesService.courseBy
 
   readonly myCourseByState = this.coursesService.myCourseByState
 
   private readonly paramsSub = Subscription.EMPTY;
 
-  @Input() section:string;
-  @Input() chapter:string;
+  @Input() section: string;
+  @Input() chapter: string;
   chapterLabel: string | null = null;
   lessonLabel: string | null = null;
 
@@ -33,12 +32,12 @@ export class CoursesComponent implements OnInit,OnChanges, OnDestroy {
   }
 
   ngOnChanges(changes: SimpleChanges): void {
-   
+
     console.log(this.chapter)
     console.log(this.section)
-    const params ={
-      chapter: this.chapter,
-      section: this.section
+    const params = {
+      chapter: this.chapter ?? 'intro',
+      section: this.section ?? '1'
     }
     this.coursesService.getMyCourseBy(params)
     //featch video by item id

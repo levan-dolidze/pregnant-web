@@ -91,16 +91,7 @@ export class CoursesService {
     return this.apiService.get(`${basePath}/GetCoursesMenu?courseId=${courseId}`)
   }
 
-  //getBy
-  readonly courseBy = signal<CourseLessonContent>({
-    chapter: 'intro',
-    section: 'who_am_i',
-    url: 'https://www.youtube.com/embed/QFcv5Ma8u8k',
-    title: 'Dummy lesson title',
-    duration: '1:20',
-    typeId: VideoTypeIds.VideoLession
-  });
-
+  // CourseLessonContent
   getMyCourseBy(params: MyCourseByRequest) {
     this.apiService.get(`${basePath}/GetMyCourseBy`, params).pipe(
       takeUntilDestroyed(this.destroyRef),

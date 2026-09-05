@@ -1,19 +1,21 @@
-<div *loading="false"></div>
+<div *loading="myCourseByState()?.loader"></div>
 
-<section class="lesson" *transloco="let t">
+@if (myCourseByState()?.data; as courseBy) {
+  <section class="lesson" *transloco="let t">
 
-  <h1 class="lesson__title">{{ t(courseBy().section) }}</h1>
+    <h1 class="lesson__title">{{ t(courseBy.section) }}</h1>
 
-  <div class="lesson__meta">
-    <span class="lesson__meta-item">
-      <mat-icon class="lesson__meta-icon">schedule</mat-icon>
-      {{ courseBy().duration }} წუთი
-    </span>
-  </div>
+    <div class="lesson__meta">
+      <span class="lesson__meta-item">
+        <mat-icon class="lesson__meta-icon">schedule</mat-icon>
+        {{ courseBy.duration }} წუთი
+      </span>
+    </div>
 
-  <app-video-viewer
-    class="lesson__video"
-    [videoUrl]="courseBy().url"
-    [title]="t(courseBy().section)">
-  </app-video-viewer>
-</section>
+    <app-video-viewer
+      class="lesson__video"
+      [videoUrl]="courseBy.url"
+      [title]="t(courseBy.section)">
+    </app-video-viewer>
+  </section>
+}
