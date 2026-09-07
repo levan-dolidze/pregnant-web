@@ -1,0 +1,96 @@
+[theme="dark"] {
+
+  .error-containner {
+    background-color: var(--bg) !important;
+
+    .error-inner {
+      > :nth-child(2) {
+        color: var(--black-white) !important;
+      }
+
+      > :last-child {
+        color: var(--label) !important;
+      }
+    }
+  }
+
+  .login-form {
+    background-color: var(--bg100) !important;
+
+    &__register {
+      color: var(--label) !important;
+    }
+
+    &__close img {
+
+      filter: brightness(0) invert(1) !important;
+    }
+  }
+
+  .register-form {
+    background-color: var(--bg100) !important;
+
+    &__close img {
+      filter: brightness(0) invert(1) !important;
+    }
+  }
+
+  .dialog {
+    &__title {
+      color: var(--black-white) !important;
+    }
+
+    &__message {
+      color: var(--label) !important;
+    }
+
+    &__close img {
+      filter: brightness(0) invert(1) !important;
+    }
+  }
+
+  .mat-mdc-dialog-surface {
+    background-color: var(--bg100) !important;
+  }
+
+  .mat-mdc-form-field-type-mat-input:not(.mat-mdc-form-field-has-icon-suffix),
+  .mat-mdc-form-field-type-mat-select:not(.mat-mdc-form-field-has-icon-suffix) {
+    .mdc-text-field--filled {
+      border-color: var(--border) !important;
+    }
+  }
+
+  .isReadonly {
+    background-color: var(--toggle) !important;
+  }
+
+  .mdc-checkbox__background {
+    border: 1px solid var(--border) !important;
+    background-color: var(--toggle) !important;
+  }
+
+  .mat-mdc-radio-button .mdc-radio .mdc-radio__native-control:enabled:not(:checked) + .mdc-radio__background .mdc-radio__outer-circle {
+    border-color: var(--gray-01) !important;
+  }
+
+  .mat-mdc-radio-group .mdc-label {
+    color: var(--label) !important;
+  }
+
+  .mat-drawer,
+  .mat-drawer-container {
+    background-color: var(--bg100) !important;
+  }
+
+  .mat-mdc-select-panel {
+    background-color: var(--bg100) !important;
+  }
+
+  body {
+    color: var(--black-white) !important;
+  }
+
+  .pageWrapper {
+    background-color: var(--bg200) !important;
+  }
+}

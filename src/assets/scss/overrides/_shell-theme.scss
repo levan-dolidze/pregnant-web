@@ -1,0 +1,55 @@
+[theme="dark"] {
+  html,
+  body {
+    background-color: var(--bg);
+  }
+
+  .topbar {
+    background-color: var(--bg100);
+    box-shadow: 0 0 20px 3px hsla(0, 0%, 0%, .35);
+  }
+
+  .topbar__menu,
+  .topbar__navs a,
+  .topbar__navs-trigger,
+  .topbar__navs-chevron,
+  .topbar__burger mat-icon,
+  .topbar__notify mat-icon {
+    color: var(--black-white);
+  }
+
+  .topbar__mobile-menu {
+    background-color: var(--bg100);
+  }
+
+  .topbar__mobile-link,
+  .topbar__mobile-logout,
+  .topbar__mobile-group {
+    color: var(--black-white);
+  }
+
+  .topbar__mobile-link:hover,
+  .topbar__mobile-logout:hover {
+    background-color: hsla(0, 0%, 100%, .06);
+  }
+
+  .topbar__profile-btn {
+    background: rgba($white, .08);
+  }
+
+  .mat-mdc-menu-panel {
+    background-color: var(--bg100) !important;
+  }
+
+  .topbar__dropdown-panel .mat-mdc-menu-item,
+  .topbar-dd .mat-mdc-menu-item,
+  .topbar__profile-panel .mat-mdc-menu-item {
+    color: var(--black-white) !important;
+
+    .mat-mdc-menu-item-text { color: var(--black-white); }
+  }
+
+  .topbar__profile-greeting {
+    color: var(--black-white);
+  }
+}

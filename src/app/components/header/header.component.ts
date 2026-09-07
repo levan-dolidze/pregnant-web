@@ -15,6 +15,7 @@ import { RegisterModalComponent } from 'src/app/features/auth/feature/user-regis
 import { AuthModalComponent } from 'src/app/features/auth/feature/auth-modal/auth-modal.component';
 import { iSAuthState, selectAccount } from 'src/app/auth/data-access/state/auth/auth-selectors';
 import { AuthActions } from 'src/app/auth/data-access/state/auth';
+import { AppSettingsService } from 'src/app/shared/services/app-settings.service';
 
 @Component({
   selector: 'app-header',
@@ -30,6 +31,7 @@ export class HeaderComponent implements OnInit {
   readonly router = inject(Router);
   readonly activatedRoute = inject(ActivatedRoute);
   private readonly dialog = inject(MatDialog);
+  private readonly appSettingsService = inject(AppSettingsService);
 
   protected readonly store = inject(Store);
 
@@ -43,6 +45,11 @@ export class HeaderComponent implements OnInit {
 
   readonly isMenuOpen = signal(false);
   toggleMenu(): void { this.isMenuOpen.update(v => !v); }
+
+  readonly isDarkMode = computed(() => this.appSettingsService.options().theme === 'dark');
+  toggleTheme(): void {
+    this.appSettingsService.setActiveMode(this.isDarkMode() ? 'light' : 'dark');
+  }
 
 
   private readonly backIcon = signal<boolean>(false)

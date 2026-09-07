@@ -55,6 +55,13 @@
       }
     </div>
 
+    <button class="topbar__theme-toggle" mat-icon-button
+            (click)="toggleTheme()"
+            [attr.aria-label]="isDarkMode() ? t('Light_mode') : t('Dark_mode')"
+            [attr.aria-pressed]="isDarkMode()">
+      <mat-icon>{{ isDarkMode() ? 'light_mode' : 'dark_mode' }}</mat-icon>
+    </button>
+
     <button class="topbar__burger" mat-icon-button (click)="toggleMenu()" aria-label="Menu">
       <mat-icon>{{ isMenuOpen() ? 'close' : 'menu' }}</mat-icon>
     </button>
