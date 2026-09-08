@@ -27,7 +27,8 @@
             transition: background-color 0.25s ease;
             width: fit-content;
             min-width: 1ch;
-            padding: 11px 0px;
+            // horizontal padding widens the tap target beyond the label's own width
+            padding: 11px 16px;
         }
     }
 

@@ -11,6 +11,8 @@
   @include flex-init;
   &__close {
     cursor: pointer;
+    padding: 10px;
+    margin: -10px;
   }
   &__error,
   &__success{@include alert()}

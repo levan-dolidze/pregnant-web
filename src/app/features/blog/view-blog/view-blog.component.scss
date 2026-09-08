@@ -23,6 +23,13 @@
     width: 10px;
     height: 16px;
     cursor: pointer;
+    // box-sizing reset because the global border-box rule would otherwise
+    // clamp this box to the padding size below and crush the icon to 0.
+    // Padding + negative margin widen the tap target to ~40px without
+    // shifting surrounding layout (visual icon size stays 10x16).
+    box-sizing: content-box;
+    padding: 12px;
+    margin: -12px;
 
     // Icon asset is drawn for light backgrounds; invert it in dark mode.
     :host-context([theme="dark"]) & {

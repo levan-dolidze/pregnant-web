@@ -8,7 +8,7 @@
 
   &__back {
     display: inline-block;
-    @include font(13px, 600, $gray13, $font-medium);
+    @include font(13px, 600, var(--gray-01), $font-medium);
     text-decoration: none;
     margin-bottom: 16px;
 
@@ -18,7 +18,7 @@
   }
 
   &__card {
-    background: $white;
+    background: var(--bg100);
     border-radius: 16px;
     padding: 28px;
     box-shadow: 0 4px 20px rgba(0, 0, 0, .08);
@@ -31,11 +31,11 @@
     gap: 16px;
     margin-bottom: 24px;
     padding-bottom: 20px;
-    border-bottom: 1px solid $gray12;
+    border-bottom: 1px solid var(--border);
   }
 
   &__title {
-    @include font(20px, 700, $gray700, $font-bold);
+    @include font(20px, 700, var(--black-white), $font-bold);
     margin: 0;
   }
 
@@ -50,7 +50,7 @@
     }
 
     &--confirmed {
-      background: $active;
+      background: #25D272;
     }
 
     &--rejected {
@@ -71,15 +71,15 @@
     padding: 12px 0;
 
     &:not(:last-child) {
-      border-bottom: 1px solid $gray5;
+      border-bottom: 1px solid var(--border);
     }
 
     dt {
-      @include font(13px, 600, $gray13, $font-medium);
+      @include font(13px, 600, var(--gray-01), $font-medium);
     }
 
     dd {
-      @include font(14px, 500, $gray700, $font-default);
+      @include font(14px, 500, var(--black-white), $font-default);
       margin: 0;
       word-break: break-word;
     }
@@ -91,7 +91,7 @@
   }
 
   &__empty {
-    @include font(14px, 400, $gray13, $font-default);
+    @include font(14px, 400, var(--gray-01), $font-default);
   }
 
   @media (max-width: 500px) {

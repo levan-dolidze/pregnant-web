@@ -80,8 +80,8 @@ $grad-hero: linear-gradient(140deg, $hero-grad-start 0%, $hero-grad-mid 45%, $he
   }
 
   &--white {
-    background: $white;
-    color: $primary;
+    background: var(--black-white);
+    color: var(--bg);
     box-shadow: 0 4px 20px rgba($black, .14);
 
     &:hover {
@@ -90,12 +90,11 @@ $grad-hero: linear-gradient(140deg, $hero-grad-start 0%, $hero-grad-mid 45%, $he
   }
 
   &--outline-white {
-    border-color: rgba($white, .5);
-    color: $white;
+    border-color: var(--black-white);
+    color: var(--black-white);
 
     &:hover {
-      border-color: $white;
-      background: rgba($white, .1);
+      background: var(--hover-overlay);
     }
   }
 
@@ -120,6 +119,11 @@ $grad-hero: linear-gradient(140deg, $hero-grad-start 0%, $hero-grad-mid 45%, $he
   &--pink {
     background: $pink100;
     color: $pink;
+
+    [theme="dark"] & {
+      background: var(--bg100);
+      color: var(--primary-01);
+    }
   }
 
   &--purple {
@@ -182,7 +186,7 @@ $grad-hero: linear-gradient(140deg, $hero-grad-start 0%, $hero-grad-mid 45%, $he
 // ─── CTA ─────────────────────────────────────────────────────────
 .cta {
   padding: clamp(64px, 9vw, 104px) 24px;
-  background: #0F1015;
+  background: var(--bg);
   position: relative;
   overflow: hidden;
 
@@ -190,7 +194,7 @@ $grad-hero: linear-gradient(140deg, $hero-grad-start 0%, $hero-grad-mid 45%, $he
     position: absolute;
     width: 600px;
     height: 600px;
-    background: rgba($white, .04);
+    background: var(--hover-overlay);
     border-radius: 50%;
     top: -200px;
     right: -150px;
@@ -210,7 +214,7 @@ $grad-hero: linear-gradient(140deg, $hero-grad-start 0%, $hero-grad-mid 45%, $he
     font-size: 13px;
     font-weight: 700;
     letter-spacing: .1em;
-    color: rgba($white, .7);
+    color: var(--gray-01);
     margin-bottom: 20px;
     text-transform: uppercase;
   }
@@ -218,14 +222,14 @@ $grad-hero: linear-gradient(140deg, $hero-grad-start 0%, $hero-grad-mid 45%, $he
   &__title {
     font-size: clamp(18px, 3.5vw, 24px);
     font-weight: 800;
-    color: $white;
+    color: var(--black-white);
     margin: 0 0 16px;
     line-height: 1.15;
   }
 
   &__desc {
     font-size: clamp(15px, 2vw, 18px);
-    color: rgba($white, .8);
+    color: var(--gray-01);
     line-height: 1.65;
     margin: 0 0 40px;
   }
@@ -252,16 +256,16 @@ $grad-hero: linear-gradient(140deg, $hero-grad-start 0%, $hero-grad-mid 45%, $he
     gap: 8px;
     font-weight: 600;
     font-size: 15px;
-    color: $white;
+    color: var(--black-white);
     text-decoration: none;
     padding: 12px 22px;
     border-radius: 999px;
-    border: 1px solid rgba($white, .5);
+    border: 1px solid var(--border);
     transition: background .2s ease, border-color .2s ease;
 
     &:hover {
-      background: rgba($white, .12);
-      border-color: $white;
+      background: var(--hover-overlay);
+      border-color: var(--black-white);
     }
   }
 

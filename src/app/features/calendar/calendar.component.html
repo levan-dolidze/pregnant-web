@@ -23,10 +23,10 @@
       @if (showCreateMenu()) {
         <div class="cal-create-menu">
           <button (click)="openBookingModal()">
-            <span class="cal-create-menu__icon" aria-hidden="true">📅</span> {{ t('Appointment') }}
+            {{ t('Appointment') }}
           </button>
           <button (click)="openBookingModalWithMeet()">
-            <span class="cal-create-menu__icon" aria-hidden="true">📹</span> {{ t('Video_Consultation') }}
+            {{ t('Video_Consultation') }}
           </button>
         </div>
       }

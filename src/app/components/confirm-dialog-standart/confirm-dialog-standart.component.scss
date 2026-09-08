@@ -13,6 +13,9 @@
   &__close {
     place-self: end end;
     display: grid;
+    cursor: pointer;
+    padding: 5px;
+    margin: -5px;
 
     img {
       :host-context([theme="dark"]) & {

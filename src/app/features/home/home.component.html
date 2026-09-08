@@ -79,7 +79,6 @@
         @for (card of servicesSection().cards; track card.title; let i = $index) {
         <li class="srv-card" [class.srv-card--accent]="card.accent" [style.cursor]="card.action ? 'pointer' : 'default'"
           (click)="navigate(card.action, card.courseId)" onKeyPress>
-          <span class="srv-card__icon" aria-hidden="true">{{ card.logo }}</span>
           <h3 class="srv-card__title">{{ card.title }}</h3>
           <p class="srv-card__text">{{ card.subtitle }}</p>
           <span class="srv-card__link">{{ t('Learn_More_Arrow') }}</span>
@@ -141,7 +140,7 @@
   <section class="cta" [attr.aria-label]="t('Book_Appointment')">
     <div class="cta__blob" aria-hidden="true"></div>
     <div class="cta__inner">
-      <span class="cta__label" aria-hidden="true">✦ {{ t('Start_Today') }}</span>
+      <span class="cta__label" aria-hidden="true">{{ t('Start_Today') }}</span>
       <h2 class="cta__title">{{ t('Your_Journey_Starts_Here') }}</h2>
       <p class="cta__desc">{{ t('Cta_Home_Desc') }}</p>
       <div class="cta__actions">

@@ -15,12 +15,21 @@
         width: 48px;
         height: 48px;
         border-radius: 50%;
+
+        [theme="dark"] & {
+          background-color: var(--bg200);
+          color: var(--primary-01);
+        }
     }
 
     &__line {
         flex: 1;
         height: 2px;
         background-color: $primary-01;
+
+        [theme="dark"] & {
+          background-color: var(--bg200);
+        }
     }
 
     .active {

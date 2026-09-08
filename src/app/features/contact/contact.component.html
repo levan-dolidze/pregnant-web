@@ -19,28 +19,24 @@
 
       <ul class="contact-details">
         <li class="contact-details__item">
-          <span class="contact-details__icon" aria-hidden="true">📍</span>
           <div>
             <span class="contact-details__label">{{ t('Address_Label') }}</span>
             <span class="contact-details__value">{{contactState().address}}</span>
           </div>
         </li>
         <li class="contact-details__item">
-          <span class="contact-details__icon" aria-hidden="true">📞</span>
           <div>
             <span class="contact-details__label">{{ t('Phone_Label') }}</span>
             <a class="contact-details__value contact-details__value--link" href="tel:+995 558 42 41 61">{{contactState().mobileNumber}}</a>
           </div>
         </li>
         <li class="contact-details__item">
-          <span class="contact-details__icon" aria-hidden="true">✉️</span>
           <div>
             <span class="contact-details__label">{{ t('Email') }}</span>
             <a class="contact-details__value contact-details__value--link" href="mailto:info@pregnant.ge">{{contactState().email}}</a>
           </div>
         </li>
         <li class="contact-details__item">
-          <span class="contact-details__icon" aria-hidden="true">🕐</span>
           <div>
             <span class="contact-details__label">{{ t('Working_Hours_Label') }}</span>
             <span class="contact-details__value">{{contactState().workingHours}}</span>

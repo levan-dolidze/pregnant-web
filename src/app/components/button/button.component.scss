@@ -35,7 +35,9 @@
 
   a {
     display: flex;
-
+    align-items: center;
+    // widens the icon-only link's tap target for touch use
+    padding: 8px;
   }
 }
 

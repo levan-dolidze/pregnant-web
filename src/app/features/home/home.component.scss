@@ -180,6 +180,7 @@
     display: flex;
     overflow: hidden;
     width: max-content;
+    max-width: 100%;
     box-shadow: $s3;
   }
 
@@ -267,6 +268,17 @@
     color: var(--gray-01);
     margin-top: 3px;
     white-space: nowrap;
+  }
+
+  @media (max-width: 540px) {
+    flex: 1 1 0;
+    min-width: 0;
+    padding: 12px 10px;
+
+    &__label {
+      white-space: normal;
+      overflow-wrap: anywhere;
+    }
   }
 }
 

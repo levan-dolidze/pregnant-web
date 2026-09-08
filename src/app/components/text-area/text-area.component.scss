@@ -17,7 +17,7 @@
       font-size: 14px;
     }
     &:disabled {
-      background-color: $light;
+      background-color: var(--toggle);
       border: none;
       cursor: text;
     }

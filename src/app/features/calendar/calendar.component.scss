@@ -912,6 +912,17 @@ dialog {
     width: 320px;
     max-width: 90vw;
   }
+
+  .cal-modal__body {
+    padding: 16px;
+  }
+
+  // fixed time-input widths overflow the modal's ~95vw body on ~320px screens
+  .cal-modal__input--time {
+    width: auto;
+    flex: 1;
+    min-width: 0;
+  }
 }
 
 .cal-color-swatch {

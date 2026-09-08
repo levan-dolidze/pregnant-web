@@ -14,3 +14,10 @@
     }
 
 }
+
+@media (max-width: 768px) {
+    .login-form__fields {
+        width: 90%;
+        margin-top: 32px;
+    }
+}

@@ -9,6 +9,9 @@
   align-items: flex-start;
   gap: 30px;
   mat-icon {
+    cursor: pointer;
+    padding: 8px;
+    margin: -8px;
     div {
       @include iconFrame;
       background-image: var(--tool-tip);

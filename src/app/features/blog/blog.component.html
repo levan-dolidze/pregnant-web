@@ -17,7 +17,9 @@
       <ul class="posts-grid">
         @for (post of posts(); track post.blogId) {
           <li class="post-card" (click)="onViewBlog(post)">
-            <img class="post-card__img" [src]="post.url" [alt]="post.title">
+            <span class="post-card__img-wrap">
+              <img class="post-card__img" [src]="post.url" [alt]="post.title">
+            </span>
             <div class="post-card__body">
               <p class="post-card__meta">{{ post.doctorFullName }} &bull; {{ post.date | dateToString:'d MMM y' }}</p>
               <h2 class="post-card__title">{{ post.title }}</h2>

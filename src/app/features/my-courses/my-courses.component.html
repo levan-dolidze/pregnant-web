@@ -11,7 +11,7 @@
             <h2 class="mc-card__title">{{ course.title }}</h2>
             <p class="mc-card__desc">{{ course.description }}</p>
             <div class="mc-card__meta">
-              <span class="mc-meta-chip">📖 {{ course.lessonQty }} {{ t('Lesson') }}</span>
+              <span class="mc-meta-chip">{{ course.lessonQty }} {{ t('Lesson') }}</span>
               <span
                 class="mc-card__status"
                 [class.mc-card__status--pending]="course.status === OrderStatus.Pending"

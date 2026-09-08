@@ -33,9 +33,15 @@
   border-radius: 50%;
   border: none;
   background: rgba($primary, .1);
-  color: $primary;
   cursor: pointer;
   transition: background .2s ease, color .2s ease;
+
+  // Angular Material's .mat-mdc-icon-button sets its own "color" at the
+  // same specificity, injected after this stylesheet, so it wins the
+  // cascade tie without !important — same issue as the topbar background.
+  &, mat-icon {
+    color: $primary !important;
+  }
 
   &:hover { background: rgba($primary, .2); }
 

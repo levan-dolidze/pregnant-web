@@ -6,7 +6,6 @@ import { CoursesPromoService } from '../courses-promo/courses-promo.service';
 import { CourseId } from 'src/app/shared/utils/enums';
 
 interface ServiceCard {
-  logo: string;
   title: string;
   subtitle: string;
   action: string | null;
@@ -35,7 +34,6 @@ export class HomeComponent {
       subtitle: this.translocoService.translate('Services_Section_Subtitle'),
     },
     cards: this.promo().map((course): ServiceCard => ({
-      logo: '🏥',
       title: course.courseName,
       subtitle: course.description,
       action: '/courses-promo',

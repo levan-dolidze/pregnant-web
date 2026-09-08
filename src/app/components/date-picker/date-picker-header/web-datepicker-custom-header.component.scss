@@ -11,10 +11,11 @@
   }
 
   .nav-arrow {
-    width: 20px;
-    height: 20px;
     cursor: pointer;
     @include iconFrame(20px, 20px);
+    // padding + negative margin grows the tap target to ~40px without shifting layout
+    padding: 10px;
+    margin: -10px;
 
     &.prev {
       background-image: var(--picker-arrow-left);
