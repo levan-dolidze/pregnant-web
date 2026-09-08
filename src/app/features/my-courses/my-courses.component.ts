@@ -48,7 +48,7 @@ export class MyCoursesComponent implements OnInit {
       case OrderStatus.Rejected:
         return 'უარყოფილი';
       default:
-        return 'მოლოდინში';
+        return 'ელდოება დასტურს';
     }
   }
 }

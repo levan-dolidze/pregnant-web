@@ -59,7 +59,7 @@ export class AdminOrdersComponent implements OnInit, AfterViewInit, OnDestroy {
       case OrderStatus.Rejected:
         return 'უარყოფილი';
       default:
-        return 'მოლოდინში';
+        return 'ელოდება დასტურს';
     }
   }
 
