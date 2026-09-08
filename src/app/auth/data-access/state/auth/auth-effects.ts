@@ -24,6 +24,7 @@ import { AccountService } from 'src/app/auth/data-access/account.service';
 import { SessionStorageService } from 'src/app/shared/services/session-storage.service';
 import { AlertService } from 'src/app/components/alert/alert.service';
 import { LoginResponseCode } from '../enum';
+import { NgxPermissionsService } from 'ngx-permissions';
 
 @Injectable()
 export class AuthEffects {
@@ -34,6 +35,7 @@ export class AuthEffects {
   private readonly alertService = inject(AlertService);
   private readonly router = inject(Router);
   private readonly dialog = inject(MatDialog);
+  private readonly permissionsService = inject(NgxPermissionsService);
 
   init$ = createEffect(() =>
     this.actions$.pipe(
@@ -75,6 +77,7 @@ export class AuthEffects {
         if (tokenGroup) {
           console.log(tokenGroup)
           this.sessionStorage.saveKey('auth', JSON.stringify(tokenGroup));
+          this.permissionsService.loadPermissions(tokenGroup.role ? [tokenGroup.role] : []);
           // const rout = this.activatedRoute.snapshot.queryParams['returnUrl'] ?? '';
           // this.router.navigate([rout]);
           this.dialog.closeAll()
@@ -115,6 +118,7 @@ export class AuthEffects {
 
         if (tokenGroup) {
           this.sessionStorage.saveKey('auth', JSON.stringify(tokenGroup));
+          this.permissionsService.loadPermissions(tokenGroup.role ? [tokenGroup.role] : []);
           this.dialog.closeAll();
           this.alertService.notification({
             message: 'წარმატებით დარეგისტრირდა',
@@ -154,6 +158,7 @@ export class AuthEffects {
         ofType(logOutSuccess),
         map(() => {
           this.sessionStorage.destroyAll()
+          this.permissionsService.flushPermissions();
           globalThis.location.reload();
         })
       ),

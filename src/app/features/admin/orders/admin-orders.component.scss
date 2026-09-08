@@ -1,0 +1,80 @@
+@use "variables" as *;
+@use "mixins" as *;
+
+.admin-orders {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 48px 24px;
+
+  &__title {
+    @include font(24px, 700, $gray700, $font-bold);
+    margin-bottom: 24px;
+  }
+
+  &__list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  &__row {
+    background: $white;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, .06);
+  }
+
+  &__link {
+    display: grid;
+    grid-template-columns: 60px 1fr 1fr 120px;
+    align-items: center;
+    gap: 12px;
+    padding: 16px 20px;
+    text-decoration: none;
+    color: inherit;
+  }
+
+  &__number {
+    @include font(13px, 600, $gray13, $font-medium);
+  }
+
+  &__name {
+    @include font(14px, 600, $gray700, $font-bold);
+  }
+
+  &__email {
+    @include font(13px, 400, $gray13, $font-default);
+  }
+
+  &__status {
+    @include font(12px, 600, $white, $font-medium);
+    text-align: center;
+    padding: 4px 10px;
+    border-radius: 20px;
+
+    &--pending {
+      background: $gray900;
+    }
+
+    &--confirmed {
+      background: $active;
+    }
+
+    &--rejected {
+      background: $error;
+    }
+  }
+
+  &__empty {
+    @include font(14px, 400, $gray13, $font-default);
+  }
+
+  @media (max-width: 700px) {
+    &__link {
+      grid-template-columns: 1fr;
+      gap: 6px;
+    }
+  }
+}

@@ -21,6 +21,8 @@ import { CoursePurchaseFlowActions, CoursePurchaseFlowSelectors } from '../data-
 import { selectContactInfo, selectCoursePurchaseFlowState, selectPersonalInfo } from '../data-access/state/course-purchase-flow/course-purchase-flow-selectors';
 import { PurchaseCourseRequest } from '../data-access/state/course-purchase-flow/models';
 import { JsonPipe } from '@angular/common';
+import { iSAuthState } from 'src/app/auth/data-access/state/auth/auth-selectors';
+import { AuthModalComponent } from 'src/app/features/auth/feature/auth-modal/auth-modal.component';
 
 @Component({
   selector: 'app-purchase-course',
@@ -53,6 +55,7 @@ export class PurchaseCourseComponent implements OnInit {
 
   readonly currentStep = toSignal(this.store.select(CoursePurchaseFlowSelectors.selectCurrentStep));
   readonly loading = toSignal(this.store.select(CoursePurchaseFlowSelectors.purchaseLoading));
+  readonly iSAuthState = toSignal(this.store.select(iSAuthState));
 
   @Input() courseName: string;
   @Input() sessionId: string;
@@ -130,6 +133,11 @@ export class PurchaseCourseComponent implements OnInit {
   }))
 
   onSidePanelSubmit(e: SubmitModel) {
+    if (!this.iSAuthState()) {
+      this.dialog.open(AuthModalComponent, { width: '540px', maxWidth: '95vw' });
+      return;
+    }
+
     const params = this.buildPurchaseRequest()
 
     console.log(params)

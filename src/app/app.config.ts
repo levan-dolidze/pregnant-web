@@ -15,6 +15,7 @@ import { provideState, provideStore } from '@ngrx/store';
 import { provideEffects } from '@ngrx/effects';
 import { provideStoreDevtools } from '@ngrx/store-devtools';
 import { CookieModule } from 'ngx-cookie';
+import { NgxPermissionsModule } from 'ngx-permissions';
 import { stepKey, stepReducer } from './shared/state/step-state/step-reducers';
 import { StepEffects } from './shared/state/step-state';
 import { DateToStringPipe } from './shared/pipe/date-to-string.pipe';
@@ -53,6 +54,7 @@ export const appConfig: ApplicationConfig = {
       ReactiveFormsModule,
       MaterialModule,
       CookieModule.withOptions(),
+      NgxPermissionsModule.forRoot(),
     ),
     provideState({ name: stepKey, reducer: stepReducer }),
     provideState({ name: authKey, reducer: authReducer }),

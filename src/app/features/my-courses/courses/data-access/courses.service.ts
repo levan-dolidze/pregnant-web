@@ -2,7 +2,7 @@ import { computed, DestroyRef, inject, Injectable, signal } from '@angular/core'
 import { ApiService } from 'src/app/core/api-service/api.service';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { finalize } from 'rxjs';
-import { CourseId } from 'src/app/shared/utils/enums';
+import { CourseId, OrderStatus } from 'src/app/shared/utils/enums';
 import { HttpErrorResponse } from '@angular/common/http';
 
 export interface CourseSection {
@@ -47,11 +47,11 @@ export enum VideoTypeIds {
 
 
 export interface CourseSummary {
+  orderId: number;
   title: string;
   description: string;
-  chapterCount: number;
-  videoCount: number;
-  progress: number;
+  lessonQty: number;
+  status: OrderStatus;
 }
 
 @Injectable({
@@ -73,6 +73,8 @@ export class CoursesService {
   private myCourseBy = signal<CourseLessonContentSource | null>(null);
   readonly myCourseByState = computed(() => this.myCourseBy())
 
+  readonly courseDescription = signal<CourseSummary[]>([]);
+  readonly myOrdersLoading = signal(true);
 
   constructor() {
     this.coursesMenuLoading$.pipe(takeUntilDestroyed(this.destroyRef),
@@ -83,6 +85,28 @@ export class CoursesService {
       },
       error: (err: any) => {
         console.error(err);
+      },
+    });
+
+    this.getMyOrders();
+  }
+
+  private getMyOrders(): void {
+    this.apiService.get(`${basePath}/GetMyOrders`).pipe(
+      takeUntilDestroyed(this.destroyRef),
+      finalize(() => this.myOrdersLoading.set(false))
+    ).subscribe({
+      next: (res: any[]) => {
+        this.courseDescription.set(res.map((order) => ({
+          orderId: order.orderId,
+          title: order.courseName,
+          description: order.description,
+          lessonQty: order.lessonQty,
+          status: order.status,
+        })));
+      },
+      error: (err: HttpErrorResponse) => {
+        console.error(err.error);
       },
     });
   }
@@ -105,18 +129,5 @@ export class CoursesService {
       },
     });
   }
-
-
-  readonly courseDescription = signal<CourseSummary[]>([
-    {
-      title: 'მშობელთა სკოლა',
-      description: 'კომპლექსური ვიდეო კურსი ორსულობის, მშობიარობისა და ახალშობილის მოვლის შესახებ.',
-      chapterCount: 10,
-      videoCount: 120,
-      progress: 20,
-    },
-  ]);
-
-
 
 }

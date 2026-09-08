@@ -14,6 +14,7 @@ export interface AccountSource {
 export interface AuthTokenResponse {
   accessToken: string;
   expiresIn: number;
+  role: string;
 }
 
 export const authInitialState: AccountSource = {

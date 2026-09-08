@@ -152,6 +152,20 @@ export const routes: Routes = [
         //     (m) => m.CoursesComponent
         //   ),
       },
+      {
+        path: 'admin',
+        data:{
+          permissions: {
+            only: ['admin'],
+            redirectTo: ''
+          }
+        },
+        loadChildren: () => {
+          return import('./features/admin/admin.routers').then(
+            (m) => m.routes
+          );
+        },
+      },
     ],
   },
   { path: '**', redirectTo: '' },

@@ -1,30 +1,34 @@
 <main class="mc-page">
   <h1 class="mc-page__title">ჩემი კურსები</h1>
 
-  @if (myCourses().length) {
+  @if (loading()) {
+    <p class="mc-empty">იტვირთება...</p>
+  } @else if (myCourses().length) {
     <ul class="mc-list">
-      @for (course of myCourses(); track course.title) {
+      @for (course of myCourses(); track course.orderId) {
         <li class="mc-card">
           <div class="mc-card__body">
             <h2 class="mc-card__title">{{ course.title }}</h2>
             <p class="mc-card__desc">{{ course.description }}</p>
             <div class="mc-card__meta">
-              <span class="mc-meta-chip">📖 {{ course.chapterCount }} თავი</span>
-              <span class="mc-meta-chip">🎬 {{ course.videoCount }} ვიდეო</span>
+              <span class="mc-meta-chip">📖 {{ course.lessonQty }} გაკვეთილი</span>
+              <span
+                class="mc-card__status"
+                [class.mc-card__status--pending]="course.status === OrderStatus.Pending"
+                [class.mc-card__status--confirmed]="course.status === OrderStatus.Confirmed"
+                [class.mc-card__status--rejected]="course.status === OrderStatus.Rejected">
+                {{ statusLabel(course.status) }}
+              </span>
             </div>
           </div>
-          <div class="mc-card__progress">
-            <div class="mc-progress">
-              <div class="mc-progress__bar" [style.width.%]="course.progress"></div>
-            </div>
-            <span class="mc-card__percent">{{ course.progress }}%</span>
-          </div>
-          <app-button
-            class="mc-card__btn"
-            width=""
-            [text]="course.progress > 0 ? 'სწავლის გაგრძელება' : 'სწავლის დაწყება'"
-            (btnClick)="startLearning(course)">
-          </app-button>
+          @if (course.status === OrderStatus.Confirmed) {
+            <app-button
+              class="mc-card__btn"
+              width=""
+              [text]="'სწავლის გაგრძელება'"
+              (btnClick)="startLearning(course)">
+            </app-button>
+          }
         </li>
       }
     </ul>

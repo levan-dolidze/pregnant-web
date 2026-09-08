@@ -1,0 +1,24 @@
+<main class="admin-orders">
+  <h1 class="admin-orders__title">შეკვეთები</h1>
+
+  @if (loading()) {
+    <p class="admin-orders__empty">იტვირთება...</p>
+  } @else if (orders().length) {
+    <ul class="admin-orders__list">
+      @for (order of orders(); track order.id) {
+        <li class="admin-orders__row">
+          <a class="admin-orders__link" [routerLink]="['/admin/orders', order.id]">
+            <span class="admin-orders__number">#{{ order.id }}</span>
+            <span class="admin-orders__name">{{ order.userName }} {{ order.userLastName }}</span>
+            <span class="admin-orders__email">{{ order.email }}</span>
+            <span class="admin-orders__status" [class]="statusClass(order.status)">
+              {{ statusLabel(order.status) }}
+            </span>
+          </a>
+        </li>
+      }
+    </ul>
+  } @else {
+    <p class="admin-orders__empty">შეკვეთები არ არის.</p>
+  }
+</main>

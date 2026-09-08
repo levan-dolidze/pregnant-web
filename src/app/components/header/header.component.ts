@@ -14,12 +14,13 @@ import { MenuConfig } from './utils';
 import { RegisterModalComponent } from 'src/app/features/auth/feature/user-register-modal/register-modal.component';
 import { AuthModalComponent } from 'src/app/features/auth/feature/auth-modal/auth-modal.component';
 import { iSAuthState, selectAccount } from 'src/app/auth/data-access/state/auth/auth-selectors';
+import { NgxPermissionsModule } from 'ngx-permissions';
 import { AuthActions } from 'src/app/auth/data-access/state/auth';
 import { AppSettingsService } from 'src/app/shared/services/app-settings.service';
 
 @Component({
   selector: 'app-header',
-  imports: [MatToolbarModule, RouterLink, RouterLinkActive, SharedModule, TranslocoModule, MaterialModule],
+  imports: [MatToolbarModule, RouterLink, RouterLinkActive, SharedModule, TranslocoModule, MaterialModule, NgxPermissionsModule],
   templateUrl: './header.component.html',
   styleUrl: './header.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush

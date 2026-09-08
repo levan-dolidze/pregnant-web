@@ -1,0 +1,59 @@
+<main class="order-details">
+  @if (loading() && !order()) {
+    <p class="order-details__empty">იტვირთება...</p>
+  } @else if (order(); as o) {
+    <a class="order-details__back" routerLink="/admin">← ყველა შეკვეთა</a>
+
+    <div class="order-details__card">
+      <div class="order-details__head">
+        <h1 class="order-details__title">შეკვეთა #{{ o.id }}</h1>
+        <span
+          class="order-details__status"
+          [class.order-details__status--confirmed]="o.status === OrderStatus.Confirmed"
+          [class.order-details__status--rejected]="o.status === OrderStatus.Rejected"
+          [class.order-details__status--pending]="o.status === OrderStatus.Pending">
+          {{ statusLabel(o.status) }}
+        </span>
+      </div>
+
+      <dl class="order-details__grid">
+        <div class="order-details__row">
+          <dt>მომხმარებელი</dt>
+          <dd>{{ o.userName }} {{ o.userLastName }}</dd>
+        </div>
+        <div class="order-details__row">
+          <dt>Email</dt>
+          <dd>{{ o.email }}</dd>
+        </div>
+        <div class="order-details__row">
+          <dt>მობილური</dt>
+          <dd>{{ o.mobileNumber }}</dd>
+        </div>
+        <div class="order-details__row">
+          <dt>თარიღი</dt>
+          <dd>{{ o.createdAt | date: 'medium' }}</dd>
+        </div>
+      </dl>
+
+      <div class="order-details__actions">
+                  <!-- [isDisabled]="o.status === OrderStatus.Confirmed" -->
+        <app-button
+          width=""
+          [text]="'დადასტურება'"
+          [className]="'stroked-fill h-40'"
+
+          (btnClick)="confirm()">
+        </app-button>
+        <app-button
+          width=""
+          [text]="'უარყოფა'"
+          [className]="'stroked h-40'"
+          [isDisabled]="o.status === OrderStatus.Rejected"
+          (btnClick)="reject()">
+        </app-button>
+      </div>
+    </div>
+  } @else {
+    <p class="order-details__empty">შეკვეთა ვერ მოიძებნა.</p>
+  }
+</main>

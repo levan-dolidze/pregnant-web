@@ -1,0 +1,111 @@
+@use "variables" as *;
+@use "mixins" as *;
+
+.order-details {
+  max-width: 640px;
+  margin: 0 auto;
+  padding: 48px 24px;
+
+  &__back {
+    display: inline-block;
+    @include font(13px, 600, $gray13, $font-medium);
+    text-decoration: none;
+    margin-bottom: 16px;
+
+    &:hover {
+      color: $primary;
+    }
+  }
+
+  &__card {
+    background: $white;
+    border-radius: 16px;
+    padding: 28px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, .08);
+  }
+
+  &__head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    margin-bottom: 24px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid $gray12;
+  }
+
+  &__title {
+    @include font(20px, 700, $gray700, $font-bold);
+    margin: 0;
+  }
+
+  &__status {
+    @include font(12px, 600, $white, $font-medium);
+    padding: 6px 16px;
+    border-radius: 20px;
+    white-space: nowrap;
+
+    &--pending {
+      background: $gray900;
+    }
+
+    &--confirmed {
+      background: $active;
+    }
+
+    &--rejected {
+      background: $error;
+    }
+  }
+
+  &__grid {
+    display: flex;
+    flex-direction: column;
+    margin: 0 0 28px;
+  }
+
+  &__row {
+    display: grid;
+    grid-template-columns: 140px 1fr;
+    gap: 16px;
+    padding: 12px 0;
+
+    &:not(:last-child) {
+      border-bottom: 1px solid $gray5;
+    }
+
+    dt {
+      @include font(13px, 600, $gray13, $font-medium);
+    }
+
+    dd {
+      @include font(14px, 500, $gray700, $font-default);
+      margin: 0;
+      word-break: break-word;
+    }
+  }
+
+  &__actions {
+    display: flex;
+    gap: 12px;
+  }
+
+  &__empty {
+    @include font(14px, 400, $gray13, $font-default);
+  }
+
+  @media (max-width: 500px) {
+    &__card {
+      padding: 20px;
+    }
+
+    &__row {
+      grid-template-columns: 1fr;
+      gap: 4px;
+    }
+
+    &__actions {
+      flex-direction: column;
+    }
+  }
+}

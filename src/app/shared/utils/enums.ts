@@ -4,3 +4,9 @@ export enum CourseId {
     PregnantGoude
 
 }
+
+export enum OrderStatus {
+    Pending,
+    Confirmed,
+    Rejected
+}
