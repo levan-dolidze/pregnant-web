@@ -159,7 +159,7 @@ export class AuthEffects {
         map(() => {
           this.sessionStorage.destroyAll()
           this.permissionsService.flushPermissions();
-          globalThis.location.reload();
+          this.router.navigate(['/']).then(() => globalThis.location.reload());
         })
       ),
     { dispatch: false }

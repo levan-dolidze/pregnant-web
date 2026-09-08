@@ -72,12 +72,12 @@ export class CoursesService {
   readonly chapters = computed(() => this.coursesMenu().data);
   readonly loading = computed(() => this.coursesMenu().loader);
 
-  readonly selectUserId = toSignal(this.store.select(selectUserId))
 
   private myCourseBy = signal<CourseLessonContentSource | null>(null);
   readonly myCourseByState = computed(() => this.myCourseBy())
 
   readonly courseDescription = signal<CourseSummary[]>([]);
+  readonly courseDescriptionState = computed(() => this.courseDescription())
   readonly myOrdersLoading = signal(true);
 
   constructor() {
@@ -91,11 +91,10 @@ export class CoursesService {
         console.error(err);
       },
     });
-    this.getMyOrders()
   }
 
-  private getMyOrders(): void {
-    this.apiService.get(`${basePath}/GetMyOrders?id=${this.selectUserId() }`).pipe(
+   getMyOrders(userId: number): void {
+    this.apiService.get(`${basePath}/GetMyOrders?id=${userId }`).pipe(
       takeUntilDestroyed(this.destroyRef),
       finalize(() => this.myOrdersLoading.set(false))
     ).subscribe({
