@@ -11,6 +11,13 @@
   position: relative;
   overflow: hidden;
 
+  // Dark mode needs a distinct multi-stop gradient (different color
+  // stops, not just recolored ones) — kept as a scoped exception
+  // rather than a plain var() swap.
+  :host-context([theme="dark"]) & {
+    background: linear-gradient(140deg, var(--bg) 0%, var(--bg100) 50%, var(--bg) 100%);
+  }
+
   @media (max-width: 600px) { align-items: flex-start; padding-inline: 16px; }
 
   &__blob {
@@ -46,7 +53,7 @@
   &__title {
     font-size: clamp(18px, 3.5vw, 24px);
     font-weight: 800;
-    color: $blue;
+    color: var(--black-white);
     line-height: 1.1;
     margin: 18px 0 20px;
   }
@@ -58,7 +65,7 @@
 
   &__desc {
     font-size: clamp(15px, 2vw, 17px);
-    color: $gray13;
+    color: var(--gray-01);
     line-height: 1.65;
     max-width: 420px;
     margin: 0 0 44px;
@@ -82,7 +89,7 @@
     font-size: 20px;
     width: 44px;
     height: 44px;
-    background: $white;
+    background: var(--bg100);
     border-radius: 12px;
     box-shadow: $s2;
     display: flex;
@@ -97,7 +104,7 @@
     font-weight: 700;
     letter-spacing: .08em;
     text-transform: uppercase;
-    color: $gray13;
+    color: var(--gray-01);
     margin-bottom: 3px;
   }
 
@@ -105,7 +112,7 @@
     display: block;
     font-size: 15px;
     font-weight: 600;
-    color: $blue;
+    color: var(--black-white);
 
     &--link { text-decoration: none; transition: color $ease; &:hover { color: $primary; } }
   }
@@ -124,7 +131,7 @@
     gap: 8px;
     font-size: 14px;
     font-weight: 600;
-    color: $gray13;
+    color: var(--gray-01);
     text-decoration: none;
     padding: 8px 14px;
     border-radius: 24px;
@@ -149,7 +156,7 @@
 
 // ─── Ask card ──────────────────────────────────────────────────
 .ask-card {
-  background: $white;
+  background: var(--bg100);
   border-radius: 24px;
   box-shadow: $s3;
   overflow: hidden;
@@ -202,12 +209,12 @@
     animation: pulse 2s ease-in-out infinite;
   }
 
-  &__body { padding: 24px 24px 8px; background: $gray400; }
+  &__body { padding: 24px 24px 8px; background: var(--bg); }
 
   &__bubble {
     display: inline-block;
-    background: $white;
-    color: $gray700;
+    background: var(--bg100);
+    color: var(--label);
     font-size: 14px;
     line-height: 1.6;
     padding: 14px 18px;
@@ -223,8 +230,8 @@
     flex-direction: column;
     gap: 16px;
     padding: 20px 24px 24px;
-    background: $gray400;
-    border-top: 1px solid $gray5;
+    background: var(--bg);
+    border-top: 1px solid var(--border);
 
     @media (max-width: 400px) { padding: 16px; }
   }
@@ -236,7 +243,7 @@
     font-weight: 700;
     letter-spacing: .05em;
     text-transform: uppercase;
-    color: $gray13;
+    color: var(--gray-01);
   }
 
 }

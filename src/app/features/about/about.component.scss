@@ -13,6 +13,13 @@
   overflow: hidden;
   position: relative;
 
+  // Dark mode needs a distinct multi-stop gradient (different color
+  // stops, not just recolored ones) — kept as a scoped exception
+  // rather than a plain var() swap.
+  :host-context([theme="dark"]) & {
+    background: linear-gradient(140deg, var(--bg) 0%, var(--bg100) 50%, var(--bg) 100%);
+  }
+
   &__blob {
     position: absolute;
     border-radius: 50%;
@@ -80,8 +87,8 @@
     padding: 14px 18px;
     animation: float 3s ease-in-out infinite;
 
-    strong { display: block; font-size: 14px; font-weight: 800; color: $blue; }
-    span   { font-size: 11px; color: $gray13; }
+    strong { display: block; font-size: 14px; font-weight: 800; color: var(--black-white); }
+    span   { font-size: 11px; color: var(--gray-01); }
 
     @media (max-width: 480px) { right: 0; bottom: -14px; padding: 10px 14px; }
   }
@@ -98,7 +105,7 @@
   &__title {
     font-size: clamp(18px, 3.5vw, 24px);
     font-weight: 700;
-    color: $blue;
+    color: var(--black-white);
     line-height: 1.1;
     margin: 14px 0 16px;
     word-break: break-word;
@@ -109,7 +116,7 @@
 
   &__desc {
     font-size: clamp(14px, 2vw, 16px);
-    color: $gray13;
+    color: var(--gray-01);
     line-height: 1.65;
     max-width: 100%;
     margin: 0 0 28px;
@@ -127,7 +134,7 @@
 
   &__stat        { display: flex; flex-direction: column; min-width: 0; }
   &__stat-value  { @include gradient-text(); font-size: clamp(15px, 3vw, 24px); font-weight: 800; line-height: 1; }
-  &__stat-label  { font-size: 11px; color: $gray13; margin-top: 4px; white-space: nowrap; }
+  &__stat-label  { font-size: 11px; color: var(--gray-01); margin-top: 4px; white-space: nowrap; }
   &__stat-sep    { width: 1px; height: 28px; background: rgba($primary, .2); flex-shrink: 0; }
 }
 
@@ -150,14 +157,14 @@
     min-width: 0;
     p {
       font-size: 15px;
-      color: $gray700;
+      color: var(--label);
       line-height: 1.8;
       margin: 0 0 18px;
       word-break: break-word;
       overflow-wrap: anywhere;
 
       &:last-child { margin-bottom: 0; }
-      &:first-child { font-size: clamp(15px, 2vw, 17px); color: $blue; font-weight: 500; line-height: 1.7; }
+      &:first-child { font-size: clamp(15px, 2vw, 17px); color: var(--black-white); font-weight: 500; line-height: 1.7; }
     }
   }
 }
@@ -165,7 +172,7 @@
 // ─── Credentials ───────────────────────────────────────────────
 .creds-section {
   @include section();
-  background: $white100;
+  background: var(--bg);
   &__inner { @include inner(); padding-inline: clamp(16px, 5vw, 24px); }
 
   &__grid {
@@ -206,8 +213,8 @@
   }
 
   &__icon   { font-size: 22px; flex-shrink: 0; margin-top: 2px; }
-  &__title  { font-size: 13px; font-weight: 700; color: $blue; margin: 0 0 5px; line-height: 1.3; overflow-wrap: break-word; }
-  &__detail { font-size: 12px; color: $gray13; line-height: 1.5; margin: 0; }
+  &__title  { font-size: 13px; font-weight: 700; color: var(--black-white); margin: 0 0 5px; line-height: 1.3; overflow-wrap: break-word; }
+  &__detail { font-size: 12px; color: var(--gray-01); line-height: 1.5; margin: 0; }
 }
 
 // ─── Specialisms ───────────────────────────────────────────────
@@ -235,7 +242,7 @@
   align-items: flex-start;
   gap: 16px;
   padding: 28px 24px;
-  background: $white;
+  background: var(--bg100);
   transition: background $ease, box-shadow $ease;
 
   &:hover {
@@ -255,8 +262,8 @@
     padding-top: 3px;
   }
 
-  &__title { font-size: 15px; font-weight: 700; color: $blue; margin: 0 0 8px; line-height: 1.3; }
-  &__text  { font-size: 14px; color: $gray13; line-height: 1.65; margin: 0; overflow-wrap: break-word; }
+  &__title { font-size: 15px; font-weight: 700; color: var(--black-white); margin: 0 0 8px; line-height: 1.3; }
+  &__text  { font-size: 14px; color: var(--gray-01); line-height: 1.65; margin: 0; overflow-wrap: break-word; }
 
   @media (max-width: 480px) { padding: 20px 16px; gap: 12px; }
 }

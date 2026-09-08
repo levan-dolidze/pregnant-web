@@ -14,6 +14,7 @@
 
   &__title {
     @include font(24px, 500, $gray700, $font-medium);
+    color: var(--black-white);
     margin: 0 0 12px;
   }
 
@@ -27,13 +28,14 @@
     @include flex-init;
     gap: 6px;
     @include font(14px, 500, $gray13, $font-medium);
+    color: var(--label);
   }
 
   &__meta-icon {
     font-size: 18px;
     width: 18px;
     height: 18px;
-    color: $gray13;
+    color: var(--label);
   }
 
   &__video {

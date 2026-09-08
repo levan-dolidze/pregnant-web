@@ -5,10 +5,11 @@
 .wrapper {
   display: grid;
   gap: 16px;
+  color: var(--black-white);
 }
 
 .ppc-card__title {
-  @include font(20px, 500, $gray700, $font-medium);
+  @include font(20px, 500, var(--black-white), $font-medium);
 }
 
 .ppc-page__info {

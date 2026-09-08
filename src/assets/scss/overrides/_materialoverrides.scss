@@ -15,8 +15,15 @@
 
 
 
+// Angular Material's own .mat-toolbar / .mat-mdc-menu-panel rules set
+// "background" (shorthand) at the same specificity and are injected
+// after this stylesheet, so they win the cascade tie without !important.
 .topbar {
-  background-color: $white;
+  background-color: var(--bg100) !important;
+}
+
+.mat-mdc-menu-panel {
+  background-color: var(--bg100) !important;
 }
 
 
@@ -36,7 +43,7 @@
     font-family: $font-medium !important;
     font-size: 14px !important;
     font-weight: 400 !important;
-    color: $black !important;
+    color: var(--black-white) !important;
     letter-spacing: normal !important;
   }
 
@@ -86,7 +93,7 @@
     font-family: $font-medium !important;
     font-size: 14px !important;
     font-weight: 600 !important;
-    color: $black !important;
+    color: var(--black-white) !important;
   }
 
   .mat-mdc-menu-item,
@@ -95,7 +102,7 @@
     font-family: $font-medium !important;
     font-size: 14px !important;
     font-weight: 400 !important;
-    color: $black !important;
+    color: var(--black-white) !important;
     letter-spacing: normal !important;
   }
 

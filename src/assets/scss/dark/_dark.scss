@@ -43,4 +43,14 @@
   --gray-04: #4D4D4D;
   --gray-05: #5B5B5D;
 
+  --hover-overlay: hsla(0, 0%, 100%, .06);
+  --danger-overlay: hsla(0, 70%, 50%, .15);
+
+  --accent-info: #6EA8FF;
+  --accent-info-bg-weak: hsla(212, 100%, 65%, .08);
+  --accent-info-bg: hsla(212, 100%, 65%, .12);
+  --accent-info-bg-strong: hsla(212, 100%, 65%, .14);
+  --accent-info-border: hsla(212, 100%, 65%, .3);
+  --shell-shadow: hsla(0, 0%, 0%, .35);
+  --primary-01-weak: rgba(148, 153, 251, 0.15);
 }

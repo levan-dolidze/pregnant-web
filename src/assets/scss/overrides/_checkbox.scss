@@ -15,7 +15,8 @@
 
 .mdc-checkbox__background {
   border-radius: 7px !important;
-  border: 1px solid $gray-1 !important;
+  border: 1px solid var(--border) !important;
+  background-color: var(--toggle) !important;
   width: 23px !important;
   height: 22px !important;
 

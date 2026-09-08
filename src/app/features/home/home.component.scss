@@ -5,7 +5,7 @@
 // ─── Services ──────────────────────────────────────────────────
 .services {
   @include section();
-  background: $white100;
+  background: var(--bg);
 
   &__inner {
     @include inner();
@@ -93,13 +93,13 @@
   &__title {
     font-size: 17px;
     font-weight: 700;
-    color: $blue;
+    color: var(--black-white);
     margin: 0 0 10px;
   }
 
   &__text {
     font-size: 14px;
-    color: $gray13;
+    color: var(--gray-01);
     line-height: 1.65;
     margin: 0 0 20px;
     flex: 1;
@@ -112,7 +112,7 @@
   &__link {
     font-size: 13px;
     font-weight: 600;
-    color: $primary;
+    color: var(--primary-01);
     margin-top: auto;
   }
 
@@ -190,7 +190,7 @@
   &__name {
     font-size: clamp(18px, 3vw, 24px);
     font-weight: 800;
-    color: $blue;
+    color: var(--black-white);
     margin: 12px 0 6px;
     line-height: 1.15;
   }
@@ -222,7 +222,7 @@
 
   &__bio {
     font-size: 16px;
-    color: $gray700;
+    color: var(--label);
     line-height: 1.75;
     margin: 0 0 28px;
   }
@@ -238,7 +238,7 @@
     li {
       padding: 7px 16px;
       background: $grad-bg;
-      color: $primary;
+      color: var(--primary-01);
       border-radius: 50px;
       font-size: 13px;
       font-weight: 600;
@@ -253,7 +253,7 @@
   padding: 16px 20px;
 
   &+& {
-    border-left: 1px solid $gray5;
+    border-left: 1px solid var(--border);
   }
 
   &__value {
@@ -264,7 +264,7 @@
 
   &__label {
     font-size: 11px;
-    color: $gray13;
+    color: var(--gray-01);
     margin-top: 3px;
     white-space: nowrap;
   }
@@ -273,7 +273,7 @@
 // ─── Reviews ───────────────────────────────────────────────────
 .reviews {
   @include section();
-  background: $white100;
+  background: var(--bg);
 
   &__inner {
     @include inner();
@@ -353,7 +353,7 @@
 
   &__text {
     font-size: 15px;
-    color: $gray700;
+    color: var(--label);
     line-height: 1.7;
     flex: 1;
     margin: 0;
@@ -404,13 +404,13 @@
     font-style: normal;
     font-size: 15px;
     font-weight: 700;
-    color: $blue;
+    color: var(--black-white);
   }
 
   &__meta {
     display: block;
     font-size: 12px;
-    color: $gray13;
+    color: var(--gray-01);
     margin-top: 2px;
   }
 

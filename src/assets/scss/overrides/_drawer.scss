@@ -1,9 +1,9 @@
 .mat-drawer {
-  background-color: $white;
+  background-color: var(--bg100) !important;
 }
 
 .mat-drawer-container {
-  background-color: $white;
+  background-color: var(--bg100) !important;
 }
 
 .mat-drawer-inner-container {

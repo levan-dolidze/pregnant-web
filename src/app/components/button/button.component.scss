@@ -40,14 +40,14 @@
 }
 
 .stroked {
-  background-color: $gray1;
-  color: $gray-1;
-  border: 1px solid $gray200;
+  background-color: var(--bg100);
+  color: var(--black-white);
+  border: 1px solid var(--border);
 }
 
 .stroked-fill {
-  background-color: $grayFill;
-  color: $primary;
+  background-color: var(--primary-01-weak);
+  color: var(--primary-01);
   border: none;
 }
 
@@ -102,7 +102,7 @@
 button:disabled,
 button[disabled] {
   border: 1px solid var(--label);
-  background-color: $gray901;
+  background-color: var(--toggle);
   opacity: 0.5;
   color: $inputLable;
   cursor: initial;

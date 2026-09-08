@@ -23,11 +23,16 @@
     width: 10px;
     height: 16px;
     cursor: pointer;
+
+    // Icon asset is drawn for light backgrounds; invert it in dark mode.
+    :host-context([theme="dark"]) & {
+      filter: invert(1);
+    }
   }
 
 
   &__title {
-    @include font(24px, 500, $blue, $font-bold);
+    @include font(24px, 500, var(--black-white), $font-bold);
   }
 
   &__title-wrapper {
@@ -36,11 +41,11 @@
   }
 
   &__meta {
-    @include font(14px, 400, $gray13, $font-default);
+    @include font(14px, 400, var(--gray-01), $font-default);
   }
 
   &__content {
-    @include font(18px, 400, $gray700, $font-default);
+    @include font(18px, 400, var(--label), $font-default);
     line-height: 1.3;
   }
 }

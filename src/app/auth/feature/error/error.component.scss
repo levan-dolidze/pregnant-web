@@ -5,6 +5,7 @@
 .error-containner {
     width: 100%;
     height: calc(100vh - 90px);
+    background-color: var(--bg);
 
     .error-inner {
         @include centerElement;
@@ -25,16 +26,16 @@
 
         > :nth-child(2) {
             margin-top: 10px;
-            @include font(24px, 500, $originBlack, $font-medium);
+            @include font(24px, 500, var(--black-white), $font-medium);
         }
 
         > :last-child {
-            @include font(14px, 400, $gray-2, $font-default);
+            @include font(14px, 400, var(--label), $font-default);
         }
 
         @media (max-width: 768px) {
             > :nth-child(2) {
-                @include font(20px, 500, $originBlack, $font-medium);
+                @include font(20px, 500, var(--black-white), $font-medium);
             }
         }
     }

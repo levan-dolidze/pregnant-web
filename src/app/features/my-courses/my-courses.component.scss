@@ -8,6 +8,7 @@
 
   &__title {
     @include font(24px, 700, $gray700, $font-bold);
+    color: var(--black-white);
     margin-bottom: 24px;
   }
 
@@ -31,18 +32,24 @@
 }
 
 .mc-card {
-  background: $white;
+  background-color: var(--bg100);
   border-radius: 12px;
   padding: 20px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, .06);
 
+  :host-context([theme="dark"]) & {
+    box-shadow: 0 2px 8px rgba(0, 0, 0, .3);
+  }
+
   &__title {
     @include font(16px, 600, $gray700, $font-bold);
+    color: var(--black-white);
     margin: 0 0 6px;
   }
 
   &__desc {
     @include font(13px, 400, $gray13, $font-default);
+    color: var(--label);
     line-height: 1.5;
     margin: 0 0 10px;
   }
@@ -79,13 +86,15 @@
 }
 
 .mc-meta-chip {
-  background: $gray11;
+  background-color: var(--bg200);
   border-radius: 20px;
   padding: 4px 12px;
   @include font(12px, 500, $gray700, $font-medium);
+  color: var(--black-white);
 }
 
 .mc-empty {
   @include font(14px, 400, $gray13, $font-default);
+  color: var(--label);
   margin: 0 0 16px;
 }

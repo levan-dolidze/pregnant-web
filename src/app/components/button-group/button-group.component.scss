@@ -35,11 +35,11 @@ form {
             }
 
             &.inactive {
-                background-color: $gray50;
+                background-color: var(--toggle);
                 opacity: 0.5;
 
                 input {
-                    color: $originBlack;
+                    color: var(--black-white);
                 }
             }
         }

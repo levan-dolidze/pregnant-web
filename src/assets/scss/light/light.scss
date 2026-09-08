@@ -24,10 +24,10 @@
   --confirm: url("/assets/icons-light/confirm.svg");
   --nav: url("/assets/icons-light/_nav.svg");
   --bg: #FFFFFF;
+  --bg100: #FFFFFF;
   --black-white: #000000;
   --black-white-1: #EFEFEF;
   --border: #E8E8E8;
-  --sub-text: #141719;
   --sub-text: #2E2E2E;
   --gray-bg:#EFEFEF;
   --bg200: #EFEFEF;
@@ -43,4 +43,14 @@
   --gray-04: #B3B3B3;
   --gray-05: #A2A2A5;
 
+  --hover-overlay: hsla(0, 0%, 0%, .04);
+  --danger-overlay: hsla(0, 70%, 50%, .1);
+
+  --accent-info: #2045C9;
+  --accent-info-bg-weak: hsla(225, 68%, 46%, .08);
+  --accent-info-bg: hsla(225, 68%, 46%, .12);
+  --accent-info-bg-strong: hsla(225, 68%, 46%, .14);
+  --accent-info-border: hsla(225, 68%, 46%, .3);
+  --shell-shadow: hsla(212, 7%, 43%, .1);
+  --primary-01-weak: rgba(146, 111, 248, 0.15);
 }

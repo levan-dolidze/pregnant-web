@@ -31,7 +31,7 @@ mat-form-field {
 .mat-mdc-form-field-type-mat-input:not(.mat-mdc-form-field-has-icon-suffix),
 .mat-mdc-form-field-type-mat-select:not(.mat-mdc-form-field-has-icon-suffix) {
   .mdc-text-field--filled {
-    border: 1px solid $gray2 !important;
+    border: 1px solid var(--border) !important;
     border-radius: 12px !important;
   }
 
@@ -84,7 +84,7 @@ mat-form-field {
 //dropdown
 
 .isReadonly {
-  background-color: $light;
+  background-color: var(--toggle) !important;
 
   .mdc-floating-label,
   .mdc-floating-label--float-above {

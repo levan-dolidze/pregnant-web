@@ -26,9 +26,8 @@
 }
 
 .topbar__theme-toggle {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+
+  @include flex-center;
   width: 36px;
   height: 36px;
   border-radius: 50%;
@@ -89,7 +88,7 @@
   font-size: 14px;
   font-weight: 400;
   font-family: $font-medium;
-  color: $black;
+  color: var(--black-white);
   line-height: inherit;
 
   &:hover { opacity: .75; }
@@ -119,7 +118,7 @@
     font-size: 14px;
     font-weight: 400;
     font-family: $font-medium;
-    color: $black;
+    color: var(--black-white);
     min-height: 40px;
 
     .mat-mdc-menu-item-text { font-size: 14px; font-family: $font-medium; }
@@ -137,10 +136,15 @@
   display: block;
   font-size: 12px;
   font-weight: 700;
-  color: $gray13;
+  color: var(--gray-03);
   font-family: $font-medium;
   text-transform: uppercase;
   padding: 10px 1.5rem 4px;
+}
+
+.topbar__burger mat-icon,
+.topbar__notify mat-icon {
+  color: var(--black-white);
 }
 
 .topbar__mobile-link--child {

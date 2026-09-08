@@ -13,6 +13,12 @@
   &__close {
     place-self: end end;
     display: grid;
+
+    img {
+      :host-context([theme="dark"]) & {
+        filter: brightness(0) invert(1);
+      }
+    }
   }
 
   &__content {
@@ -27,11 +33,11 @@
   }
 
   &__title {
-    @include font(16px, 700, $gray-1, $font-medium);
+    @include font(16px, 700, var(--black-white), $font-medium);
   }
 
   &__message {
-    @include font(14px, 400, $gray-1, $font-default);
+    @include font(14px, 400, var(--label), $font-default);
     padding: 0px 22px;
   }
 

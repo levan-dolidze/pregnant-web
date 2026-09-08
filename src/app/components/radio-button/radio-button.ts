@@ -48,7 +48,7 @@ import { TranslocoModule } from '@jsverse/transloco';
 
 }
 &__text > :nth-child(2) {
-    @include font(12px, 400,$gray-4,$font-default);
+    @include font(12px, 400,var(--label),$font-default);
 }
 &__right-text{
     @include font(14px, 500,$primary,$font-medium);

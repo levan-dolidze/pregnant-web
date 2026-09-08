@@ -20,7 +20,7 @@
 }
 
 .mat-mdc-radio-button .mdc-radio .mdc-radio__native-control:enabled:not(:checked)+.mdc-radio__background .mdc-radio__outer-circle {
-  border-color: var(--gray-02) !important
+  border-color: var(--gray-01) !important
 }
 
 .mdc-radio__background:not(:checked) {
@@ -34,7 +34,7 @@
   .mdc-label {
     font-family: var(--font-barlow-regular);
     font-size: 14px;
-    color: #5a6a85;
+    color: var(--label);
   }
 }
 

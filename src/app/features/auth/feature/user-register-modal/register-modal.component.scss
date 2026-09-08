@@ -8,7 +8,7 @@
   align-items: center;
   justify-content: flex-start;
   position: relative;
-  background-color: $white;
+  background-color: var(--bg100);
   padding: 24px;
   border-radius: 24px;
 
@@ -52,6 +52,12 @@
     border: 0;
     background: transparent;
     cursor: pointer;
+
+    img {
+      :host-context([theme="dark"]) & {
+        filter: brightness(0) invert(1);
+      }
+    }
   }
 }
 

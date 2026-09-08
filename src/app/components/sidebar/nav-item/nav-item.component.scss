@@ -19,7 +19,7 @@
     transition: background .15s;
 
     &:hover {
-      background: $gray11;
+      background: var(--toggle);
     }
 
     &--active {
@@ -33,11 +33,11 @@
   }
 
   &__title {
-    @include font(14px, 500, $gray700, $font-medium);
+    @include font(14px, 500, var(--black-white), $font-medium);
   }
 
   &__arrow {
-    color: $gray13;
+    color: var(--label);
     transition: transform .15s;
 
     &--open {
@@ -60,11 +60,11 @@
     padding: 8px 16px;
     border-radius: 8px;
     text-decoration: none;
-    @include font(13px, 500, $gray13, $font-medium);
+    @include font(13px, 500, var(--black-white), $font-medium);
     transition: background .15s;
 
     &:hover {
-      background: $gray11;
+      background: var(--toggle);
     }
 
     &--active {

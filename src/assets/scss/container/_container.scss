@@ -6,13 +6,13 @@
 
 body {
   font-family: $font-medium;
-  color: $textPrimary;
+  color: var(--black-white);
   font-size: 14px;
   line-height: 1.334rem;
 }
 
 html .mat-drawer-container {
-  background-color: $white;
+  background-color: var(--bg100);
 }
 
 .mainWrapper {
@@ -26,7 +26,7 @@ html .mat-drawer-container {
 .pageWrapper {
   padding: 24px;
   min-height: calc(100vh - 70px);
-  background-color: $mainBg;
+  background-color: var(--bg200);
 
   margin: 0 auto;
 

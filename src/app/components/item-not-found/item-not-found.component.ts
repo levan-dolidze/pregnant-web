@@ -33,12 +33,12 @@ export interface NotFoundMessage {
     margin-bottom: 8px;
 
     p {
-            @include font(16px, 700, $gray700, $font-default);
+            @include font(16px, 700, var(--black-white), $font-default);
     }
   }
   &__subtitle {
     p {
-            @include font(12px, 700, $gray700, $font-default);
+            @include font(12px, 700, var(--label), $font-default);
     }
   }
 }

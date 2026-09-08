@@ -2,7 +2,7 @@
 @use "mixins" as *;
 
 .ppc-page {
-  background: $mainBg;
+  background: var(--bg);
   @include flex-center;
   margin-top: 20px;
   gap: 20px;
@@ -11,7 +11,7 @@
   &__panel {
     align-self: flex-start;
     width: 400px;
-    background-color: $white;
+    background-color: var(--bg100);
     max-height: calc(100vh - 100px);
 
     border-radius: 16px;
@@ -23,7 +23,7 @@
 }
 
 .ppc-card {
-  background: $white;
+  background: var(--bg100);
   border-radius: 16px;
   padding: 24px;
   width: 100%;
@@ -32,20 +32,23 @@
   max-height: calc(100vh - 100px);
   overflow-y: auto;
 
-
+  // Shadow intensity differs per theme (not expressible via a single token)
+  :host-context([theme="dark"]) & {
+    box-shadow: 0 8px 32px rgba(0, 0, 0, .35);
+  }
 
   &__price {
     @include flex-center-between;
     padding-top: 8px;
-    border-top: 1px solid $gray12;
+    border-top: 1px solid var(--border);
   }
 
   &__price-label {
-    @include font(14px, 500, $gray13, $font-medium);
+    @include font(14px, 500, var(--label), $font-medium);
   }
 
   &__price-value {
-    @include font(20px, 700, $gray700, $font-bold);
+    @include font(20px, 700, var(--black-white), $font-bold);
   }
 
   &__terms {
@@ -53,6 +56,7 @@
 
     p {
       gap: 10px;
+      color: var(--black-white);
 
       a {
         text-decoration: none;

@@ -3,13 +3,18 @@
 
 .ps-page {
   min-height: 100vh;
-  background: $mainBg;
+  background: var(--bg);
 }
 
 // ── Hero ─────────────────────────────────────────────────────────
 .ps-hero {
   background: linear-gradient(135deg, $hero-grad-start, $hero-grad-mid, $hero-grad-end);
   padding: 64px 24px;
+
+  // Dark mode uses a different gradient (not expressible via a single token swap)
+  :host-context([theme="dark"]) & {
+    background: linear-gradient(140deg, var(--bg) 0%, var(--bg100) 50%, var(--bg) 100%);
+  }
 
   &__inner {
     max-width: 1100px;
@@ -25,13 +30,13 @@
   }
 
   &__title {
-    @include font(32px, 700, $gray700, $font-bold);
+    @include font(32px, 700, var(--black-white), $font-bold);
     line-height: 1.3;
     margin: 16px 0 20px;
   }
 
   &__desc {
-    @include font(15px, 400, $gray13, $font-default);
+    @include font(15px, 400, var(--gray-01), $font-default);
     line-height: 1.7;
     margin-bottom: 24px;
   }
@@ -49,20 +54,25 @@
 
 .ps-badge {
   display: inline-block;
-  background: $pink100;
-  color: $pink;
+  background: var(--bg100);
+  color: var(--primary-01);
   border-radius: 20px;
   padding: 4px 14px;
-  @include font(12px, 600, $pink, $font-bold);
+  @include font(12px, 600, var(--primary-01), $font-bold);
   letter-spacing: .4px;
 }
 
 .ps-meta-chip {
-  background: $white;
+  background: var(--bg100);
   border-radius: 20px;
   padding: 6px 14px;
-  @include font(12px, 500, $gray700, $font-medium);
+  @include font(12px, 500, var(--black-white), $font-medium);
   box-shadow: 0 1px 4px rgba(0, 0, 0, .08);
+
+  // Shadow is barely visible on dark surfaces — drop it instead of tokenizing
+  :host-context([theme="dark"]) & {
+    box-shadow: none;
+  }
 }
 
 // ── Modules ──────────────────────────────────────────────────────
@@ -75,7 +85,7 @@
   }
 
   &__title {
-    @include font(24px, 700, $gray700, $font-bold);
+    @include font(24px, 700, var(--black-white), $font-bold);
     margin-bottom: 32px;
     text-align: center;
   }
@@ -93,7 +103,7 @@
 .ps-module-card {
   @include flex-init;
   gap: 16px;
-  background: $white;
+  background: var(--bg100);
   border-radius: 12px;
   padding: 20px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, .06);
@@ -101,18 +111,25 @@
 
   &:hover { box-shadow: 0 4px 16px rgba(0, 0, 0, .1); }
 
+  // Shadow intensity differs per theme (not expressible via a single token)
+  :host-context([theme="dark"]) & {
+    box-shadow: 0 2px 8px rgba(0, 0, 0, .3);
+
+    &:hover { box-shadow: 0 4px 16px rgba(0, 0, 0, .4); }
+  }
+
   &__icon {
     font-size: 28px;
     flex-shrink: 0;
   }
 
   &__label {
-    @include font(14px, 600, $gray700, $font-bold);
+    @include font(14px, 600, var(--black-white), $font-bold);
     margin: 0 0 4px;
   }
 
   &__desc {
-    @include font(13px, 400, $gray13, $font-default);
+    @include font(13px, 400, var(--label), $font-default);
     margin: 0;
     line-height: 1.5;
   }
@@ -120,10 +137,15 @@
 
 // ── CTA ──────────────────────────────────────────────────────────
 .ps-cta {
-  background: $white;
-  border-top: 1px solid $gray12;
+  background: var(--bg100);
+  border-top: 1px solid var(--border);
   padding: 16px 24px;
   box-shadow: 0 -4px 20px rgba(0, 0, 0, .08);
+
+  // Shadow intensity differs per theme (not expressible via a single token)
+  :host-context([theme="dark"]) & {
+    box-shadow: 0 -4px 20px rgba(0, 0, 0, .35);
+  }
 
   &__inner {
     max-width: 1100px;
@@ -138,11 +160,11 @@
   }
 
   &__price {
-    @include font(28px, 700, $gray700, $font-bold);
+    @include font(28px, 700, var(--black-white), $font-bold);
   }
 
   &__note {
-    @include font(12px, 400, $gray13, $font-default);
+    @include font(12px, 400, var(--label), $font-default);
   }
 
   &__btn {
