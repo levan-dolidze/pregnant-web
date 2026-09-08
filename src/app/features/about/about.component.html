@@ -1,18 +1,18 @@
-<main class="about">
+<main class="about" *transloco="let t">
 
   <!-- ─── Page Hero ─────────────────────────────────────────── -->
-  <section class="page-hero" aria-label="About Dr. Tamuna Tevzadze">
+  <section class="page-hero" [attr.aria-label]="t('About_Doctor_Aria')">
     <div class="page-hero__blob page-hero__blob--1" aria-hidden="true"></div>
     <div class="page-hero__blob page-hero__blob--2" aria-hidden="true"></div>
     <div class="page-hero__inner">
       <div class="page-hero__media" aria-hidden="true">
         <div class="page-hero__img-bg"></div>
-        <img class="page-hero__img" src="assets/images/doctor/doctorimg.jpg" alt="Dr">
+        <img class="page-hero__img" src="assets/images/doctor/doctorimg.jpg" [attr.alt]="t('Doctor_Photo_Alt')">
         <div class="page-hero__badge-card">
           <span class="page-hero__badge-icon">🏅</span>
           <div>
-            <strong>15+ წელი</strong>
-            <span>მეან-გინეგოლიგის გამოცდილება</span>
+            <strong>{{ t('Years_15_Plus') }}</strong>
+            <span>{{ t('Ob_Gyn_Experience_Label') }}</span>
           </div>
         </div>
       </div>
@@ -20,35 +20,29 @@
       <div class="page-hero__content">
         <span class="badge badge--pink">
           <span class="badge__dot" aria-hidden="true"></span>
-          ექიმი მეან - გინეკოლოგი
+          {{ t('Doctor_Ob_Gyn_Badge') }}
         </span>
-        <h1 class="page-hero__title">Dr. თამარ თევზაძე<br></h1>
+        <h1 class="page-hero__title">{{ t('Doctor_Full_Name') }}<br></h1>
         <p class="page-hero__desc">
-          ჩემი გვერდი ეხება ქალთა ჯამრთელობას და შევქმენი იმისთვის რომ ჩვენმა ქალბატონებმა,გოგონებმა და მომავალმა
-          დედებმა მიიღონ
-          სანდო,საჭირო და საინტერესო ინფორმაცია მათი ჯამრთელობის შესახებ. მინდა გაგიზიაროთ ჩემო ცოდნა და გამოცდილება და
-          მოგაწოდოთ
-          თანამედროვე მტკიცებით მედიცინის მიღწევებზე დაფუძნებული ინფორმაცია,რათა დროულად მიმართოთ ექიმს და დაიცვათ თვენი
-          და თქვენი
-          ახლობლების ჯამრთელობა
+          {{ t('About_Hero_Desc') }}
         </p>
         <div class="page-hero__stats">
           <div class="page-hero__stat">
             <strong class="page-hero__stat-value">15+</strong>
-            <span class="page-hero__stat-label">გამოცდილება</span>
+            <span class="page-hero__stat-label">{{ t('Experience') }}</span>
           </div>
           <span class="page-hero__stat-sep" aria-hidden="true"></span>
           <div class="page-hero__stat">
             <strong class="page-hero__stat-value">5K+</strong>
-            <span class="page-hero__stat-label">დაბადებული ბავშვი</span>
+            <span class="page-hero__stat-label">{{ t('Babies_Delivered') }}</span>
           </div>
           <span class="page-hero__stat-sep" aria-hidden="true"></span>
           <div class="page-hero__stat">
             <strong class="page-hero__stat-value">99%</strong>
-            <span class="page-hero__stat-label">კმაყოფილების მაჩვენებელი</span>
+            <span class="page-hero__stat-label">{{ t('Satisfaction_Rate') }}</span>
           </div>
         </div>
-        <app-button text="დაჯავშნე კონსულტაცია" (btnClick)="goToCalendar()"></app-button>
+        <app-button text="Book_Consultation" (btnClick)="goToCalendar()"></app-button>
       </div>
     </div>
   </section>
@@ -57,30 +51,21 @@
   <section class="bio" aria-labelledby="bio-title">
     <div class="bio__inner">
       <header class="section-hd section-hd--left">
-        <span class="badge badge--purple">ისტორია</span>
-        <h2 class="section-hd__title" id="bio-title">განათლება<br>გამოცდილება</h2>
+        <span class="badge badge--purple">{{ t('History_Badge') }}</span>
+        <h2 class="section-hd__title" id="bio-title">{{ t('Education') }}<br>{{ t('Experience') }}</h2>
       </header>
       <div class="bio__body">
         <p>
-          ექიმმა თამუნა თევზაძემ წარჩინებით დაამთავრა თბილისის სახელმწიფო სამედიცინო უნივერსიტეტი და დაასრულა
-          რეზიდენტურა
-          მეან-გინეკოლოგიაში "კლინიკაში". შემდგომში მან მიიღო სტიპენდია დედათა და
-          ნაყოფის
-          მედიცინაში ვენის უნივერსიტეტში, ავსტრია.
+          {{ t('Bio_Paragraph_1') }}
         </p>
         <p>
-        15-წლიანი კარიერის განმავლობაში მან განავითარა განსაკუთრებული ექსპერტიზა მაღალი რისკის მქონე ორსულობების, გესტაციური
-        დიაბეტის, პრეეკლამფსიის და ნაყოფის ზრდის დარღვევების მართვის საკითხებში. იგი ერთგულია მტკიცებულებებზე დაფუძნებული,
-        მაგრამ ღრმად ჰუმანური მიდგომისა - უზრუნველყოფს, რომ ყველა პაციენტი გრძნობდეს თავს მოსმენილ, ინფორმირებულ და მხარდაჭერილ
-        მდგომარეობაში.
+        {{ t('Bio_Paragraph_2') }}
         </p>
         <p>
-        კლინიკური მუშაობის გარდა, თამარი ექიმი აქტიურად მონაწილეობს სამედიცინო განათლებაში, ხელმძღვანელობს რეზიდენტებს და
-        აქვეყნებს კვლევებს რეცენზირებულ ჟურნალებში სამხრეთ კავკასიის რეგიონში პერინატალური შედეგების შესახებ.
+        {{ t('Bio_Paragraph_3') }}
         </p>
         <p>
-        დღეისათვის ექიმი თამარ თევზაძე პრაქტიკას ეწევა კლინიკა <strong>„ჰერა 2011"</strong>-ში, სადაც პაციენტებს
-        სთავაზობს სრულ მეან-გინეკოლოგიურ მომსახურებას — საკონსულტაციო ვიზიტებიდან მშობიარობის ჩათვლით.
+        {{ t('Bio_Paragraph_4_Part1') }}<strong>„{{ t('Clinic_Name') }}"</strong>{{ t('Bio_Paragraph_4_Part2') }}
         </p>
       </div>
     </div>
@@ -90,37 +75,37 @@
   <section class="creds-section" aria-labelledby="creds-title">
     <div class="creds-section__inner">
       <header class="section-hd">
-        <span class="badge badge--purple">კვალიფიკაცია</span>
-        <h2 class="section-hd__title" id="creds-title">განათლება &amp; სერთიფიკატები</h2>
-        <p class="section-hd__desc">აკადემიური წარმატება და უწყვეტი პროფესიული განვითარება ყველა კონსულტაციის საფუძველია.</p>
+        <span class="badge badge--purple">{{ t('Qualification') }}</span>
+        <h2 class="section-hd__title" id="creds-title">{{ t('Education_Certificates') }}</h2>
+        <p class="section-hd__desc">{{ t('Credentials_Section_Desc') }}</p>
       </header>
       <div class="creds-section__grid">
         <div class="cred-card">
           <span class="cred-card__icon" aria-hidden="true">🎓</span>
           <div>
-            <h3 class="cred-card__title">MD — თბილისის სახელმწიფო სამედიცინო უნივერსიტეტი</h3>
-            <p class="cred-card__detail">წარჩინებით დამთავრება · 2007</p>
+            <h3 class="cred-card__title">{{ t('Credential_1_Title') }}</h3>
+            <p class="cred-card__detail">{{ t('Credential_1_Detail') }}</p>
           </div>
         </div>
         <div class="cred-card">
           <span class="cred-card__icon" aria-hidden="true">🏥</span>
           <div>
-            <h3 class="cred-card__title">რეზიდენტურა მეან-გინეკოლოგიაში</h3>
-            <p class="cred-card__detail">დედათა და ბავშვთა ჯანმრთელობის ეროვნული ცენტრი · 2007–2011</p>
+            <h3 class="cred-card__title">{{ t('Credential_2_Title') }}</h3>
+            <p class="cred-card__detail">{{ t('Credential_2_Detail') }}</p>
           </div>
         </div>
         <div class="cred-card">
           <span class="cred-card__icon" aria-hidden="true">🔬</span>
           <div>
-            <h3 class="cred-card__title">PhD — პერინატალური მედიცინა</h3>
-            <p class="cred-card__detail">თბილისის სახელმწიფო სამედიცინო უნივერსიტეტი · 2016</p>
+            <h3 class="cred-card__title">{{ t('Credential_3_Title') }}</h3>
+            <p class="cred-card__detail">{{ t('Credential_3_Detail') }}</p>
           </div>
         </div>
         <div class="cred-card">
           <span class="cred-card__icon" aria-hidden="true">🏥</span>
           <div>
-            <h3 class="cred-card__title">კლინიკა „ჰერა 2011"</h3>
-            <p class="cred-card__detail">მოქმედი სამუშაო ადგილი · 2011 – დღემდე</p>
+            <h3 class="cred-card__title">{{ t('Credential_4_Title') }}</h3>
+            <p class="cred-card__detail">{{ t('Credential_4_Detail') }}</p>
           </div>
         </div>
       </div>
@@ -131,22 +116,22 @@
   <section class="specialisms" aria-labelledby="specialisms-title">
     <div class="specialisms__inner">
       <header class="section-hd">
-        <span class="badge badge--pink">სპეციალიზაცია</span>
-        <h2 class="section-hd__title" id="specialisms-title">სპეციალიზაციის სფეროები</h2>
+        <span class="badge badge--pink">{{ t('Specialization_Badge') }}</span>
+        <h2 class="section-hd__title" id="specialisms-title">{{ t('Areas_Of_Specialization') }}</h2>
       </header>
       <ul class="specialisms__grid">
         <li class="spec-item">
           <span class="spec-item__num" aria-hidden="true">01</span>
           <div>
-            <h3 class="spec-item__title">მაღალი რისკის ორსულობის მართვა</h3>
-            <p class="spec-item__text">ყოვლისმომცველი მეთვალყურეობა და ჩარევა ჰიპერტენზიის, დიაბეტის, მრავალნაყოფიანი ორსულობის ან ნაყოფის ანომალიების შემთხვევაში.</p>
+            <h3 class="spec-item__title">{{ t('Specialization_1_Title') }}</h3>
+            <p class="spec-item__text">{{ t('Specialization_1_Text') }}</p>
           </div>
         </li>
         <li class="spec-item">
           <span class="spec-item__num" aria-hidden="true">02</span>
           <div>
-            <h3 class="spec-item__title">ნაყოფის ზრდა &amp; კეთილდღეობა</h3>
-            <p class="spec-item__text">მოწინავე ულტრაბგერითი კვლევები, დოპლეროგრაფია და ბიოფიზიკური პროფილი ნაყოფის განვითარების შეფასებისთვის ყველა ეტაპზე.</p>
+            <h3 class="spec-item__title">{{ t('Specialization_2_Title') }}</h3>
+            <p class="spec-item__text">{{ t('Specialization_2_Text') }}</p>
           </div>
         </li>
       </ul>
@@ -154,16 +139,16 @@
   </section>
 
   <!-- ─── CTA ──────────────────────────────────────────────── -->
-  <section class="cta" aria-label="Book appointment">
+  <section class="cta" [attr.aria-label]="t('Book_Appointment')">
     <div class="cta__blob" aria-hidden="true"></div>
     <div class="cta__inner">
-      <span class="cta__label" aria-hidden="true">✦ დაიწყე შენი ორსულობის მოგზაურობა</span>
-      <h2 class="cta__title">მზად ხართ შეხვდეთ Dr. თევზაძეს?</h2>
-      <p class="cta__desc">დაჯავშნეთ თქვენი პირველი კონსულტაცია და განიცადეთ ექსპერტიზაზე, თანაგრძნობასა და მტკიცებულებებზე დაფუძნებული მოვლა.
+      <span class="cta__label" aria-hidden="true">✦ {{ t('Start_Your_Pregnancy_Journey') }}</span>
+      <h2 class="cta__title">{{ t('Ready_To_Meet_Doctor') }}</h2>
+      <p class="cta__desc">{{ t('About_Cta_Desc') }}
       </p>
       <div class="cta__actions">
-        <app-button className="btn--white" text="დაჯავშნე კონსულტაცია" (btnClick)="goToCalendar()"></app-button>
-        <a class="btn btn--outline-white" href="#">დარეკე ახლავე</a>
+        <app-button className="btn--white" text="Book_Consultation" (btnClick)="goToCalendar()"></app-button>
+        <a class="btn btn--outline-white" href="#">{{ t('Call_Now') }}</a>
       </div>
     </div>
   </section>

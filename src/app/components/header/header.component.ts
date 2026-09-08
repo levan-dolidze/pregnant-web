@@ -17,6 +17,7 @@ import { iSAuthState, selectAccount } from 'src/app/auth/data-access/state/auth/
 import { NgxPermissionsModule } from 'ngx-permissions';
 import { AuthActions } from 'src/app/auth/data-access/state/auth';
 import { AppSettingsService } from 'src/app/shared/services/app-settings.service';
+import { Languages, TranslationService } from 'src/app/shared/translate/translation.serive';
 
 @Component({
   selector: 'app-header',
@@ -33,6 +34,7 @@ export class HeaderComponent implements OnInit {
   readonly activatedRoute = inject(ActivatedRoute);
   private readonly dialog = inject(MatDialog);
   private readonly appSettingsService = inject(AppSettingsService);
+  private readonly translationService = inject(TranslationService);
 
   protected readonly store = inject(Store);
 
@@ -50,6 +52,14 @@ export class HeaderComponent implements OnInit {
   readonly isDarkMode = computed(() => this.appSettingsService.options().theme === 'dark');
   toggleTheme(): void {
     this.appSettingsService.setActiveMode(this.isDarkMode() ? 'light' : 'dark');
+  }
+
+  readonly activeLangCode = this.translationService.activeLangCodeState;
+  toggleLanguage(): void {
+    const nextCode: Languages = this.activeLangCode() === 'ka' ? 'en' : 'ka';
+    const next = this.translationService.availableLangState().find((l) => l.code === nextCode)
+      ?? { code: nextCode, icon: `/assets/images/flag/icon-flag-${nextCode}.svg` };
+    this.translationService.setActiveLanguage(next);
   }
 
 

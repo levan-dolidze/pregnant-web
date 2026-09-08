@@ -1,12 +1,12 @@
-<footer class="site-footer" aria-label="საიტის ქვედა კოლონტიტული">
+<footer class="site-footer" *transloco="let t" [attr.aria-label]="t('Site_Footer_Aria')">
   <div class="site-footer__inner">
 
     <div class="site-footer__brand">
-      <p class="site-footer__name">ექიმი თამარ თევზაძე</p>
-      <p class="site-footer__tagline">მეან-გინეკოლოგი · კლინიკა ჰერა 2011</p>
+      <p class="site-footer__name">{{ t('Footer_Doctor_Name') }}</p>
+      <p class="site-footer__tagline">{{ t('Obstetrician_Gynecologist') }} · {{ t('Clinic_Name') }}</p>
     </div>
 
-    <nav class="site-footer__links" aria-label="სოციალური ქსელები">
+    <nav class="site-footer__links" [attr.aria-label]="t('Social_Networks')">
       <a
         class="site-footer__social"
         href="https://www.instagram.com/doctor_tamuna/"
@@ -34,7 +34,7 @@
       </a> -->
     </nav>
 
-    <p class="site-footer__copy">&copy; {{ year }} ყველა უფლება დაცულია.</p>
+    <p class="site-footer__copy">&copy; {{ year }} {{ t('All_Rights_Reserved') }}</p>
 
   </div>
 </footer>

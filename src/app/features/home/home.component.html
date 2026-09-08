@@ -1,46 +1,44 @@
-<main class="home">
+<main class="home" *transloco="let t">
 
   <section class="doctor" aria-labelledby="doctor-name">
     <div class="doctor__inner">
       <div class="doctor__media">
         <div class="doctor__img-bg" aria-hidden="true"></div>
-        <img class="doctor__img" src="assets/images/doctor/doctorimg.jpg" alt="Dr. თამარ თევზაძე, მეან-გინეკოლოგი">
-        <div class="doctor__creds" aria-label="Doctor credentials">
+        <img class="doctor__img" src="assets/images/doctor/doctorimg.jpg" [attr.alt]="t('Doctor_Photo_Alt')">
+        <div class="doctor__creds" [attr.aria-label]="t('Doctor_Credentials_Aria')">
           <div class="cred">
             <strong class="cred__value">MD, PhD</strong>
-            <span class="cred__label">კვალიფიკაცია</span>
+            <span class="cred__label">{{ t('Qualification') }}</span>
           </div>
           <div class="cred">
-            <strong class="cred__value">15 წელი</strong>
-            <span class="cred__label">გამოცდილება</span>
+            <strong class="cred__value">{{ t('Years_Experience_15') }}</strong>
+            <span class="cred__label">{{ t('Experience') }}</span>
           </div>
           <div class="cred">
-            <strong class="cred__value">ჰერა 2011</strong>
-            <span class="cred__label">მეან-გინეკოლოგი</span>
+            <strong class="cred__value">{{ t('Clinic_Name') }}</strong>
+            <span class="cred__label">{{ t('Obstetrician_Gynecologist') }}</span>
           </div>
         </div>
       </div>
-  
+
       <div class="doctor__info">
-        <span class="badge badge--purple">გაიცანით ექიმი</span>
-        <h2 class="doctor__name" id="doctor-name">Dr. თამარ თევზაძე</h2>
-        <p class="doctor__role">მეან-გინეკოლოგი</p>
+        <span class="badge badge--purple">{{ t('Meet_The_Doctor') }}</span>
+        <h2 class="doctor__name" id="doctor-name">{{ t('Doctor_Full_Name') }}</h2>
+        <p class="doctor__role">{{ t('Obstetrician_Gynecologist') }}</p>
         <!-- <div class="doctor__rating" aria-label="შეფასება 4.9 5-დან">
           <span class="doctor__stars" aria-hidden="true">★★★★★</span>
           <span class="doctor__rating-text">4.9 (800+ შეფასება)</span>
         </div> -->
         <p class="doctor__bio">
-          ჩემი გვერდი ეხება ქალთა ჯამრთელობას და შევქმენი იმისთვის რომ ჩვენმა ქალბატონებმა, გოგონებმა და მომავალმა
-          დედებმა მიიღონ სანდო, საჭირო და საინტერესო ინფორმაცია მათი ჯამრთელობის შესახებ. მინდა გაგიზიაროთ ჩემი ცოდნა
-          და გამოცდილება და მოგაწოდოთ თანამედროვე მტკიცებით მედიცინის მიღწევებზე დაფუძნებული ინფორმაცია.
+          {{ t('Doctor_Bio_Home') }}
         </p>
         <ul class="doctor__tags">
-          <li>ევროპული სერტიფიკატი</li>
-          <li>დედათა და ნაყოფის მედიცინა</li>
+          <li>{{ t('European_Certificate') }}</li>
+          <li>{{ t('Maternal_Fetal_Medicine') }}</li>
           <!-- <li>FIGO-ს წევრი</li>
           <li>ლაპაროსკოპიული ქირურგია</li> -->
         </ul>
-        <app-button text="დაჯავშნეთ კონსულტაცია" (btnClick)="goToCalendar()"></app-button>
+        <app-button text="Book_Consultation" (btnClick)="goToCalendar()"></app-button>
       </div>
     </div>
   </section>
@@ -84,7 +82,7 @@
           <span class="srv-card__icon" aria-hidden="true">{{ card.logo }}</span>
           <h3 class="srv-card__title">{{ card.title }}</h3>
           <p class="srv-card__text">{{ card.subtitle }}</p>
-          <span class="srv-card__link">გაიგეთ მეტი →</span>
+          <span class="srv-card__link">{{ t('Learn_More_Arrow') }}</span>
         </li>
         }
       </ul>
@@ -98,43 +96,40 @@
   <section class="reviews" aria-labelledby="reviews-title">
     <div class="reviews__inner">
       <header class="section-hd">
-        <span class="badge badge--pink">პაციენტების ისტორიები</span>
-        <h2 class="section-hd__title" id="reviews-title">რას ამბობენ დედები</h2>
+        <span class="badge badge--pink">{{ t('Patient_Stories') }}</span>
+        <h2 class="section-hd__title" id="reviews-title">{{ t('What_Mothers_Say') }}</h2>
       </header>
       <div class="reviews__grid">
         <blockquote class="review">
-          <div class="review__stars" aria-label="5 stars" aria-hidden="true">★★★★★</div>
-          <p class="review__text">ექიმი თამარი წარმოუდგენლად მხარდამჭერი იყო ჩემი მაღალი რისკის ორსულობის მანძილზე.
-            მისმა კომპეტენციამ თავდაჯერებულობა მომცა ყოველ ეტაპზე.</p>
+          <div class="review__stars" [attr.aria-label]="t('Five_Stars')" aria-hidden="true">★★★★★</div>
+          <p class="review__text">{{ t('Testimonial_1_Text') }}</p>
           <footer class="review__footer">
             <div class="review__avatar" aria-hidden="true">ნ</div>
             <div>
-              <cite class="review__name">ნინო კვარაცხელია</cite>
-              <span class="review__meta">2 შვილის დედა · თბილისი</span>
+              <cite class="review__name">{{ t('Testimonial_1_Name') }}</cite>
+              <span class="review__meta">{{ t('Testimonial_1_Meta') }}</span>
             </div>
           </footer>
         </blockquote>
         <blockquote class="review review--featured">
-          <div class="review__stars" aria-label="5 ვარსკვლავი" aria-hidden="true">★★★★★</div>
-          <p class="review__text">ონლაინ კონსულტაციის შესაძლებლობა მაშველი აღმოჩნდა მესამე ტრიმესტრში. სწრაფი,
-            პროფესიული და დამამშვიდებელი ყოველ ჯერზე.</p>
+          <div class="review__stars" [attr.aria-label]="t('Five_Stars')" aria-hidden="true">★★★★★</div>
+          <p class="review__text">{{ t('Testimonial_2_Text') }}</p>
           <footer class="review__footer">
             <div class="review__avatar" aria-hidden="true">მ</div>
             <div>
-              <cite class="review__name">მარიამ ციკლაური</cite>
-              <span class="review__meta">პირველად დედა · ბათუმი</span>
+              <cite class="review__name">{{ t('Testimonial_2_Name') }}</cite>
+              <span class="review__meta">{{ t('Testimonial_2_Meta') }}</span>
             </div>
           </footer>
         </blockquote>
         <blockquote class="review">
-          <div class="review__stars" aria-label="5 ვარსკვლავი" aria-hidden="true">★★★★★</div>
-          <p class="review__text">პირველი ვიზიტიდან მშობიარობამდე სრულად ვგრძნობდი მზრუნველობას. მთელი გუნდი აბსოლუტურად
-            განსაკუთრებულია.</p>
+          <div class="review__stars" [attr.aria-label]="t('Five_Stars')" aria-hidden="true">★★★★★</div>
+          <p class="review__text">{{ t('Testimonial_3_Text') }}</p>
           <footer class="review__footer">
             <div class="review__avatar" aria-hidden="true">თ</div>
             <div>
-              <cite class="review__name">თამარ ჯღარკავა</cite>
-              <span class="review__meta">ტყუპების დედა · ქუთაისი</span>
+              <cite class="review__name">{{ t('Testimonial_3_Name') }}</cite>
+              <span class="review__meta">{{ t('Testimonial_3_Meta') }}</span>
             </div>
           </footer>
         </blockquote>
@@ -143,12 +138,12 @@
   </section>
 
   <!-- ─── CTA ──────────────────────────────────────────────── -->
-  <section class="cta" aria-label="Book appointment">
+  <section class="cta" [attr.aria-label]="t('Book_Appointment')">
     <div class="cta__blob" aria-hidden="true"></div>
     <div class="cta__inner">
-      <span class="cta__label" aria-hidden="true">✦ დაიწყეთ დღეს</span>
-      <h2 class="cta__title">თქვენი მოგზაურობა აქ იწყება</h2>
-      <p class="cta__desc">ჩაეწერეთ პირველ ვიზიტზე და მიიღეთ ექსპერტული დახმარება პირველი დღიდანვე.</p>
+      <span class="cta__label" aria-hidden="true">✦ {{ t('Start_Today') }}</span>
+      <h2 class="cta__title">{{ t('Your_Journey_Starts_Here') }}</h2>
+      <p class="cta__desc">{{ t('Cta_Home_Desc') }}</p>
       <div class="cta__actions">
         <!-- <app-button className="btn--white" text="ჩაეწერეთ ვიზიტზე" (btnClick)="goToCalendar()"></app-button>
         <a class="btn btn--outline-white" href="tel:+995000000000">დარეკეთ ახლა</a> -->

@@ -1,12 +1,12 @@
-<div class="wrapper">
+<div class="wrapper" *transloco="let t">
 
-<h2 class="ppc-card__title">საკონტაქტო ინფორმაცია</h2>
+<h2 class="ppc-card__title">{{ t('Contact_Information') }}</h2>
 
 <form class="ppc-page__info" [formGroup]="form" (ngSubmit)="onNext()">
 
   <div class="ppc-page__fields">
     <app-input formControlName="mobileNumber"
-     placeholder="მობილური"
+     placeholder="Phone_number"
      type="tel"
      [isRequired]="true"
      [isInvalid]="form.controls['mobileNumber'].invalid && form.controls['mobileNumber'].dirty">
@@ -20,7 +20,7 @@
   </div>
 
   <div class="ppc-page__fields">
-    <app-input formControlName="email" placeholder="ელ-ფოსტა" type="email"
+    <app-input formControlName="email" placeholder="Email" type="email"
      [isRequired]="true"
      [isInvalid]="form.controls['email'].invalid && form.controls['email'].dirty"></app-input>
     <mat-hint class="error-msg"

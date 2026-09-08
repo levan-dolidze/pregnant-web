@@ -1,8 +1,8 @@
-<main class="admin-orders">
-  <h1 class="admin-orders__title">შეკვეთები</h1>
+<main class="admin-orders" *transloco="let t">
+  <h1 class="admin-orders__title">{{ t('Orders') }}</h1>
 
   @if (loading() && !orders().length) {
-    <p class="admin-orders__empty">იტვირთება...</p>
+    <p class="admin-orders__empty">{{ t('Loading') }}</p>
   } @else if (orders().length) {
     <ul class="admin-orders__list">
       @for (order of orders(); track order.id) {
@@ -21,10 +21,10 @@
 
     <div #sentinel class="admin-orders__sentinel">
       @if (loading()) {
-        <span class="admin-orders__loading-more">იტვირთება...</span>
+        <span class="admin-orders__loading-more">{{ t('Loading') }}</span>
       }
     </div>
   } @else {
-    <p class="admin-orders__empty">შეკვეთები არ არის.</p>
+    <p class="admin-orders__empty">{{ t('No_Orders') }}</p>
   }
 </main>

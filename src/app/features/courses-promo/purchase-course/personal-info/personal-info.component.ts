@@ -7,10 +7,11 @@ import { ValidationErrorsDirective } from 'src/app/shared/directives/validation-
 import { ControlModeChange } from 'src/app/shared/functions/controlModeChange';
 import { Store } from '@ngrx/store';
 import { CoursePurchaseFlowActions } from '../../data-access/state/course-purchase-flow';
+import { TranslocoModule } from '@jsverse/transloco';
 
 @Component({
   selector: 'app-personal-info',
-  imports: [ReactiveFormsModule, MatFormFieldModule, InputComponent, ButtonComponent, ValidationErrorsDirective],
+  imports: [ReactiveFormsModule, MatFormFieldModule, InputComponent, ButtonComponent, ValidationErrorsDirective, TranslocoModule],
   templateUrl: './personal-info.component.html',
   styleUrl: './personal-info.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,

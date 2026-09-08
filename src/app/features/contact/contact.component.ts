@@ -11,11 +11,12 @@ import { regExp } from 'src/app/shared/utils/regex';
 import { ValidationErrorsDirective } from 'src/app/shared/directives/validation-errors.directive';
 import { finalize } from 'rxjs';
 import { AlertService } from 'src/app/components/alert/alert.service';
+import { TranslocoModule } from '@jsverse/transloco';
 
 
 @Component({
   selector: 'app-contact',
-  imports: [InputComponent, TextAreaComponent, LoadingDirective, ButtonComponent, ReactiveFormsModule, MatFormFieldModule, ValidationErrorsDirective],
+  imports: [InputComponent, TextAreaComponent, LoadingDirective, ButtonComponent, ReactiveFormsModule, MatFormFieldModule, ValidationErrorsDirective, TranslocoModule],
   templateUrl: './contact.component.html',
   styleUrl: './contact.component.scss',
   providers: [ContactService],
@@ -63,7 +64,7 @@ export class ContactComponent implements OnInit {
         subscribe({
           next: ((res) => {
             console.log(res)
-            this.alertService.notification({ message: 'წარმატებით გაიგზავნა', messageType: 'success' })
+            this.alertService.notification({ message: 'Successfully_Sent', messageType: 'success' })
           }),
           error: (() => {
 

@@ -1,10 +1,11 @@
 import { Component, inject } from '@angular/core';
 import { Router } from '@angular/router';
+import { TranslocoModule } from '@jsverse/transloco';
 import { ButtonComponent } from '../../components/button/button.component';
 
 @Component({
   selector: 'app-about',
-  imports: [ButtonComponent],
+  imports: [ButtonComponent, TranslocoModule],
   templateUrl: './about.component.html',
   styleUrl: './about.component.scss'
 })

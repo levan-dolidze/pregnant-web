@@ -121,7 +121,7 @@ export class PurchaseCourseComponent implements OnInit {
       showStrikethrough: true
     },
     terms: {
-      documentNumber: 'პირობებს',
+      documentNumber: 'Terms',
       linkUrl: 'https://tbcinsurance-website-files.s3.eu-west-1.amazonaws.com/wordings/FOREIGN_STUDENTS_Health_and_PA_INSURANCE_2024.pdf'
     },
     submitButton: {

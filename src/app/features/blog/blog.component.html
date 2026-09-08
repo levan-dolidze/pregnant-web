@@ -1,13 +1,13 @@
-<main class="blog">
+<main class="blog" *transloco="let t">
 
-  <section class="blog-hero" aria-label="Blog hero">
+  <section class="blog-hero" [attr.aria-label]="t('Blog_Hero_Aria')">
     <div class="blog-hero__inner">
       <span class="badge badge--pink">
         <span class="badge__dot" aria-hidden="true"></span>
-        ბლოგი
+        {{ t('Blog') }}
       </span>
-      <h1 class="blog-hero__title">სტატიები &amp; სიახლეები</h1>
-      <p class="blog-hero__desc">ექსპერტული ინფორმაცია ორსულობის, ჯანმრთელობისა და დედობის შესახებ.</p>
+      <h1 class="blog-hero__title">{{ t('Articles_And_News') }}</h1>
+      <p class="blog-hero__desc">{{ t('Blog_Hero_Desc') }}</p>
     </div>
   </section>
 

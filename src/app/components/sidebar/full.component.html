@@ -50,7 +50,7 @@
           <img src="/assets/images/profile/user-1.jpg" class="rounded-circle" width="40" />
           <div class="m-l-16">
             <h5 class="mat-subtitle-2 f-w-600">Mathew</h5>
-            <span class="f-s-12">Designer</span>
+            <span class="f-s-12">{{ t('Designer') }}</span>
           </div>
           <div class="m-l-auto">
             <a mat-icon-button [routerLink]="['/authentication/login']" class="d-flex justify-content-center">
@@ -91,7 +91,7 @@
       <div class="p-x-16 p-y-20 d-flex align-items-center justify-content-between">
         <h3 class="mat-subtitle-1 f-s-21 f-w-600 caps-uppercase">{{t('Settings')}}</h3>
         <button class="d-lg-none" mat-button (click)="customizerRight.toggle()">
-          Close
+          {{ t('Close') }}
         </button>
       </div>
       <mat-divider></mat-divider>
@@ -130,19 +130,19 @@
 
                   <div>
                     <h5 class="f-s-12 f-w-600 m-0 textprimary mat-body-1 hover-text">
-                      {{ appdd.title }}
+                      {{ t(appdd.title) }}
                     </h5>
-                    <span class="mat-body-1 f-s-12">{{ appdd.subtitle }}</span>
+                    <span class="mat-body-1 f-s-12">{{ t(appdd.subtitle) }}</span>
                   </div>
                 </a>
               </div>
               }
             </div>
-            <h4 class="f-s-18 f-w-600 mat-subtitle-1 m-b-16">Quick Links</h4>
+            <h4 class="f-s-18 f-w-600 mat-subtitle-1 m-b-16">{{ t('Quick_Links') }}</h4>
             @for(quicklink of quicklinks; track quicklink.title) {
             <div class="text-hover-primary">
               <a [routerLink]="['quicklink.link']"
-                class="hover-text text-decoration-none mat-body-1 f-w-600 d-block p-y-8">{{ quicklink.title }}</a>
+                class="hover-text text-decoration-none mat-body-1 f-w-600 d-block p-y-8">{{ t(quicklink.title) }}</a>
             </div>
             }
           </div>

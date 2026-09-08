@@ -73,7 +73,7 @@
                 <p [ngClass]="{'invalid':form.get('termsChecked')?.invalid&&form.get('termsChecked')?.dirty}">
                     {{t('Read_and_agree')}}<span>
                         <a [target]="'_blank'"
-                            [href]="sidePanelConfig()?.terms.linkUrl">{{sidePanelConfig()?.terms.documentNumber}}</a>
+                            [href]="sidePanelConfig()?.terms.linkUrl">{{t(sidePanelConfig()?.terms.documentNumber)}}</a>
                          </span></p>
             </div>
             }

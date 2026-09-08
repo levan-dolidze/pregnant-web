@@ -1,11 +1,11 @@
-<div class="wrapper">
+<div class="wrapper" *transloco="let t">
 
-<h2 class="ppc-card__title">პირადი ინფორმაცია</h2>
+<h2 class="ppc-card__title">{{ t('Personal_Information') }}</h2>
 
 <form class="ppc-page__info" [formGroup]="form" (ngSubmit)="onNext()">
 
   <div class="ppc-page__fields">
-    <app-input formControlName="userName" placeholder="სახელი" [isRequired]="true"
+    <app-input formControlName="userName" placeholder="Name" [isRequired]="true"
       [isInvalid]="form.controls['userName'].invalid && form.controls['userName'].dirty">
     </app-input>
     <mat-hint class="error-msg"
@@ -16,7 +16,7 @@
   </div>
 
   <div class="ppc-page__fields">
-    <app-input formControlName="userLastName" placeholder="გვარი" [isRequired]="true"
+    <app-input formControlName="userLastName" placeholder="LastName" [isRequired]="true"
       [isInvalid]="form.controls['userLastName'].invalid && form.controls['userLastName'].dirty">
     </app-input>
     <mat-hint class="error-msg"

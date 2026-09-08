@@ -26,7 +26,7 @@
        [routerLink]="item.route"
        routerLinkActive="nav-chapter__header--active"
        (click)="onLessonClick(item)">
-      <span class="nav-chapter__title">{{ item.chapter }}</span>
+      <span class="nav-chapter__title">{{ t(item.chapter) }}</span>
     </a>
   }
 </ng-container>

@@ -7,10 +7,11 @@ import { OrderStatus } from 'src/app/shared/utils/enums';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { Store } from '@ngrx/store';
 import { selectUserId } from 'src/app/auth/data-access/state/auth/auth-selectors';
+import { TranslocoService, TranslocoModule } from '@jsverse/transloco';
 
 @Component({
   selector: 'app-my-courses',
-  imports: [ButtonComponent, LoadingDirective],
+  imports: [ButtonComponent, LoadingDirective, TranslocoModule],
   templateUrl: './my-courses.component.html',
   styleUrl: './my-courses.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush
@@ -19,6 +20,7 @@ export class MyCoursesComponent implements OnInit {
 
   private readonly router = inject(Router);
   private readonly coursesService = inject(CoursesService);
+  private readonly translocoService = inject(TranslocoService);
   protected readonly store = inject(Store);
 
   readonly myCourses = this.coursesService.courseDescriptionState;
@@ -44,11 +46,11 @@ export class MyCoursesComponent implements OnInit {
   statusLabel(status: OrderStatus): string {
     switch (status) {
       case OrderStatus.Confirmed:
-        return 'დადასტურებული';
+        return this.translocoService.translate('Order_Confirmed');
       case OrderStatus.Rejected:
-        return 'უარყოფილი';
+        return this.translocoService.translate('Order_Rejected');
       default:
-        return 'ელდოება დასტურს';
+        return this.translocoService.translate('Order_Pending');
     }
   }
 }

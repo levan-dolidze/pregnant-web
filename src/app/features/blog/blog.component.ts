@@ -5,10 +5,11 @@ import { DateToStringPipe } from 'src/app/shared/pipe/date-to-string.pipe';
 import { JsonPipe } from '@angular/common';
 import { BlogModel } from './utils/model';
 import { Router } from '@angular/router';
+import { TranslocoModule } from '@jsverse/transloco';
 
 @Component({
   selector: 'app-blog',
-  imports: [LoadingDirective, DateToStringPipe],
+  imports: [LoadingDirective, DateToStringPipe, TranslocoModule],
   templateUrl: './blog.component.html',
   styleUrl: './blog.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,

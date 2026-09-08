@@ -62,12 +62,17 @@
       <mat-icon>{{ isDarkMode() ? 'light_mode' : 'dark_mode' }}</mat-icon>
     </button>
 
+
+
     <button class="topbar__burger" mat-icon-button (click)="toggleMenu()" aria-label="Menu">
       <mat-icon>{{ isMenuOpen() ? 'close' : 'menu' }}</mat-icon>
     </button>
 
 
     <div class="topbar__login" >
+          <button class="topbar__lang-toggle" (click)="toggleLanguage()" [attr.aria-label]="t('Switch_language')">
+            {{ activeLangCode() === 'ka' ? 'KA' : 'EN' }}
+          </button>
   @if (!iSAuthState()) {
   
   <mat-icon onKeyPress (click)="onLoginInit()">person</mat-icon>
@@ -153,6 +158,10 @@
          (click)="toggleMenu()">
         {{ t('Admin') }}
       </a>
+
+      <button class="topbar__mobile-lang" (click)="toggleLanguage()">
+        {{ activeLangCode() === 'ka' ? 'KA' : 'EN' }}
+      </button>
 
       <app-button
         [text]="t('LogOut')"

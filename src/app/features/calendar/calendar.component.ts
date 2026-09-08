@@ -5,17 +5,21 @@ import {
 import { FormsModule } from '@angular/forms';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule, MAT_DATE_LOCALE } from '@angular/material/core';
+import { TranslocoModule, TranslocoService } from '@jsverse/transloco';
 
 import { CalEvent, BookingForm, CalendarService, ViewMode } from './calendar.service';
 import { DatePicker } from '../../components/date-picker/date-picker';
 
 const DEFAULT_COLOR = '#039BE5';
-const DAY_LABELS    = ['კვი', 'ორშ', 'სამ', 'ოთხ', 'ხუთ', 'პარ', 'შაბ'];
+const DAY_LABEL_KEYS = [
+  'Day_Short_Sun', 'Day_Short_Mon', 'Day_Short_Tue', 'Day_Short_Wed',
+  'Day_Short_Thu', 'Day_Short_Fri', 'Day_Short_Sat',
+];
 const HOURS         = Array.from({ length: 24 }, (_, i) => i);
 
 @Component({
   selector: 'app-calendar',
-  imports: [FormsModule, DatePicker, MatDatepickerModule, MatNativeDateModule],
+  imports: [FormsModule, DatePicker, MatDatepickerModule, MatNativeDateModule, TranslocoModule],
   providers: [CalendarService, { provide: MAT_DATE_LOCALE, useValue: 'ka-GE' }],
   templateUrl: './calendar.component.html',
   styleUrl: './calendar.component.scss',
@@ -24,9 +28,11 @@ const HOURS         = Array.from({ length: 24 }, (_, i) => i);
 export class CalendarComponent implements AfterViewInit {
   @ViewChild('gridWrap') private readonly gridWrapRef!: ElementRef<HTMLElement>;
 
-  readonly cal       = inject(CalendarService);
-  readonly hours     = HOURS;
-  readonly dayLabels = DAY_LABELS;
+  private readonly translocoService = inject(TranslocoService);
+
+  readonly cal          = inject(CalendarService);
+  readonly hours        = HOURS;
+  readonly dayLabelKeys = DAY_LABEL_KEYS;
 
   // ── UI state ─────────────────────────────────────────────────
   readonly showCreateMenu    = signal(false);
@@ -104,11 +110,11 @@ export class CalendarComponent implements AfterViewInit {
 
   saveBooking(): void {
     if (!this.form.title.trim()) {
-      this.formError.set('სათაური სავალდებულოა');
+      this.formError.set(this.translocoService.translate('Title_Required'));
       return;
     }
     if (this.form.startTime >= this.form.endTime) {
-      this.formError.set('დასრულების დრო უნდა იყოს დაწყების დროის შემდეგ');
+      this.formError.set(this.translocoService.translate('End_Time_After_Start_Time'));
       return;
     }
     this.formError.set(null);

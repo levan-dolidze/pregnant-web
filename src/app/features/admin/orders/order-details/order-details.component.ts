@@ -2,6 +2,7 @@ import { ChangeDetectionStrategy, Component, inject, Input, OnInit } from '@angu
 import { DatePipe } from '@angular/common';
 import { RouterLink } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
+import { TranslocoService, TranslocoModule } from '@jsverse/transloco';
 import { AdminOrdersService } from '../../data-access/admin-orders.service';
 import { ButtonComponent } from 'src/app/components/button/button.component';
 import { OrderStatus } from 'src/app/shared/utils/enums';
@@ -12,7 +13,7 @@ import {
 
 @Component({
   selector: 'app-order-details',
-  imports: [ButtonComponent, DatePipe, RouterLink],
+  imports: [ButtonComponent, DatePipe, RouterLink, TranslocoModule],
   templateUrl: './order-details.component.html',
   styleUrl: './order-details.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -20,6 +21,7 @@ import {
 export class OrderDetailsComponent implements OnInit {
   private readonly ordersService = inject(AdminOrdersService);
   private readonly dialog = inject(MatDialog);
+  private readonly translocoService = inject(TranslocoService);
 
   @Input() id!: string;
 
@@ -33,19 +35,19 @@ export class OrderDetailsComponent implements OnInit {
 
   confirm(): void {
     this.openConfirmDialog({
-      title: 'შეკვეთის დადასტურება',
-      message: 'ნამდვილად გსურთ ამ შეკვეთის დადასტურება?',
-      confirmBtn: 'დადასტურება',
-      rejectBtn: 'გაუქმება',
+      title: 'Confirm_Order_Title',
+      message: 'Confirm_Order_Message',
+      confirmBtn: 'Confirm',
+      rejectBtn: 'Cancel',
     }, () => this.ordersService.confirmOrder(+this.id));
   }
 
   reject(): void {
     this.openConfirmDialog({
-      title: 'შეკვეთის უარყოფა',
-      message: 'ნამდვილად გსურთ ამ შეკვეთის უარყოფა?',
-      confirmBtn: 'უარყოფა',
-      rejectBtn: 'გაუქმება',
+      title: 'Reject_Order_Title',
+      message: 'Reject_Order_Message',
+      confirmBtn: 'Reject',
+      rejectBtn: 'Cancel',
     }, () => this.ordersService.rejectOrder(+this.id));
   }
 
@@ -66,11 +68,11 @@ export class OrderDetailsComponent implements OnInit {
   statusLabel(status: OrderStatus): string {
     switch (status) {
       case OrderStatus.Confirmed:
-        return 'დადასტურებული';
+        return this.translocoService.translate('Order_Confirmed');
       case OrderStatus.Rejected:
-        return 'უარყოფილი';
+        return this.translocoService.translate('Order_Rejected');
       default:
-        return 'ელოდება დასტურს';
+        return this.translocoService.translate('Order_Pending');
     }
   }
 }

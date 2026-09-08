@@ -3,7 +3,7 @@
       <div class="auth-fields" >
           <div class="login-form">
 
-            <button type="button" class="login-form__close" (click)="onClose()" aria-label="დახურვა">
+            <button type="button" class="login-form__close" (click)="onClose()" [attr.aria-label]="t('Close')">
               <img src="assets/icons/_close.svg" width="24" height="24" alt="Close" aria-hidden="true">
             </button>
 
@@ -22,7 +22,7 @@
               <form class="login-form__fields" [formGroup]="initForm" (ngSubmit)="onLogin()">
                 <div class="login-form__inputs">
                   <div class="input-wrapper">
-                    <app-input formControlName="username" [placeholder]="'მომხმარებელი'"
+                    <app-input formControlName="username" [placeholder]="t('Username')"
                       class="input">
                     </app-input>
                     <mat-hint class="error-msg" *validationErrors="
@@ -36,7 +36,7 @@
                           patternTypes: 'none'
                         }
                       ">
-                      {{ 'ველი სავალდებულოა' }}
+                      {{ t('Error_required') }}
                     </mat-hint>
                   </div>
 
@@ -44,7 +44,7 @@
                     <!-- [iconType]="'eye'" -->
                     <app-input
                      formControlName="password"
-                     [placeholder]="'პაროლი'"
+                     [placeholder]="t('Password')"
                      [type]="'password'"
                      class="input">
                     </app-input>
@@ -60,7 +60,7 @@
                           patternTypes: 'none'
                         }
                       ">
-                      {{ 'ველი სავალდებულოა' }}
+                      {{ t('Error_required') }}
                     </mat-hint>
                   </div>
 
@@ -72,22 +72,22 @@
                 <div class="login-form__links">
                   <button type="button" class="login-form__link" (click)="onForgotPassword()">
                     <img src="assets/images/svgs/_lock.svg" width="16" height="16" alt="" aria-hidden="true">
-                    დამავიწყდა პაროლი
+                    {{ t('Forgot_Password') }}
                   </button>
                   <button type="button" class="login-form__link" (click)="onSmsAuth()">
                     <img src="assets/images/svgs/_lock.svg" width="16" height="16" alt="" aria-hidden="true">
-                    SMS ავტორიზაცია
+                    {{ t('SMS_Authorization') }}
                   </button>
                 </div>
 
                 <p class="login-form__register">
-                  არ გაქვთ ანგარიში?
-                  <button type="button" class="login-form__register-link" (click)="onRegister()">დარეგისტრირდი</button>
+                  {{ t('No_Account_Question') }}
+                  <button type="button" class="login-form__register-link" (click)="onRegister()">{{ t('Sign_Up') }}</button>
                 </p>
 
                 <div class="login-form__actions">
                   <app-button
-                    [text]="'შესვლა'"
+                    [text]="t('LogIn')"
                     [type]="'submit'"
                     [isLoading]="loadingState()">
                     </app-button>
@@ -99,7 +99,7 @@
               <form class="login-form__fields" [formGroup]="smsAuthForm" (ngSubmit)="onSmsAuthSubmit()">
                 <div class="login-form__inputs">
                   <div class="input-wrapper">
-                    <app-input formControlName="personalNumber" [placeholder]="'პირადი ნომერი'"
+                    <app-input formControlName="personalNumber" [placeholder]="t('Personal_number')"
                       class="input">
                     </app-input>
                     <mat-hint class="error-msg" *validationErrors="
@@ -113,18 +113,18 @@
                           patternTypes: 'none'
                         }
                       ">
-                      {{ 'ველი სავალდებულოა' }}
+                      {{ t('Error_required') }}
                     </mat-hint>
                   </div>
                 </div>
 
                 <div class="login-form__actions">
                   <app-button
-                    [text]="'გაგრძელება'"
+                    [text]="t('Next')"
                     [type]="'submit'"
                     [isLoading]="loadingState()">
                     </app-button>
-                                    <app-button class="login-form__back-btn" [type]="'button'" className="stroked" text="უკან დაბრუნება"
+                                    <app-button class="login-form__back-btn" [type]="'button'" className="stroked" [text]="t('Go_back')"
                                       (btnClick)="onBackToLogin()">
                                     </app-button>
                 </div>
@@ -137,7 +137,7 @@
               <form class="login-form__fields" [formGroup]="forgotPassForm" (ngSubmit)="onForgotPassSubmit()">
                 <div class="login-form__inputs">
                   <div class="input-wrapper">
-                    <app-input formControlName="username" [placeholder]="'მომხმარებელი'"
+                    <app-input formControlName="username" [placeholder]="t('Username')"
                       class="input">
                     </app-input>
                     <mat-hint class="error-msg" *validationErrors="
@@ -151,7 +151,7 @@
                           patternTypes: 'none'
                         }
                       ">
-                      {{ 'ველი სავალდებულოა' }}
+                      {{ t('Error_required') }}
                     </mat-hint>
 
                     @if (forgotPassInitState() && !otpConfirmed()) {
@@ -163,7 +163,7 @@
                     @if (otpConfirmed()) {
                       <div class="login-form__fields-newpass">
 
-                      <app-input formControlName="newPassword" [placeholder]="'ახალი პაროლი'" [type]="'password'" class="input">
+                      <app-input formControlName="newPassword" [placeholder]="t('New_Password')" [type]="'password'" class="input">
                       </app-input>
                       <mat-hint class="error-msg" *validationErrors="
                           forgotPassForm;
@@ -176,10 +176,10 @@
                             patternTypes: 'none'
                           }
                         ">
-                        {{ 'ველი სავალდებულოა' }}
+                        {{ t('Error_required') }}
                       </mat-hint>
 
-                      <app-input formControlName="confirmNewPassword" [placeholder]="'გაიმეორეთ ახალი პაროლი'" [type]="'password'" class="input">
+                      <app-input formControlName="confirmNewPassword" [placeholder]="t('Repeat_New_Password')" [type]="'password'" class="input">
                       </app-input>
                       <mat-hint class="error-msg" *validationErrors="
                           forgotPassForm;
@@ -192,7 +192,7 @@
                             patternTypes: 'none'
                           }
                         ">
-                        {{ 'ველი სავალდებულოა' }}
+                        {{ t('Error_required') }}
                       </mat-hint>
 
                       </div>
@@ -203,7 +203,7 @@
 
                 <div class="login-form__actions">
                   <app-button
-                    [text]="'გაგზავნა'"
+                    [text]="t('Send')"
                     [type]="'submit'"
                     [isLoading]="loadingState()">
                     </app-button>
@@ -212,7 +212,7 @@
                 <app-button
                   [type]="'button'"
                   className="stroked"
-                  text="უკან დაბრუნება"
+                  [text]="t('Go_back')"
                   (btnClick)="onBackToLogin()">
                 </app-button>
               </form>

@@ -1,5 +1,5 @@
-<main class="mc-page">
-  <h1 class="mc-page__title">ჩემი კურსები</h1>
+<main class="mc-page" *transloco="let t">
+  <h1 class="mc-page__title">{{ t('My_Courses') }}</h1>
 
   @if (loading()) {
     <div *loading="loading()"></div>
@@ -11,7 +11,7 @@
             <h2 class="mc-card__title">{{ course.title }}</h2>
             <p class="mc-card__desc">{{ course.description }}</p>
             <div class="mc-card__meta">
-              <span class="mc-meta-chip">📖 {{ course.lessonQty }} გაკვეთილი</span>
+              <span class="mc-meta-chip">📖 {{ course.lessonQty }} {{ t('Lesson') }}</span>
               <span
                 class="mc-card__status"
                 [class.mc-card__status--pending]="course.status === OrderStatus.Pending"
@@ -25,7 +25,7 @@
             <app-button
               class="mc-card__btn"
               width=""
-              [text]="'სწავლის დაწყება'"
+              [text]="t('Start_Learning')"
               (btnClick)="startLearning(course)">
             </app-button>
           }
@@ -33,10 +33,10 @@
       }
     </ul>
   } @else {
-    <p class="mc-empty">თქვენ ჯერ არ გაქვთ შეძენილი კურსი.</p>
+    <p class="mc-empty">{{ t('No_Purchased_Courses_Yet') }}</p>
     <app-button
       width=""
-      [text]="'კურსები'"
+      [text]="t('Courses')"
       [className]="'stroked-fill h-40'"
       (btnClick)="goToCourses()">
     </app-button>

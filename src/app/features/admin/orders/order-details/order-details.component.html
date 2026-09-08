@@ -1,12 +1,12 @@
-<main class="order-details">
+<main class="order-details" *transloco="let t">
   @if (loading() && !order()) {
-    <p class="order-details__empty">იტვირთება...</p>
+    <p class="order-details__empty">{{ t('Loading') }}</p>
   } @else if (order(); as o) {
-    <a class="order-details__back" routerLink="/admin">← ყველა შეკვეთა</a>
+    <a class="order-details__back" routerLink="/admin">← {{ t('All_Orders') }}</a>
 
     <div class="order-details__card">
       <div class="order-details__head">
-        <h1 class="order-details__title">შეკვეთა #{{ o.id }}</h1>
+        <h1 class="order-details__title">{{ t('Order') }} #{{ o.id }}</h1>
         <span
           class="order-details__status"
           [class.order-details__status--confirmed]="o.status === OrderStatus.Confirmed"
@@ -18,19 +18,19 @@
 
       <dl class="order-details__grid">
         <div class="order-details__row">
-          <dt>მომხმარებელი</dt>
+          <dt>{{ t('Customer') }}</dt>
           <dd>{{ o.userName }} {{ o.userLastName }}</dd>
         </div>
         <div class="order-details__row">
-          <dt>Email</dt>
+          <dt>{{ t('Email') }}</dt>
           <dd>{{ o.email }}</dd>
         </div>
         <div class="order-details__row">
-          <dt>მობილური</dt>
+          <dt>{{ t('Mobile') }}</dt>
           <dd>{{ o.mobileNumber }}</dd>
         </div>
         <div class="order-details__row">
-          <dt>თარიღი</dt>
+          <dt>{{ t('Date') }}</dt>
           <dd>{{ o.createdAt | date: 'medium' }}</dd>
         </div>
       </dl>
@@ -38,14 +38,14 @@
       <div class="order-details__actions">
         <app-button
           width=""
-          [text]="'დადასტურება'"
+          [text]="t('Confirm')"
           [className]="'stroked-fill h-40'"
           [isDisabled]="o.status === OrderStatus.Confirmed"
           (btnClick)="confirm()">
         </app-button>
         <app-button
           width=""
-          [text]="'უარყოფა'"
+          [text]="t('Reject')"
           [className]="'stroked h-40'"
           [isDisabled]="o.status === OrderStatus.Rejected"
           (btnClick)="reject()">
@@ -53,6 +53,6 @@
       </div>
     </div>
   } @else {
-    <p class="order-details__empty">შეკვეთა ვერ მოიძებნა.</p>
+    <p class="order-details__empty">{{ t('Order_Not_Found') }}</p>
   }
 </main>

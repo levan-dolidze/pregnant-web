@@ -93,99 +93,101 @@ export class FullComponent implements OnInit {
 
 
   // for mobile app sidebar
+  // Note: title/subtitle hold i18n keys (resolved via t() in the template), not display text.
   apps: apps[] = [
     {
       id: 1,
       img: '/assets/images/svgs/icon-dd-chat.svg',
-      title: 'Chat Application',
-      subtitle: 'Messages & Emails',
+      title: 'Chat_Application',
+      subtitle: 'Messages_And_Emails',
       link: '/apps/chat',
     },
     {
       id: 2,
       img: '/assets/images/svgs/icon-dd-cart.svg',
-      title: 'eCommerce App',
-      subtitle: 'Buy a Product',
+      title: 'Ecommerce_App',
+      subtitle: 'Buy_A_Product',
       link: '/apps/email/inbox',
     },
     {
       id: 3,
       img: '/assets/images/svgs/icon-dd-invoice.svg',
-      title: 'Invoice App',
-      subtitle: 'Get latest invoice',
+      title: 'Invoice_App',
+      subtitle: 'Get_Latest_Invoice',
       link: '/apps/invoice',
     },
     {
       id: 4,
       img: '/assets/images/svgs/icon-dd-date.svg',
-      title: 'Calendar App',
-      subtitle: 'Get Dates',
+      title: 'Calendar_App',
+      subtitle: 'Get_Dates',
       link: '/apps/calendar',
     },
     {
       id: 5,
       img: '/assets/images/svgs/icon-dd-mobile.svg',
-      title: 'Contact Application',
-      subtitle: '2 Unsaved Contacts',
+      title: 'Contact_Application',
+      subtitle: 'Unsaved_Contacts',
       link: '/apps/contacts',
     },
     {
       id: 6,
       img: '/assets/images/svgs/icon-dd-lifebuoy.svg',
-      title: 'Tickets App',
-      subtitle: 'Create new ticket',
+      title: 'Tickets_App',
+      subtitle: 'Create_New_Ticket',
       link: '/apps/tickets',
     },
     {
       id: 7,
       img: '/assets/images/svgs/icon-dd-message-box.svg',
-      title: 'Email App',
-      subtitle: 'Get new emails',
+      title: 'Email_App',
+      subtitle: 'Get_New_Emails',
       link: '/apps/email/inbox',
     },
     {
       id: 8,
       img: '/assets/images/svgs/icon-dd-application.svg',
       title: 'Courses',
-      subtitle: 'Create new course',
+      subtitle: 'Create_New_Course',
       link: '/apps/courses',
     },
   ];
 
+  // Note: title holds an i18n key (resolved via t() in the template), not display text.
   quicklinks: quicklinks[] = [
     {
       id: 1,
-      title: 'Pricing Page',
+      title: 'Pricing_Page',
       link: '/theme-pages/pricing',
     },
     {
       id: 2,
-      title: 'Authentication Design',
+      title: 'Authentication_Design',
       link: '/authentication/login',
     },
     {
       id: 3,
-      title: 'Register Now',
+      title: 'Register_Now',
       link: '/authentication/side-register',
     },
     {
       id: 4,
-      title: '404 Error Page',
+      title: 'Error_404_Page',
       link: '/authentication/error',
     },
     {
       id: 5,
-      title: 'Notes App',
+      title: 'Notes_App',
       link: '/apps/notes',
     },
     {
       id: 6,
-      title: 'Employee App',
+      title: 'Employee_App',
       link: '/apps/employee',
     },
     {
       id: 7,
-      title: 'Todo Application',
+      title: 'Todo_Application',
       link: '/apps/todo',
     },
   ];

@@ -10,10 +10,11 @@ import { regExp } from 'src/app/shared/utils/regex';
 import { Store } from '@ngrx/store';
 import { CoursePurchaseFlowActions } from '../../data-access/state/course-purchase-flow';
 import { OtpService } from 'src/app/shared/features/otp/service/otp-service';
+import { TranslocoModule } from '@jsverse/transloco';
 
 @Component({
   selector: 'app-contact-info',
-  imports: [ReactiveFormsModule, MatFormFieldModule, InputComponent, ButtonComponent, OtpComponent, ValidationErrorsDirective],
+  imports: [ReactiveFormsModule, MatFormFieldModule, InputComponent, ButtonComponent, OtpComponent, ValidationErrorsDirective, TranslocoModule],
   templateUrl: './contact-info.component.html',
   styleUrl: './contact-info.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,

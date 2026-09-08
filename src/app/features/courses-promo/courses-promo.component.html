@@ -1,4 +1,4 @@
-<main class="ps-page">
+<main class="ps-page" *transloco="let t">
 
   @for (course of promo(); track course.courseName) {
 
@@ -11,9 +11,9 @@
         <h1 class="ps-hero__title">{{ course.title }}</h1>
         <p class="ps-hero__desc">{{ course.description }}</p>
         <div class="ps-hero__meta">
-          <span class="ps-meta-chip">🎬 {{ course.lessonQty }} გაკვეთილი</span>
-          <span class="ps-meta-chip">📱 ნებისმიერ მოწყობილობაზე</span>
-          <span class="ps-meta-chip">♾️ უვადო წვდომა</span>
+          <span class="ps-meta-chip">🎬 {{ course.lessonQty }} {{ t('Lessons') }}</span>
+          <span class="ps-meta-chip">📱 {{ t('Any_device') }}</span>
+          <span class="ps-meta-chip">♾️ {{ t('Unlimited_access') }}</span>
         </div>
       </div>
 
@@ -27,9 +27,9 @@
     <div class="ps-cta__inner">
       <div class="ps-cta__info">
         <span class="ps-cta__price">{{ course.price }} ₾</span>
-        <span class="ps-cta__note">ერთჯერადი გადახდა · უვადო წვდომა</span>
+        <span class="ps-cta__note">{{ t('One_time_payment') }} · {{ t('Unlimited_access') }}</span>
       </div>
-      <app-button className="ps-cta__btn" [type]="'button'" text="შეძენა" (btnClick)="onPurchaseInit(course)">
+      <app-button className="ps-cta__btn" [type]="'button'" text="Buy" (btnClick)="onPurchaseInit(course)">
       </app-button>
     </div>
   </div>

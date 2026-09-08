@@ -12,10 +12,11 @@ import { MatDialog } from '@angular/material/dialog';
 import { CourseNames } from './models/course-purchase.model';
 import { CourseId } from 'src/app/shared/utils/enums';
 import { JsonPipe } from '@angular/common';
+import { TranslocoModule } from '@jsverse/transloco';
 
 @Component({
   selector: 'app-courses-promo',
-  imports: [VideoViewerComponent, ButtonComponent,JsonPipe],
+  imports: [VideoViewerComponent, ButtonComponent, JsonPipe, TranslocoModule],
   templateUrl: './courses-promo.component.html',
   styleUrl: './courses-promo.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush

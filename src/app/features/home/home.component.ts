@@ -1,5 +1,6 @@
 import { Component, computed, inject } from '@angular/core';
 import { Router } from '@angular/router';
+import { TranslocoModule, TranslocoService } from '@jsverse/transloco';
 import { ButtonComponent } from '../../components/button/button.component';
 import { CoursesPromoService } from '../courses-promo/courses-promo.service';
 import { CourseId } from 'src/app/shared/utils/enums';
@@ -15,12 +16,13 @@ interface ServiceCard {
 
 @Component({
   selector: 'app-home',
-  imports: [ButtonComponent],
+  imports: [ButtonComponent, TranslocoModule],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss'
 })
 export class HomeComponent {
   private readonly router = inject(Router);
+  private readonly translocoService = inject(TranslocoService);
 
   private readonly purchaseService = inject(CoursesPromoService);
   readonly promo = this.purchaseService.coursePromo;
@@ -28,9 +30,9 @@ export class HomeComponent {
 
   readonly servicesSection = computed(() => ({
     header: {
-      badge: 'ჩვენი სერვისები',
-      title: 'ყოვლისმომცველი მზრუნველობა ორსულობისას',
-      subtitle: 'პირველი ტრიმესტრიდან მშობიარობის შემდგომ პერიოდამდე — ჩვენ თქვენს გვერდით ვართ ყოველ ნაბიჯზე.',
+      badge: this.translocoService.translate('Our_Services'),
+      title: this.translocoService.translate('Comprehensive_Pregnancy_Care'),
+      subtitle: this.translocoService.translate('Services_Section_Subtitle'),
     },
     cards: this.promo().map((course): ServiceCard => ({
       logo: '🏥',

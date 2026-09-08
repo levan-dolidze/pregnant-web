@@ -1,4 +1,4 @@
-<main class="contact">
+<main class="contact" *transloco="let t">
     <div *loading="loading()"></div>
 
   <div class="contact__blob contact__blob--1" aria-hidden="true"></div>
@@ -10,46 +10,45 @@
     <aside class="contact__info">
       <span class="badge badge--pink">
         <span class="badge__dot" aria-hidden="true"></span>
-        დაგვიკავშირდით
+        {{ t('Contact_Us_Badge') }}
       </span>
-      <h1 class="contact__title">გაქვთ შეკითხვა?<br></h1>
+      <h1 class="contact__title">{{ t('Have_A_Question') }}<br></h1>
       <p class="contact__desc">
-        დაგვიტოვეთ თქვენი ნომერი და შეტყობინება — ექიმი თამუნა თევზაძე
-        რაც შეიძლება მალე დაგიკავშირდებათ.
+        {{ t('Contact_Desc') }}
       </p>
 
       <ul class="contact-details">
         <li class="contact-details__item">
           <span class="contact-details__icon" aria-hidden="true">📍</span>
           <div>
-            <span class="contact-details__label">მისამართი</span>
+            <span class="contact-details__label">{{ t('Address_Label') }}</span>
             <span class="contact-details__value">{{contactState().address}}</span>
           </div>
         </li>
         <li class="contact-details__item">
           <span class="contact-details__icon" aria-hidden="true">📞</span>
           <div>
-            <span class="contact-details__label">ტელეფონი</span>
+            <span class="contact-details__label">{{ t('Phone_Label') }}</span>
             <a class="contact-details__value contact-details__value--link" href="tel:+995 558 42 41 61">{{contactState().mobileNumber}}</a>
           </div>
         </li>
         <li class="contact-details__item">
           <span class="contact-details__icon" aria-hidden="true">✉️</span>
           <div>
-            <span class="contact-details__label">ელ-ფოსტა</span>
+            <span class="contact-details__label">{{ t('Email') }}</span>
             <a class="contact-details__value contact-details__value--link" href="mailto:info@pregnant.ge">{{contactState().email}}</a>
           </div>
         </li>
         <li class="contact-details__item">
           <span class="contact-details__icon" aria-hidden="true">🕐</span>
           <div>
-            <span class="contact-details__label">სამუშაო საათები</span>
+            <span class="contact-details__label">{{ t('Working_Hours_Label') }}</span>
             <span class="contact-details__value">{{contactState().workingHours}}</span>
           </div>
         </li>
       </ul>
 
-      <nav class="contact-socials" aria-label="სოციალური ქსელები">
+      <nav class="contact-socials" [attr.aria-label]="t('Social_Networks')">
         <a
           class="contact-socials__link"
           href="https://www.instagram.com/doctor_tamuna/"
@@ -72,27 +71,27 @@
       <div class="ask-card__header">
         <div class="ask-card__avatar" aria-hidden="true">T</div>
         <div class="ask-card__header-info">
-          <strong class="ask-card__name">Dr. თამარ თევზაძე</strong>
+          <strong class="ask-card__name">{{ t('Doctor_Full_Name') }}</strong>
           <span class="ask-card__status">
             <span class="ask-card__dot" aria-hidden="true"></span>
-            კითხვებისთვის ხელმისაწვდომია
+            {{ t('Available_For_Questions') }}
           </span>
         </div>
       </div>
 
       <div class="ask-card__body">
         <div class="ask-card__bubble" role="note">
-          გამარჯობა! დაგვიტოვეთ თქვენი მობილურის ნომერი და შეკითხვა — პირადად გიპასუხებთ რაც შეიძლება მალე. 💬
+          {{ t('Contact_Welcome_Message') }}
         </div>
       </div>
 
       <form class="ask-card__compose" [formGroup]="form" (ngSubmit)="onSend()">
         <div class="ask-card__field">
-          <label class="ask-card__label" for="phone">მობილურის ნომერი</label>
+          <label class="ask-card__label" for="phone">{{ t('Phone_number') }}</label>
           <app-input
             type="tel"
             formControlName="mobileNumber"
-            placeholder="ტელეფონი"
+            placeholder="Phone_Label"
             [isRequired]="true"
             [isInvalid]="form.controls['mobileNumber'].invalid && form.controls['mobileNumber'].dirty"
           />
@@ -104,10 +103,10 @@
         </div>
 
         <div class="ask-card__field">
-          <label class="ask-card__label" for="question">თქვენი შეკითხვა</label>
+          <label class="ask-card__label" for="question">{{ t('Your_Question_Label') }}</label>
           <app-text-area
             formControlName="message"
-            placeholder="დაწერეთ შეკითხვა ექიმს..."
+            [placeholder]="t('Question_Placeholder')"
           />
           <mat-hint class="error-msg"
             *validationErrors="form; control: 'message'; let err; additionalValue: {
@@ -119,7 +118,7 @@
         <app-button
           [type]="'submit'"
           className="stroked"
-          text="შეტყობინების გაგზავნა"
+          text="Send_Message"
           [isLoading]="sendLoadingState()"
           >
           <img src="assets/images/svgs/_send.svg" width="18" height="18" alt="" aria-hidden="true">
