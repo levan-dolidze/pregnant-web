@@ -76,7 +76,9 @@
       
   @if (!iSAuthState()) {
   
-  <mat-icon onKeyPress (click)="onLoginInit()">person</mat-icon>
+  <button class="topbar__profile-btn" onKeyPress (click)="onLoginInit()" aria-label="Login">
+    <mat-icon>person</mat-icon>
+  </button>
   <app-button class="topbar__login" [className]="'stroked-fill h-40'" [text]="t('Register')"
     (btnClick)="onRegisterInit()">
   </app-button>
