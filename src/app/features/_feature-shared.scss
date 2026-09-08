@@ -182,7 +182,7 @@ $grad-hero: linear-gradient(140deg, $hero-grad-start 0%, $hero-grad-mid 45%, $he
 // ─── CTA ─────────────────────────────────────────────────────────
 .cta {
   padding: clamp(64px, 9vw, 104px) 24px;
-  background: $grad;
+  background: #0F1015;
   position: relative;
   overflow: hidden;
 
@@ -190,7 +190,7 @@ $grad-hero: linear-gradient(140deg, $hero-grad-start 0%, $hero-grad-mid 45%, $he
     position: absolute;
     width: 600px;
     height: 600px;
-    background: rgba($white, .07);
+    background: rgba($white, .04);
     border-radius: 50%;
     top: -200px;
     right: -150px;

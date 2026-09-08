@@ -5,6 +5,29 @@
       background: var(--bg) !important;
     }
 
+    .ps-hero {
+      background: linear-gradient(140deg, var(--bg) 0%, var(--bg100) 50%, var(--bg) 100%) !important;
+    }
+
+    .ps-hero__title {
+      color: var(--black-white) !important;
+    }
+
+    .ps-hero__desc {
+      color: var(--gray-01) !important;
+    }
+
+    .ps-badge {
+      background: var(--bg100) !important;
+      color: var(--primary-01) !important;
+    }
+
+    .ps-meta-chip {
+      background: var(--bg100) !important;
+      color: var(--black-white) !important;
+      box-shadow: none !important;
+    }
+
     .ps-modules__title {
       color: var(--black-white) !important;
     }

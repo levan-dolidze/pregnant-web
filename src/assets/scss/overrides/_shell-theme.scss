@@ -46,7 +46,10 @@
   .topbar__profile-panel .mat-mdc-menu-item {
     color: var(--black-white) !important;
 
-    .mat-mdc-menu-item-text { color: var(--black-white); }
+    .mat-mdc-menu-item-text,
+    .mdc-list-item__primary-text {
+      color: var(--black-white) !important;
+    }
   }
 
   .topbar__profile-greeting {

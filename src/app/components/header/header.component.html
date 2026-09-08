@@ -55,6 +55,9 @@
       }
     </div>
 
+        <button class="topbar__lang-toggle" (click)="toggleLanguage()" [attr.aria-label]="t('Switch_language')">
+          {{ activeLangCode() === 'ka' ? 'KA' : 'EN' }}
+        </button>
     <button class="topbar__theme-toggle" mat-icon-button
             (click)="toggleTheme()"
             [attr.aria-label]="isDarkMode() ? t('Light_mode') : t('Dark_mode')"
@@ -70,9 +73,7 @@
 
 
     <div class="topbar__login" >
-          <button class="topbar__lang-toggle" (click)="toggleLanguage()" [attr.aria-label]="t('Switch_language')">
-            {{ activeLangCode() === 'ka' ? 'KA' : 'EN' }}
-          </button>
+      
   @if (!iSAuthState()) {
   
   <mat-icon onKeyPress (click)="onLoginInit()">person</mat-icon>
