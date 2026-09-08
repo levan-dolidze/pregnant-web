@@ -2,11 +2,12 @@ import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { Router } from '@angular/router';
 import { CoursesService, CourseSummary } from './courses/data-access/courses.service';
 import { ButtonComponent } from 'src/app/components/button/button.component';
+import { LoadingDirective } from 'src/app/components/loader/loading.directive';
 import { OrderStatus } from 'src/app/shared/utils/enums';
 
 @Component({
   selector: 'app-my-courses',
-  imports: [ButtonComponent],
+  imports: [ButtonComponent, LoadingDirective],
   templateUrl: './my-courses.component.html',
   styleUrl: './my-courses.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush
@@ -24,6 +25,10 @@ export class MyCoursesComponent {
     // TODO: navigate to the course player once it exists
     this.router.navigate(['/courses'])
 
+  }
+
+  goToCourses(): void {
+    this.router.navigate(['/courses-promo']);
   }
 
   statusLabel(status: OrderStatus): string {

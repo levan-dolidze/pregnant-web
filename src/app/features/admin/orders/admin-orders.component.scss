@@ -71,6 +71,17 @@
     @include font(14px, 400, $gray13, $font-default);
   }
 
+  &__sentinel {
+    display: flex;
+    justify-content: center;
+    padding: 20px 0;
+    min-height: 1px;
+  }
+
+  &__loading-more {
+    @include font(13px, 500, $gray13, $font-medium);
+  }
+
   @media (max-width: 700px) {
     &__link {
       grid-template-columns: 1fr;

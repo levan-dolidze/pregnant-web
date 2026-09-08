@@ -24,15 +24,35 @@ const basePath = '/AdminOrders';
 export class AdminOrdersService {
   private readonly apiService = inject(ApiService);
 
+  private readonly pageSize = 20;
+  private page = 1;
+
   readonly orders = signal<AdminOrder[]>([]);
   readonly selectedOrder = signal<AdminOrder | null>(null);
   readonly loading = signal(false);
+  readonly hasMore = signal(true);
 
   loadOrders(): void {
+    this.page = 1;
+    this.orders.set([]);
+    this.hasMore.set(true);
+    this.loadPage();
+  }
+
+  loadMore(): void {
+    if (this.loading() || !this.hasMore()) {
+      return;
+    }
+    this.loadPage();
+  }
+
+  private loadPage(): void {
     this.loading.set(true);
-    this.apiService.get(basePath).subscribe({
+    this.apiService.get(basePath, { page: this.page, pageSize: this.pageSize }).subscribe({
       next: (res: AdminOrder[]) => {
-        this.orders.set(res);
+        this.orders.update((existing) => [...existing, ...res]);
+        this.hasMore.set(res.length === this.pageSize);
+        this.page++;
         this.loading.set(false);
       },
       error: (err) => {

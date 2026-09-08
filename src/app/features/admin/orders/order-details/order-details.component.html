@@ -36,12 +36,11 @@
       </dl>
 
       <div class="order-details__actions">
-                  <!-- [isDisabled]="o.status === OrderStatus.Confirmed" -->
         <app-button
           width=""
           [text]="'დადასტურება'"
           [className]="'stroked-fill h-40'"
-
+          [isDisabled]="o.status === OrderStatus.Confirmed"
           (btnClick)="confirm()">
         </app-button>
         <app-button

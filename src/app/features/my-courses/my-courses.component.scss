@@ -87,4 +87,5 @@
 
 .mc-empty {
   @include font(14px, 400, $gray13, $font-default);
+  margin: 0 0 16px;
 }

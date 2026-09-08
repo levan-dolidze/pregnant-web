@@ -2,7 +2,7 @@
   <h1 class="mc-page__title">ჩემი კურსები</h1>
 
   @if (loading()) {
-    <p class="mc-empty">იტვირთება...</p>
+    <div *loading="loading()"></div>
   } @else if (myCourses().length) {
     <ul class="mc-list">
       @for (course of myCourses(); track course.orderId) {
@@ -34,5 +34,11 @@
     </ul>
   } @else {
     <p class="mc-empty">თქვენ ჯერ არ გაქვთ შეძენილი კურსი.</p>
+    <app-button
+      width=""
+      [text]="'კურსები'"
+      [className]="'stroked-fill h-40'"
+      (btnClick)="goToCourses()">
+    </app-button>
   }
 </main>

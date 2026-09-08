@@ -1,7 +1,7 @@
 <main class="admin-orders">
   <h1 class="admin-orders__title">შეკვეთები</h1>
 
-  @if (loading()) {
+  @if (loading() && !orders().length) {
     <p class="admin-orders__empty">იტვირთება...</p>
   } @else if (orders().length) {
     <ul class="admin-orders__list">
@@ -18,6 +18,12 @@
         </li>
       }
     </ul>
+
+    <div #sentinel class="admin-orders__sentinel">
+      @if (loading()) {
+        <span class="admin-orders__loading-more">იტვირთება...</span>
+      }
+    </div>
   } @else {
     <p class="admin-orders__empty">შეკვეთები არ არის.</p>
   }
