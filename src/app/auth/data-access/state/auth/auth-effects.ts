@@ -77,7 +77,7 @@ export class AuthEffects {
         if (tokenGroup) {
           console.log(tokenGroup)
           this.sessionStorage.saveKey('auth', JSON.stringify(tokenGroup));
-          this.permissionsService.loadPermissions(tokenGroup.role ? [tokenGroup.role] : []);
+          this.permissionsService.loadPermissions(tokenGroup.user?.role ? [tokenGroup.user.role] : []);
           // const rout = this.activatedRoute.snapshot.queryParams['returnUrl'] ?? '';
           // this.router.navigate([rout]);
           this.dialog.closeAll()
@@ -118,7 +118,7 @@ export class AuthEffects {
 
         if (tokenGroup) {
           this.sessionStorage.saveKey('auth', JSON.stringify(tokenGroup));
-          this.permissionsService.loadPermissions(tokenGroup.role ? [tokenGroup.role] : []);
+          this.permissionsService.loadPermissions(tokenGroup.user?.role ? [tokenGroup.user.role] : []);
           this.dialog.closeAll();
           this.alertService.notification({
             message: 'წარმატებით დარეგისტრირდა',

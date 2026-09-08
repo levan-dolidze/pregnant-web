@@ -11,10 +11,15 @@ export interface AccountSource {
 
 // }
 
+export interface AuthUser {
+  id: number;
+  role: string;
+}
+
 export interface AuthTokenResponse {
   accessToken: string;
   expiresIn: number;
-  role: string;
+  user: AuthUser;
 }
 
 export const authInitialState: AccountSource = {

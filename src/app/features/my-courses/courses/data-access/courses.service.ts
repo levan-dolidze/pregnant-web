@@ -1,9 +1,11 @@
 import { computed, DestroyRef, inject, Injectable, signal } from '@angular/core';
 import { ApiService } from 'src/app/core/api-service/api.service';
-import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+import { takeUntilDestroyed, toSignal } from '@angular/core/rxjs-interop';
 import { finalize } from 'rxjs';
 import { CourseId, OrderStatus } from 'src/app/shared/utils/enums';
 import { HttpErrorResponse } from '@angular/common/http';
+import { selectUserId } from 'src/app/auth/data-access/state/auth/auth-selectors';
+import { Store } from '@ngrx/store';
 
 export interface CourseSection {
   name: string;
@@ -61,6 +63,7 @@ export class CoursesService {
 
   private readonly apiService = inject(ApiService);
   destroyRef = inject(DestroyRef);
+  protected readonly store = inject(Store);
 
   coursesMenu = signal<CoursesMenuSource | null>(null);
   readonly coursesMenuState = computed(() => this.coursesMenu())
@@ -69,6 +72,7 @@ export class CoursesService {
   readonly chapters = computed(() => this.coursesMenu().data);
   readonly loading = computed(() => this.coursesMenu().loader);
 
+  readonly selectUserId = toSignal(this.store.select(selectUserId))
 
   private myCourseBy = signal<CourseLessonContentSource | null>(null);
   readonly myCourseByState = computed(() => this.myCourseBy())
@@ -87,12 +91,11 @@ export class CoursesService {
         console.error(err);
       },
     });
-
-    this.getMyOrders();
+    this.getMyOrders()
   }
 
   private getMyOrders(): void {
-    this.apiService.get(`${basePath}/GetMyOrders`).pipe(
+    this.apiService.get(`${basePath}/GetMyOrders?id=${this.selectUserId() }`).pipe(
       takeUntilDestroyed(this.destroyRef),
       finalize(() => this.myOrdersLoading.set(false))
     ).subscribe({
