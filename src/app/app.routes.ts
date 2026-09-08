@@ -125,7 +125,7 @@ export const routes: Routes = [
       },
       {
         path: 'my-courses',
-        // canActivate: [authGuard],
+        canActivate: [authGuard],
         loadComponent: () =>
           import('./features/my-courses/my-courses.component').then(
             (m) => m.MyCoursesComponent
@@ -154,6 +154,7 @@ export const routes: Routes = [
       },
       {
         path: 'admin',
+        canActivate: [authGuard],
         data:{
           permissions: {
             only: ['admin'],

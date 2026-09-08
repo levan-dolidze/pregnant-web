@@ -12,7 +12,7 @@ export const authGuard: CanActivateFn = (route, state) => {
     distinctUntilChanged(),
     tap((isAuth) => {
       console.log(isAuth)
-      if (isAuth) {
+      if (!isAuth) {
         router.navigate(['']);
       }
     }),
