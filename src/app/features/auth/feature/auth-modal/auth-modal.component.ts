@@ -16,6 +16,7 @@ import { SharedModule } from 'src/app/shared/shared-module/shared';
 import { TranslationService } from 'src/app/shared/translate/translation.serive';
 import { RegisterModalComponent } from '../user-register-modal/register-modal.component';
 import { finalize } from 'rxjs';
+import { ConfirmPasswordChangeRequest } from 'src/app/auth/data-access/account.service';
 
 @Component({
   selector: 'app-auth-modal',
@@ -59,6 +60,7 @@ export class AuthModalComponent implements OnInit, OnChanges {
 
   forgotPassForm = new FormGroup({
     personalNumber: new FormControl('', [Validators.required]),
+    temporaryPassword: new FormControl(''),
     newPassword: new FormControl(''),
     confirmNewPassword: new FormControl(''),
   });
@@ -141,6 +143,7 @@ export class AuthModalComponent implements OnInit, OnChanges {
   }
 
   onForgotPassSubmit(): void {
+    console.log('Forgot Password Form Submitted:', this.forgotPassForm.getRawValue());
     if (this.forgotPassForm.invalid) {
       ControlModeChange.formFieldsModeControl('markAsDirty', this.forgotPassForm);
     } else if (!this.forgotPassInitState()) {
@@ -158,13 +161,22 @@ export class AuthModalComponent implements OnInit, OnChanges {
         },
       });
     } else {
-      const request = this.forgotPassForm.getRawValue();
-      console.log(request)
+      const request: ConfirmPasswordChangeRequest = this.forgotPassForm.getRawValue();
+      this.accountService.confirmPasswordChange(request).subscribe({
+        next: () => {
+          this.alert.notification({ message: 'Password_Changed', messageType: 'success' });
+          this.reset();
+        },
+        error: () => {
+          this.alert.notification({ message: 'Password_Change_Failed', messageType: 'error' });
+        },
+      });
     }
   }
 
 
   onOtpConfirmed(confirmed: boolean) {
+    console.log('OTP confirmed:', confirmed);
     this.otpConfirmed.set(confirmed);
 
     if (confirmed) {

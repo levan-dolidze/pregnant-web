@@ -10,6 +10,13 @@ import { AuthTokenResponse } from './state/models';
 const authBasePath = '/Auth';
 const userBasePath = '/User';
 
+export interface ConfirmPasswordChangeRequest {
+  personalNumber: string;
+  temporaryPassword: string;
+  newPassword: string;
+  confirmNewPassword: string;
+}
+
 @Injectable({
   providedIn: 'root',
 })
@@ -33,6 +40,10 @@ export class AccountService {
 
   public passwordRecovery(personalNumber: string): Observable<ApiResponseBase<object>> {
     return this.apiService.post(`${authBasePath}/PasswordRecovery`, { personalNumber });
+  }
+
+  public confirmPasswordChange(params: ConfirmPasswordChangeRequest): Observable<ApiResponseBase<object>> {
+    return this.apiService.post(`${authBasePath}/ConfirmPasswordChange`, params);
   }
 
 

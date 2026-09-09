@@ -163,6 +163,22 @@
                     @if (otpConfirmed()) {
                       <div class="login-form__fields-newpass">
 
+                      <app-input formControlName="temporaryPassword" [placeholder]="t('Temporary_Password')" [type]="'password'" class="input">
+                      </app-input>
+                      <mat-hint class="error-msg" *validationErrors="
+                          forgotPassForm;
+                          control: 'temporaryPassword';
+                          let err;
+                          additionalValue: {
+                            submit:
+                              forgotPassForm.controls['temporaryPassword'] &&
+                              forgotPassForm.controls['temporaryPassword'].dirty,
+                            patternTypes: 'none'
+                          }
+                        ">
+                        {{ t('Error_required') }}
+                      </mat-hint>
+
                       <app-input formControlName="newPassword" [placeholder]="t('New_Password')" [type]="'password'" class="input">
                       </app-input>
                       <mat-hint class="error-msg" *validationErrors="

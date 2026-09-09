@@ -168,7 +168,9 @@ export class OtpComponent implements OnInit {
         .pipe(take(1)).
         subscribe({
           next: ((passwordId: string) => {
-            this.onClose(true)
+            if (this.data) {
+              this.onClose(true)
+            }
             this.confirmOtpEmit.emit(true)
             this.verifyUtpLoading.set({ loading: false, error: '' })
             clearInterval(this.timerInterval);
