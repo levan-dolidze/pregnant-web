@@ -98,19 +98,6 @@ export class AuthModalComponent implements OnInit, OnChanges {
   readonly otpConfirmed = signal(false);
   readonly checkingUser = signal(false);
 
-  onOtpConfirmed(confirmed: boolean) {
-    this.otpConfirmed.set(confirmed);
-
-    //have have to send another resuest for temp password which have to send to users email
-
-    // if (confirmed) {
-    //   this.ff.newPassword.addValidators(Validators.required);
-    //   this.ff.confirmNewPassword.addValidators(Validators.required);
-    //   this.ff.newPassword.updateValueAndValidity();
-    //   this.ff.confirmNewPassword.updateValueAndValidity();
-    // }
-  }
-
   confirmOtp(event: boolean) {
 
     
@@ -175,6 +162,23 @@ export class AuthModalComponent implements OnInit, OnChanges {
       console.log(request)
     }
   }
+
+
+  onOtpConfirmed(confirmed: boolean) {
+    this.otpConfirmed.set(confirmed);
+
+    if (confirmed) {
+      this.accountService.passwordRecovery(this.ff.personalNumber.value).subscribe({
+        next: () => {
+          this.alert.notification({ message: 'Temp_Password_Sent', messageType: 'success' });
+        },
+        error: () => {
+          this.alert.notification({ message: 'Temp_Password_Send_Failed', messageType: 'error' });
+        },
+      });
+    }
+  }
+
 
   backToCredentials(): void {
     this.initForm.reset();

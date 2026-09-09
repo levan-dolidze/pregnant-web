@@ -31,6 +31,10 @@ export class AccountService {
     return this.apiService.post(`${userBasePath}/UserCheck`, { user: personalNumber });
   }
 
+  public passwordRecovery(personalNumber: string): Observable<ApiResponseBase<object>> {
+    return this.apiService.post(`${authBasePath}/PasswordRecovery`, { personalNumber });
+  }
+
 
   
   

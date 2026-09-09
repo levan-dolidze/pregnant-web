@@ -86,6 +86,8 @@
   "Person_age_must_be_grater_than_18": "The traveler person must be at least 18 years old",
   "Person_Not_Found": "Person not found",
   "User_Not_Found": "User not found",
+  "Temp_Password_Sent": "A temporary password has been sent to your email",
+  "Temp_Password_Send_Failed": "Failed to send the temporary password",
   "Insurer_is_AML_Black_List": "Operation failed",
   "Insured_is_AML_Black_List": "Operation failed",
   "Session_has_expired": "Session has expired, please fill in the data again",
