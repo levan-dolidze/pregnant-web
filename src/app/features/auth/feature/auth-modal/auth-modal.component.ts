@@ -15,6 +15,7 @@ import { ControlModeChange } from 'src/app/shared/functions/controlModeChange';
 import { SharedModule } from 'src/app/shared/shared-module/shared';
 import { TranslationService } from 'src/app/shared/translate/translation.serive';
 import { RegisterModalComponent } from '../user-register-modal/register-modal.component';
+import { finalize } from 'rxjs';
 
 @Component({
   selector: 'app-auth-modal',
@@ -57,7 +58,7 @@ export class AuthModalComponent implements OnInit, OnChanges {
   });
 
   forgotPassForm = new FormGroup({
-    username: new FormControl('', [Validators.required]),
+    personalNumber: new FormControl('', [Validators.required]),
     newPassword: new FormControl(''),
     confirmNewPassword: new FormControl(''),
   });
@@ -70,6 +71,10 @@ export class AuthModalComponent implements OnInit, OnChanges {
 
   get smf() {
     return this.smsAuthForm.controls;
+  }
+
+  get ff() {
+    return this.forgotPassForm.controls;
   }
 
   // account = toSignal(this.store.select(AuthSelectors.selectAccount));
@@ -91,16 +96,19 @@ export class AuthModalComponent implements OnInit, OnChanges {
   }
 
   readonly otpConfirmed = signal(false);
+  readonly checkingUser = signal(false);
 
   onOtpConfirmed(confirmed: boolean) {
     this.otpConfirmed.set(confirmed);
 
-    if (confirmed) {
-      this.forgotPassForm.controls.newPassword.addValidators(Validators.required);
-      this.forgotPassForm.controls.confirmNewPassword.addValidators(Validators.required);
-      this.forgotPassForm.controls.newPassword.updateValueAndValidity();
-      this.forgotPassForm.controls.confirmNewPassword.updateValueAndValidity();
-    }
+    //have have to send another resuest for temp password which have to send to users email
+
+    // if (confirmed) {
+    //   this.ff.newPassword.addValidators(Validators.required);
+    //   this.ff.confirmNewPassword.addValidators(Validators.required);
+    //   this.ff.newPassword.updateValueAndValidity();
+    //   this.ff.confirmNewPassword.updateValueAndValidity();
+    // }
   }
 
   confirmOtp(event: boolean) {
@@ -124,24 +132,47 @@ export class AuthModalComponent implements OnInit, OnChanges {
   }
 
   onSmsAuthSubmit(): void {
-    if (this.smsAuthForm.invalid) {
-      ControlModeChange.formFieldsModeControl('markAsDirty', this.smsAuthForm);
-    } else {
-      const request = this.smsAuthForm.getRawValue();
-      console.log(request)
-    }
+    // if (this.smsAuthForm.invalid) {
+    //   ControlModeChange.formFieldsModeControl('markAsDirty', this.smsAuthForm);
+    // } else {
+
+    //   console.log(this.smf.personalNumber.value)
+    //   this.checkingUser.set(true);
+    //   this.accountService.userCheck(this.ff.personalNumber.value).
+    //     pipe(
+    //       finalize(() => this.checkingUser.set(false)),
+    //     ).
+    //     subscribe({
+    //       next: () => {
+    //         this.forgotPassInit.set(true);
+    //       },
+    //       error: () => {
+    //         this.alert.notification({ message: 'User_Not_Found', messageType: 'error' });
+    //       },
+    //     });
+    // }
   }
 
   onForgotPassSubmit(): void {
     if (this.forgotPassForm.invalid) {
       ControlModeChange.formFieldsModeControl('markAsDirty', this.forgotPassForm);
     } else if (!this.forgotPassInitState()) {
-      // step 1: username confirmed, now show the OTP field
-      this.forgotPassInit.set(true);
+      this.checkingUser.set(true);
+      this.accountService.userCheck(this.ff.personalNumber.value).
+      pipe(
+        finalize(() => this.checkingUser.set(false)),
+      ).
+      subscribe({
+        next: () => {
+          this.forgotPassInit.set(true);
+        },
+        error: () => {
+          this.alert.notification({ message: 'User_Not_Found', messageType: 'error' });
+        },
+      });
     } else {
       const request = this.forgotPassForm.getRawValue();
       console.log(request)
-      // TODO: dispatch forgot-password reset once the backend endpoint exists
     }
   }
 

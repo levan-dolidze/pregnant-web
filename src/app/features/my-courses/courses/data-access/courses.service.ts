@@ -56,6 +56,7 @@ export interface CourseSummary {
   description: string;
   lessonQty: number;
   status: OrderStatus;
+  courseId: CourseId;
 }
 
 @Injectable({
@@ -107,6 +108,7 @@ export class CoursesService {
           description: order.description,
           lessonQty: order.lessonQty,
           status: order.status,
+          courseId: order.courseId
         })));
       },
       error: (err: HttpErrorResponse) => {

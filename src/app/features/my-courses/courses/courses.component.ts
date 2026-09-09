@@ -31,6 +31,7 @@ export class CoursesComponent implements OnInit, OnChanges, OnDestroy {
 
   ngOnInit(): void {
 
+    console.log(this.courseId)
   }
 
   ngOnChanges(changes: SimpleChanges): void {

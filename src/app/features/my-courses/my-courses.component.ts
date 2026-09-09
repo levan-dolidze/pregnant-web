@@ -8,10 +8,11 @@ import { toSignal } from '@angular/core/rxjs-interop';
 import { Store } from '@ngrx/store';
 import { selectUserId } from 'src/app/auth/data-access/state/auth/auth-selectors';
 import { TranslocoService, TranslocoModule } from '@jsverse/transloco';
+import { JsonPipe } from '@angular/common';
 
 @Component({
   selector: 'app-my-courses',
-  imports: [ButtonComponent, LoadingDirective, TranslocoModule],
+  imports: [ButtonComponent,JsonPipe, LoadingDirective, TranslocoModule],
   templateUrl: './my-courses.component.html',
   styleUrl: './my-courses.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush
@@ -34,9 +35,8 @@ export class MyCoursesComponent implements OnInit {
 }
 
   startLearning(course: CourseSummary): void {
-    // TODO: navigate to the course player once it exists
-    this.router.navigate(['/courses'])
-
+    console.log(course)
+    this.router.navigate(['/courses'], { queryParams: { courseId: course.courseId } })
   }
 
   goToCourses(): void {

@@ -85,6 +85,7 @@
   "Invalid_UserOrPass": "Secret username or password is not valid",
   "Person_age_must_be_grater_than_18": "The traveler person must be at least 18 years old",
   "Person_Not_Found": "Person not found",
+  "User_Not_Found": "User not found",
   "Insurer_is_AML_Black_List": "Operation failed",
   "Insured_is_AML_Black_List": "Operation failed",
   "Session_has_expired": "Session has expired, please fill in the data again",

@@ -13,9 +13,9 @@
 
             <ng-container
               [ngTemplateOutlet]="authActionType === 'initLogin' ? initLogin :
-                                  authActionType === 'smsAuth' ? smsAuth :
                                   authActionType === 'forgotPass' ? forgotPass :
                                   null">
+                                  <!-- authActionType === 'smsAuth' ? smsAuth : -->
             </ng-container>
 
             <ng-template #initLogin>
@@ -95,7 +95,7 @@
               </form>
             </ng-template>
 
-            <ng-template #smsAuth>
+            <!-- <ng-template #smsAuth>
               <form class="login-form__fields" [formGroup]="smsAuthForm" (ngSubmit)="onSmsAuthSubmit()">
                 <div class="login-form__inputs">
                   <div class="input-wrapper">
@@ -131,23 +131,23 @@
 
 
               </form>
-            </ng-template>
+            </ng-template> -->
 
             <ng-template #forgotPass>
               <form class="login-form__fields" [formGroup]="forgotPassForm" (ngSubmit)="onForgotPassSubmit()">
                 <div class="login-form__inputs">
                   <div class="input-wrapper">
-                    <app-input formControlName="username" [placeholder]="t('Username')"
+                    <app-input formControlName="personalNumber" [placeholder]="t('Personal_number')"
                       class="input">
                     </app-input>
                     <mat-hint class="error-msg" *validationErrors="
                         forgotPassForm;
-                        control: 'username';
+                        control: 'personalNumber';
                         let err;
                         additionalValue: {
                           submit:
-                            forgotPassForm.controls['username'] &&
-                            forgotPassForm.controls['username'].dirty,
+                            forgotPassForm.controls['personalNumber'] &&
+                            forgotPassForm.controls['personalNumber'].dirty,
                           patternTypes: 'none'
                         }
                       ">
@@ -205,7 +205,7 @@
                   <app-button
                     [text]="t('Send')"
                     [type]="'submit'"
-                    [isLoading]="loadingState()">
+                    [isLoading]="loadingState() || checkingUser()">
                     </app-button>
                 </div>
 

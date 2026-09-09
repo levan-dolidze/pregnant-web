@@ -8,6 +8,7 @@ import { Login, UserRegister } from '../utils/auth';
 import { AuthTokenResponse } from './state/models';
 
 const authBasePath = '/Auth';
+const userBasePath = '/User';
 
 @Injectable({
   providedIn: 'root',
@@ -24,6 +25,10 @@ export class AccountService {
 
   public userRegister(params: UserRegister): Observable<AuthTokenResponse> {
     return this.apiService.post(`${authBasePath}/UserRegister`, params);
+  }
+
+  public userCheck(personalNumber: string): Observable<ApiResponseBase<object>> {
+    return this.apiService.post(`${userBasePath}/UserCheck`, { user: personalNumber });
   }
 
 

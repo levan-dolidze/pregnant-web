@@ -3,7 +3,7 @@
 @if (myCourseByState()?.data; as courseBy) {
   <section class="lesson" *transloco="let t">
 
-    <h1 class="lesson__title">{{ t(courseBy.section) }}</h1>
+    <h1 class="lesson__title">{{ t(courseBy.title) }}</h1>
 
     <div class="lesson__meta">
       <span class="lesson__meta-item">
@@ -15,7 +15,7 @@
     <app-video-viewer
       class="lesson__video"
       [videoUrl]="courseBy.url"
-      [title]="t(courseBy.section)">
+      [title]="t(courseBy.title)">
     </app-video-viewer>
   </section>
 }
