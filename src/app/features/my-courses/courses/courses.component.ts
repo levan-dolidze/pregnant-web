@@ -6,6 +6,7 @@ import { CoursesService } from './data-access/courses.service';
 import { LoadingDirective } from 'src/app/components/loader/loading.directive';
 import { TranslocoModule } from '@jsverse/transloco';
 import { VideoViewerComponent } from 'src/app/components/video-viewer/video-viewer.component';
+import { CourseId } from 'src/app/shared/utils/enums';
 
 @Component({
   selector: 'app-courses',
@@ -24,6 +25,7 @@ export class CoursesComponent implements OnInit, OnChanges, OnDestroy {
 
   @Input() section: string;
   @Input() chapter: string;
+  @Input() courseId: CourseId;
   chapterLabel: string | null = null;
   lessonLabel: string | null = null;
 
@@ -33,14 +35,12 @@ export class CoursesComponent implements OnInit, OnChanges, OnDestroy {
 
   ngOnChanges(changes: SimpleChanges): void {
 
-    console.log(this.chapter)
-    console.log(this.section)
     const params = {
-      chapter: this.chapter ?? 'intro',
-      section: this.section ?? '1'
+      courseId: this.courseId || CourseId.PregnantOnline,
+      chapter: this.chapter || 'intro',
+      section: Number(this.section) || 1
     }
     this.coursesService.getMyCourseBy(params)
-    //featch video by item id
   }
 
 

@@ -49,7 +49,7 @@ export class StepEffects {
         {
             pageName: 'travel',
             path: ['/travel'],
-            courseId: CourseId.PregnantGoude,
+            courseId: CourseId.PregnantGuide,
         },
     ];
 

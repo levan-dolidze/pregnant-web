@@ -24,8 +24,9 @@ export class CoursesMenuSource {
 const basePath = '/MyCourses';
 
 export interface CourseLessonContent {
+  courseId: CourseId;
   chapter: string;
-  section: string;
+  section: number;
   url: string;
   title: string;
   duration: string;
@@ -38,8 +39,9 @@ export class CourseLessonContentSource {
 }
 
 export interface MyCourseByRequest {
+  courseId: CourseId,
   chapter: string,
-  section: string
+  section: number
 }
 
 
