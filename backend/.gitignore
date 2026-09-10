@@ -1,0 +1,7 @@
+bin/
+obj/
+.vs/
+*.user
+
+# Contains real secrets (DB password, API keys, JWT key) - see appsettings.json.example
+appsettings.json
