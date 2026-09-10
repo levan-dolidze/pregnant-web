@@ -1,8 +1,6 @@
 export interface VerifyOtpRequest {
-    // passwordId: string;
     code: string,
     mobileNumber: string;
-    // productName: string | null;
 }
 
 export interface OtpRequest {
