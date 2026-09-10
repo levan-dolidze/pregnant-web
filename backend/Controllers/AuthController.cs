@@ -81,9 +81,7 @@ namespace PregnantWeb.Controllers
 
             var tempPassword = Random.Shared.Next(0, 1_000_000).ToString("D6");
 
-            // Send the temp password before touching the DB - if the email
-            // fails, the user's real password stays untouched instead of
-            // being silently replaced with a password they never received.
+
             try
             {
                 await _emailService.SendAsync(
