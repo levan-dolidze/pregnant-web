@@ -43,7 +43,6 @@ export class LayoutComponent implements OnInit {
   }
 
   init() {
-    console.log(performance.now())
     const mode = this.sessionStorageService.getKey('mode')
     const quer = this.sessionStorageService.getKey('query')
     document.documentElement.setAttribute('theme', mode);

@@ -19,7 +19,7 @@ export class ApiService {
   readonly sessionStorage = inject(SessionStorageService)
   
   init() {
-    const mode = this.sessionStorage.getKey('mode') ?? 'light';
+    const mode = this.sessionStorage.getKey('mode') ?? 'dark';
     if (mode) {document.documentElement.setAttribute('theme', mode)}
   }
 
