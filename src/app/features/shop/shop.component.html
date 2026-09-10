@@ -1,2 +1,6 @@
-<main class="shop">
+<main class="shop" *transloco="let t">
+  <app-not-found>
+    {{ t('Product') }}
+    {{ t('Not_found') }}
+</app-not-found>
 </main>

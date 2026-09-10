@@ -1,0 +1,12 @@
+@use "../../../assets/scss/variables" as *;
+@use "../../../assets/scss/mixins" as *;
+
+:host {
+  display: grid;
+  place-items: center;
+  text-align: center;
+  margin-top: 60px;
+  @include font(16px, 700, var(--black-white), $font-default);
+
+
+}

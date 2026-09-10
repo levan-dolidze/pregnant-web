@@ -82,6 +82,7 @@
   "Price": "Price",
   "Go_back": "Go Back",
   "Not_found": "Not Found",
+  "Product": "Product",
   "Invalid_UserOrPass": "Secret username or password is not valid",
   "Person_age_must_be_grater_than_18": "The traveler person must be at least 18 years old",
   "Person_Not_Found": "Person not found",
