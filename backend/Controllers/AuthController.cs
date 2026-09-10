@@ -165,7 +165,6 @@ namespace PregnantWeb.Controllers
         [HttpPost("Login")]
         public async Task<ActionResult<ApiResponseBase<AuthTokenResponse>>> Login([FromBody] Login request)
         {
-            // "username" is matched against PersonalNumber, since that's the identifier we store today.
             var user = await _db.Users.FirstOrDefaultAsync(u => u.PersonalNumber == request.Username);
 
             if (user is null)

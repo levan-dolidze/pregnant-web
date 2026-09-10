@@ -16,7 +16,7 @@
     "Key": "REPLACE_WITH_A_LONG_RANDOM_SECRET_AT_LEAST_32_CHARS",
     "Issuer": "PregnantWeb",
     "Audience": "PregnantWeb",
-    "ExpiresInSeconds": 3600
+    "ExpiresInSeconds": 28800
   },
   "Smtp": {
     "Host": "smtp.gmail.com",
