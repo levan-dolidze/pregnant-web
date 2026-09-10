@@ -30,7 +30,7 @@
   }
 
   &__title {
-    @include font(32px, 700, var(--black-white), $font-bold);
+    @include font(24px, 700, var(--black-white), $font-bold);
     line-height: 1.3;
     margin: 16px 0 20px;
   }
@@ -124,7 +124,7 @@
   }
 
   &__icon {
-    font-size: 28px;
+    font-size: 24px;
     flex-shrink: 0;
   }
 
@@ -165,7 +165,7 @@
   }
 
   &__price {
-    @include font(28px, 700, var(--black-white), $font-bold);
+    @include font(24px, 700, var(--black-white), $font-bold);
   }
 
   &__note {

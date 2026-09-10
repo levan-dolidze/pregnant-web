@@ -62,7 +62,7 @@ lib-inline-message {
         }
 
         div {
-            @include font(36px, 500, var(--black-white), $font-medium);
+            @include font(24px, 500, var(--black-white), $font-medium);
         }
     }
 

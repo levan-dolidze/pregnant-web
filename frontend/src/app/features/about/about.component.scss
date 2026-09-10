@@ -98,7 +98,7 @@
   &__content {
     min-width: 0;
     width: 100%;
-    overflow: hidden;
+    overflow: visible;
     @media (max-width: 900px) { order: -1; }
   }
 
@@ -133,7 +133,7 @@
   }
 
   &__stat        { display: flex; flex-direction: column; min-width: 0; }
-  &__stat-value  { @include gradient-text(); font-size: clamp(15px, 3vw, 24px); font-weight: 800; line-height: 1; }
+  &__stat-value  { @include gradient-text(); display: block; font-size: clamp(15px, 3vw, 18px); font-weight: 800; white-space: nowrap; overflow: visible; }
   &__stat-label  { font-size: 11px; color: var(--gray-01); margin-top: 4px; white-space: nowrap; }
   &__stat-sep    { width: 1px; height: 28px; background: rgba($primary, .2); flex-shrink: 0; }
 }
