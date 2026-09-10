@@ -6,7 +6,7 @@
   place-items: center;
   text-align: center;
   margin-top: 60px;
-  @include font(16px, 700, var(--black-white), $font-default);
+  @include font(16px, 500, var(--black-white), $font-default);
 
 
 }
