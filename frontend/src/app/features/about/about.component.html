@@ -2,12 +2,11 @@
 
   <!-- ─── Page Hero ─────────────────────────────────────────── -->
   <section class="page-hero" [attr.aria-label]="t('About_Doctor_Aria')">
-    <div class="page-hero__blob page-hero__blob--1" aria-hidden="true"></div>
     <div class="page-hero__blob page-hero__blob--2" aria-hidden="true"></div>
     <div class="page-hero__inner">
       <div class="page-hero__media" aria-hidden="true">
         <div class="page-hero__img-bg"></div>
-        <img class="page-hero__img" src="assets/images/doctor/doctorimg.jpg" [attr.alt]="t('Doctor_Photo_Alt')">
+        <img class="page-hero__img" alt="Doctor" src="assets/images/doctor/doctorimg.jpg" [attr.alt]="t('Doctor_Photo_Alt')">
         <div class="page-hero__badge-card">
           <div>
             <strong>{{ t('Years_15_Plus') }}</strong>
@@ -17,11 +16,11 @@
       </div>
 
       <div class="page-hero__content">
-        <span class="badge badge--pink">
-          <span class="badge__dot" aria-hidden="true"></span>
-          {{ t('Doctor_Ob_Gyn_Badge') }}
-        </span>
-        <h1 class="page-hero__title">{{ t('Doctor_Full_Name') }}<br></h1>
+        <div class="page-hero__title-wraper">
+  <h1 class="page-hero__title">{{ t('Doctor_Full_Name') }}</h1>
+  <p class="page-hero__sub-title">ექიმი მეან-გინეკოლოგი</p>
+        </div>
+      
         <p class="page-hero__desc">
           {{ t('About_Hero_Desc') }}
         </p>
@@ -50,7 +49,6 @@
   <section class="bio" aria-labelledby="bio-title">
     <div class="bio__inner">
       <header class="section-hd section-hd--left">
-        <span class="badge badge--purple">{{ t('History_Badge') }}</span>
         <h2 class="section-hd__title" id="bio-title">{{ t('Education') }}<br>{{ t('Experience') }}</h2>
       </header>
       <div class="bio__body">

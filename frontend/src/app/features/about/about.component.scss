@@ -1,9 +1,11 @@
 @use 'variables' as *;
+@use 'mixins' as *;
 @use '../feature-shared' as *;
 
 .section-hd {
-  &--left { text-align: left; }
-  &__title { margin-top: 12px; }
+  &--left {
+    text-align: left;
+  }
 }
 
 // ─── Page Hero ─────────────────────────────────────────────────
@@ -27,12 +29,34 @@
     pointer-events: none;
     z-index: 0;
 
-    &--1 { width: 460px; height: 460px; background: rgba($primary, .11); top: -100px; left: -80px; }
-    &--2 { width: 340px; height: 340px; background: rgba($pink, .1); bottom: 40px; right: -60px; }
+    &--1 {
+      width: 460px;
+      height: 460px;
+      background: rgba($primary, .11);
+      top: -100px;
+      left: -80px;
+    }
+
+    &--2 {
+      width: 340px;
+      height: 340px;
+      background: rgba($pink, .1);
+      bottom: 40px;
+      right: -60px;
+    }
 
     @media (max-width: 600px) {
-      &--1 { width: 220px; height: 220px; left: -50px; }
-      &--2 { width: 180px; height: 180px; right: -40px; }
+      &--1 {
+        width: 220px;
+        height: 220px;
+        left: -50px;
+      }
+
+      &--2 {
+        width: 180px;
+        height: 180px;
+        right: -40px;
+      }
     }
   }
 
@@ -46,12 +70,19 @@
     align-items: center;
     gap: 80px;
 
-    @media (max-width: 900px) { grid-template-columns: 1fr; gap: 40px; }
+    @media (max-width: 900px) {
+      grid-template-columns: 1fr;
+      gap: 40px;
+    }
   }
 
   &__media {
     position: relative;
-    @media (max-width: 900px) { max-width: 320px; margin-inline: auto; }
+
+    @media (max-width: 900px) {
+      max-width: 320px;
+      margin-inline: auto;
+    }
   }
 
   &__img-bg {
@@ -87,40 +118,65 @@
     padding: 14px 18px;
     animation: float 3s ease-in-out infinite;
 
-    strong { display: block; font-size: 14px; font-weight: 800; color: var(--black-white); }
-    span   { font-size: 11px; color: var(--gray-01); }
+    strong {
+      display: block;
+      font-size: 14px;
+      font-weight: 800;
+      color: var(--black-white);
+    }
 
-    @media (max-width: 480px) { right: 0; bottom: -14px; padding: 10px 14px; }
+    span {
+      font-size: 11px;
+      color: var(--gray-01);
+    }
+
+    @media (max-width: 480px) {
+      right: 0;
+      bottom: -14px;
+      padding: 10px 14px;
+    }
   }
 
-  &__badge-icon { font-size: 22px; flex-shrink: 0; }
+  &__badge-icon {
+    font-size: 22px;
+    flex-shrink: 0;
+  }
 
   &__content {
+    display: grid;
+    gap: 10px;
     min-width: 0;
     width: 100%;
     overflow: visible;
-    @media (max-width: 900px) { order: -1; }
+
+    @media (max-width: 900px) {
+      order: -1;
+    }
   }
+
+  &__sub-title {
+    @include font(12px, 400, var(--label), $font-default);
+  }
+
 
   &__title {
     font-size: clamp(18px, 3.5vw, 24px);
     font-weight: 700;
     color: var(--black-white);
     line-height: 1.1;
-    margin: 14px 0 16px;
     word-break: break-word;
     overflow-wrap: anywhere;
   }
 
-  &__title-accent { @include gradient-text(); font-style: normal; }
+  &__title-accent {
+    @include gradient-text();
+    font-style: normal;
+  }
 
   &__desc {
-    font-size: clamp(14px, 2vw, 16px);
-    color: var(--gray-01);
-    line-height: 1.65;
+    @include font(14px, 400, var(--black-white), $font-default);
     max-width: 100%;
-    margin: 0 0 28px;
-    word-break: break-word;
+    margin: 0 0 24px;
     overflow-wrap: anywhere;
   }
 
@@ -132,10 +188,34 @@
     flex-wrap: wrap;
   }
 
-  &__stat        { display: flex; flex-direction: column; min-width: 0; }
-  &__stat-value  { @include gradient-text(); display: block; font-size: clamp(15px, 3vw, 18px); font-weight: 800; white-space: nowrap; overflow: visible; }
-  &__stat-label  { font-size: 11px; color: var(--gray-01); margin-top: 4px; white-space: nowrap; }
-  &__stat-sep    { width: 1px; height: 28px; background: rgba($primary, .2); flex-shrink: 0; }
+  &__stat {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+  }
+
+  &__stat-value {
+    @include gradient-text();
+    display: block;
+    font-size: clamp(15px, 3vw, 18px);
+    font-weight: 800;
+    white-space: nowrap;
+    overflow: visible;
+  }
+
+  &__stat-label {
+    font-size: 11px;
+    color: var(--gray-01);
+    margin-top: 4px;
+    white-space: nowrap;
+  }
+
+  &__stat-sep {
+    width: 1px;
+    height: 28px;
+    background: rgba($primary, .2);
+    flex-shrink: 0;
+  }
 }
 
 // ─── Bio ───────────────────────────────────────────────────────
@@ -150,11 +230,15 @@
     gap: 80px;
     align-items: start;
 
-    @media (max-width: 900px) { grid-template-columns: 1fr; gap: 28px; }
+    @media (max-width: 900px) {
+      grid-template-columns: 1fr;
+      gap: 28px;
+    }
   }
 
   &__body {
     min-width: 0;
+
     p {
       font-size: 15px;
       color: var(--label);
@@ -163,8 +247,16 @@
       word-break: break-word;
       overflow-wrap: anywhere;
 
-      &:last-child { margin-bottom: 0; }
-      &:first-child { font-size: clamp(15px, 2vw, 17px); color: var(--black-white); font-weight: 500; line-height: 1.7; }
+      &:last-child {
+        margin-bottom: 0;
+      }
+
+      &:first-child {
+        font-size: clamp(15px, 2vw, 17px);
+        color: var(--black-white);
+        font-weight: 500;
+        line-height: 1.7;
+      }
     }
   }
 }
@@ -173,15 +265,26 @@
 .creds-section {
   @include section();
   background: var(--bg);
-  &__inner { @include inner(); padding-inline: clamp(16px, 5vw, 24px); }
+
+  &__inner {
+    @include inner();
+    padding-inline: clamp(16px, 5vw, 24px);
+  }
 
   &__grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 20px;
 
-    @media (max-width: 900px) { grid-template-columns: repeat(2, 1fr); gap: 14px; }
-    @media (max-width: 480px) { grid-template-columns: 1fr; gap: 12px; }
+    @media (max-width: 900px) {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 14px;
+    }
+
+    @media (max-width: 480px) {
+      grid-template-columns: 1fr;
+      gap: 12px;
+    }
   }
 }
 
@@ -198,7 +301,9 @@
   &::before {
     content: '';
     position: absolute;
-    top: 0; left: 0; right: 0;
+    top: 0;
+    left: 0;
+    right: 0;
     height: 3px;
     background: $grad;
     transform: scaleX(0);
@@ -209,18 +314,43 @@
   &:hover {
     transform: translateY(-4px);
     box-shadow: $s3;
-    &::before { transform: scaleX(1); }
+
+    &::before {
+      transform: scaleX(1);
+    }
   }
 
-  &__icon   { font-size: 22px; flex-shrink: 0; margin-top: 2px; }
-  &__title  { font-size: 13px; font-weight: 700; color: var(--black-white); margin: 0 0 5px; line-height: 1.3; overflow-wrap: break-word; }
-  &__detail { font-size: 12px; color: var(--gray-01); line-height: 1.5; margin: 0; }
+  &__icon {
+    font-size: 22px;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+
+  &__title {
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--black-white);
+    margin: 0 0 5px;
+    line-height: 1.3;
+    overflow-wrap: break-word;
+  }
+
+  &__detail {
+    font-size: 12px;
+    color: var(--gray-01);
+    line-height: 1.5;
+    margin: 0;
+  }
 }
 
 // ─── Specialisms ───────────────────────────────────────────────
 .specialisms {
   @include section();
-  &__inner { @include inner(); padding-inline: clamp(16px, 5vw, 24px); }
+
+  &__inner {
+    @include inner();
+    padding-inline: clamp(16px, 5vw, 24px);
+  }
 
   &__grid {
     list-style: none;
@@ -233,7 +363,9 @@
     overflow: hidden;
     box-shadow: $s1;
 
-    @media (max-width: 640px) { grid-template-columns: 1fr; }
+    @media (max-width: 640px) {
+      grid-template-columns: 1fr;
+    }
   }
 }
 
@@ -248,7 +380,10 @@
   &:hover {
     background: rgba($primary, .025);
     box-shadow: inset 0 0 0 1px rgba($primary, .1);
-    .spec-item__num { opacity: 1; }
+
+    .spec-item__num {
+      opacity: 1;
+    }
   }
 
   &__num {
@@ -262,8 +397,24 @@
     padding-top: 3px;
   }
 
-  &__title { font-size: 15px; font-weight: 700; color: var(--black-white); margin: 0 0 8px; line-height: 1.3; }
-  &__text  { font-size: 14px; color: var(--gray-01); line-height: 1.65; margin: 0; overflow-wrap: break-word; }
+  &__title {
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--black-white);
+    margin: 0 0 8px;
+    line-height: 1.3;
+  }
 
-  @media (max-width: 480px) { padding: 20px 16px; gap: 12px; }
+  &__text {
+    font-size: 14px;
+    color: var(--gray-01);
+    line-height: 1.65;
+    margin: 0;
+    overflow-wrap: break-word;
+  }
+
+  @media (max-width: 480px) {
+    padding: 20px 16px;
+    gap: 12px;
+  }
 }

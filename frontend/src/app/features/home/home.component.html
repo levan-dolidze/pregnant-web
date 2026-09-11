@@ -22,7 +22,6 @@
       </div>
 
       <div class="doctor__info">
-        <span class="badge badge--purple">{{ t('Meet_The_Doctor') }}</span>
         <h2 class="doctor__name" id="doctor-name">{{ t('Doctor_Full_Name') }}</h2>
         <p class="doctor__role">{{ t('Obstetrician_Gynecologist') }}</p>
         <!-- <div class="doctor__rating" aria-label="შეფასება 4.9 5-დან">
@@ -71,7 +70,6 @@
   <section class="services" aria-labelledby="services-title">
     <div class="services__inner">
       <header class="section-hd">
-        <span class="badge badge--purple">{{ servicesSection().header.badge }}</span>
         <h2 class="section-hd__title" id="services-title">{{ servicesSection().header.title }}</h2>
         <p class="section-hd__desc">{{ servicesSection().header.subtitle }}</p>
       </header>
@@ -95,7 +93,6 @@
   <section class="reviews" aria-labelledby="reviews-title">
     <div class="reviews__inner">
       <header class="section-hd">
-        <span class="badge badge--pink">{{ t('Patient_Stories') }}</span>
         <h2 class="section-hd__title" id="reviews-title">{{ t('What_Mothers_Say') }}</h2>
       </header>
       <div class="reviews__grid">
@@ -140,7 +137,6 @@
   <section class="cta" [attr.aria-label]="t('Book_Appointment')">
     <div class="cta__blob" aria-hidden="true"></div>
     <div class="cta__inner">
-      <span class="cta__label" aria-hidden="true">{{ t('Start_Today') }}</span>
       <h2 class="cta__title">{{ t('Your_Journey_Starts_Here') }}</h2>
       <p class="cta__desc">{{ t('Cta_Home_Desc') }}</p>
       <div class="cta__actions">
