@@ -219,18 +219,25 @@ namespace PregnantWeb.Controllers
                 new Claim(JwtRegisteredClaimNames.Sub, user.Id.ToString()),
                 new Claim(JwtRegisteredClaimNames.Email, user.Email),
                 new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
+                new Claim("PersonalNumber", user.PersonalNumber),
+                new Claim("MobileNumber", user.MobileNumber),
+
+
                 new Claim("role", role)
+
             };
 
             var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_config["Jwt:Key"]));
             var credentials = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
 
             var token = new JwtSecurityToken(
+                
                 issuer: _config["Jwt:Issuer"],
                 audience: _config["Jwt:Audience"],
                 claims: claims,
                 expires: DateTime.UtcNow.AddSeconds(expiresInSeconds),
                 signingCredentials: credentials);
+              
 
             return new JwtSecurityTokenHandler().WriteToken(token);
         }
