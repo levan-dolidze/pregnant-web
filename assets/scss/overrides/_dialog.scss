@@ -1,0 +1,11 @@
+
+.mat-mdc-dialog-surface {
+    border-radius: 24px;
+    transform: none;
+    border: none;
+    background-color: var(--bg100) !important;
+}
+
+.mat-mdc-dialog-container .mdc-dialog__surface {
+    border-radius: 24px 24px 0px 0px;
+}

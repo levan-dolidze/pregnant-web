@@ -1,0 +1,151 @@
+﻿@use "mixins" as *;
+
+
+html .topbar {
+  position: sticky;
+  top: 0;
+  height: 75px;
+  max-height: 75px;
+  min-height: 0;
+  width: calc(100% - 2rem);
+  z-index: 100;
+  margin-top: 1rem;
+  margin-inline: 1rem;
+  transition: background-color 0.3s,
+    box-shadow 0.3s,
+    top 0.3s,
+    border-radius 0.3s,
+    -webkit-box-shadow 0.3s;
+  border-radius: 20px;
+  animation: topbar-stuck linear both;
+  animation-timeline: scroll(nearest);
+  animation-range: 0px 80px;
+  box-shadow: 0 0 20px 3px var(--shell-shadow);
+
+  &__menu {
+    @include flex-center;
+    @include font(14px, 400, var(--black-white), $font-default);
+    gap: 10px;
+    margin-right: 50px;
+  }
+
+  &__navs {
+    a {
+      text-decoration: none;
+      @include font(14px, 400, var(--black-white), $font-medium);
+
+      &.topbar__navs--active {
+        font-weight: 700;
+      }
+    }
+  }
+
+  &__burger {
+    display: none;
+  }
+}
+
+.topbar__mobile-menu {
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  top: 75px;
+  left: 0;
+  right: 0;
+  z-index: 99;
+  background-color: var(--bg100);
+  padding: 1rem 0;
+  animation: mobile-menu-in .25s ease-out;
+}
+
+.topbar__mobile-link {
+  text-decoration: none;
+  padding: 0.875rem 1.5rem;
+  @include font(14px, 500, var(--black-white), $font-medium);
+  transition: background-color .2s ease, color .2s ease;
+
+  &:hover {
+    background-color: var(--hover-overlay);
+  }
+
+  &--active {
+    font-weight: 700;
+    color: var(--primary);
+  }
+}
+
+.topbar__mobile-logout {
+  margin: 0.5rem 1.5rem;
+  padding: 0.625rem 1.25rem;
+  background: transparent;
+  border: 1px solid currentColor;
+  border-radius: 6px;
+  cursor: pointer;
+  @include font(15px, 500, var(--black-white), $font-medium);
+  text-align: center;
+  transition: background-color .2s ease, color .2s ease;
+  align-self: flex-start;
+
+  &:hover {
+    background-color: var(--hover-overlay);
+  }
+}
+
+@keyframes topbar-stuck {
+  to {
+    border-radius: 0 0 20px 20px;
+  }
+}
+
+@keyframes mobile-menu-in {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media screen and (max-width: 768px) {
+  html .topbar {
+    width: 100%;
+    margin-top: 0;
+    margin-inline: 0;
+    border-radius: 0;
+    animation: none;
+    padding-inline: 8px;
+    gap: 4px;
+
+    &__menu {
+      display: none;
+    }
+
+    &__burger {
+      display: flex;
+    }
+
+    &__logout,
+    &__notify,
+    &__login {
+      display: none;
+    }
+
+    &__profile {
+      display: none;
+    }
+  }
+
+  html .topbar img[alt="Logo"] {
+    max-width: 120px;
+    height: auto;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  html .topbar img[alt="Logo"] {
+    max-width: 96px;
+  }
+}

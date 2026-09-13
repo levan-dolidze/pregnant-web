@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 70" width="200" height="70">
+  <defs>
+    <style>
+      .text-style {
+        font-family: 'Helvetica Neue', Helvetica, Arial, 'Segoe UI', sans-serif;
+        font-size: 13.5px;
+        font-weight: 600;
+        fill: #1A56DB;
+        letter-spacing: -1.0px;
+      }
+      .icon-stroke {
+        fill: none;
+        stroke: #1A56DB;
+        stroke-width: 3.0;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+      }
+    </style>
+  </defs>
+
+
+  <!-- Minimalist Pregnancy Silhouette Icon (GM-Medica Style) -->
+  <g transform="translate(10, 15)">
+    <path d="M 16,4 Q 21,4 21,9 Q 21,14 17,16 Q 24,19 25,26 Q 26,34 18,38 Q 14,40 11,40" class="icon-stroke" />
+    <path d="M 11,40 C 9,40 7,37 8,33 C 9,29 11,24 11,20" class="icon-stroke" />
+  </g>
+
+  <!-- Clean, Exactly Spelled Georgian Typography -->
+  <text x="44" y="40" class="text-style">ორსულების პორტალი</text>
+</svg>

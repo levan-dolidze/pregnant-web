@@ -1,0 +1,20 @@
+$fonts: "TBCX-regular" "/assets/fonts/TBCX-Regular" 400 normal,
+  "TBCX-bold" "/assets/fonts/TBCX-Bold" 700 normal,
+  "TBCX-medium" "/assets/fonts/TBCX-Medium" 500 normal,
+  "TBCX-light" "/assets/fonts/TBCX-Light" 500 normal,
+  "TBCX-black" "/assets/fonts/TBCX-Black" 500 normal;
+
+@each $font in $fonts {
+  @font-face {
+    font-family: nth($font, 1);
+    src: url(nth($font, 2) + ".ttf") format("truetype");
+    font-weight: nth($font, 3);
+    font-style: nth($font, 4);
+  }
+}
+
+:root {
+  @each $font in $fonts {
+    --font-#{nth($font, 1)}: #{nth($font, 1)};
+  }
+}

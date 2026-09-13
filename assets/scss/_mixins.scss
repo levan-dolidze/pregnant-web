@@ -1,0 +1,111 @@
+@mixin font($size, $weight, $color, $font) {
+  font-size: $size;
+  font-weight: $weight;
+  color: $color;
+  font-family: $font;
+}
+
+@mixin iconFrame($width, $height) {
+  width: $width;
+  height: $height;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+
+  cursor: pointer;
+  transition: transform 0.3s ease;
+
+  &:hover {
+    transform: scale(1.05);
+  }
+
+}
+
+@mixin flex-init {
+  display: flex;
+  align-items: center
+}
+
+@mixin flex-start {
+  display: flex;
+  align-items: flex-start;
+}
+
+@mixin centerElement {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+
+@mixin flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@mixin flex-center-between {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+@mixin flex-end {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+
+
+@mixin titles {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 30px;
+  border-bottom: 1px solid #00000019;
+}
+
+@mixin iconFrame($width, $height) {
+  width: $width;
+  height: $height;
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+@mixin footerBtn {
+  width: calc(100vw - 32px);
+  position: fixed;
+  bottom: 40px;
+  display: grid;
+  box-sizing: border-box;
+}
+
+@mixin footerBtnStatic {
+  @include footerBtn;
+  position: static;
+  padding-top: 30px;
+}
+
+@mixin inline-message($size: 12px, $weight: 400, $color: var(--gray-03), $font: 'TBCX-regular') {
+  @include flex-start;
+  @include font($size, $weight, $color, $font);
+  gap: 10px;
+}
+
+@mixin noWrap {
+  width: fit-content;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+@mixin stepWrapper {
+  padding: 74px 16px;
+  height: calc(100dvh - 58px);
+  overflow-y: auto;
+}

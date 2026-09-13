@@ -1,0 +1,164 @@
+// ─── Profile trigger ─────────────────────────────────────────────
+.topbar__profile {
+  margin-left: 8px;
+}
+
+.topbar__profile-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: none;
+  background: rgba($primary, .1);
+  color: $primary;
+  cursor: pointer;
+  transition: background .2s ease;
+
+  &:hover { background: rgba($primary, .2); }
+
+  mat-icon { font-size: 20px; width: 20px; height: 20px; }
+}
+.topbar__login{
+  @include flex-init;
+  gap: 10px;
+}
+
+.topbar__theme-toggle {
+
+  @include flex-center;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: none;
+  background: rgba($primary, .1);
+  cursor: pointer;
+  transition: background .2s ease, color .2s ease;
+
+  // Angular Material's .mat-mdc-icon-button sets its own "color" at the
+  // same specificity, injected after this stylesheet, so it wins the
+  // cascade tie without !important — same issue as the topbar background.
+  &, mat-icon {
+    color: $primary !important;
+  }
+
+  &:hover { background: rgba($primary, .2); }
+
+  mat-icon { font-size: 20px; width: 20px; height: 20px; }
+}
+
+.topbar__lang-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: none;
+  background: rgba($primary, .1);
+  color: $primary;
+  cursor: pointer;
+  font-size: 12px;
+  font-weight: 700;
+  font-family: $font-medium;
+  letter-spacing: .02em;
+  transition: background .2s ease, color .2s ease;
+
+  &:hover { background: rgba($primary, .2); }
+}
+
+.topbar__mobile-lang {
+  align-self: flex-start;
+  margin: 0.5rem 1.5rem;
+  padding: 6px 16px;
+  border-radius: 20px;
+  border: 1px solid rgba($primary, .3);
+  background: transparent;
+  color: $primary;
+  font-size: 12px;
+  font-weight: 700;
+  font-family: $font-medium;
+  cursor: pointer;
+}
+
+// ─── Nav trigger (dropdown button) ───────────────────────────────
+.topbar__navs-trigger {
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  font-size: 14px;
+  font-weight: 400;
+  font-family: $font-medium;
+  color: var(--black-white);
+  line-height: inherit;
+
+  &:hover { opacity: .75; }
+}
+
+.topbar__navs--child-active .topbar__navs-trigger {
+  font-weight: 700;
+}
+
+.topbar__navs-chevron {
+  font-size: 16px;
+  width: 16px;
+  height: 16px;
+  transition: transform .2s ease;
+
+  .topbar__navs-trigger[aria-expanded="true"] & {
+    transform: rotate(180deg);
+  }
+}
+
+// ─── Nav dropdown panel ──────────────────────────────────────────
+.topbar__dropdown-panel {
+
+
+  .mat-mdc-menu-item {
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 400;
+    font-family: $font-medium;
+    color: var(--black-white);
+    min-height: 40px;
+
+    .mat-mdc-menu-item-text { font-size: 14px; font-family: $font-medium; }
+    &:hover .mat-mdc-menu-item-text { color: $primary; }
+  }
+}
+
+.topbar__dropdown-item--active {
+  font-weight: 700 !important;
+  color: $primary !important;
+}
+
+// ─── Mobile nav ──────────────────────────────────────────────────
+.topbar__mobile-group {
+  display: block;
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--gray-03);
+  font-family: $font-medium;
+  text-transform: uppercase;
+  padding: 10px 1.5rem 4px;
+}
+
+.topbar__burger mat-icon,
+.topbar__notify mat-icon {
+  color: var(--black-white);
+}
+
+.topbar__mobile-link--child {
+  padding-left: 2.25rem;
+
+  &::before {
+    content: '›';
+    margin-right: 6px;
+    color: $primary;
+  }
+}

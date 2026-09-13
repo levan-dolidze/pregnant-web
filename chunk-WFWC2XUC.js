@@ -1,0 +1,1 @@
+import{Cb as n}from"./chunk-7UIX6VE6.js";import"./chunk-QBUHZOWM.js";var o=class e{static \u0275fac=function(t){return new(t||e)};static \u0275cmp=n({type:e,selectors:[["app-profile"]],decls:0,vars:0,template:function(t,i){},encapsulation:2,changeDetection:0})};export{o as ProfileComponent};

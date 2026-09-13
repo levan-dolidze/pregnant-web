@@ -1,0 +1,151 @@
+@import url("https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap");
+
+$font-family: 'Plus Jakarta Sans', sans-serif;
+
+$font-default: "TBCX-regular", sans-serif;
+$font-medium: "TBCX-medium", sans-serif;
+$font-bold: "TBCX-bold", sans-serif;
+$font-light: "TBCX-light", sans-serif;
+$font-black: "TBCX-black", sans-serif;
+
+
+
+$white100: #FAFAFA;
+$white200: #4343430D;
+$white: #ffffff;
+$mainBg: #F4F7F7;
+$blue: #0E215F;
+$blue100: #0C2363;
+$blue200: #8290BF;
+$blue300: #0E215E;
+$blue400: #F5F8FF;
+$blue500: #8290BE;
+$blue600: #C4C4C4;
+$blue700: #D3D3D3;
+$blue800: #2045c9;
+$red: #E50019;
+$red50: #E51B1B;
+$red100: #EE2A2A;
+$red200: #FFD7D7;
+$red300: #FF4141;
+$pink: #EE2A7B;
+$pink100: #FFEBF3;
+$pink200: #FFF2F8;
+$pink300: #FECAE0;
+$green: #8DDD4D;
+$green100: #E3FCD7;
+$yellow: #EEC32A;
+$black: #000000;
+$purple: #3666FF;
+
+
+$gray-4: #A5AAAC;
+$gray-6: #EEF1F1;
+
+
+$gray: #C2BEAF;
+$gray1: #FBFBFB;
+$gray2: #D1D1D1;
+$gray3: #00000019;
+$gray4: #00000099;
+$gray5: #EDEDED;
+$gray6: #43434380;
+$gray10: #BFC7E0;
+$gray11: #f3f3f3;
+$gray12: #e0e0e0;
+$gray13: #6F787B;
+$gray50: #F9F9F9;
+$gray100: #CECECE;
+$gray200: #BCBCBC;
+$gray300: #D8D8D8;
+$gray400: #F8F8F8;
+$gray500: #E5E5E5;
+$gray600: #F4F4F4;
+$gray700: #434343;
+$gray800: #F2F5FD;
+$gray900: #636363;
+$gray901: #E8E8E8;
+$transparent: transparent;
+
+
+$primary: #7B2CBF;
+$primary-01: #dcd1f8;
+$primaryHover: rgb(161, 151, 253);
+$txt-blue: #0E215F;
+$txt-blue-1: #374151;
+$txt-blue-2: #3E4D7F;
+
+$gray-1: #636363;
+$gray-2: #f5f5f5;
+$gray-3: #434343;
+$green-1: #E3FCD7;
+$pink-1: #FFD7D7;
+
+
+$bg-gray: #1A1E1FB2;
+$divider: #EEF1F1;
+$black: #141719;
+$black100: #0c0c0c;
+$grayFill: #7063E91A;
+
+$midnight-green: #133434;
+$light-sea-green: #25A0A0;
+$aqua-fluorescent: #1AE5BC;
+$lawn-green: #8EFB0A;
+$sunshine-yellow: #F6FA09;
+$green-light: #A7D5D6;
+$green-light1: #dae9e9;
+$black-green: #0A1A1A;
+
+$cardshadow: rgba(145, 158, 171, 0.3) 0px 0px 2px 0px, rgba(145, 158, 171, 0.12) 0px 12px 24px -4px;
+
+$hoverBgColor: #f6f9fc;
+$disabled: #bbbbbb;
+$inputBorder: #DFE5EF;
+$inputLable: #9199B4;
+$redOutline: #e61e1e;
+$redText: #E61D1D;
+
+$originBlack: #000000;
+$blackOutline: #1A1E1F;
+$avtiveGreen: #389e0d;
+$active: #52C41A;
+$inActiveBG: #FD07071A;
+$activeBG: #52C41A14;
+$header-height: 100px !default;
+
+$borderColor: #0000000D;
+$borderColor1: #00000033;
+$acceptBG: #eaeff4;
+$eventType: #e8ebe7;
+$txtWithBg: #F2F2F2;
+$lightBlue: #EFF3FF;
+
+$accent: #49beff;
+$warning: #ffae1f;
+$error: #FF0B00;
+$success: #956ffe;
+$nativeRed: #ee3030;
+$transpHover: #fafafa;
+$light: #dcdede;
+
+$light-primary: #ecf2ff;
+$light-accent: #e8f7ff;
+$light-warning: #fef5e5;
+$light-error: #fdede8;
+$light-success: #e6fffa;
+$readonlySection: #5A6A85;
+
+$boxedWidth: 1200px;
+$border-radius: 7px;
+$textPrimary: #2a3547;
+
+// ─── Feature palette ──────────────────────────────────────────
+$hero-grad-start: #faf5ff;
+$hero-grad-mid:   #ede5ff;
+$hero-grad-end:   #ffe4f2;
+$footer-bg:       #faf8ff;
+
+// ─── UI components ────────────────────────────────────────────
+$tooltip-bg:   #202936;
+$tooltip-text: #f9f9fa;

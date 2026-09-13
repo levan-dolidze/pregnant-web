@@ -1,0 +1,13 @@
+@import 'variables';
+
+.success-dialog.mat-mdc-snack-bar-container .mat-mdc-snackbar-surface {
+  background-color: $success !important;
+  border-radius: 12px;
+  margin-top: 40px;
+}
+
+.error-dialog.mat-mdc-snack-bar-container .mat-mdc-snackbar-surface {
+  background-color: $error !important;
+  border-radius: 12px;
+  margin-top: 40px;
+}

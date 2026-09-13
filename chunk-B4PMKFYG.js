@@ -1,0 +1,1 @@
+var e=(i=>(i[i.PregnantOnline=1]="PregnantOnline",i[i.PregnantGuide=2]="PregnantGuide",i))(e||{}),g=(n=>(n[n.Pending=0]="Pending",n[n.Confirmed=1]="Confirmed",n[n.Rejected=2]="Rejected",n))(g||{});export{e as a,g as b};

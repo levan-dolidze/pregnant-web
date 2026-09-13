@@ -1,0 +1,57 @@
+@use "mixins" as *;
+
+.mat-mdc-checkbox {
+  .mdc-form-field {
+    align-items: flex-start;
+    gap: 10px;
+  }
+}
+
+.mdc-checkbox__native-control:enabled:checked~.mdc-checkbox__background,
+.mdc-checkbox__native-control:enabled:indeterminate~.mdc-checkbox__background {
+  border-color: $primary !important;
+  background-color: $primary !important;
+}
+
+.mdc-checkbox__background {
+  border-radius: 7px !important;
+  border: 1px solid var(--border) !important;
+  background-color: var(--toggle) !important;
+  width: 23px !important;
+  height: 22px !important;
+
+}
+
+.mdc-checkbox__native-control:checked~.mdc-checkbox__background {
+  background-image: url('../../../assets/images/svgs/_check.svg');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  background-size: 12px 12px;
+}
+
+
+.mat-mdc-checkbox-ripple,
+.mdc-checkbox__ripple {
+  display: none;
+}
+
+.mdc-checkbox__checkmark-path {
+  display: none;
+}
+
+.mat-mdc-checkbox-touch-target {
+  background: none !important;
+}
+
+.mdc-label {
+  @include font(14px, 700, var(--label), $font-medium);
+}
+
+:root {
+  --mat-checkbox-state-layer-size: 22px;
+}
+
+.invalid {
+  color: $error;
+}
