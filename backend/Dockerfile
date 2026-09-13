@@ -1,6 +1,6 @@
 FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build
 WORKDIR /src
-COPY . .
+COPY backend/ .
 RUN dotnet restore "PregnantWeb.csproj" -r linux-x64
 RUN dotnet publish "PregnantWeb.csproj" -c Release -o /app/publish -r linux-x64 --self-contained false -p:PublishReadyToRun=true
 
