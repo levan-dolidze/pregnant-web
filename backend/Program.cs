@@ -25,12 +25,12 @@ builder.Services.AddSingleton<IOtpService, OtpService>();
 builder.Services.AddHttpClient();
 builder.Services.AddScoped<IEmailService, EmailService>();
 
-// Allow the local Angular dev server to call this API.
+// Allow the local Angular dev server and the deployed GitHub Pages frontend to call this API.
 builder.Services.AddCors(options =>
 {
     options.AddPolicy("AllowAngularDev", policy =>
     {
-        policy.WithOrigins("http://localhost:4200")
+        policy.WithOrigins("http://localhost:4200", "https://levan-dolidze.github.io")
               .AllowAnyHeader()
               .AllowAnyMethod();
     });
