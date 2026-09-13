@@ -9,4 +9,4 @@ WORKDIR /app
 COPY --from=build /app/publish .
 ENV ASPNETCORE_URLS=http://+:10000
 EXPOSE 10000
-ENTRYPOINT ["/bin/sh", "-c", "echo '--- Listing /app ---' && ls -la /app && echo '--- Starting app ---' && exec dotnet PregnantWeb.dll"]
+ENTRYPOINT ["/bin/sh", "-c", "echo 'CONTAINER STARTED, SLEEPING' && sleep 3600"]
