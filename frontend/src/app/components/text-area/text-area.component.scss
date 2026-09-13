@@ -22,4 +22,8 @@
       border: none;
       cursor: text;
     }
+
+    &.invalid {
+      border-color: $error !important;
+    }
   }

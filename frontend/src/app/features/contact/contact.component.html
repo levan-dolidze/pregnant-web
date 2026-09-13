@@ -99,6 +99,7 @@
           <app-text-area
             formControlName="message"
             [placeholder]="t('Question_Placeholder')"
+            [isInvalid]="form.controls['message'].invalid && form.controls['message'].dirty"
           />
           <mat-hint class="error-msg"
             *validationErrors="form; control: 'message'; let err; additionalValue: {

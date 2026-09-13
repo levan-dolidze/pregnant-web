@@ -15,6 +15,7 @@ name="text"
 (ngModelChange)="updateModel()"
 [disabled]="isDisabled"
 [style.height]="height +'px'"
+[class.invalid]="isInvalid"
 ></textarea>
 
 </ng-container>
@@ -34,6 +35,7 @@ export class TextAreaComponent implements ControlValueAccessor {
   @Input() placeholder:string ='';
   @Input() isDisabled: boolean;
   @Input() height ='88';
+  @Input() isInvalid: boolean | undefined = false;
 
   private onModelChange = (_: any) => { };
   propagateTouched = (value: boolean) => { };
