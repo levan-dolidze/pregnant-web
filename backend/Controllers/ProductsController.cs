@@ -6,7 +6,7 @@ using PregnantWeb.Models;
 namespace PregnantWeb.Controllers
 {
     [ApiController]
-    [Route("api/[controller]")]
+    [Route("Pregnantportal/api/[controller]")]
     public class ProductsController : ControllerBase
     {
         private readonly AppDbContext _db;

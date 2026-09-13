@@ -12,7 +12,7 @@ using PregnantWeb.Services;
 namespace PregnantWeb.Controllers
 {
     [ApiController]
-    [Route("api/[controller]")]
+    [Route("Pregnantportal/api/[controller]")]
     public class AuthController : ControllerBase
     {
         private readonly AppDbContext _db;

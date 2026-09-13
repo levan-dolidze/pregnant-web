@@ -6,7 +6,7 @@ using PregnantWeb.Services;
 namespace PregnantWeb.Controllers
 {
     [ApiController]
-    [Route("api/[controller]")]
+    [Route("Pregnantportal/api/[controller]")]
     public class OtpController : ControllerBase
     {
         // Georgian mobile numbers: 9 digits, starting with 5 (e.g. 591880290).

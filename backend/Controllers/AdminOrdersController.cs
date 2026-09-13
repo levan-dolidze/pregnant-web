@@ -7,7 +7,7 @@ using PregnantWeb.Models;
 namespace PregnantWeb.Controllers;
 
 [ApiController]
-[Route("api/[controller]")]
+[Route("Pregnantportal/api/[controller]")]
 [Authorize(Policy = "AdminOnly")]
 public class AdminOrdersController : ControllerBase
 {
