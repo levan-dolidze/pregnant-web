@@ -24,7 +24,7 @@ public class RegisterController : ControllerBase
         _config = config;
     }
 
-    [Authorize]
+    //[Authorize]
     [HttpPost("RegisterOrder")]
     public async Task<IActionResult> RegisterOrder([FromBody] Register request)
     {
