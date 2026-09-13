@@ -122,7 +122,7 @@ export class PurchaseCourseComponent implements OnInit {
     },
     terms: {
       documentNumber: 'Terms',
-      linkUrl: 'https://tbcinsurance-website-files.s3.eu-west-1.amazonaws.com/wordings/FOREIGN_STUDENTS_Health_and_PA_INSURANCE_2024.pdf'
+      linkUrl: 'assets/documents/terms-school.pdf'
     },
     submitButton: {
       text: 'Pay',
