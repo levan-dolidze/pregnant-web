@@ -1,10 +1,12 @@
-import { ChangeDetectionStrategy, Component, inject, Input, OnInit } from '@angular/core';
-import { DatePipe } from '@angular/common';
+import { ChangeDetectionStrategy, Component, inject, Input } from '@angular/core';
+import { DatePipe, JsonPipe } from '@angular/common';
 import { RouterLink } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
 import { TranslocoService, TranslocoModule } from '@jsverse/transloco';
 import { AdminOrdersService } from '../../data-access/admin-orders.service';
 import { ButtonComponent } from 'src/app/components/button/button.component';
+import { LoadingDirective } from 'src/app/components/loader/loading.directive';
+import { ItemNotFoundComponent } from 'src/app/components/item-not-found/item-not-found.component';
 import { OrderStatus } from 'src/app/shared/utils/enums';
 import {
   ConfirmDialogModel,
@@ -13,25 +15,22 @@ import {
 
 @Component({
   selector: 'app-order-details',
-  imports: [ButtonComponent, DatePipe, RouterLink, TranslocoModule],
+  imports: [ButtonComponent, JsonPipe, DatePipe, RouterLink, LoadingDirective, ItemNotFoundComponent, TranslocoModule],
   templateUrl: './order-details.component.html',
   styleUrl: './order-details.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class OrderDetailsComponent implements OnInit {
+export class OrderDetailsComponent {
   private readonly ordersService = inject(AdminOrdersService);
   private readonly dialog = inject(MatDialog);
   private readonly translocoService = inject(TranslocoService);
 
   @Input() id!: string;
 
+  // Populated by orderDetailsResolver before this component activates.
   readonly order = this.ordersService.selectedOrder;
   readonly loading = this.ordersService.loading;
   readonly OrderStatus = OrderStatus;
-
-  ngOnInit(): void {
-    this.ordersService.loadOrder(+this.id);
-  }
 
   confirm(): void {
     this.openConfirmDialog({

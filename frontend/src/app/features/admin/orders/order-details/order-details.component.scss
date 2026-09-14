@@ -41,20 +41,23 @@
 
   &__status {
     @include font(12px, 600, $white, $font-medium);
-    padding: 6px 16px;
+    padding: 4px 16px;
     border-radius: 20px;
     white-space: nowrap;
 
     &--pending {
-      background: $gray900;
+      border: 1px solid $yellow;
+      color: $yellow;
     }
 
     &--confirmed {
-      background: #25D272;
+      border: 1px solid $green;
+      color: $green;
     }
 
     &--rejected {
-      background: $error;
+      border: 1px solid $error;
+      color: $error;
     }
   }
 
@@ -88,10 +91,6 @@
   &__actions {
     display: flex;
     gap: 12px;
-  }
-
-  &__empty {
-    @include font(14px, 400, var(--gray-01), $font-default);
   }
 
   @media (max-width: 500px) {

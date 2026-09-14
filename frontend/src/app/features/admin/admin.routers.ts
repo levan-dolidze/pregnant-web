@@ -1,5 +1,6 @@
 import { Routes } from '@angular/router';
 import { ngxPermissionsGuard } from 'ngx-permissions';
+import { orderDetailsResolver } from './orders/order-details/order-details.resolver';
 
 export const routes: Routes = [
   {
@@ -27,6 +28,7 @@ export const routes: Routes = [
       },
       {
         path: 'orders/:id',
+        resolve: { order: orderDetailsResolver },
         loadComponent: () =>
           import('./orders/order-details/order-details.component').then(
             (m) => m.OrderDetailsComponent

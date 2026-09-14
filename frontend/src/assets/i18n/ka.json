@@ -125,6 +125,7 @@
   "Confirm": "დადასტურება",
   "Reject": "უარყოფა",
   "Order_Not_Found": "შეკვეთა ვერ მოიძებნა.",
+  "Order_Not_Found_Subtitle": "შეკვეთა შესაძლოა წაშლილია ან ბმული არასწორია.",
   "Confirm_Order_Title": "შეკვეთის დადასტურება",
   "Confirm_Order_Message": "ნამდვილად გსურთ ამ შეკვეთის დადასტურება?",
   "Reject_Order_Title": "შეკვეთის უარყოფა",

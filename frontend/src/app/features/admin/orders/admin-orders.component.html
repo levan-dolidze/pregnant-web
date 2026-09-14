@@ -2,7 +2,7 @@
   <!-- <h1 class="admin-orders__title">{{ t('Orders') }}</h1> -->
 
   @if (loading() && !orders().length) {
-    <p class="admin-orders__empty">{{ t('Loading') }}</p>
+    <div *loading="loading()"></div>
   } @else if (orders().length) {
     <ul class="admin-orders__list">
       @for (order of orders(); track order.id) {
@@ -19,11 +19,7 @@
       }
     </ul>
 
-    <div #sentinel class="admin-orders__sentinel">
-      @if (loading()) {
-        <span class="admin-orders__loading-more">{{ t('Loading') }}</span>
-      }
-    </div>
+    <div #sentinel class="admin-orders__sentinel" *loading="loading()"></div>
   } @else {
     <p class="admin-orders__empty">{{ t('No_Orders') }}</p>
   }

@@ -1,7 +1,9 @@
 <main class="order-details" *transloco="let t">
-  @if (loading() && !order()) {
-    <p class="order-details__empty">{{ t('Loading') }}</p>
-  } @else if (order(); as o) {
+  @if (loading()) {
+    <div *loading="loading()"></div>
+  } 
+  
+  @else if (order(); as o) {
     <a class="order-details__back" routerLink="/admin">← {{ t('All_Orders') }}</a>
 
     <div class="order-details__card">
@@ -53,6 +55,8 @@
       </div>
     </div>
   } @else {
-    <p class="order-details__empty">{{ t('Order_Not_Found') }}</p>
+    <app-item-not-found
+      [source]="{ title: t('Order_Not_Found'), subTitle: t('Order_Not_Found_Subtitle') }">
+    </app-item-not-found>
   }
 </main>

@@ -11,11 +11,12 @@ import {
 import { RouterLink } from '@angular/router';
 import { TranslocoService, TranslocoModule } from '@jsverse/transloco';
 import { AdminOrdersService } from '../data-access/admin-orders.service';
+import { LoadingDirective } from 'src/app/components/loader/loading.directive';
 import { OrderStatus } from 'src/app/shared/utils/enums';
 
 @Component({
   selector: 'app-admin-orders',
-  imports: [RouterLink, TranslocoModule],
+  imports: [RouterLink, LoadingDirective, TranslocoModule],
   templateUrl: './admin-orders.component.html',
   styleUrl: './admin-orders.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -50,9 +51,6 @@ export class AdminOrdersComponent implements OnInit, AfterViewInit, OnDestroy {
     this.observer.observe(el);
   }
 
-  ngOnDestroy(): void {
-    this.observer?.disconnect();
-  }
 
   statusLabel(status: OrderStatus): string {
     switch (status) {
@@ -74,5 +72,9 @@ export class AdminOrdersComponent implements OnInit, AfterViewInit, OnDestroy {
       default:
         return 'admin-orders__status--pending';
     }
+  }
+
+  ngOnDestroy(): void {
+    this.observer?.disconnect();
   }
 }

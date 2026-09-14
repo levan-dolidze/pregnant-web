@@ -3,7 +3,7 @@
 
 .admin-orders {
   &__title {
-    @include font(24px, 700, var(--black-white), $font-bold);
+    @include font(24px, 500, var(--black-white), $font-medium);
     margin-bottom: 24px;
   }
 
@@ -42,30 +42,23 @@
 
   &__email {
     @include font(13px, 400, var(--gray-01), $font-default);
-    word-break: break-word;
   }
 
   &__status {
-    @include font(12px, 600, $white, $font-medium);
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    justify-self: start;
-    width: fit-content;
+    @include font(12px, 500, $black, $font-medium);
     text-align: center;
-    padding: 4px 10px;
-    border-radius: 20px;
+    white-space: nowrap;
 
     &--pending {
-      background: $gray900;
+      color: $yellow;
     }
 
     &--confirmed {
-      background: #25D272;
+      color: $green;
     }
 
     &--rejected {
-      background: $error;
+      color: $error;
     }
   }
 
@@ -78,10 +71,6 @@
     justify-content: center;
     padding: 20px 0;
     min-height: 1px;
-  }
-
-  &__loading-more {
-    @include font(13px, 500, var(--gray-01), $font-medium);
   }
 
   @media (max-width: 700px) {

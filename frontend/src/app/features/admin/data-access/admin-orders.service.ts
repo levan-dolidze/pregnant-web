@@ -1,4 +1,5 @@
 import { inject, Injectable, signal } from '@angular/core';
+import { finalize, tap } from 'rxjs';
 import { ApiService } from 'src/app/core/api-service/api.service';
 import { CourseId, OrderStatus } from 'src/app/shared/utils/enums';
 
@@ -62,18 +63,12 @@ export class AdminOrdersService {
     });
   }
 
-  loadOrder(id: number): void {
+  loadOrder(id: number) {
     this.loading.set(true);
-    this.apiService.get(`${basePath}/${id}`).subscribe({
-      next: (res: AdminOrder) => {
-        this.selectedOrder.set(res);
-        this.loading.set(false);
-      },
-      error: (err) => {
-        console.error(err);
-        this.loading.set(false);
-      },
-    });
+    return this.apiService.get(`${basePath}/${id}`).pipe(
+      tap((res: AdminOrder) => this.selectedOrder.set(res)),
+      finalize(() => this.loading.set(false))
+    );
   }
 
   confirmOrder(id: number): void {
