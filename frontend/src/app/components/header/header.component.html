@@ -56,7 +56,7 @@
     </div>
 
         <button class="topbar__lang-toggle" (click)="toggleLanguage()" [attr.aria-label]="t('Switch_language')">
-          {{ activeLangCode() === 'ka' ? 'KA' : 'EN' }}
+          {{ activeLangCode() === 'ka' ? 'EN' : 'KA' }}
         </button>
     <button class="topbar__theme-toggle" mat-icon-button
             (click)="toggleTheme()"
