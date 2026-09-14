@@ -43,7 +43,7 @@ export const routes: Routes = [
       },
       {
         path: 'home',
-        // canActivate: [authGuard],
+        title: titleResolver,
         loadComponent: () => {
           return import('./features/home/home.component').then(
             (m) => m.HomeComponent
@@ -52,7 +52,7 @@ export const routes: Routes = [
       },
       {
         path: 'about',
-        // canActivate: [authGuard],
+        title: titleResolver,
         loadComponent: () => {
           return import('./features/about/about.component').then(
             (m) => m.AboutComponent
@@ -61,7 +61,7 @@ export const routes: Routes = [
       },
       {
         path: 'contact',
-        // canActivate: [authGuard],
+        title: titleResolver,
         loadComponent: () =>
           import('./features/contact/contact.component').then(
             (m) => m.ContactComponent
@@ -69,7 +69,7 @@ export const routes: Routes = [
       },
       {
         path: 'courses-promo',
-        // canActivate: [authGuard],
+        title: titleResolver,
         loadComponent: () =>
           import('./features/courses-promo/courses-promo.component').then(
             (m) => m.CoursesPromoComponent
@@ -77,7 +77,7 @@ export const routes: Routes = [
       },
       {
         path: 'purchase-course/:courseName/:sessionId',
-        // canActivate: [authGuard],
+        title: titleResolver,
         loadComponent: () =>
           import('./features/courses-promo/purchase-course/purchase-course.component').then(
             (m) => m.PurchaseCourseComponent
@@ -85,7 +85,7 @@ export const routes: Routes = [
       },
       {
         path: 'shop',
-        // canActivate: [authGuard],
+        title: titleResolver,
         loadComponent: () =>
           import('./features/shop/shop.component').then(
             (m) => m.ShopComponent
@@ -93,6 +93,7 @@ export const routes: Routes = [
       },
       {
         path: 'blog',
+        title: titleResolver,
         loadComponent: () =>
           import('./features/blog/blog.component').then(
             (m) => m.BlogComponent
@@ -100,6 +101,7 @@ export const routes: Routes = [
       },
       {
         path: 'view-blog/:blogId',
+        title: titleResolver,
         resolve: { blogById: blogByResolver },
         loadComponent: () =>
           import('./features/blog/view-blog/view-blog.component').then(
@@ -109,6 +111,7 @@ export const routes: Routes = [
       {
         path: 'calendar',
         canActivate: [authGuard],
+        title: titleResolver,
         loadComponent: () =>
           import('./features/calendar/calendar.component').then(
             (m) => m.CalendarComponent
@@ -118,6 +121,7 @@ export const routes: Routes = [
       {
         path: 'profile',
         canActivate: [authGuard],
+        title: titleResolver,
         loadComponent: () =>
           import('./features/profile/profile.component').then(
             (m) => m.ProfileComponent
@@ -126,6 +130,7 @@ export const routes: Routes = [
       {
         path: 'my-courses',
         canActivate: [authGuard],
+        title: titleResolver,
         loadComponent: () =>
           import('./features/my-courses/my-courses.component').then(
             (m) => m.MyCoursesComponent
@@ -133,6 +138,7 @@ export const routes: Routes = [
       },
       {
         path: 'signal-form',
+        title: titleResolver,
         loadComponent: () =>
           import('./features/signal-forms/signal-forms.component').then(
             (m) => m.SignalFormsComponent
@@ -140,7 +146,7 @@ export const routes: Routes = [
       },
       {
         path: 'courses',
-        // canActivate: [authGuard],
+        title: titleResolver,
         loadChildren: () => {
           return import('./features/my-courses/courses/courses.routers').then(
             (m) => m.routes
@@ -155,6 +161,7 @@ export const routes: Routes = [
       {
         path: 'admin',
         canActivate: [authGuard],
+        title: titleResolver,
         data:{
           permissions: {
             only: ['admin'],
