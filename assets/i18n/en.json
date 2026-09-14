@@ -125,6 +125,7 @@
   "Confirm": "Confirm",
   "Reject": "Reject",
   "Order_Not_Found": "Order not found.",
+  "Order_Not_Found_Subtitle": "This order may have been removed or the link is incorrect.",
   "Confirm_Order_Title": "Confirm Order",
   "Confirm_Order_Message": "Are you sure you want to confirm this order?",
   "Reject_Order_Title": "Reject Order",
