@@ -15,7 +15,15 @@ export const routes: Routes = [
       {
         path: '',
         loadComponent: () =>
-          import('./orders/admin-orders.component').then((m) => m.AdminOrdersComponent),
+          import('./admin-shell/admin-shell.component').then((m) => m.AdminShellComponent),
+        children: [
+          { path: '', redirectTo: 'orders', pathMatch: 'full' },
+          {
+            path: 'orders',
+            loadComponent: () =>
+              import('./orders/admin-orders.component').then((m) => m.AdminOrdersComponent),
+          },
+        ],
       },
       {
         path: 'orders/:id',

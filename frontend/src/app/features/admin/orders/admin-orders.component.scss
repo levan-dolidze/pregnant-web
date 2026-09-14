@@ -2,10 +2,6 @@
 @use "mixins" as *;
 
 .admin-orders {
-  max-width: 900px;
-  margin: 0 auto;
-  padding: 48px 24px;
-
   &__title {
     @include font(24px, 700, var(--black-white), $font-bold);
     margin-bottom: 24px;
