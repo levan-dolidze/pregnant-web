@@ -41,6 +41,8 @@ public class ContactController : ControllerBase
         {
             Message = request.Message,
             MobileNumber = request.MobileNumber,
+            ClientName = request.ClientName,
+
         };
 
         _db.ContactMessages.Add(contactMessage);
@@ -54,7 +56,8 @@ public class ContactController : ControllerBase
                 await _emailService.SendAsync(
                     ownerEmail,
                     "ახალი შეკითხვა ვებ გვერდიდან",
-                    $"მობილური: {request.MobileNumber}\n\n მომხმარებლის შეკითხვა:\n{request.Message}");
+
+                    $"პაციენტის სახელი: {request.ClientName}\n\n  მობილური: {request.MobileNumber}\n\n მომხმარებლის შეკითხვა:\n{request.Message}");
             }
         }
         catch (Exception ex)

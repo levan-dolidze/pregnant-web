@@ -14,6 +14,7 @@ export class ContactInfoSource {
 export interface SendContactMessage {
   message: string;
   mobileNumber: string;
+  clientName: string;
 
 
 }

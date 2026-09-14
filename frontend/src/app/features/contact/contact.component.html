@@ -89,6 +89,21 @@
             {{ err }}
           </mat-hint>
         </div>
+        <div class="ask-card__field">
+          <label class="ask-card__label" for="clientName">{{ t('Name') }}</label>
+          <app-input
+        
+            formControlName="clientName"
+            placeholder="Name"
+            [isRequired]="true"
+            [isInvalid]="form.controls['clientName'].invalid && form.controls['clientName'].dirty"
+          />
+          <mat-hint class="error-msg"
+            *validationErrors="form; control: 'clientName'; let err; additionalValue: {
+              submit: (form.controls['clientName'] && form.controls['clientName'].dirty), patternTypes: 'none' }">
+            {{ err }}
+          </mat-hint>
+        </div>
 
         <div class="ask-card__field">
           <label class="ask-card__label" for="question">{{ t('Your_Question_Label') }}</label>

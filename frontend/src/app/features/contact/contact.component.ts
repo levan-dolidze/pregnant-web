@@ -39,6 +39,7 @@ export class ContactComponent implements OnInit {
 
   readonly form = new FormGroup({
     // personalNumber: new FormControl('', [Validators.required, Validators.pattern(regExp.mobileGe)]),
+    clientName: new FormControl('', [Validators.required]),
     mobileNumber: new FormControl('', [Validators.required]),
     message: new FormControl('', [Validators.required]),
   });
