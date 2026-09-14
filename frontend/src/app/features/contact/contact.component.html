@@ -1,19 +1,16 @@
 <main class="contact" *transloco="let t">
 
-    <!-- <div *loading="loading()"></div>
-
-  <div class="contact__blob contact__blob--1" aria-hidden="true"></div>
-  <div class="contact__blob contact__blob--2" aria-hidden="true"></div> -->
+  <div *loading="loading()"></div>
 
   <div class="contact__inner">
 
-    <!-- ─── Left: Info ──────────────────────────────────────── -->
     <div class="contact__info">
       <h1 class="contact__title">{{ t('Have_A_Question') }}</h1>
       <p class="contact__desc">
         {{ t('Contact_Desc') }}
       </p>
 
+      @if (contactState()) {
       <ul class="contact-details">
         <li class="contact-details__item">
           <div>
@@ -40,6 +37,8 @@
           </div>
         </li>
       </ul>
+      }
+
 
       <nav class="contact-socials" [attr.aria-label]="t('Social_Networks')">
         <a
