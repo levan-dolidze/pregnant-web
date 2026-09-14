@@ -149,6 +149,15 @@
     width: 18px;
     height: 18px;
     flex-shrink: 0;
+    background-color: currentColor;
+    -webkit-mask: url("/assets/icons/_instagram.svg") no-repeat center / contain;
+    mask: url("/assets/icons/_instagram.svg") no-repeat center / contain;
+  }
+
+  &__icon {
+    width: 18px;
+    height: 18px;
+    flex-shrink: 0;
   }
 
   @media (max-width: 900px) { justify-content: center; }

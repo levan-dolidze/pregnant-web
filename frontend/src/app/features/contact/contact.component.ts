@@ -12,11 +12,13 @@ import { ValidationErrorsDirective } from 'src/app/shared/directives/validation-
 import { finalize } from 'rxjs';
 import { AlertService } from 'src/app/components/alert/alert.service';
 import { TranslocoModule } from '@jsverse/transloco';
+import { JsonPipe } from '@angular/common';
+import { SharedModule } from 'src/app/shared/shared-module/shared';
 
 
 @Component({
   selector: 'app-contact',
-  imports: [InputComponent, TextAreaComponent, LoadingDirective, ButtonComponent, ReactiveFormsModule, MatFormFieldModule, ValidationErrorsDirective, TranslocoModule],
+  imports: [InputComponent, LoadingDirective, TextAreaComponent, LoadingDirective, ButtonComponent, ReactiveFormsModule, MatFormFieldModule, ValidationErrorsDirective, TranslocoModule],
   templateUrl: './contact.component.html',
   styleUrl: './contact.component.scss',
   providers: [ContactService],

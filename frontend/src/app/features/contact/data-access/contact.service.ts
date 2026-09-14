@@ -15,9 +15,9 @@ export class ContactService {
   private readonly apiService = inject(ApiService);
   destroyRef = inject(DestroyRef);
 
-  contactInfo = signal<ContactInfoSource | null>(null);
+  private contactInfo = signal<ContactInfoSource | null>(new ContactInfoSource());
   readonly contactInfoState = computed(() => this.contactInfo())
-  contactInfoLoading$ = this.getContactInfo()
+  readonly contactInfoLoading$ = this.getContactInfo()
 
   readonly contact = computed(() => this.contactInfo().data);
   readonly laoding = computed(() => this.contactInfo()?.loader);
@@ -30,13 +30,12 @@ export class ContactService {
         this.contactInfo.update((x) => ({ data: res,loader:false }))
       },
 
-      error: (err: any) => {
+      error: (err) => {
         console.error(err);
       },
 
     });
   }
-
 
   getContactInfo() {
     return this.apiService.get(`${basePath}/GetContactInfo`)

@@ -19,7 +19,12 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
     `
 @use 'variables' as *;
 
+      :host {
+        display: contents;
+      }
+
       .loading-container {
+        display: contents;
       }
       .blocker {
         position: fixed;

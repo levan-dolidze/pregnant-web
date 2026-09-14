@@ -1,13 +1,14 @@
 <main class="contact" *transloco="let t">
-    <div *loading="loading()"></div>
+
+    <!-- <div *loading="loading()"></div>
 
   <div class="contact__blob contact__blob--1" aria-hidden="true"></div>
-  <div class="contact__blob contact__blob--2" aria-hidden="true"></div>
+  <div class="contact__blob contact__blob--2" aria-hidden="true"></div> -->
 
   <div class="contact__inner">
 
     <!-- ─── Left: Info ──────────────────────────────────────── -->
-    <aside class="contact__info">
+    <div class="contact__info">
       <h1 class="contact__title">{{ t('Have_A_Question') }}</h1>
       <p class="contact__desc">
         {{ t('Contact_Desc') }}
@@ -47,15 +48,11 @@
           target="_blank"
           rel="noopener noreferrer"
           aria-label="Instagram">
-          <svg class="contact-socials__icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-            <rect x="2" y="2" width="20" height="20" rx="5.5" stroke="currentColor" stroke-width="1.8"/>
-            <circle cx="12" cy="12" r="4.5" stroke="currentColor" stroke-width="1.8"/>
-            <circle cx="17.5" cy="6.5" r="1" fill="currentColor"/>
-          </svg>
+          <span class="contact-socials__icon" aria-hidden="true"></span>
           <span>Instagram</span>
         </a>
       </nav>
-    </aside>
+    </div>
 
     <!-- ─── Right: Ask window ───────────────────────────────── -->
     <div class="ask-card">
