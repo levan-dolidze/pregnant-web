@@ -6,10 +6,11 @@ import { JsonPipe } from '@angular/common';
 import { BlogModel } from './utils/model';
 import { Router } from '@angular/router';
 import { TranslocoModule } from '@jsverse/transloco';
+import { LoaderService } from 'src/app/components/loader/loader.service';
 
 @Component({
   selector: 'app-blog',
-  imports: [LoadingDirective, DateToStringPipe, TranslocoModule],
+  imports: [LoadingDirective,JsonPipe, DateToStringPipe, TranslocoModule],
   templateUrl: './blog.component.html',
   styleUrl: './blog.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -18,12 +19,12 @@ import { TranslocoModule } from '@jsverse/transloco';
 export class BlogComponent {
   readonly blogService = inject(BlogService);
   readonly router = inject(Router);
+  readonly loaderService = inject(LoaderService);
   readonly posts = this.blogService.blogList;
-  readonly loading = this.blogService.loading;
+  readonly isLoadingState = this.loaderService.isLoadingState;
 
 
   onViewBlog(post: BlogModel) {
-    console.log('View Blog:', post);
     this.router.navigate(['/view-blog', post.blogId]);  
   }
 }

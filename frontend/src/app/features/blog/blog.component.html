@@ -13,7 +13,7 @@
 
   <section class="blog-posts" aria-labelledby="posts-title">
     <div class="blog-posts__inner">
-      <div *loading="loading()"></div>
+      <div *loading="isLoadingState()"></div>
       <ul class="posts-grid">
         @for (post of posts(); track post.blogId) {
           <li class="post-card" (click)="onViewBlog(post)">

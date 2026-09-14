@@ -8,6 +8,6 @@ export interface BlogModel {
 }
 
 export class BlogSource {
-  data: BlogModel[]
+  data: BlogModel[] | null
   loader: boolean = true
 }

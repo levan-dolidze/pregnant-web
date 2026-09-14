@@ -18,7 +18,6 @@ export const httpInterceptor: HttpInterceptorFn = (req, next) => {
   const accessToken = toSignal(store.select(token));
   // const tok = sessionStorageService.getKey('token');
 
-  console.log(accessToken())
   loaderService.updateLoader(true);
 
   return next(

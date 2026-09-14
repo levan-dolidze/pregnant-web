@@ -14,25 +14,31 @@ export class BlogService {
   private readonly apiService = inject(ApiService);
   destroyRef = inject(DestroyRef);
 
-  blogs = signal<BlogSource | null>(null);
+  initialState = {
+    data: null,
+    loader: true
+  }
+
+  blogs = signal<BlogSource | null>(this.initialState);
   readonly blogsState = computed(() => this.blogs())
-  blogsLoading$ = this.getBlogs()
+  blogsLoading$ = this.getBlogs();
 
   readonly blogList = computed(() => this.blogs()?.data);
   readonly loading = computed(() => this.blogs()?.loader);
 
+  readonly blogDetailLoader = signal(false);
+
   constructor() {
+
     this.blogsLoading$.pipe(takeUntilDestroyed(this.destroyRef),
       finalize(() => this.blogs.update((x) => ({ ...x, loader: false })))
     ).subscribe({
       next: (res) => {
         this.blogs.update((x) => ({ data: res, loader: false }))
       },
-
-      error: (err: any) => {
+      error: (err) => {
         console.error(err);
       },
-
     });
   }
 
@@ -41,7 +47,10 @@ export class BlogService {
   }
 
   getBlogById(blogId: string) {
-    return this.apiService.get(`${basePath}/GetBlogById/?BlogId=${blogId}`)
+    this.blogDetailLoader.set(true);
+    return this.apiService.get(`${basePath}/GetBlogById/?BlogId=${blogId}`).pipe(
+      finalize(() => this.blogDetailLoader.set(false))
+    );
   }
 
 }
