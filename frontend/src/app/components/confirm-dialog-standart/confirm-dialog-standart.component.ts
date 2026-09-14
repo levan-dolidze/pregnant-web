@@ -36,14 +36,7 @@ export class ConfirmDialogModel {
  <div class="dialog">
 
   <div class="dialog__header">
-    <div class="dialog__close" (click)="onClose()">
-      <img
-        ngSrc="assets/icons/_close-outline.svg"
-        width="30"
-        height="30"
-        alt="Close"
-      />
-    </div>
+    <div class="dialog__close" role="button" [attr.aria-label]="t('Close')" (click)="onClose()"></div>
   </div>
 
   <div class="dialog__content">

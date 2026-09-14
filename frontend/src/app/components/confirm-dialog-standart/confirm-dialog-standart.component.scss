@@ -12,16 +12,12 @@
 
   &__close {
     place-self: end end;
-    display: grid;
+    width: 30px;
+    height: 30px;
     cursor: pointer;
     padding: 5px;
     margin: -5px;
-
-    img {
-      :host-context([theme="dark"]) & {
-        filter: brightness(0) invert(1);
-      }
-    }
+    background: var(--close) no-repeat center / 30px 30px;
   }
 
   &__content {
