@@ -17,7 +17,7 @@
                 [class.mc-card__status--pending]="course.status === OrderStatus.Pending"
                 [class.mc-card__status--confirmed]="course.status === OrderStatus.Confirmed"
                 [class.mc-card__status--rejected]="course.status === OrderStatus.Rejected">
-                {{ statusLabel(course.status) }}
+                {{ course.status | statusLabel }}
               </span>
             </div>
           </div>

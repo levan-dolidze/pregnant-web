@@ -9,21 +9,21 @@ import {
   ViewChild,
 } from '@angular/core';
 import { RouterLink } from '@angular/router';
-import { TranslocoService, TranslocoModule } from '@jsverse/transloco';
+import { TranslocoModule } from '@jsverse/transloco';
 import { AdminOrdersService } from '../data-access/admin-orders.service';
 import { LoadingDirective } from 'src/app/components/loader/loading.directive';
+import { StatusLabelPipe } from 'src/app/shared/pipe/status-label.pipe';
 import { OrderStatus } from 'src/app/shared/utils/enums';
 
 @Component({
   selector: 'app-admin-orders',
-  imports: [RouterLink, LoadingDirective, TranslocoModule],
+  imports: [RouterLink, LoadingDirective, StatusLabelPipe, TranslocoModule],
   templateUrl: './admin-orders.component.html',
   styleUrl: './admin-orders.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AdminOrdersComponent implements OnInit, AfterViewInit, OnDestroy {
   private readonly ordersService = inject(AdminOrdersService);
-  private readonly translocoService = inject(TranslocoService);
   private observer?: IntersectionObserver;
 
   @ViewChild('sentinel') sentinelRef?: ElementRef<HTMLDivElement>;
@@ -51,17 +51,6 @@ export class AdminOrdersComponent implements OnInit, AfterViewInit, OnDestroy {
     this.observer.observe(el);
   }
 
-
-  statusLabel(status: OrderStatus): string {
-    switch (status) {
-      case OrderStatus.Confirmed:
-        return this.translocoService.translate('Order_Confirmed');
-      case OrderStatus.Rejected:
-        return this.translocoService.translate('Order_Rejected');
-      default:
-        return this.translocoService.translate('Order_Pending');
-    }
-  }
 
   statusClass(status: OrderStatus): string {
     switch (status) {

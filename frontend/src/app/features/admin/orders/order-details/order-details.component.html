@@ -3,37 +3,37 @@
     <div *loading="loading()"></div>
   } 
   
-  @else if (order(); as o) {
+  @else if (order()) {
     <a class="order-details__back" routerLink="/admin">← {{ t('All_Orders') }}</a>
 
     <div class="order-details__card">
       <div class="order-details__head">
-        <h1 class="order-details__title">{{ t('Order') }} #{{ o.id }}</h1>
+        <h1 class="order-details__title">{{ t('Order') }} N {{ order().id }}</h1>
         <span
           class="order-details__status"
-          [class.order-details__status--confirmed]="o.status === OrderStatus.Confirmed"
-          [class.order-details__status--rejected]="o.status === OrderStatus.Rejected"
-          [class.order-details__status--pending]="o.status === OrderStatus.Pending">
-          {{ statusLabel(o.status) }}
+          [class.order-details__status--confirmed]="order().status === OrderStatus.Confirmed"
+          [class.order-details__status--rejected]="order().status === OrderStatus.Rejected"
+          [class.order-details__status--pending]="order().status === OrderStatus.Pending">
+          {{ order().status | statusLabel }}
         </span>
       </div>
 
       <dl class="order-details__grid">
         <div class="order-details__row">
           <dt>{{ t('Customer') }}</dt>
-          <dd>{{ o.userName }} {{ o.userLastName }}</dd>
+          <dd>{{ order().userName }} {{ order().userLastName }}</dd>
         </div>
         <div class="order-details__row">
           <dt>{{ t('Email') }}</dt>
-          <dd>{{ o.email }}</dd>
+          <dd>{{ order().email }}</dd>
         </div>
         <div class="order-details__row">
           <dt>{{ t('Mobile') }}</dt>
-          <dd>{{ o.mobileNumber }}</dd>
+          <dd>{{ order().mobileNumber }}</dd>
         </div>
         <div class="order-details__row">
           <dt>{{ t('Date') }}</dt>
-          <dd>{{ o.createdAt | date: 'medium' }}</dd>
+          <dd>{{ order().createdAt | date: 'medium' }}</dd>
         </div>
       </dl>
 
@@ -42,14 +42,14 @@
           width=""
           [text]="t('Confirm')"
           [className]="'stroked-fill h-40'"
-          [isDisabled]="o.status === OrderStatus.Confirmed"
+          [isDisabled]="order().status === OrderStatus.Confirmed"
           (btnClick)="confirm()">
         </app-button>
         <app-button
           width=""
           [text]="t('Reject')"
           [className]="'stroked h-40'"
-          [isDisabled]="o.status === OrderStatus.Rejected"
+          [isDisabled]="order().status === OrderStatus.Rejected"
           (btnClick)="reject()">
         </app-button>
       </div>

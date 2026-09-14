@@ -2,11 +2,12 @@ import { ChangeDetectionStrategy, Component, inject, Input } from '@angular/core
 import { DatePipe, JsonPipe } from '@angular/common';
 import { RouterLink } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
-import { TranslocoService, TranslocoModule } from '@jsverse/transloco';
+import { TranslocoModule } from '@jsverse/transloco';
 import { AdminOrdersService } from '../../data-access/admin-orders.service';
 import { ButtonComponent } from 'src/app/components/button/button.component';
 import { LoadingDirective } from 'src/app/components/loader/loading.directive';
 import { ItemNotFoundComponent } from 'src/app/components/item-not-found/item-not-found.component';
+import { StatusLabelPipe } from 'src/app/shared/pipe/status-label.pipe';
 import { OrderStatus } from 'src/app/shared/utils/enums';
 import {
   ConfirmDialogModel,
@@ -15,7 +16,7 @@ import {
 
 @Component({
   selector: 'app-order-details',
-  imports: [ButtonComponent, JsonPipe, DatePipe, RouterLink, LoadingDirective, ItemNotFoundComponent, TranslocoModule],
+  imports: [ButtonComponent, JsonPipe, DatePipe, RouterLink, LoadingDirective, ItemNotFoundComponent, StatusLabelPipe, TranslocoModule],
   templateUrl: './order-details.component.html',
   styleUrl: './order-details.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -23,7 +24,6 @@ import {
 export class OrderDetailsComponent {
   private readonly ordersService = inject(AdminOrdersService);
   private readonly dialog = inject(MatDialog);
-  private readonly translocoService = inject(TranslocoService);
 
   @Input() id!: string;
 
@@ -62,16 +62,5 @@ export class OrderDetailsComponent {
         onConfirm();
       }
     });
-  }
-
-  statusLabel(status: OrderStatus): string {
-    switch (status) {
-      case OrderStatus.Confirmed:
-        return this.translocoService.translate('Order_Confirmed');
-      case OrderStatus.Rejected:
-        return this.translocoService.translate('Order_Rejected');
-      default:
-        return this.translocoService.translate('Order_Pending');
-    }
   }
 }

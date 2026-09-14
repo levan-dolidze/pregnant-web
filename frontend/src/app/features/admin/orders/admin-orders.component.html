@@ -12,7 +12,7 @@
             <span class="admin-orders__name">{{ order.userName }} {{ order.userLastName }}</span>
             <span class="admin-orders__email">{{ order.email }}</span>
             <span class="admin-orders__status" [class]="statusClass(order.status)">
-              {{ statusLabel(order.status) }}
+              {{ order.status | statusLabel }}
             </span>
           </a>
         </li>
