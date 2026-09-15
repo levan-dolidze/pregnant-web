@@ -1,4 +1,4 @@
-import { Component, computed, inject, OnInit, signal } from '@angular/core';
+import { Component, computed, inject, signal } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { InputComponent } from 'src/app/components/input/input.component';
@@ -7,14 +7,10 @@ import { ContactService } from './data-access/contact.service';
 import { LoadingDirective } from 'src/app/components/loader/loading.directive';
 import { ButtonComponent } from 'src/app/components/button/button.component';
 import { ControlModeChange } from 'src/app/shared/functions/controlModeChange';
-import { regExp } from 'src/app/shared/utils/regex';
 import { ValidationErrorsDirective } from 'src/app/shared/directives/validation-errors.directive';
 import { finalize } from 'rxjs';
 import { AlertService } from 'src/app/components/alert/alert.service';
 import { TranslocoModule } from '@jsverse/transloco';
-import { JsonPipe } from '@angular/common';
-import { SharedModule } from 'src/app/shared/shared-module/shared';
-
 
 @Component({
   selector: 'app-contact',
@@ -24,7 +20,7 @@ import { SharedModule } from 'src/app/shared/shared-module/shared';
   providers: [ContactService],
 
 })
-export class ContactComponent implements OnInit {
+export class ContactComponent {
 
 
 
@@ -38,17 +34,12 @@ export class ContactComponent implements OnInit {
   readonly loading = this.contactService.laoding;
 
   readonly form = new FormGroup({
-    // personalNumber: new FormControl('', [Validators.required, Validators.pattern(regExp.mobileGe)]),
     clientName: new FormControl('', [Validators.required]),
     mobileNumber: new FormControl('', [Validators.required]),
     message: new FormControl('', [Validators.required]),
   });
 
-  ngOnInit(): void {
 
-
-
-  }
 
 
 
@@ -66,11 +57,10 @@ export class ContactComponent implements OnInit {
         pipe(finalize(() => this.sendLoading.set(false))).
         subscribe({
           next: ((res) => {
-            console.log(res)
             this.alertService.notification({ message: 'Successfully_Sent', messageType: 'success' })
           }),
-          error: (() => {
-
+          error: ((err) => {
+            console.error(err)
           })
         })
     }
