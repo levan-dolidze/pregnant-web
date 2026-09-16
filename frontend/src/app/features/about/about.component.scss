@@ -235,29 +235,78 @@
       gap: 28px;
     }
   }
+}
 
-  &__body {
-    min-width: 0;
+// ─── Timeline (Experience / Development) ────────────────────────
+.timeline {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
 
-    p {
-      font-size: 15px;
-      color: var(--label);
-      line-height: 1.8;
-      margin: 0 0 18px;
-      word-break: break-word;
-      overflow-wrap: anywhere;
+  &__item {
+    position: relative;
+    padding-left: 22px;
+    border-left: 2px solid rgba($primary, .18);
 
-      &:last-child {
-        margin-bottom: 0;
-      }
-
-      &:first-child {
-        font-size: clamp(15px, 2vw, 17px);
-        color: var(--black-white);
-        font-weight: 500;
-        line-height: 1.7;
-      }
+    &:last-child {
+      border-left-color: transparent;
     }
+
+    &::before {
+      content: '';
+      position: absolute;
+      left: -5px;
+      top: 4px;
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: $primary;
+    }
+  }
+
+  &__period {
+    display: inline-block;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: .04em;
+    text-transform: uppercase;
+    @include gradient-text();
+    margin-bottom: 6px;
+  }
+
+  &__place {
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--black-white);
+    margin: 0 0 6px;
+    overflow-wrap: break-word;
+  }
+
+  &__text {
+    font-size: 14px;
+    color: var(--gray-01);
+    line-height: 1.65;
+    margin: 0;
+    overflow-wrap: break-word;
+  }
+
+  &--compact {
+    gap: 20px;
+  }
+}
+
+// ─── Professional Development ───────────────────────────────────
+.dev-section {
+  @include section();
+  background: var(--bg);
+
+  &__inner {
+    @include inner();
+    padding-inline: clamp(16px, 5vw, 24px);
   }
 }
 
@@ -416,5 +465,86 @@
   @media (max-width: 480px) {
     padding: 20px 16px;
     gap: 12px;
+  }
+}
+
+// ─── My Approach ─────────────────────────────────────────────────
+.approach {
+  @include section();
+
+  &__inner {
+    @include inner();
+    padding-inline: clamp(16px, 5vw, 24px);
+    max-width: 760px;
+  }
+
+  &__quote {
+    font-size: clamp(17px, 2.4vw, 20px);
+    font-weight: 700;
+    color: var(--black-white);
+    line-height: 1.5;
+    margin: 0 0 24px;
+    padding-left: 20px;
+    border-left: 3px solid $primary;
+    font-style: normal;
+  }
+
+  &__text {
+    font-size: 15px;
+    color: var(--label);
+    line-height: 1.8;
+    margin: 0 0 16px;
+
+    &:last-of-type {
+      margin-bottom: 0;
+    }
+  }
+
+  &__goal {
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--black-white);
+    margin: 28px 0 14px;
+  }
+
+  &__pills {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  &__pill {
+    padding: 8px 16px;
+    border-radius: 24px;
+    background: rgba($primary, .08);
+    color: $primary;
+    font-size: 13px;
+    font-weight: 700;
+  }
+}
+
+// ─── Professional Principle ──────────────────────────────────────
+.principle {
+  @include section();
+  background: var(--bg);
+
+  &__inner {
+    @include inner();
+    padding-inline: clamp(16px, 5vw, 24px);
+    max-width: 760px;
+  }
+
+  &__text {
+    font-size: 15px;
+    color: var(--label);
+    line-height: 1.8;
+    margin: 0 0 16px;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
   }
 }

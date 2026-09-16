@@ -22,7 +22,7 @@
         </div>
       
         <p class="page-hero__desc">
-          {{ t('About_Hero_Desc') }}
+          {{ t('Doctor_Bio') }}
         </p>
         <div class="page-hero__stats">
           <div class="page-hero__stat">
@@ -45,89 +45,183 @@
     </div>
   </section>
 
-  <!-- ─── Bio & Story ───────────────────────────────────────── -->
+  <!-- ─── Professional Experience ──────────────────────────────── -->
   <section class="bio" aria-labelledby="bio-title">
     <div class="bio__inner">
       <header class="section-hd section-hd--left">
-        <h2 class="section-hd__title" id="bio-title">{{ t('Education') }}<br>{{ t('Experience') }}</h2>
+        <h2 class="section-hd__title" id="bio-title">{{ t('Professional_Experience_Title') }}</h2>
       </header>
-      <div class="bio__body">
-        <p>
-          {{ t('Bio_Paragraph_1') }}
-        </p>
-        <p>
-        {{ t('Bio_Paragraph_2') }}
-        </p>
-        <p>
-        {{ t('Bio_Paragraph_3') }}
-        </p>
-        <p>
-        {{ t('Bio_Paragraph_4_Part1') }}<strong>„{{ t('Clinic_Name') }}"</strong>{{ t('Bio_Paragraph_4_Part2') }}
-        </p>
-      </div>
+      <ul class="timeline">
+        <li class="timeline__item">
+          <span class="timeline__period">{{ t('Experience_1_Period') }}</span>
+          <h3 class="timeline__place">{{ t('Experience_1_Place') }}</h3>
+          <p class="timeline__text">{{ t('Experience_1_Role') }}</p>
+        </li>
+        <li class="timeline__item">
+          <span class="timeline__period">{{ t('Experience_2_Period') }}</span>
+          <h3 class="timeline__place">{{ t('Experience_2_Place') }}</h3>
+          <p class="timeline__text">{{ t('Experience_2_Role') }}</p>
+        </li>
+        <li class="timeline__item">
+          <span class="timeline__period">{{ t('Experience_3_Period') }}</span>
+          <h3 class="timeline__place">{{ t('Experience_3_Place') }}</h3>
+          <p class="timeline__text">{{ t('Experience_3_Role') }}</p>
+        </li>
+      </ul>
     </div>
   </section>
 
-  <!-- ─── Credentials ───────────────────────────────────────── -->
+  <!-- ─── Education & Qualification ────────────────────────────── -->
   <section class="creds-section" aria-labelledby="creds-title">
     <div class="creds-section__inner">
       <header class="section-hd">
         <span class="badge badge--purple">{{ t('Qualification') }}</span>
-        <h2 class="section-hd__title" id="creds-title">{{ t('Education_Certificates') }}</h2>
-        <p class="section-hd__desc">{{ t('Credentials_Section_Desc') }}</p>
+        <h2 class="section-hd__title" id="creds-title">{{ t('Education_Qualification_Title') }}</h2>
       </header>
       <div class="creds-section__grid">
         <div class="cred-card">
           <div>
-            <h3 class="cred-card__title">{{ t('Credential_1_Title') }}</h3>
-            <p class="cred-card__detail">{{ t('Credential_1_Detail') }}</p>
+            <h3 class="cred-card__title">{{ t('Edu_1_Place') }}</h3>
+            <p class="cred-card__detail">{{ t('Edu_1_Period') }} · {{ t('Edu_1_Detail') }}</p>
           </div>
         </div>
         <div class="cred-card">
           <div>
-            <h3 class="cred-card__title">{{ t('Credential_2_Title') }}</h3>
-            <p class="cred-card__detail">{{ t('Credential_2_Detail') }}</p>
+            <h3 class="cred-card__title">{{ t('Edu_2_Detail') }}</h3>
+            <p class="cred-card__detail">{{ t('Edu_2_Period') }}</p>
           </div>
         </div>
         <div class="cred-card">
           <div>
-            <h3 class="cred-card__title">{{ t('Credential_3_Title') }}</h3>
-            <p class="cred-card__detail">{{ t('Credential_3_Detail') }}</p>
-          </div>
-        </div>
-        <div class="cred-card">
-          <div>
-            <h3 class="cred-card__title">{{ t('Credential_4_Title') }}</h3>
-            <p class="cred-card__detail">{{ t('Credential_4_Detail') }}</p>
+            <h3 class="cred-card__title">{{ t('Edu_3_Detail') }}</h3>
+            <p class="cred-card__detail">{{ t('Edu_3_Period') }}</p>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ─── Specialisations ───────────────────────────────────── -->
+  <!-- ─── Professional Development ─────────────────────────────── -->
+  <section class="dev-section" aria-labelledby="dev-title">
+    <div class="dev-section__inner">
+      <header class="section-hd section-hd--left">
+        <h2 class="section-hd__title" id="dev-title">{{ t('Professional_Development_Title') }}</h2>
+        <p class="section-hd__desc">{{ t('Professional_Development_Desc') }}</p>
+      </header>
+      <ul class="timeline timeline--compact">
+        <li class="timeline__item">
+          <span class="timeline__period">{{ t('Dev_1_Year') }}</span>
+          <p class="timeline__text">{{ t('Dev_1_Text') }}</p>
+        </li>
+        <li class="timeline__item">
+          <span class="timeline__period">{{ t('Dev_2_Year') }}</span>
+          <p class="timeline__text">{{ t('Dev_2_Text') }}</p>
+        </li>
+        <li class="timeline__item">
+          <span class="timeline__period">{{ t('Dev_3_Year') }}</span>
+          <p class="timeline__text">{{ t('Dev_3_Text') }}</p>
+        </li>
+        <li class="timeline__item">
+          <span class="timeline__period">{{ t('Dev_4_Year') }}</span>
+          <p class="timeline__text">{{ t('Dev_4_Text') }}</p>
+        </li>
+        <li class="timeline__item">
+          <span class="timeline__period">{{ t('Dev_5_Year') }}</span>
+          <p class="timeline__text">{{ t('Dev_5_Text') }}</p>
+        </li>
+        <li class="timeline__item">
+          <span class="timeline__period">{{ t('Dev_6_Year') }}</span>
+          <p class="timeline__text">{{ t('Dev_6_Text') }}</p>
+        </li>
+        <li class="timeline__item">
+          <span class="timeline__period">{{ t('Dev_7_Year') }}</span>
+          <p class="timeline__text">{{ t('Dev_7_Text') }}</p>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ─── Professional Directions ──────────────────────────────── -->
   <section class="specialisms" aria-labelledby="specialisms-title">
     <div class="specialisms__inner">
       <header class="section-hd">
-        <span class="badge badge--pink">{{ t('Specialization_Badge') }}</span>
-        <h2 class="section-hd__title" id="specialisms-title">{{ t('Areas_Of_Specialization') }}</h2>
+        <span class="badge badge--pink">{{ t('Directions_Badge') }}</span>
+        <h2 class="section-hd__title" id="specialisms-title">{{ t('Professional_Directions_Title') }}</h2>
       </header>
       <ul class="specialisms__grid">
         <li class="spec-item">
           <span class="spec-item__num" aria-hidden="true">01</span>
           <div>
-            <h3 class="spec-item__title">{{ t('Specialization_1_Title') }}</h3>
-            <p class="spec-item__text">{{ t('Specialization_1_Text') }}</p>
+            <h3 class="spec-item__title">{{ t('Direction_1_Title') }}</h3>
+            <p class="spec-item__text">{{ t('Direction_1_Text') }}</p>
           </div>
         </li>
         <li class="spec-item">
           <span class="spec-item__num" aria-hidden="true">02</span>
           <div>
-            <h3 class="spec-item__title">{{ t('Specialization_2_Title') }}</h3>
-            <p class="spec-item__text">{{ t('Specialization_2_Text') }}</p>
+            <h3 class="spec-item__title">{{ t('Direction_2_Title') }}</h3>
+            <p class="spec-item__text">{{ t('Direction_2_Text') }}</p>
+          </div>
+        </li>
+        <li class="spec-item">
+          <span class="spec-item__num" aria-hidden="true">03</span>
+          <div>
+            <h3 class="spec-item__title">{{ t('Direction_3_Title') }}</h3>
+            <p class="spec-item__text">{{ t('Direction_3_Text') }}</p>
+          </div>
+        </li>
+        <li class="spec-item">
+          <span class="spec-item__num" aria-hidden="true">04</span>
+          <div>
+            <h3 class="spec-item__title">{{ t('Direction_4_Title') }}</h3>
+            <p class="spec-item__text">{{ t('Direction_4_Text') }}</p>
+          </div>
+        </li>
+        <li class="spec-item">
+          <span class="spec-item__num" aria-hidden="true">05</span>
+          <div>
+            <h3 class="spec-item__title">{{ t('Direction_5_Title') }}</h3>
+            <p class="spec-item__text">{{ t('Direction_5_Text') }}</p>
+          </div>
+        </li>
+        <li class="spec-item">
+          <span class="spec-item__num" aria-hidden="true">06</span>
+          <div>
+            <h3 class="spec-item__title">{{ t('Direction_6_Title') }}</h3>
+            <p class="spec-item__text">{{ t('Direction_6_Text') }}</p>
           </div>
         </li>
       </ul>
+    </div>
+  </section>
+
+  <!-- ─── My Approach ───────────────────────────────────────────── -->
+  <section class="approach" aria-labelledby="approach-title">
+    <div class="approach__inner">
+      <header class="section-hd section-hd--left">
+        <h2 class="section-hd__title" id="approach-title">{{ t('My_Approach_Title') }}</h2>
+      </header>
+      <blockquote class="approach__quote">{{ t('My_Approach_Quote') }}</blockquote>
+      <p class="approach__text">{{ t('My_Approach_Text1') }}</p>
+      <p class="approach__text">{{ t('My_Approach_Text2') }}</p>
+      <p class="approach__text">{{ t('My_Approach_Text3') }}</p>
+      <p class="approach__goal">{{ t('My_Approach_Goal_Intro') }}</p>
+      <ul class="approach__pills">
+        <li class="approach__pill">{{ t('My_Approach_Pill_1') }}</li>
+        <li class="approach__pill">{{ t('My_Approach_Pill_2') }}</li>
+        <li class="approach__pill">{{ t('My_Approach_Pill_3') }}</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ─── Professional Principle ───────────────────────────────── -->
+  <section class="principle" aria-labelledby="principle-title">
+    <div class="principle__inner">
+      <header class="section-hd section-hd--left">
+        <h2 class="section-hd__title" id="principle-title">{{ t('Professional_Principle_Title') }}</h2>
+      </header>
+      <p class="principle__text">{{ t('Professional_Principle_Text1') }}</p>
+      <p class="principle__text">{{ t('Professional_Principle_Text2') }}</p>
     </div>
   </section>
 
