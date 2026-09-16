@@ -7,6 +7,8 @@ public class ContactInfo
     public string MobileNumber { get; set; }
     public string Email { get; set; }
     public string WorkingHours { get; set; }
+    public string WeekendWorkingHours { get; set; }
+
 }
 
 

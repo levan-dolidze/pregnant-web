@@ -3,6 +3,7 @@ export interface ContactInfoModel {
   mobileNumber: string;
   email: string;
   workingHours: string;
+  weekendWorkingHours: string;
 }
 export class ContactInfoSource {
   data: ContactInfoModel

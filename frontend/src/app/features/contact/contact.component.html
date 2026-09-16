@@ -15,7 +15,13 @@
         <li class="contact-details__item">
           <div>
             <span class="contact-details__label">{{ t('Address_Label') }}</span>
-            <span class="contact-details__value">{{contactState().address}}</span>
+            <a
+              class="contact-details__value contact-details__value--link"
+              href="https://www.google.com/maps/place/1+Konstantine+Chachava+St,+T'bilisi+0159/@41.7757283,44.7758633,531m/data=!3m1!1e3!4m6!3m5!1s0x40446d932f8eb70f:0x5b48fa2606c28f67!8m2!3d41.7754306!4d44.7763424!16s%2Fg%2F11gj5dn54b?entry=ttu&g_ep=EgoyMDI2MDkxMy4wIKXMDSoASAFQAw%3D%3D"
+              target="_blank"
+              rel="noopener noreferrer">
+              {{contactState().address}}
+            </a>
           </div>
         </li>
         <li class="contact-details__item">
@@ -36,9 +42,25 @@
             <span class="contact-details__value">{{contactState().workingHours}}</span>
           </div>
         </li>
+        <li class="contact-details__item">
+          <div>
+            <span class="contact-details__label">{{ t('Weekend_Working_Hours_Label') }}</span>
+            <span class="contact-details__value">{{contactState().weekendWorkingHours}}</span>
+          </div>
+        </li>
       </ul>
       }
 
+      <div class="contact-map">
+        <iframe
+          class="contact-map__frame"
+          src="https://www.google.com/maps?q=41.7754306,44.7763424&hl=ka&z=16&output=embed"
+          [title]="t('Address_Label')"
+          [attr.loading]="'lazy'"
+          referrerpolicy="no-referrer-when-downgrade"
+          allowfullscreen>
+        </iframe>
+      </div>
 
       <nav class="contact-socials" [attr.aria-label]="t('Social_Networks')">
         <a
