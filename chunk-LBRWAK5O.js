@@ -1,0 +1,1 @@
+import{Ca as i,Yc as t,ea as o}from"./chunk-2S5C5PQO.js";var n=class e{isLoading=i(!1);isLoadingState=t(this.isLoading);updateLoader(a){this.isLoading.set(a)}static \u0275fac=function(d){return new(d||e)};static \u0275prov=o({token:e,factory:e.\u0275fac,providedIn:"root"})};export{n as a};

@@ -1,0 +1,1 @@
+import{p as a}from"./chunk-FPHGR2Q5.js";import{Gb as n,Ja as i}from"./chunk-2S5C5PQO.js";var o=class r extends a{transform(e,t="yyyy-MM-dd"){if(e)return super.transform(new Date(e),t)}static \u0275fac=(()=>{let e;return function(p){return(e||(e=i(r)))(p||r)}})();static \u0275pipe=n({name:"dateToString",type:r,pure:!0})};export{o as a};
