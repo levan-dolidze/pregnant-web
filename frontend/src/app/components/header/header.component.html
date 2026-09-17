@@ -1,7 +1,8 @@
 <ng-container *transloco="let t">
 
   <mat-toolbar class="topbar">
-    <img src="assets/images/svgs/logo.svg" alt="Logo" [routerLink]="''">
+    <img src="assets/images/svgs/logo.svg" alt="Logo"
+    [routerLink]="''">
     <span class="flex-1-auto"></span>
     <div>
       <span class="f-s-14  caps-regular">
@@ -10,8 +11,7 @@
       </span>
     </div>
     <ng-container>
-      <button class="topbar__notify" mat-icon-button aria-label="Notifications"
-        [routerLink]="'notifications/notification-list'">
+      <button class="topbar__notify" mat-icon-button aria-label="Notifications" [routerLink]="'notifications/notification-list'">
       </button>
       <mat-menu #notificationmenu="matMenu" class="topbar-dd cardWithShadow">
         <div class="d-flex align-items-center p-x-32 p-y-16">
@@ -27,127 +27,146 @@
     <!-- Desktop nav -->
     <div class="topbar__menu">
       @for (item of menuConfig; track $index) {
-      <nav class="topbar__navs" [class.topbar__navs--child-active]="isChildActive(item)"
-        [attr.aria-label]="t(item.name)">
+        <nav class="topbar__navs" [class.topbar__navs--child-active]="isChildActive(item)" [attr.aria-label]="t(item.name)">
 
-        @if (item.children) {
-        <button class="topbar__navs-trigger" [matMenuTriggerFor]="dropMenu">
-          {{ t(item.name) }}
-          <mat-icon class="topbar__navs-chevron">expand_more</mat-icon>
-        </button>
-        <mat-menu #dropMenu="matMenu" class="topbar__dropdown-panel">
-          @for (child of item.children; track child.routerLink) {
-          <a mat-menu-item [routerLink]="child.routerLink" routerLinkActive="topbar__dropdown-item--active"
-            (click)="$event.stopPropagation()">
-            {{ t(child.name) }}
-          </a>
+          @if (item.children) {
+            <button class="topbar__navs-trigger" [matMenuTriggerFor]="dropMenu">
+              {{ t(item.name) }}
+              <mat-icon class="topbar__navs-chevron">expand_more</mat-icon>
+            </button>
+            <mat-menu #dropMenu="matMenu" class="topbar__dropdown-panel">
+              @for (child of item.children; track child.routerLink) {
+                <a mat-menu-item
+                   [routerLink]="child.routerLink"
+                   routerLinkActive="topbar__dropdown-item--active"
+                   (click)="$event.stopPropagation()">
+                  {{ t(child.name) }}
+                </a>
+              }
+            </mat-menu>
+          } @else {
+            <a [routerLink]="item.routerLink"
+               routerLinkActive="topbar__navs--active"
+               [routerLinkActiveOptions]="{exact: true}">
+              {{ t(item.name) }}
+            </a>
           }
-        </mat-menu>
-        } @else {
-        <a [routerLink]="item.routerLink" routerLinkActive="topbar__navs--active"
-          [routerLinkActiveOptions]="{exact: true}">
-          {{ t(item.name) }}
-        </a>
-        }
-      </nav>
+        </nav>
       }
     </div>
 
-    <div class="topbar__actions">
-    <button class="topbar__lang-toggle" (click)="toggleLanguage()" [attr.aria-label]="t('Switch_language')">
-      {{ activeLangCode() === 'ka' ? 'EN' : 'KA' }}
-    </button>
-    <button class="topbar__theme-toggle" mat-icon-button (click)="toggleTheme()"
-      [attr.aria-label]="isDarkMode() ? t('Light_mode') : t('Dark_mode')" [attr.aria-pressed]="isDarkMode()">
+        <button class="topbar__lang-toggle" (click)="toggleLanguage()" [attr.aria-label]="t('Switch_language')">
+          {{ activeLangCode() === 'ka' ? 'EN' : 'KA' }}
+        </button>
+         <button class="topbar__theme-toggle" mat-icon-button
+            (click)="toggleTheme()"
+            [attr.aria-label]="isDarkMode() ? t('Light_mode') : t('Dark_mode')"
+            [attr.aria-pressed]="isDarkMode()">
       <mat-icon>{{ isDarkMode() ? 'light_mode' : 'dark_mode' }}</mat-icon>
-    </button>
-    <button class="topbar__profile-btn" onKeyPress (click)="onLoginInit()" aria-label="Login">
-      <mat-icon>person</mat-icon>
-    </button>
-    </div>
+        </button>
 
-
-    <!-- ///////////here -->
+        <!-- //// -->
 
     <button class="topbar__burger" mat-icon-button (click)="toggleMenu()" aria-label="Menu">
       <mat-icon>{{ isMenuOpen() ? 'close' : 'menu' }}</mat-icon>
     </button>
 
 
-    <div class="topbar__login">
-
-      @if (!iSAuthState()) {
-      <app-button class="topbar__login" [className]="'stroked-fill h-40'" [text]="t('Register')"
-        (btnClick)="onRegisterInit()">
-      </app-button>
-      }
-      @else {
-      <div class="topbar__profile">
-        <button class="topbar__profile-btn" [matMenuTriggerFor]="profileMenu" aria-label="Profile">
+    <div class="topbar__login" >
+      
+  @if (!iSAuthState()) {
+  
+  <button class="topbar__profile-btn" onKeyPress (click)="onLoginInit()" aria-label="Login">
+    <mat-icon>person</mat-icon>
+  </button>
+  <app-button class="topbar__login" [className]="'stroked-fill h-40'" [text]="t('Register')"
+    (btnClick)="onRegisterInit()">
+  </app-button>
+  }
+  @else {
+  <div class="topbar__profile">
+    <button class="topbar__profile-btn" [matMenuTriggerFor]="profileMenu" aria-label="Profile">
+      <mat-icon>person</mat-icon>
+    </button>
+  
+    <mat-menu #profileMenu="matMenu" class="topbar__profile-panel" xPosition="before">
+      <div class="topbar__profile-hd">
+        <span class="topbar__profile-avatar">
           <mat-icon>person</mat-icon>
-        </button>
-
-        <mat-menu #profileMenu="matMenu" class="topbar__profile-panel" xPosition="before">
-          <div class="topbar__profile-hd">
-            <span class="topbar__profile-avatar">
-              <mat-icon>person</mat-icon>
-            </span>
-            <span class="topbar__profile-greeting">გამარჯობა</span>
-          </div>
-
-          <!-- <a mat-menu-item routerLink="/profile">{{ t('Profile') }}</a> -->
-          <a mat-menu-item routerLink="/my-courses">{{ t('My_Courses') }}</a>
-          <a mat-menu-item routerLink="/admin" *ngxPermissionsOnly="'admin'">{{ t('Admin') }}</a>
-
-          <button mat-menu-item class="topbar__profile-logout-item" (click)="onLogOut()">
-            {{ t('LogOut') }}
-          </button>
-        </mat-menu>
+        </span>
+        <span class="topbar__profile-greeting">გამარჯობა</span>
       </div>
-      }
+  
+      <!-- <a mat-menu-item routerLink="/profile">{{ t('Profile') }}</a> -->
+      <a mat-menu-item routerLink="/my-courses">{{ t('My_Courses') }}</a>
+      <a mat-menu-item routerLink="/admin" *ngxPermissionsOnly="'admin'">{{ t('Admin') }}</a>
+
+  
+      <button mat-menu-item class="topbar__profile-logout-item" (click)="onLogOut()">
+        {{ t('LogOut') }}
+      </button>
+    </mat-menu>
+  </div>
+  }
     </div>
 
+   
 
-
-
+   
   </mat-toolbar>
 
   <!-- Mobile nav -->
   @if (isMenuOpen()) {
-  <nav class="topbar__mobile-menu" aria-label="Mobile navigation">
-    @for (item of menuConfig; track $index) {
-    @if (item.children !== undefined) {
-    <span class="topbar__mobile-group">{{ t(item.name) }}</span>
-    @for (child of item.children; track child.routerLink) {
-    <a class="topbar__mobile-link topbar__mobile-link--child" [routerLink]="child.routerLink"
-      routerLinkActive="topbar__mobile-link--active" (click)="toggleMenu()">
-      {{ t(child.name) }}
-    </a>
-    }
-    } @else {
-    <a class="topbar__mobile-link" [routerLink]="item.routerLink" routerLinkActive="topbar__mobile-link--active"
-      [routerLinkActiveOptions]="{exact: true}" (click)="toggleMenu()">
-      {{ t(item.name) }}
-    </a>
-    }
-    }
+    <nav class="topbar__mobile-menu" aria-label="Mobile navigation">
+      @for (item of menuConfig; track $index) {
+        @if (item.children !== undefined) {
+          <span class="topbar__mobile-group">{{ t(item.name) }}</span>
+          @for (child of item.children; track child.routerLink) {
+            <a class="topbar__mobile-link topbar__mobile-link--child"
+               [routerLink]="child.routerLink"
+               routerLinkActive="topbar__mobile-link--active"
+               (click)="toggleMenu()">
+              {{ t(child.name) }}
+            </a>
+          }
+        } @else {
+          <a class="topbar__mobile-link"
+             [routerLink]="item.routerLink"
+             routerLinkActive="topbar__mobile-link--active"
+             [routerLinkActiveOptions]="{exact: true}"
+             (click)="toggleMenu()">
+            {{ t(item.name) }}
+          </a>
+        }
+      }
 
-    <!-- <span class="topbar__mobile-group">{{ t('Profile') }}</span> -->
-    <a class="topbar__mobile-link" routerLink="/profile" routerLinkActive="topbar__mobile-link--active"
-      [routerLinkActiveOptions]="{exact: true}" (click)="toggleMenu()">
-      {{ t('Profile') }}
-    </a>
-    <a class="topbar__mobile-link" routerLink="/my-courses" routerLinkActive="topbar__mobile-link--active"
-      [routerLinkActiveOptions]="{exact: true}" (click)="toggleMenu()">
-      {{ t('My_Courses') }}
-    </a>
-    <a class="topbar__mobile-link" routerLink="/admin" *ngxPermissionsOnly="'admin'"
-      routerLinkActive="topbar__mobile-link--active" [routerLinkActiveOptions]="{exact: true}" (click)="toggleMenu()">
-      {{ t('Admin') }}
-    </a>
-    <app-button [text]="t('LogOut')" (btnClick)="onLogOut()" className="stroked mini">
-    </app-button>
-  </nav>
+      <a class="topbar__mobile-link" routerLink="/profile"
+         routerLinkActive="topbar__mobile-link--active"
+         [routerLinkActiveOptions]="{exact: true}"
+         (click)="toggleMenu()">
+        {{ t('Profile') }}
+      </a>
+      <a class="topbar__mobile-link" routerLink="/my-courses"
+         routerLinkActive="topbar__mobile-link--active"
+         [routerLinkActiveOptions]="{exact: true}"
+         (click)="toggleMenu()">
+        {{ t('My_Courses') }}
+      </a>
+      <a class="topbar__mobile-link" routerLink="/admin"
+         *ngxPermissionsOnly="'admin'"
+         routerLinkActive="topbar__mobile-link--active"
+         [routerLinkActiveOptions]="{exact: true}"
+         (click)="toggleMenu()">
+        {{ t('Admin') }}
+      </a>
+
+
+      <app-button
+        [text]="t('LogOut')"
+        (btnClick)="onLogOut()"
+        className="stroked mini">
+      </app-button>
+    </nav>
   }
 
 </ng-container>
