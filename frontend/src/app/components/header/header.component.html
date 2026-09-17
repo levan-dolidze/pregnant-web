@@ -54,6 +54,8 @@
         </nav>
       }
     </div>
+    <div class="topbar__login">
+
 
         <button class="topbar__lang-toggle" (click)="toggleLanguage()" [attr.aria-label]="t('Switch_language')">
           {{ activeLangCode() === 'ka' ? 'EN' : 'KA' }}
@@ -62,57 +64,48 @@
             (click)="toggleTheme()"
             [attr.aria-label]="isDarkMode() ? t('Light_mode') : t('Dark_mode')"
             [attr.aria-pressed]="isDarkMode()">
-      <mat-icon>{{ isDarkMode() ? 'light_mode' : 'dark_mode' }}</mat-icon>
+         <mat-icon>{{ isDarkMode() ? 'light_mode' : 'dark_mode' }}</mat-icon>
         </button>
-
-        <!-- //// -->
-
-    <button class="topbar__burger" mat-icon-button (click)="toggleMenu()" aria-label="Menu">
-      <mat-icon>{{ isMenuOpen() ? 'close' : 'menu' }}</mat-icon>
-    </button>
-
-
-    <div class="topbar__login" >
-      
-  @if (!iSAuthState()) {
-  
-  <button class="topbar__profile-btn" onKeyPress (click)="onLoginInit()" aria-label="Login">
-    <mat-icon>person</mat-icon>
-  </button>
-  <app-button class="topbar__login" [className]="'stroked-fill h-40'" [text]="t('Register')"
-    (btnClick)="onRegisterInit()">
-  </app-button>
-  }
-  @else {
-  <div class="topbar__profile">
-    <button class="topbar__profile-btn" [matMenuTriggerFor]="profileMenu" aria-label="Profile">
-      <mat-icon>person</mat-icon>
-    </button>
-  
-    <mat-menu #profileMenu="matMenu" class="topbar__profile-panel" xPosition="before">
-      <div class="topbar__profile-hd">
-        <span class="topbar__profile-avatar">
-          <mat-icon>person</mat-icon>
-        </span>
-        <span class="topbar__profile-greeting">გამარჯობა</span>
-      </div>
-  
-      <!-- <a mat-menu-item routerLink="/profile">{{ t('Profile') }}</a> -->
-      <a mat-menu-item routerLink="/my-courses">{{ t('My_Courses') }}</a>
-      <a mat-menu-item routerLink="/admin" *ngxPermissionsOnly="'admin'">{{ t('Admin') }}</a>
-
-  
-      <button mat-menu-item class="topbar__profile-logout-item" (click)="onLogOut()">
-        {{ t('LogOut') }}
-      </button>
-    </mat-menu>
-  </div>
-  }
+             
+        @if (iSAuthState()) {
+          <div class="topbar__profile">
+            <button class="topbar__profile-btn" [matMenuTriggerFor]="profileMenu" aria-label="Profile">
+              <mat-icon>person</mat-icon>
+            </button>
+            <mat-menu #profileMenu="matMenu" class="topbar__profile-panel" xPosition="before">
+              <div class="topbar__profile-hd">
+                <span class="topbar__profile-avatar">
+                  <mat-icon>person</mat-icon>
+                </span>
+                <span class="topbar__profile-greeting">გამარჯობა</span>
+              </div>
+          
+              <!-- <a mat-menu-item routerLink="/profile">{{ t('Profile') }}</a> -->
+              <a mat-menu-item routerLink="/my-courses">{{ t('My_Courses') }}</a>
+              <a mat-menu-item routerLink="/admin" *ngxPermissionsOnly="'admin'">{{ t('Admin') }}</a>
+          
+          
+              <button mat-menu-item class="topbar__profile-logout-item" (click)="onLogOut()">
+                {{ t('LogOut') }}
+              </button>
+            </mat-menu>
+          </div>
+        }
+        @else {
+              <button class="topbar__profile-btn" (click)="onLoginInit()">
+                <mat-icon>person</mat-icon>
+              </button>
+    <app-button class="topbar__login" [className]="'stroked-fill h-40'" [text]="t('Register')"
+      (btnClick)="onRegisterInit()">
+    </app-button>
+        }
     </div>
 
+         <button class="topbar__burger" mat-icon-button (click)="toggleMenu()" aria-label="Menu">
+         <mat-icon>{{ isMenuOpen() ? 'close' : 'menu' }}</mat-icon>
+        </button>
    
 
-   
   </mat-toolbar>
 
   <!-- Mobile nav -->
@@ -159,7 +152,6 @@
          (click)="toggleMenu()">
         {{ t('Admin') }}
       </a>
-
 
       <app-button
         [text]="t('LogOut')"

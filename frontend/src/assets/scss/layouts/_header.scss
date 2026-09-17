@@ -127,15 +127,15 @@ html .topbar {
       display: flex;
     }
 
-    &__logout,
-    &__notify,
-    &__login {
-      display: none;
-    }
+    // &__logout,
+    // &__notify,
+    // &__login {
+    //   display: none;
+    // }
 
-    &__profile {
-      display: none;
-    }
+    // &__profile {
+    //   display: none;
+    // }
   }
 
   html .topbar img[alt="Logo"] {
