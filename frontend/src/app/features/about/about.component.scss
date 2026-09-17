@@ -15,9 +15,7 @@
   overflow: hidden;
   position: relative;
 
-  // Dark mode needs a distinct multi-stop gradient (different color
-  // stops, not just recolored ones) — kept as a scoped exception
-  // rather than a plain var() swap.
+ 
   :host-context([theme="dark"]) & {
     background: linear-gradient(140deg, var(--bg) 0%, var(--bg100) 50%, var(--bg) 100%);
   }
