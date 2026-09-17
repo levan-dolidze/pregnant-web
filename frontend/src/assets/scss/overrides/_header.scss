@@ -24,6 +24,10 @@
   @include flex-init;
   gap: 10px;
 }
+.topbar__actions{
+  @include flex-init;
+  margin: 0px 10px
+}
 
 .topbar__theme-toggle {
 
