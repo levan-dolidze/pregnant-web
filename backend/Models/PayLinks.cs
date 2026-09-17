@@ -1,11 +1,16 @@
-﻿namespace PregnantWeb.Models
+﻿using System.ComponentModel.DataAnnotations.Schema;
+
+namespace PregnantWeb.Models
 {
+    [Table("payment_links")]
     public class PayLinks
     {
+        public int Id { get; set; }
 
-        public string PregnantOnline { set; get; }
+        [Column("product_id")]
+        public string ProductId { get; set; }
 
-        public string PregnantGuide { set; get; }
-
+        [Column("payment_url")]
+        public string PaymentUrl { get; set; }
     }
 }

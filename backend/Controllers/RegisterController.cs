@@ -37,24 +37,25 @@ public class RegisterController : ControllerBase
             return Unauthorized();
         }
 
-        var payLinks = await _db.PayLinks.FirstOrDefaultAsync();
-        if (payLinks is null)
-        {
-            return BadRequest(new { description = "Payment links are not configured." });
-        }
+        var payLinks = await _db.PayLinks.ToDictionaryAsync(p => p.ProductId, p => p.PaymentUrl);
 
         string paymentUrl;
 
         switch (request.ProductId)
         {
             case CourseId.PregnantOnline:
-                paymentUrl = payLinks.PregnantOnline;
+                paymentUrl = payLinks.GetValueOrDefault(nameof(CourseId.PregnantOnline));
                 break;
             case CourseId.PregnantGuide:
-                paymentUrl = payLinks.PregnantGuide;
+                paymentUrl = payLinks.GetValueOrDefault(nameof(CourseId.PregnantGuide));
                 break;
             default:
                 return BadRequest(new { description = "Unknown product." });
+        }
+
+        if (string.IsNullOrEmpty(paymentUrl))
+        {
+            return BadRequest(new { description = "Payment link is not configured." });
         }
 
         var order = new RegisterOrder
