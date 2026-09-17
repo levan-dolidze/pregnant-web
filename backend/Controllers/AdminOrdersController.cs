@@ -18,7 +18,8 @@ public class AdminOrdersController : ControllerBase
         _db = db;
     }
 
-    [HttpGet]
+    [HttpGet, Authorize]
+
     public async Task<ActionResult<List<RegisterOrder>>> GetOrders([FromQuery] int page = 1, [FromQuery] int pageSize = 20)
     {
         var orders = await _db.RegisterOrders
