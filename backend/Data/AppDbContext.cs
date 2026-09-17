@@ -14,6 +14,9 @@ namespace PregnantWeb.Data
         public DbSet<ContactMessage> ContactMessages => Set<ContactMessage>();
         public DbSet<ContactInfo> ContactInfo => Set<ContactInfo>();
         public DbSet<Blog> Blogs => Set<Blog>();
+        public DbSet<PayLinks> PayLinks => Set<PayLinks>();
+
+        
         public DbSet<CoursePromoSummary> Promo => Set<CoursePromoSummary>();
         public DbSet<CourseLesson> CourseLessons => Set<CourseLesson>();
 

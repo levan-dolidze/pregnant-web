@@ -3,6 +3,7 @@ using System.Net;
 using System.Security.Claims;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using PregnantWeb.Data;
 using PregnantWeb.Models;
 using PregnantWeb.Services;
@@ -36,15 +37,21 @@ public class RegisterController : ControllerBase
             return Unauthorized();
         }
 
+        var payLinks = await _db.PayLinks.FirstOrDefaultAsync();
+        if (payLinks is null)
+        {
+            return BadRequest(new { description = "Payment links are not configured." });
+        }
+
         string paymentUrl;
 
         switch (request.ProductId)
         {
             case CourseId.PregnantOnline:
-                paymentUrl = "https://ecom.tbcpayments.ge/New/pay/product/viG94N411pn?lang=KA&utm_source=ig&utm_medium=social&utm_content=link_in_bio&fbclid=PAZXh0bgNhZW0CMTEAc3J0YwZhcHBfaWQPOTM2NjE5NzQzMzkyNDU5AAGnNqK0bDaNyqkkEp_t8jopuL4LbvXZChtZEi0ifDoJFv4oGN8nQb1mTP5-B_Y_aem_hcsK4kwx1tKj13TfQ-J4zw";
+                paymentUrl = payLinks.PregnantOnline;
                 break;
-            case CourseId.PregnantGoude:
-                paymentUrl = "https://ecom.tbcpayments.ge/New/pay/product/tQoeDvqdcH6?lang=KA&utm_source=ig&utm_medium=social&utm_content=link_in_bio&fbclid=PAcGRvZgJleHRuA2FlbQIxMQBzcnRjBmFwcF9pZA85MzY2MTk3NDMzOTI0NTkAAaeOi8KP69uki1lp6a2K6Lg46JPHq2nyaBTeT3emldTEfdzOzha5_8E5Ex7T6A_aem_KambjBR6G4h7rfcjDyOxxw";
+            case CourseId.PregnantGuide:
+                paymentUrl = payLinks.PregnantGuide;
                 break;
             default:
                 return BadRequest(new { description = "Unknown product." });

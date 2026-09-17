@@ -3,7 +3,7 @@ namespace PregnantWeb.Models
     public enum CourseId
     {
         PregnantOnline=1,
-        PregnantGoude
+        PregnantGuide
     }
 
 
