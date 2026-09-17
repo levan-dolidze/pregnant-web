@@ -160,8 +160,7 @@ $grad-hero: linear-gradient(140deg, $hero-grad-start 0%, $hero-grad-mid 45%, $he
   &__desc {
     font-size: 16px;
     color: var(--gray-01);
-    max-width: 520px;
-    margin-inline: auto;
+    max-width: 70%;
     line-height: 1.65;
   }
 
