@@ -11,8 +11,6 @@
       </span>
     </div>
     <ng-container>
-      <button class="topbar__notify" mat-icon-button aria-label="Notifications" [routerLink]="'notifications/notification-list'">
-      </button>
       <mat-menu #notificationmenu="matMenu" class="topbar-dd cardWithShadow">
         <div class="d-flex align-items-center p-x-32 p-y-16">
           <h6 class="f-s-16 f-w-600 m-0 mat-subtitle-1 caps-medium">{{t('Notification')}}</h6>
@@ -56,7 +54,6 @@
     </div>
     <div class="topbar__login">
 
-
         <button class="topbar__lang-toggle" (click)="toggleLanguage()" [attr.aria-label]="t('Switch_language')">
           {{ activeLangCode() === 'ka' ? 'EN' : 'KA' }}
         </button>
@@ -95,16 +92,18 @@
               <button class="topbar__profile-btn" (click)="onLoginInit()">
                 <mat-icon>person</mat-icon>
               </button>
-    <app-button class="topbar__login" [className]="'stroked-fill h-40'" [text]="t('Register')"
+    <app-button class="topbar__register-full" [className]="'stroked-fill h-40'" [text]="t('Register')"
       (btnClick)="onRegisterInit()">
     </app-button>
+    <button class="topbar__profile-btn topbar__register-icon" [attr.aria-label]="t('Register')" (click)="onRegisterInit()">
+      <mat-icon>person_add</mat-icon>
+    </button>
         }
     </div>
 
          <button class="topbar__burger" mat-icon-button (click)="toggleMenu()" aria-label="Menu">
          <mat-icon>{{ isMenuOpen() ? 'close' : 'menu' }}</mat-icon>
         </button>
-   
 
   </mat-toolbar>
 

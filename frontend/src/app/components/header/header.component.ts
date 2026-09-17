@@ -103,7 +103,6 @@ export class HeaderComponent implements OnInit {
       ]
     },
     { name: 'For_Children', index: 2, children: [] },
-    // { name: 'More',         index: 3, children: [] },
     { routerLink: '/about', name: 'Doctor', index: 4 },
     { routerLink: '/blog', name: 'Blog', index: 5 },
     { routerLink: '/contact', name: 'Contact', index: 6 },

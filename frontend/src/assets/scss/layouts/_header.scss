@@ -136,6 +136,14 @@ html .topbar {
     // &__profile {
     //   display: none;
     // }
+
+    &__register-full {
+      display: none;
+    }
+  }
+
+  .topbar__register-icon {
+    display: flex;
   }
 
   html .topbar img[alt="Logo"] {
