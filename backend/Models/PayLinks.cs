@@ -5,6 +5,7 @@ namespace PregnantWeb.Models
     [Table("payment_links")]
     public class PayLinks
     {
+        [Column("id")]
         public int Id { get; set; }
 
         [Column("product_id")]
