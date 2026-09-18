@@ -27,7 +27,7 @@ $grad-hero: linear-gradient(140deg, $hero-grad-start 0%, $hero-grad-mid 45%, $he
 }
 
 @mixin section {
-  padding: clamp(48px, 4vw, 104px) 0;
+  padding: clamp(24px, 4vw, 48px) 0;
 }
 
 @mixin gradient-text {

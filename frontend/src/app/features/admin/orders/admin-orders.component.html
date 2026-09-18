@@ -1,5 +1,4 @@
 <main class="admin-orders" *transloco="let t">
-  <!-- <h1 class="admin-orders__title">{{ t('Orders') }}</h1> -->
 
   @if (loading() && !orders().length) {
     <div *loading="loading()"></div>
@@ -8,7 +7,7 @@
       @for (order of orders(); track order.id) {
         <li class="admin-orders__row">
           <a class="admin-orders__link" [routerLink]="['/admin/orders', order.id]">
-            <span class="admin-orders__number">#{{ order.id }}</span>
+            <span class="admin-orders__number">Nº {{ order.id }}</span>
             <span class="admin-orders__name">{{ order.userName }} {{ order.userLastName }}</span>
             <span class="admin-orders__email">{{ order.email }}</span>
             <span class="admin-orders__status admin-orders__status--pending"

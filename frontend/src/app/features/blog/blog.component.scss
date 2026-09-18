@@ -3,7 +3,7 @@
 
 .blog-hero {
   background: $grad-hero;
-  padding: clamp(36px, 7vw, 80px) 0;
+  padding: clamp(48px, 2vw, 90px) 0 clamp(24px, 2vw, 100px);
   text-align: center;
 
   // Dark mode needs a distinct multi-stop gradient (different color

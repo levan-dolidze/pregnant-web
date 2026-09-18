@@ -2,9 +2,9 @@
 @use "mixins" as *;
 
 .admin-shell {
-  max-width: 900px;
+  max-width: 80%;
   margin: 0 auto;
-  padding: 48px 24px;
+  padding: 24px;
 
   &__tabs {
     display: flex;
@@ -14,7 +14,7 @@
   }
 
   &__tab {
-    @include font(14px, 600, var(--gray-01), $font-medium);
+    @include font(14px, 500, var(--gray-01), $font-medium);
     padding: 10px 18px;
     text-decoration: none;
     border-bottom: 2px solid transparent;
@@ -23,5 +23,9 @@
       color: var(--black-white);
       border-bottom-color: $primary;
     }
+  }
+
+  @media screen and (max-width: 768px) {
+    max-width: 100%;
   }
 }

@@ -2,21 +2,22 @@
 @use "mixins" as *;
 
 .mc-page {
-  max-width: 800px;
+  max-width: 80%;
   margin: 0 auto;
-  padding: 48px 24px;
+  padding: 24px;
+  display: grid;
+  gap: 24px;
 
   &__title {
-    @include font(24px, 700, $gray700, $font-bold);
+    @include font(20px, 700, $gray700, $font-bold);
     color: var(--black-white);
-    margin-bottom: 24px;
   }
 
   @media (max-width: 768px) {
+    max-width: 100%;
     padding: 32px 16px;
 
     &__title {
-      font-size: 20px;
       margin-bottom: 16px;
     }
   }

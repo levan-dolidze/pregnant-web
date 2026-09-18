@@ -26,7 +26,7 @@
 
         > :nth-child(2) {
             margin-top: 10px;
-            @include font(24px, 500, var(--black-white), $font-medium);
+            @include font(20px, 500, var(--black-white), $font-medium);
         }
 
         > :last-child {

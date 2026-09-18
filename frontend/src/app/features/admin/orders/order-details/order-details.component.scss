@@ -2,9 +2,9 @@
 @use "mixins" as *;
 
 .order-details {
-  max-width: 640px;
+  max-width: 80%;
   margin: 0 auto;
-  padding: 48px 24px;
+  padding: 24px;
 
   &__back {
     display: inline-block;
@@ -94,6 +94,8 @@
   }
 
   @media (max-width: 500px) {
+    max-width: 100%;
+
     &__card {
       padding: 20px;
     }
