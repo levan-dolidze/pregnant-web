@@ -11,7 +11,11 @@
             <span class="admin-orders__number">#{{ order.id }}</span>
             <span class="admin-orders__name">{{ order.userName }} {{ order.userLastName }}</span>
             <span class="admin-orders__email">{{ order.email }}</span>
-            <span class="admin-orders__status" [class]="statusClass(order.status)">
+            <span class="admin-orders__status admin-orders__status--pending"
+            [ngClass]="
+            {'admin-orders__status--confirmed':order.status===orderStatus.Confirmed,
+             'admin-orders__status--rejected':order.status===orderStatus.Rejected,
+            }">
               {{ order.status | statusLabel }}
             </span>
           </a>
