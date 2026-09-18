@@ -8,10 +8,8 @@
       @for (course of myCourses(); track course.orderId) {
         <li class="mc-card">
           <div class="mc-card__body">
-            <h2 class="mc-card__title">{{ course.title }}</h2>
-            <p class="mc-card__desc">{{ course.description }}</p>
-            <div class="mc-card__meta">
-              <span class="mc-meta-chip">{{ course.lessonQty }} {{ t('Lesson') }}</span>
+            <div class="mc-card__head">
+              <h2 class="mc-card__title">{{ course.title }}</h2>
               <span
                 class="mc-card__status"
                 [class.mc-card__status--pending]="course.status === OrderStatus.Pending"
@@ -20,11 +18,16 @@
                 {{ course.status | statusLabel }}
               </span>
             </div>
+            <p class="mc-card__desc">{{ course.description }}</p>
+            <div class="mc-card__meta">
+              <span class="mc-meta-chip">{{ course.lessonQty }} {{ t('Lesson') }}</span>
+            </div>
           </div>
           @if (course.status === OrderStatus.Confirmed) {
             <app-button
               class="mc-card__btn"
               width=""
+              [className]="'h-40'"
               [text]="t('Start_Learning')"
               (btnClick)="startLearning(course)">
             </app-button>
@@ -35,7 +38,6 @@
   } @else {
     <p class="mc-empty">{{ t('No_Purchased_Courses_Yet') }}</p>
     <app-button
-      width=""
       [text]="t('Courses')"
       [className]="'stroked-fill h-40'"
       (btnClick)="goToCourses()">

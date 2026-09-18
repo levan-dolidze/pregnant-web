@@ -42,17 +42,25 @@
     box-shadow: 0 2px 8px rgba(0, 0, 0, .3);
   }
 
+  &__head {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 12px;
+    margin-bottom: 6px;
+  }
+
   &__title {
     @include font(16px, 600, $gray700, $font-bold);
     color: var(--black-white);
-    margin: 0 0 6px;
+    margin: 0;
   }
 
   &__desc {
-    @include font(13px, 400, $gray13, $font-default);
+    @include font(14px, 400, $gray13, $font-default);
     color: var(--label);
     line-height: 1.5;
-    margin: 0 0 10px;
+    margin: 16px 0px;
   }
 
   &__meta {
@@ -66,6 +74,8 @@
     @include font(12px, 600, $white, $font-medium);
     padding: 4px 12px;
     border-radius: 20px;
+    white-space: nowrap;
+    flex-shrink: 0;
 
     &--pending {
       background: $gray900;
@@ -82,7 +92,9 @@
 
   &__btn {
     display: block;
-    margin-top: 14px;
+    margin-top: 24px;
+    // display: flex;
+    // justify-content: end;
   }
 }
 
