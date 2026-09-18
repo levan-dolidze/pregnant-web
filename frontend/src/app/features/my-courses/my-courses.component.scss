@@ -73,16 +73,16 @@
   &__status {
     @include font(12px, 600, $white, $font-medium);
     padding: 4px 12px;
-    border-radius: 20px;
+    border-radius: 8px;
     white-space: nowrap;
     flex-shrink: 0;
 
     &--pending {
-      background: $gray900;
+      background: $yellow;
     }
 
     &--confirmed {
-      background: $active;
+      background: $green;
     }
 
     &--rejected {
@@ -93,8 +93,6 @@
   &__btn {
     display: block;
     margin-top: 24px;
-    // display: flex;
-    // justify-content: end;
   }
 }
 

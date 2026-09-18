@@ -38,9 +38,9 @@
   }
 
   &__status {
-    @include font(12px, 600, $white, $font-medium);
+    @include font(12px, 500, $white, $font-medium);
     padding: 4px 16px;
-    border-radius: 20px;
+    border-radius: 8px;
     white-space: nowrap;
 
     &--pending {
