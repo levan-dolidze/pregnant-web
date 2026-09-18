@@ -73,7 +73,7 @@
     min-height: 1px;
   }
 
-  @media (max-width: 700px) {
+  @media (max-width: 768px) {
     &__link {
       grid-template-columns: 1fr;
       gap: 6px;
