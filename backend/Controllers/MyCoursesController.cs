@@ -31,10 +31,7 @@ namespace PregnantWeb.Controllers
                 return Unauthorized();
             }
 
-            // id, if sent, is validated against the authenticated user's own id
-            // from the token - it is never trusted on its own. Asking for a
-            // different id than your own token's is rejected outright, so this
-            // cannot be used to read someone else's orders.
+       
             if (id.HasValue && id.Value != userId)
             {
                 return Forbid();
