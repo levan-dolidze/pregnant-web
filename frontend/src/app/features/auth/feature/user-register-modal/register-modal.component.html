@@ -19,7 +19,9 @@
                 formControlName="personalNumber"
                 [placeholder]="t('Personal_number')"
                 [isInvalid]="f.personalNumber.invalid && f.personalNumber.dirty"
-                class="input">
+                class="input"
+                [type]="'tel'"
+                >
               </app-input>
               <mat-hint class="error-msg" *validationErrors="
                   registerForm;
