@@ -20,7 +20,6 @@ public class UserController : ControllerBase
     [HttpPost("UserCheck")]
     public async Task<ActionResult<ApiResponseBase<object>>> UserCheck([FromBody] UserCheckRequest request)
     {
-        // "user" here is the PersonalNumber, matching how Login identifies a user.
         var exists = await _db.Users.AnyAsync(u => u.PersonalNumber == request.User);
 
         if (!exists)
