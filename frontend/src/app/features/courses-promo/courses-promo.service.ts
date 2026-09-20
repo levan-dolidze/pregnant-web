@@ -29,7 +29,7 @@ export class CoursesPromoService {
   private readonly apiService = inject(ApiService);
   destroyRef = inject(DestroyRef);
 
-  promos = signal<CoursePromoSource | null>(null);
+  promos = signal<CoursePromoSource | null>(new CoursePromoSource());
   readonly promosState = computed(() => this.promos())
   promosLoading$ = this.getPromo()
 

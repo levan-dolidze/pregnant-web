@@ -4,6 +4,7 @@ import { TranslocoModule, TranslocoService } from '@jsverse/transloco';
 import { ButtonComponent } from '../../components/button/button.component';
 import { CoursesPromoService } from '../courses-promo/courses-promo.service';
 import { CourseId } from 'src/app/shared/utils/enums';
+import { LoadingDirective } from 'src/app/components/loader/loading.directive';
 
 interface ServiceCard {
   title: string;
@@ -15,7 +16,7 @@ interface ServiceCard {
 
 @Component({
   selector: 'app-home',
-  imports: [ButtonComponent, TranslocoModule],
+  imports: [TranslocoModule,LoadingDirective],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss'
 })
@@ -25,6 +26,7 @@ export class HomeComponent {
 
   private readonly purchaseService = inject(CoursesPromoService);
   readonly promo = this.purchaseService.coursePromo;
+  readonly loading = this.purchaseService.loading;
 
 
   readonly servicesSection = computed(() => ({
