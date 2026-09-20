@@ -1,7 +1,6 @@
 import { Component, computed, inject } from '@angular/core';
 import { Router } from '@angular/router';
 import { TranslocoModule, TranslocoService } from '@jsverse/transloco';
-import { ButtonComponent } from '../../components/button/button.component';
 import { CoursesPromoService } from '../courses-promo/courses-promo.service';
 import { CourseId } from 'src/app/shared/utils/enums';
 import { LoadingDirective } from 'src/app/components/loader/loading.directive';
